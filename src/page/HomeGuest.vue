@@ -46,21 +46,27 @@
     </v-container>
     <!-- Page 3 -->
     <v-container class="my-16">
-      <v-card flat class="d-flex flex-wrap-reverse">
-        <v-carousel cycle :height="height" hide-delimiter-background show-arrows-on-hover class="order-3">
-          <v-carousel-item v-for="(slide, i) in slides" :key="i + 'slide'">
-            <v-img src="@/assets/images/dummy/board.jpg" width="600" :height="height">
-            </v-img>
-          </v-carousel-item>
-        </v-carousel>
+      <v-carousel cycle :height="height" hide-delimiter-background show-arrows-on-hover class="order-3">
+        <v-carousel-item v-for="(slide, i) in 3" :key="i + 'slide'">
+          <v-card>
+            <v-list two-line>
+              <v-list-item>
+                <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
+                <v-list-item-content>
+                  <v-card flat class="pa-16" color="blue" dark :height="height">
+                    <p class="display-3 font-weight-bold">Produk</p>
+                    <p class="subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum laborum, in ad
+                      minus odit distinctio eligendi doloribus tempora, sed eum quas obcaecati animi saepe error itaque
+                      maxime enim. Exercitationem, commodi?</p>
+                      <v-btn color="white" large rounded class="blue--text">Read More</v-btn>
+                  </v-card>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
 
-        <!-- <v-card flat color="blue" outlined dark class="order-3">
-          <v-container>
-            <h1 class="font-weight-bold display-1">Produk</h1>
-          </v-container>
-        </v-card> -->
-
-      </v-card>
+          </v-card>
+        </v-carousel-item>
+      </v-carousel>
     </v-container>
     <!-- Page 4 -->
     <v-container class="my-16">
@@ -108,8 +114,8 @@
       </v-carousel>
     </v-container>
     <!-- Page 6 -->
-    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/dummy/board.jpg" class="my-16"
-      :height="height">
+    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/dummy/board.jpg"
+      class="my-16" :height="height">
       <v-container class="pa-16 white--text mt-16">
         <v-row>
           <v-col md="6">
@@ -124,7 +130,7 @@
       </v-container>
     </v-img>
     <!-- Page 7 -->
-      <v-container class="my-16">
+    <v-container class="my-16">
       <v-row align="center">
         <p class="display-3 text-capitalize blue--text font-weight-bold">mitra teknologi</p>
         <v-divider></v-divider>
@@ -141,7 +147,7 @@
         </v-carousel-item>
       </v-carousel>
     </v-container>
-    <FooterGuest/>
+    <FooterGuest />
   </v-app>
 </template>
 <script>
