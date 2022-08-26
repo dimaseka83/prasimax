@@ -58,7 +58,7 @@
                     <p class="subtitle">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum laborum, in ad
                       minus odit distinctio eligendi doloribus tempora, sed eum quas obcaecati animi saepe error itaque
                       maxime enim. Exercitationem, commodi?</p>
-                      <v-btn color="white" large rounded class="blue--text">Read More</v-btn>
+                      <v-btn color="white" large rounded class="blue--text mt-10">Read More</v-btn>
                   </v-card>
                 </v-list-item-content>
               </v-list-item>
