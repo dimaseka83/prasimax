@@ -63,10 +63,6 @@
             <div class="d-flex">
                 <span class="mr-auto">&copy; PT Prasimax Inovasi Teknologi, 2010 - {{ getYears }}, All rights
                     reserved</span>
-                <span class="text-capitalize">Bergabung dengan Kami</span>
-                <v-btn x-small text v-for="(social, i) in socials" :key="i + 'social'">
-                    <v-icon color="white">{{ social.icon }}</v-icon>
-                </v-btn>
             </div>
         </v-container>
     </div>

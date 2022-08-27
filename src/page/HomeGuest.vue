@@ -46,9 +46,7 @@
     </v-container>
     <!-- Page 3 -->
     <v-container class="my-16">
-      <v-carousel cycle :height="height" hide-delimiter-background show-arrows-on-hover class="order-3">
-        <v-carousel-item v-for="(slide, i) in 3" :key="i + 'slide'">
-          <v-card>
+          <v-card flat>
             <v-list two-line>
               <v-list-item>
                 <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
@@ -63,10 +61,7 @@
                 </v-list-item-content>
               </v-list-item>
             </v-list>
-
           </v-card>
-        </v-carousel-item>
-      </v-carousel>
     </v-container>
     <!-- Page 4 -->
     <v-container class="my-16">
