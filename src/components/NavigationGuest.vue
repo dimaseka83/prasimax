@@ -20,7 +20,7 @@
         </v-container>
         <v-app-bar dense flat dark src="@/assets/images/dummy/rectangle.svg">
             <div v-for="(nav, idx) in menu" :key="idx + 'nav'">
-                <v-btn text v-if="nav.submenu == undefined">{{ nav.name }}</v-btn>
+                <v-btn text v-if="nav.submenu == undefined" :disabled="disableButton(nav.link)">{{ nav.name }}</v-btn>
                 <v-menu offset-y v-else>
                     <template v-slot:activator="{ on, attrs }">
                         <v-btn text v-bind="attrs" v-on="on">
@@ -44,10 +44,13 @@ import mixin from '../mixins/mix';
 export default {
   name: 'NavigationGuest',
   mixins: [mixin],
-  data() {
-    return {
-    };
-  },
+  methods: {
+    disableButton(link){
+        if(link == this.$route.path){
+            return true;
+        }
+    }
+  }
 };
 </script>
 <style scoped>

@@ -1,6 +1,5 @@
 <template>
     <div>
-        <v-img src="@/assets/images/dummy/rectangle.svg"></v-img>
         <v-container fluid class="white--text background-footer pa-16">
             <v-row>
                 <v-col md="2">
@@ -59,12 +58,11 @@
                 </v-col>
             </v-row>
         </v-container>
-        <v-container fluid class="background-footer-bottom white--text">
+        <v-app-bar dense flat dark src="@/assets/images/dummy/rectangle.svg">
             <div class="d-flex">
-                <span class="mr-auto">&copy; PT Prasimax Inovasi Teknologi, 2010 - {{ getYears }}, All rights
-                    reserved</span>
+                <span class="mr-auto">&copy; PT Prasimax Inovasi Teknologi, 2010 - {{ getYears }}, Hak Cipta dilindungi undang - undang</span>
             </div>
-        </v-container>
+        </v-app-bar>
     </div>
 </template>
 <script>
