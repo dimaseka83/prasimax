@@ -1,3 +1,5 @@
+
+
 export default {
   data() {
     return {
@@ -9,24 +11,6 @@ export default {
         {
           name: 'Tentang Kami',
           link: '/about',
-          submenu: [
-            {
-              name: 'Profil Perusahaan',
-              link: '/about/profile',
-            },
-            {
-              name: 'Karir',
-              link: '/about/career',
-            },
-            {
-              name: 'Pedoman Perilaku dan Kode Etik',
-              link: '/about/code-of-ethics',
-            },
-            {
-              name: 'Brand Guideline',
-              link: '/about/brand-guideline',
-            },
-          ],
         },
         {
           name: 'ODM/OEM',
@@ -47,20 +31,6 @@ export default {
         {
           name: 'Hubungi Kami',
           link: '/contact',
-          submenu: [
-            {
-              name: 'Tim Sales',
-              link: '/contact/sales',
-            },
-            {
-              name: 'Tim Field Application Engineer',
-              link: '/contact/field-application-engineer',
-            },
-            {
-              name: 'Tim Marketing dan Komunikasi',
-              link: '/contact/marketing-and-communication',
-            },
-          ],
         },
       ],
       socials: [
@@ -96,6 +66,14 @@ export default {
         }
       ]
     };
+  },
+  methods: {
+    route(link){
+      this.$router.push(link);
+    },
+    changeLocale () {
+      console.log(this.$vuetify.lang.current = 'hu');
+    },
   },
   computed: {
     height() {

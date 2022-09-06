@@ -20,27 +20,15 @@
         </v-container>
         <v-app-bar dense flat dark src="@/assets/images/dummy/rectangle.svg">
             <div v-for="(nav, idx) in menu" :key="idx + 'nav'">
-                <v-btn text v-if="nav.submenu == undefined" :disabled="disableButton(nav.link)">{{ nav.name }}</v-btn>
-                <v-menu offset-y v-else>
-                    <template v-slot:activator="{ on, attrs }">
-                        <v-btn text v-bind="attrs" v-on="on">
-                            {{ nav.name }}
-                        </v-btn>
-                    </template>
-                    <v-list>
-                        <v-list-item v-for="(sub, i) in nav.submenu" :key="i + 'submenu'">
-                            <v-list-item-title>{{ sub.name }}</v-list-item-title>
-                        </v-list-item>
-                    </v-list>
-                </v-menu>
-
+                <v-hover v-slot="{hover}">
+                    <v-btn text v-if="nav.submenu == undefined" :style="{'background-color': hover ? '#03A9F4' : ''}" :disabled="disableButton(nav.link)" @click="route(nav.link)">{{ nav.name }}</v-btn>
+                </v-hover>
             </div>
         </v-app-bar>
     </div>
 </template>
 <script>
 import mixin from '../mixins/mix';
-
 export default {
   name: 'NavigationGuest',
   mixins: [mixin],
@@ -50,7 +38,7 @@ export default {
             return true;
         }
     }
-  }
+  },
 };
 </script>
 <style scoped>
@@ -63,4 +51,10 @@ export default {
 .v-text-field--outlined >>> .v-icon {
   color: #2196F3 !important;
 }
+
+button:disabled,
+button[disabled]{
+    background-color: #03A9F4 !important;
+}
+
 </style>

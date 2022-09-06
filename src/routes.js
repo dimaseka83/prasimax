@@ -1,6 +1,7 @@
 /* eslint import/no-extraneous-dependencies: ["error", {"peerDependencies": true}] */
 import VueRouter from 'vue-router';
-import HomeGuest from './page/HomeGuest.vue';
+import HomeGuest from './page/Guest/Home.vue';
+import AboutGuest from './page/Guest/About.vue';
 
 const routes = [
   {
@@ -8,6 +9,11 @@ const routes = [
     component: HomeGuest,
     name: 'HomeGuest',
   },
+  {
+    path: '/about',
+    component: AboutGuest,
+    name: 'AboutGuest'
+  }
 ];
 
 const router = new VueRouter({
