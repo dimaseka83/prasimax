@@ -110,7 +110,43 @@
         <v-divider class="mt-10"></v-divider>
     </v-container>
     <v-container class="my-16 blue--text">
-        <h2 class="display-1 font-weight-bold text-capitalize">Kami Mencari Talenta :</h2>
+    <v-row align="center">
+        <p class="display-3 text-capitalize blue--text font-weight-bold">Kami Mencari Talenta </p>
+        <v-divider></v-divider>
+    </v-row>
+    <v-row class="my-10">
+        <v-col cols="6">
+        <h2 class="display-1 font-weight-bold text-capitalize mb-5">benefits</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque. Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident voluptas molestiae fugit qui aliquam optio quam esse tempore, ab aperiam possimus odio facilis cum a illo natus adipisci autem fugiat?</p>    
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque. Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia cum ab consequuntur temporibus voluptates ipsam autem, perspiciatis enim pariatur quam sunt sequi nemo. Maxime tempora totam obcaecati, provident magnam quae!</p>
+        </v-col>
+        <v-col cols="6">
+            <h2 class="display-1 font-weight-bold text-capitalize mb-5">learning & development</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque. Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident voluptas molestiae fugit qui aliquam optio quam esse tempore, ab aperiam possimus odio facilis cum a illo natus adipisci autem fugiat?</p>    
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque. Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia cum ab consequuntur temporibus voluptates ipsam autem, perspiciatis enim pariatur quam sunt sequi nemo. Maxime tempora totam obcaecati, provident magnam quae!</p>
+
+        <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program mencari talenta</a>
+        </v-col>
+    </v-row>
+
+    <v-row align="center">
+        <p class="display-3 text-capitalize blue--text font-weight-bold">magang di perusahaan kami </p>
+        <v-divider></v-divider>
+    </v-row>
+    <v-row>
+        <v-col cols="6">
+        <h2 class="display-1 font-weight-bold text-capitalize mb-5">benefits</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque. Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident voluptas molestiae fugit qui aliquam optio quam esse tempore, ab aperiam possimus odio facilis cum a illo natus adipisci autem fugiat?</p>    
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque. Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia cum ab consequuntur temporibus voluptates ipsam autem, perspiciatis enim pariatur quam sunt sequi nemo. Maxime tempora totam obcaecati, provident magnam quae!</p>
+        </v-col>
+        <v-col cols="6">
+            <h2 class="display-1 font-weight-bold text-capitalize mb-5">learning & development</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque. Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident voluptas molestiae fugit qui aliquam optio quam esse tempore, ab aperiam possimus odio facilis cum a illo natus adipisci autem fugiat?</p>    
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque. Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia cum ab consequuntur temporibus voluptates ipsam autem, perspiciatis enim pariatur quam sunt sequi nemo. Maxime tempora totam obcaecati, provident magnam quae!</p>
+
+        <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program magang</a>
+        </v-col>
+    </v-row>
     </v-container>
     <v-container class="my-16 blue--text">
         <h2 class="display-1 font-weight-bold text-capitalize mb-5">pedoman perilaku :</h2>

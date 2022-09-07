@@ -2,6 +2,7 @@
 import VueRouter from 'vue-router';
 import HomeGuest from './page/Guest/Home.vue';
 import AboutGuest from './page/Guest/About.vue';
+import Odm from './page/Guest/Odm.vue';
 
 const routes = [
   {
@@ -13,6 +14,11 @@ const routes = [
     path: '/about',
     component: AboutGuest,
     name: 'AboutGuest'
+  },
+  {
+    path: '/odm',
+    component: Odm,
+    name: 'OdmGuest'
   }
 ];
 

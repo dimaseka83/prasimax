@@ -148,7 +148,6 @@
 <script>
   import mix from '@/mixins/mix';
   import componentsmix from '@/mixins/componentsmix';
-import FooterGuest from '@/components/FooterGuest.vue';
   export default {
     mixins: [mix, componentsmix],
     data() {
@@ -162,7 +161,6 @@ import FooterGuest from '@/components/FooterGuest.vue';
             ],
         };
     },
-    components: { FooterGuest }
 };
 </script>
 <style scoped>
