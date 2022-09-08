@@ -15,6 +15,10 @@
                         <v-icon left>mdi-import</v-icon>
                         Login
                     </v-btn>
+                    <v-btn color="white" class="ml-2 rounded-xl blue--text">
+                        <v-icon left>mdi-import</v-icon>
+                        Register
+                    </v-btn>
                 </v-card>
             </v-card>
         </v-container>
