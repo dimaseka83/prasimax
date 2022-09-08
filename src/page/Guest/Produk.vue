@@ -39,7 +39,7 @@
                     <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/dummy/board.jpg" :height="height-300">
                         <v-expand-transition>
                             <div v-if="hover" class="d-flex flex-column justify-center align-center" style="height: 100%">
-                                <v-btn class="white--text" color="primary" rounded elevation="12" depressed>Detail</v-btn>
+                                <p class="font-weight-light white--text display-2">Buyed</p>
                             </div>
                         </v-expand-transition>
                     </v-img>
