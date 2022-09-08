@@ -34,8 +34,15 @@
     <v-container class="my-16">
         <v-row>
             <v-col cols="4" v-for="i in 6" :key="i">
+                <v-hover v-slot="{hover}">
                 <v-card rounded="xl" elevation="12">
-                    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/dummy/board.jpg" :height="height-300"></v-img>
+                    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/dummy/board.jpg" :height="height-300">
+                        <v-expand-transition>
+                            <div v-if="hover" class="d-flex flex-column justify-center align-center" style="height: 100%">
+                                <v-btn class="white--text" color="primary" rounded elevation="12" depressed>Detail</v-btn>
+                            </div>
+                        </v-expand-transition>
+                    </v-img>
                     <v-container class="pa-10 blue--text">
                         <v-row>
                             <v-col cols="12">
@@ -52,6 +59,7 @@
                         </v-row>
                     </v-container>
                 </v-card>
+            </v-hover>
             </v-col>
         </v-row>
     </v-container>
