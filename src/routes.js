@@ -4,6 +4,7 @@ import HomeGuest from './page/Guest/Home.vue';
 import AboutGuest from './page/Guest/About.vue';
 import Odm from './page/Guest/Odm.vue';
 import Produk from './page/Guest/Produk.vue';
+import Jasa from './page/Guest/Jasa.vue';
 
 const routes = [
   {
@@ -25,6 +26,11 @@ const routes = [
     path: '/product',
     component: Produk,
     name: 'ProdukGuest'
+  },
+  {
+    path: '/service',
+    component: Jasa,
+    name: 'JasaGuest'
   }
 ];
 
