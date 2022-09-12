@@ -30,46 +30,41 @@
         </v-row>
     </v-container>
     <!-- Page 3 -->
-    <v-container class="my-16 blue--text">
-        <h1 class="text-uppercase display-2 font-weight-bold">desain dan pengembangan software</h1>
-        <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quasi recusandae voluptatibus aut odio cupiditate eligendi voluptatum aperiam, quisquam, fuga quibusdam fugiat inventore quidem necessitatibus omnis, mollitia iure iusto facilis?</p>
-
-        <h1 class="text-capitalize display-1 font-weight-bold pt-16">prasimax board support package (BSP)</h1>
-        <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quasi recusandae voluptatibus aut odio cupiditate eligendi voluptatum aperiam, quisquam, fuga quibusdam fugiat inventore quidem necessitatibus omnis, mollitia iure iusto facilis?</p>
-
-        <h1 class="text-capitalize display-1 font-weight-bold pt-16">prasimax RTOS dan Board Firmware</h1>
-        <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quasi recusandae voluptatibus aut odio cupiditate eligendi voluptatum aperiam, quisquam, fuga quibusdam fugiat inventore quidem necessitatibus omnis, mollitia iure iusto facilis?</p>
-
-        <h1 class="text-capitalize display-1 font-weight-bold pt-16">keahlian tim kami</h1>
-        <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quasi recusandae voluptatibus aut odio cupiditate eligendi voluptatum aperiam, quisquam, fuga quibusdam fugiat inventore quidem necessitatibus omnis, mollitia iure iusto facilis?</p>
+    <v-container class="my-16">
+          <v-card flat>
+            <v-list two-line>
+              <v-list-item>
+                <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
+                <v-list-item-content>
+                  <v-card flat class="pa-16" color="blue" dark :height="height">
+                    <p class="display-1 font-weight-bold">Desain dan Pengembangan Software</p>
+                    <p class="subtitle mt-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum laborum, in ad
+                      minus odit distinctio eligendi doloribus tempora, sed eum quas obcaecati animi saepe error itaque
+                      maxime enim. Exercitationem, commodi? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure modi odit ipsa est aliquam dolore dolorum, quidem omnis, totam odio sapiente nostrum sequi incidunt nulla. Impedit molestias maxime sed.</p>
+                  </v-card>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-card>
     </v-container>
     <!-- Page 4 -->
-    <v-container class="my-16 blue--text">
-        <v-row>
-            <v-col cols="6">
-                <v-card elevation="10" rounded="xl">
-                    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/dummy/board.jpg" :height="height - 100"></v-img>
-                </v-card>
+    <v-container class="mb-10">
+        <v-row class="blue--text">
+            <v-col cols="6" class="">
+                <h1 class="display-3 font-weight-bold mb-5">Lorem ipsum dolor sit amet consectetur </h1>
+
+                <h2 class="title font-weight-bold my-5">Lorem ipsum dolor sit amet</h2>
+                <p class="subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut commodi blanditiis, cum possimus doloremque ullam soluta molestias quae facilis vero architecto quis aspernatur, dolorem inventore a corrupti saepe nam tenetur.</p>
+                <p class="subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut commodi blanditiis, cum possimus doloremque ullam soluta molestias quae facilis vero architecto quis aspernatur, dolorem inventore a corrupti saepe nam tenetur.</p>
             </v-col>
             <v-col cols="6">
-                <h1 class="display-2 font-weight-bold mb-16 text-uppercase">konsultasi dan sistem terintegrasi</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos dignissimos sit, voluptas quia quasi voluptatibus, nobis vitae accusantium harum doloremque rerum ad fugiat debitis, ex deserunt. Atque voluptates itaque doloremque?</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos dignissimos sit, voluptas quia quasi voluptatibus, nobis vitae accusantium harum doloremque rerum ad fugiat debitis, ex deserunt. Atque voluptates itaque doloremque?</p>
+                <h1 class="display-3 font-weight-bold mb-5">Lorem ipsum dolor sit amet consectetur </h1>
+
+                <h2 class="title font-weight-bold my-5">Lorem ipsum dolor sit amet</h2>
+                <p class="subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut commodi blanditiis, cum possimus doloremque ullam soluta molestias quae facilis vero architecto quis aspernatur, dolorem inventore a corrupti saepe nam tenetur.</p>
+                <p class="subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut commodi blanditiis, cum possimus doloremque ullam soluta molestias quae facilis vero architecto quis aspernatur, dolorem inventore a corrupti saepe nam tenetur.</p>
             </v-col>
         </v-row>
-    </v-container>
-    <!-- Page 5 -->
-    <v-container class="my-16 blue--text">
-        <h1 class="text-uppercase display-2 font-weight-bold">rekayasa dan fabrikasi</h1>
-        <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quasi recusandae voluptatibus aut odio cupiditate eligendi voluptatum aperiam, quisquam, fuga quibusdam fugiat inventore quidem necessitatibus omnis, mollitia iure iusto facilis?</p>
-
-        <h1 class="text-capitalize display-1 font-weight-bold pt-16">kami menawarkan</h1>
-        <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quasi recusandae voluptatibus aut odio cupiditate eligendi voluptatum aperiam, quisquam, fuga quibusdam fugiat inventore quidem necessitatibus omnis, mollitia iure iusto facilis?</p>
-    </v-container>
-    <!-- Page 6 -->
-    <v-container class="my-16 blue--text">
-        <h1 class="text-uppercase display-2 font-weight-bold">pelatihan dan workshop internet of things</h1>
-        <p class="mt-5">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum quasi recusandae voluptatibus aut odio cupiditate eligendi voluptatum aperiam, quisquam, fuga quibusdam fugiat inventore quidem necessitatibus omnis, mollitia iure iusto facilis?</p>
     </v-container>
     <FooterGuest />
     </v-app>

@@ -53,6 +53,7 @@
                         lain-lain.
                     </p>
                     <v-text-field dense rounded outlined dark class="rounded-xl" label="alamat email"></v-text-field>
+                    <v-btn class="rounded-xl primary px-16">Langganan</v-btn>
                     <v-checkbox dark label="Menerima syarat dan ketentuan kebijakan privasi">
                     </v-checkbox>
                 </v-col>
