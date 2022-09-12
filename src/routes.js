@@ -5,6 +5,7 @@ import AboutGuest from './page/Guest/About.vue';
 import Odm from './page/Guest/Odm.vue';
 import Produk from './page/Guest/Produk.vue';
 import Jasa from './page/Guest/Jasa.vue';
+import Contact from './page/Guest/Contact.vue';
 
 const routes = [
   {
@@ -31,6 +32,11 @@ const routes = [
     path: '/service',
     component: Jasa,
     name: 'JasaGuest'
+  },
+  {
+    path: '/contact',
+    component: Contact,
+    name: 'Contact'
   }
 ];
 
