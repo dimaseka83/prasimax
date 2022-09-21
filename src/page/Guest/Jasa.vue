@@ -47,25 +47,6 @@
             </v-list>
           </v-card>
     </v-container>
-    <!-- Page 4 -->
-    <v-container class="mb-10">
-        <v-row class="blue--text">
-            <v-col cols="6" class="">
-                <h1 class="display-3 font-weight-bold mb-5">Lorem ipsum dolor sit amet consectetur </h1>
-
-                <h2 class="title font-weight-bold my-5">Lorem ipsum dolor sit amet</h2>
-                <p class="subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut commodi blanditiis, cum possimus doloremque ullam soluta molestias quae facilis vero architecto quis aspernatur, dolorem inventore a corrupti saepe nam tenetur.</p>
-                <p class="subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut commodi blanditiis, cum possimus doloremque ullam soluta molestias quae facilis vero architecto quis aspernatur, dolorem inventore a corrupti saepe nam tenetur.</p>
-            </v-col>
-            <v-col cols="6">
-                <h1 class="display-3 font-weight-bold mb-5">Lorem ipsum dolor sit amet consectetur </h1>
-
-                <h2 class="title font-weight-bold my-5">Lorem ipsum dolor sit amet</h2>
-                <p class="subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut commodi blanditiis, cum possimus doloremque ullam soluta molestias quae facilis vero architecto quis aspernatur, dolorem inventore a corrupti saepe nam tenetur.</p>
-                <p class="subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut commodi blanditiis, cum possimus doloremque ullam soluta molestias quae facilis vero architecto quis aspernatur, dolorem inventore a corrupti saepe nam tenetur.</p>
-            </v-col>
-        </v-row>
-    </v-container>
     <FooterGuest />
     </v-app>
 </template>
