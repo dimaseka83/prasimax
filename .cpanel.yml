@@ -2,4 +2,9 @@
 deployment:
   tasks:
     - export DEPLOYPATH=/home/u1602224/Company-Prasimax-FE
+    - export NODEFILE=/home/u1602224/nodevenv/Company-Prasimax-FE/12/bin/activate
     - /bin/cp -R * $DEPLOYPATH
+    - source $NODEFILE  && cd $DEPLOYPATH
+    - npm install
+    - npm run build
+    - /bin/cp -R dist/* ~/public_html/home/
