@@ -64,8 +64,8 @@
     <v-container class="my-16">
         <v-row>
             <v-col cols="6">
-                <v-card>
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.260701979084!2d106.83066401476991!3d-6.360294195397502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec1638c43137%3A0xb75d0558c257be22!2sPT.%20Prasimax%20Inovasi%20Teknologi!5e0!3m2!1sid!2sid!4v1662818289875!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <v-card :height="height">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.260701979084!2d106.83066401476991!3d-6.360294195397502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ec1638c43137%3A0xb75d0558c257be22!2sPT.%20Prasimax%20Inovasi%20Teknologi!5e0!3m2!1sid!2sid!4v1662818289875!5m2!1sid!2sid" width="100%" :height="height"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </v-card>
             </v-col>
             <v-col cols="6">
