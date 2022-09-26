@@ -6,6 +6,3 @@ deployment:
     - export HOME=/home/u1602224/public_html/home/
     - export NPM=/home/u1602224/nodevenv/Company-Prasimax-FE/12/bin/npm
     - /bin/cp -R * $DEPLOYPATH
-    - $NPM install --prefix $DEPLOYPATH
-    - $NPM run build --prefix $DEPLOYPATH
-    - /bin/cp -R $DIST $HOME 
