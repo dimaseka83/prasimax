@@ -7,7 +7,7 @@ var http = require('http');
 
 
 var server = http.createServer(app);
-console.log("log")
+
 server.listen(8080);
 
 server.on('error', onError);
