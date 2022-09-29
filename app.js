@@ -8,9 +8,9 @@ var app= express()
 // app.use(compression());
 // app.use(cors());
 // if (process.env.NODE_ENV === 'production') {
-app.use('/home', express.static('/home/eshya/Documents/prasimax/WEB/Company-Prasimax-FE/home'));
+app.use('/home', express.static('/home/eshya/Documents/prasimax/WEB/Company-Prasimax-FE/dist'));
 app.get('*', (req, res) => {
-res.sendFile(path.join(__dirname ,'home', 'index.html'))
+res.sendFile(path.join(__dirname ,'dist', 'index.html'))
 // })
 });
 
