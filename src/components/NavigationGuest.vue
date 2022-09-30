@@ -3,7 +3,7 @@
         <v-container>
             <v-card flat class="d-flex">
                 <v-card flat class="mr-auto pa-2">
-                    <v-img src="@/assets/images/logo.png" max-width="300"></v-img>
+                    <a href="/"><v-img src="@/assets/images/logo.png" max-width="300"></v-img></a>
                 </v-card>
                 <v-card flat class="pa-2">
                     <v-text-field dense rounded outlined class="rounded-xl" label="Masukkan kata yang dicari"

@@ -6,11 +6,17 @@
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "serve": "http-server dist --port 9000"
+    "serve": "http-server dist",
+    "copy": "/bin/cp -R dist/* /home/u1602224/public_html/home"
   },
   "dependencies": {
+    "compression": "^1.7.4",
     "core-js": "^3.8.3",
-    "http-server": "^14.1.1",
+    "cors": "^2.8.5",
+    "debug": "^4.3.4",
+    "express": "^4.18.1",
+    "http": "^0.0.1-security",
+    "path": "^0.12.7",
     "vue": "^2.6.14",
     "vuetify": "^2.6.0"
   },

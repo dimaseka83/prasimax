@@ -24,7 +24,7 @@
                     <p class="display-1 font-weight-bold text-capitalize">hubungi kami</p>
                     <p>
                         <span>Technical Support: </span><br />
-                        <span>service@prasimax.com</span><br />
+                        <span>contact@prasimax.com</span><br />
                     </p>
                     <p>
                         <span>Penjualan dan Kerja Sama Bisnis: </span><br />
@@ -32,7 +32,7 @@
                     </p>
                     <v-row class="mt-16">
                         <v-col md="4" v-for="(social, i) in socials" :key="i + 'social2'">
-                            <v-btn text>
+                            <v-btn text :to="social.link" target="_blank">
                                 <v-icon x-large color="white">{{ social.icon }}</v-icon>
                             </v-btn>
                         </v-col>
