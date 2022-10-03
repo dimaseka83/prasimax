@@ -32,7 +32,7 @@
                     </p>
                     <v-row class="mt-16">
                         <v-col md="4" v-for="(social, i) in socials" :key="i + 'social2'">
-                            <v-btn text :to="social.link" target="_blank">
+                            <v-btn text :href="social.link" target="_blank">
                                 <v-icon x-large color="white">{{ social.icon }}</v-icon>
                             </v-btn>
                         </v-col>

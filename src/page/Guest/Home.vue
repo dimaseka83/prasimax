@@ -47,10 +47,12 @@
               <v-list-item>
                 <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
                 <v-list-item-content>
-                  <v-card flat class="pa-16" color="blue" dark :height="height">
-                    <p class="display-3 font-weight-bold">Produk</p>
-                    <p class="subtitle">Kami menyediakan pilihan kepada Anda dengan skema produksi ODM (Original Design Manufacturing), OEM (Original Equipment Manufacturing) ataupun Contract Manufacturing agar ide produk Anda dapat dikembangkan dan diproduksi oleh kami.</p>
+                  <v-card flat color="blue" dark :height="height">
+                  <v-container class="pa-16">
+                    <p class="display-3 font-weight-bold my-5">Produk</p>
+                    <p class="subtitle-2">Kami menyediakan pilihan kepada Anda dengan skema produksi ODM (Original Design Manufacturing), OEM (Original Equipment Manufacturing) ataupun Contract Manufacturing agar ide produk Anda dapat dikembangkan dan diproduksi oleh kami.</p>
                       <v-btn color="white" large rounded class="blue--text mt-10">Baca Lebih Lanjut</v-btn>
+                  </v-container>
                   </v-card>
                 </v-list-item-content>
               </v-list-item>

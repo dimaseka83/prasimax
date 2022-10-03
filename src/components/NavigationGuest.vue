@@ -56,9 +56,9 @@ export default {
   color: #2196F3 !important;
 }
 
-button:disabled,
-button[disabled]{
-    background-color: #03A9F4 !important;
+button.v-btn[disabled] {
+       background-color: #03A9F4 !important;
+    color: white !important;
 }
 
 </style>
