@@ -36,32 +36,27 @@ export default {
       socials: [
         {
           name: 'Facebook',
-          link: 'https://www.facebook.com/',
+          link: 'https://www.facebook.com/prasimax',
           icon: 'mdi-facebook',
         },
         {
           name: 'Twitter',
-          link: 'https://www.twitter.com/',
+          link: 'https://www.twitter.com/prasimax',
           icon: 'mdi-twitter',
         },
         {
           name: 'Instagram',
-          link: 'https://www.instagram.com/',
+          link: 'https://www.instagram.com/prasimax',
           icon: 'mdi-instagram',
         },
         {
           name: 'Youtube',
-          link: 'https://www.youtube.com/',
+          link: 'https://www.youtube.com/prasimax',
           icon: 'mdi-youtube',
         },
         {
-          name: 'Whatsapp',
-          link: 'https://www.whatsapp.com/',
-          icon: 'mdi-whatsapp',
-        },
-        {
           name: 'Linkedin',
-          link: 'https://www.linkedin.com/',
+          link: 'https://www.linkedin.com/company/prasimax',
           icon: 'mdi-linkedin',
         }
       ]

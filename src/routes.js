@@ -2,10 +2,12 @@
 import VueRouter from 'vue-router';
 import HomeGuest from './page/Guest/Home.vue';
 import AboutGuest from './page/Guest/About.vue';
+import Mou from './page/Guest/Partnership.vue';
 import Odm from './page/Guest/Odm.vue';
 import Produk from './page/Guest/Produk.vue';
 import Jasa from './page/Guest/Jasa.vue';
 import Contact from './page/Guest/Contact.vue';
+
 
 const routes = [
   {
@@ -34,15 +36,20 @@ const routes = [
     name: 'JasaGuest'
   },
   {
+    path: '/partnership',
+    component: Mou,
+    name: 'MouGuest'
+  },
+  {
     path: '/contact',
     component: Contact,
-    name: 'Contact'
+    name: 'ContactGuest'
   }
 ];
 
 const router = new VueRouter({
   routes,
-  mode: 'history',
+  mode: 'hash',
 });
 
 export default router;

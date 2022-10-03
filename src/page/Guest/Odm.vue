@@ -74,7 +74,7 @@
                     <p class="subtitle mt-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum laborum, in ad
                       minus odit distinctio eligendi doloribus tempora, sed eum quas obcaecati animi saepe error itaque
                       maxime enim. Exercitationem, commodi? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure modi odit ipsa est aliquam dolore dolorum, quidem omnis, totam odio sapiente nostrum sequi incidunt nulla. Impedit molestias maxime sed.</p>
-                      <v-btn color="white" large rounded class="blue--text mt-10">Read More</v-btn>
+                      <v-btn color="white" large rounded class="blue--text mt-10">Baca Lebih Lanjut</v-btn>
                   </v-card>
                 </v-list-item-content>
               </v-list-item>
@@ -88,7 +88,7 @@
                 <h1 class="display-1 font-weight-bold mb-16">Manufakturing</h1>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos dignissimos sit, voluptas quia quasi voluptatibus, nobis vitae accusantium harum doloremque rerum ad fugiat debitis, ex deserunt. Atque voluptates itaque doloremque?</p>
                 <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos dignissimos sit, voluptas quia quasi voluptatibus, nobis vitae accusantium harum doloremque rerum ad fugiat debitis, ex deserunt. Atque voluptates itaque doloremque?</p>
-                <v-btn color="blue" large rounded class="white--text mt-10">Read More</v-btn>
+                <v-btn color="blue" large rounded class="white--text mt-10">Baca Lebih Lanjut</v-btn>
             </v-col>
             <v-col cols="6">
                 <v-card elevation="10" rounded="xl">
