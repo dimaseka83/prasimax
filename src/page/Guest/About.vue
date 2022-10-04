@@ -8,10 +8,9 @@
           <v-container>
             <v-row class="fill-height mt-10 white--text">
               <v-col>
-                <h1 class="text-h1 font-weight-bold">Tentang Kami</h1>
-                <p class="title mt-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis similique
-                  beatae dicta, consectetur assumenda doloremque fugiat in! Veritatis ipsa ab odio ratione aliquid ipsam
-                  natus. Ea debitis reiciendis eligendi tempore.</p>
+                <h1 class="text-h2 font-weight-bold">{{slide.title}}</h1>
+                <p class="title mt-10">{{slide.text}}</p>
+                <v-btn color="#42A5F5" dark rounded>Baca Lebih Lanjut</v-btn>
               </v-col>
               <v-col>
                 <v-img src="@/assets/images/dummy/carousel.svg"></v-img>
@@ -29,9 +28,7 @@
                 <v-col cols="8">
                 <h1 class="text-h3 font-weight-bold text-uppercase">informasi perusahaan</h1>
                 <p class="headline mt-5 font-weight-bold text-capitalize ">kami memimpin teknologi sistem embedded</p>
-                <p class="title mt-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis similique
-                beatae dicta, consectetur assumenda doloremque fugiat in! Veritatis ipsa ab odio ratione aliquid ipsam
-                natus. Ea debitis reiciendis eligendi tempore.</p>
+                <p class="title mt-10">PRASIMAX adalah sebuah entitas bisnis sekaligus lembaga riset dan pengembangan teknologi elektronika di Indonesia yang memiliki lini dan lingkup mulai dari konsultasi inovasi, desain, pengembangan hingga produksi atau manufakturing produk.</p>
             </v-col>
             <v-col cols="4">
                 <v-img src="@/assets/images/dummy/carousel.svg"></v-img>
@@ -39,23 +36,19 @@
             </v-row>
             <p class="headline mt-5 font-weight-bold text-capitalize ">Visi, Misi dan Nilai Perusahaan</p>
             <v-row class="mt-10">
-                <v-col cols="6">
-                    <v-card color="white" elevation="10" rounded="xl" class="blue--text pb-10">
+                <v-col cols="6" class="d-flex align-stretch">
+                    <v-card color="white" elevation="10" rounded="xl" class="blue--text pb-10 ">
                         <v-card-title class="font-weight-bold">Visi</v-card-title>
                         <v-card-text class="blue--text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis similique
-                            beatae dicta, consectetur assumenda doloremque fugiat in! Veritatis ipsa ab odio ratione aliquid ipsam
-                            natus. Ea debitis reiciendis eligendi tempore.
+                            Visi kami menjadi Penyedia Solusi ODM, OEM dan Manufakturing produk teknologi Internet of Things, embedded System, Kecerdasan Artifisial, Teknologi Nirkabel dan Kendaraan Listrik terkemuka di Indonesia dan kawasan regional untuk seluruh industri vertikal.
                         </v-card-text>
                     </v-card>
                 </v-col>
-                <v-col cols="6">
+                <v-col cols="6" class="d-flex align-stretch">
                     <v-card color="white" elevation="10" rounded="xl" class="blue--text pb-10">
                         <v-card-title class="font-weight-bold">Misi</v-card-title>
                         <v-card-text class="blue--text">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis similique
-                            beatae dicta, consectetur assumenda doloremque fugiat in! Veritatis ipsa ab odio ratione aliquid ipsam
-                            natus. Ea debitis reiciendis eligendi tempore.
+                            Dalam menjalankan bisnis teknologi, kami memiliki misi mendorong perkembangan Industri 4.0 di Indonesia. Menciptakan dan menginvensi produk inovatif untuk kebutuhan klien kami. Mempercepat kemandirian bangsa dalam penguasaan teknologi informasi dan elektronika. Mencerdaskan manusia Indonesia agar mampu dan memiliki keahlian dan keterampilan di bidang teknologi elektronika, mulai dari desain, pengembangan hingga manufakturing.
                         </v-card-text>
                     </v-card>
                 </v-col>
@@ -70,8 +63,6 @@
                 </ul>
                 <p class="mt-5">Dengan nilai inti yang kami</p>
             </div>
-            <p class="headline mt-5 font-weight-bold text-capitalize">Tim Inovatif</p>
-            <p class="mt-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Numquam quam iure blanditiis eaque magni earum aut voluptatibus sint? Vel error ipsa eligendi quas doloremque tempora est ex minus tenetur obcaecati!</p>
         </v-container>
     </v-card>
     </v-container>
@@ -166,13 +157,21 @@ export default {
     mixins: [mix, componentsmix],
     data() {
         return {
-            slides: [
-                "First",
-                "Second",
-                "Third",
-                "Fourth",
-                "Fifth",
-            ],
+            slides: [{
+              title : 'Perusahaan',
+              text : 'PRASIMAX [PT Prasimax Inovasi Teknologi] berdiri secara legal dan formal pada tanggal 12 Maret 2010 oleh 5 orang pendiri. Bidang bisnis PRASIMAX adalah design, pengembangan dan manufakturing produk elektronik seperti IoT, embedded system, kecerdasan artifisial, nirkabel, divais komputasi dan peralatan elektronika lainnya di berbagai sektor industri',
+              image : 'carousel.svg'
+            },
+            {
+              title: 'Kompetensi',
+              text: 'Dengan pengalaman kami yang sudah melewati satu dekade di bidang teknologi informasi dan komputasi, kompetensi kami yang dapat membantu Anda dalam merealisasikan produk inovatif adalah desain industrial dan mekanikal, desain dan pengembangan elektronika berikut perangkat lunaknya hingga kami memiliki kemampuan untuk memproduksi massal',
+              image: 'carousel.svg'
+            },
+            {
+              title: 'Industri 4.0',
+              text: 'Perkembangan Industri 4.0 yang sedang berlaku membuat kami juga beradaptasi untuk menciptakan invensi dan inovasi teknologi. Sudah banyak produk dan desain kami yang telah memberikan nilai tambah bagi klien dan pelanggan kami. Khususnya produk IoT dan nirkabel yang pernah kami hasilkan telah membuktikan bahwa PRASIMAX mampu mengikuti perkembangan Industri 4.0',
+              image: 'carousel.svg'
+            }],
             documents: [
                 {
                     name: "NIB",

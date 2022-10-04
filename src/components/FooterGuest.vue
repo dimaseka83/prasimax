@@ -8,9 +8,7 @@
             </v-row>
             <v-row>
                 <v-col>
-                    <p class="subtitle">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Facere non earum
-                        veniam sapiente necessitatibus mollitia omnis harum ullam asperiores nam voluptatibus cum
-                        impedit tempore quibusdam distinctio officiis blanditiis, officia rem!</p>
+                    <p class="subtitle">Kami memberikan solusi, layanan dan produksi bagi Anda yang ingin melengkapi portofolio Anda atau kebutuhan Anda. Bidang teknologi yang kami kuasai adalah embedded system, IoT, Kecerdasan Artifisial, Kendaraan Listrik dan Teknologi Nirkabel lainnya. Kapasitas dan kapabilitas kami didukung oleh penyedia dan prinsipal teknologi global yang sudah sangat dikenal reputasinya.</p>
                     <p class="display-1 font-weight-bold text-uppercase">alamat</p>
                     <div>
                         <span>Perkantoran Taman Melati Margonda</span><br />
@@ -24,11 +22,11 @@
                     <p class="display-1 font-weight-bold text-capitalize">hubungi kami</p>
                     <p>
                         <span>Technical Support: </span><br />
-                        <span>contact@prasimax.com</span><br />
+                        <a @click="mailto('contact@prasimax.com')" style="color:white">contact@prasimax.com</a><br />
                     </p>
                     <p>
                         <span>Penjualan dan Kerja Sama Bisnis: </span><br />
-                        <span>sales@prasimax.com</span><br />
+                        <a @click="mailto('sales@prasimax.com')" style="color:white">sales@prasimax.com</a><br />
                     </p>
                     <v-row class="mt-16">
                         <v-col md="4" v-for="(social, i) in socials" :key="i + 'social2'">
@@ -74,7 +72,12 @@ export default {
         getYears(){
             return new Date().getFullYear();
         }
-    }
+    },
+    methods: {
+        mailto(email){
+            window.location.href = `mailto:${email}`;
+        }
+    },
 }
 </script>
 <style scoped>

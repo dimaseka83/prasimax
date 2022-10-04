@@ -112,10 +112,8 @@
           <v-col md="6">
             <h1 class="display-3 font-weight-bold text-uppercase">mengenai kami</h1>
             <p class="title text-capitalize mt-10">perusahaan bidang teknologi</p>
-            <p class="subtitle">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maxime quisquam nisi quae
-              dolor repellendus consequatur at, corporis dolore atque ipsa suscipit qui alias reprehenderit magni minima
-              et deserunt fugiat? Esse?</p>
-            <v-btn class="blue--text" color="white" rounded dark>Baca Lebih Lanjut</v-btn>
+            <p class="subtitle">Kami telah merintis bisnis di bidang desain, pengembangan hingga manufakturing di Indonesia sejak 2011. Model bisnis OEM, ODM, Design House dan Manufakturing untuk produk inovasi teknologi Anda menjadi lingkup bisnis kami. Sedangkan lingkup teknologi yang kami kuasai adalah IoT, Kecerdasan Artifisial, Embedded System, Nirkabel dan Kendaraan Listrik.</p>
+            <v-btn class="blue--text" color="white" rounded dark to="/about">Baca Lebih Lanjut</v-btn>
           </v-col>
         </v-row>
       </v-container>
