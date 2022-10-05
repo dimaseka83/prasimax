@@ -22,11 +22,11 @@
                     <p class="display-1 font-weight-bold text-capitalize">hubungi kami</p>
                     <p>
                         <span>Technical Support: </span><br />
-                        <a @click="mailto('contact@prasimax.com')" style="color:white">contact@prasimax.com</a><br />
+                        <a @click="mailto('contact@prasimax.com','Technical%20Support')" style="color:white">contact@prasimax.com</a><br />
                     </p>
                     <p>
                         <span>Penjualan dan Kerja Sama Bisnis: </span><br />
-                        <a @click="mailto('sales@prasimax.com')" style="color:white">sales@prasimax.com</a><br />
+                        <a @click="mailto('sales@prasimax.com','Penjualan%20dan%20Kerja%20Sama%20Bisnis')" style="color:white">sales@prasimax.com</a><br />
                     </p>
                     <v-row class="mt-16">
                         <v-col md="4" v-for="(social, i) in socials" :key="i + 'social2'">
@@ -74,8 +74,8 @@ export default {
         }
     },
     methods: {
-        mailto(email){
-            window.location.href = `mailto:${email}`;
+        mailto(email,subject){
+            window.location.href = `mailto:${email}?Subject=${subject}`;
         }
     },
 }
@@ -87,5 +87,8 @@ export default {
 
 .background-footer-bottom{
     background-color: #64B5F6;
+}
+a:hover{
+    text-decoration: underline;
 }
 </style>

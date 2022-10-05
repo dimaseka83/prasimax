@@ -40,7 +40,7 @@
                     <v-card color="white" elevation="10" rounded="xl" class="blue--text pb-10 ">
                         <v-card-title class="font-weight-bold">Visi</v-card-title>
                         <v-card-text class="blue--text">
-                            Visi kami menjadi Penyedia Solusi ODM, OEM dan Manufakturing produk teknologi Internet of Things, embedded System, Kecerdasan Artifisial, Teknologi Nirkabel dan Kendaraan Listrik terkemuka di Indonesia dan kawasan regional untuk seluruh industri vertikal.
+                            Visi kami menjadi Penyedia Solusi ODM, OEM dan Manufakturing produk teknologi Internet of Things, Embedded System, Kecerdasan Artifisial, Teknologi Nirkabel dan Kendaraan Listrik terkemuka di Indonesia dan kawasan regional untuk seluruh industri vertikal.
                         </v-card-text>
                     </v-card>
                 </v-col>
@@ -48,20 +48,24 @@
                     <v-card color="white" elevation="10" rounded="xl" class="blue--text pb-10">
                         <v-card-title class="font-weight-bold">Misi</v-card-title>
                         <v-card-text class="blue--text">
-                            Dalam menjalankan bisnis teknologi, kami memiliki misi mendorong perkembangan Industri 4.0 di Indonesia. Menciptakan dan menginvensi produk inovatif untuk kebutuhan klien kami. Mempercepat kemandirian bangsa dalam penguasaan teknologi informasi dan elektronika. Mencerdaskan manusia Indonesia agar mampu dan memiliki keahlian dan keterampilan di bidang teknologi elektronika, mulai dari desain, pengembangan hingga manufakturing.
+                            Dalam menjalankan bisnis teknologi, kami memiliki misi mendorong perkembangan Industri 4.0 di Indonesia.
+                            <ul>
+                                <li>Menciptakan dan menginvensi produk inovatif untuk kebutuhan klien kami.</li>
+                                <li>Mempercepat kemandirian bangsa dalam penguasaan teknologi informasi dan elektronika.</li>
+                                <li>Mencerdaskan sumber daya manusia Indonesia agar mampu dan memiliki keahlian dan keterampilan di bidang teknologi elektronika, mulai dari desain, pengembangan hingga manufakturing.</li>
+                            </ul>
                         </v-card-text>
                     </v-card>
                 </v-col>
             </v-row>
             <div class="mt-5 white--text">
-                <p>Nilai inti perusahaan yang kami anut adalah:</p>
-                <ul>
+                <p class="title">Nilai inti perusahaan yang kami anut adalah:</p>
+                <ul class="subtitle-1">
                     <li>Inovasi</li>
                     <li>Fokus</li>
                     <li>Integritas</li>
                     <li>Berkualitas</li>
                 </ul>
-                <p class="mt-5">Dengan nilai inti yang kami</p>
             </div>
         </v-container>
     </v-card>
