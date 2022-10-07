@@ -62,7 +62,7 @@
                 <p class="title">Nilai inti perusahaan yang kami anut adalah:</p>
                 <ul class="subtitle-1">
                     <li>Inovasi</li>
-                    <li>Fokus</li>
+                    <li>Fokus pada Pelanggan</li>
                     <li>Integritas</li>
                     <li>Berkualitas</li>
                 </ul>
