@@ -55,7 +55,7 @@
     </div>
 </template>
 <script>
-import axios from 'axios'
+    import axios from 'axios'
     import mixin from '../mixins/mix';
     export default {
         name: 'NavigationGuest',
@@ -75,18 +75,19 @@ import axios from 'axios'
                     return true;
                 }
             },
-                async login(){
-      try {
-        await axios.post('http://45.64.1.76:5001/auth/login', this.formlogin).then((response) => {
-          console.log(response.data);
-          localStorage.setItem('token', response.data.token);
-          alert('Login Berhasil');
-        });
-      } catch (error) {
-        console.log(error);
-      }
-      this.dialog = false;
-    }
+            async login() {
+                try {
+                    await axios.post('https://prasimax.com/company-be/auth/login', {}, this.formlogin).then((
+                        response) => {
+                            console.log(response.data);
+                            localStorage.setItem('token', response.data.token);
+                            alert('Login Berhasil');
+                        });
+                } catch (error) {
+                    console.log(error);
+                }
+                this.dialog = false;
+            }
         },
     };
 </script>
