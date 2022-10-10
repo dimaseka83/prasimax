@@ -1,5 +1,3 @@
-
-
 export default {
   data() {
     return {
@@ -59,7 +57,8 @@ export default {
           link: 'https://www.linkedin.com/company/prasimax',
           icon: 'mdi-linkedin',
         }
-      ]
+      ],
+
     };
   },
   methods: {
@@ -69,6 +68,7 @@ export default {
     changeLocale () {
       console.log(this.$vuetify.lang.current = 'hu');
     },
+
   },
   computed: {
     height() {

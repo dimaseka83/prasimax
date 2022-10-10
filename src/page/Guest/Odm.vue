@@ -1,110 +1,169 @@
 <template>
     <v-app>
-    <NavigationGuest />
-    <!-- Page 1 -->
-    <v-container class="blue--text">
-        <v-row class="my-16">
-            <v-col cols="6">
-                <h1 class="font-weight-bold display-2">Smart Speaker - SMAI-88</h1>
-                <div class="mt-10">
-                    <span>Qualcom QCS400 - ARM Cortex-A53 Quad Core</span><br>
-                    <span>RAM : 4GB LPDDR2</span><br>
-                    <span>Flash : 4GB NAND</span><br>
-                    <span>2x Digital Mics</span><br>
-                    <span>Google Voice Assistant and Alexa ready</span><br>
-                    <span>Customizable for specific customer NLP</span>
-                </div>
-            </v-col>
-            <v-col cols="6">
-                <div class="d-flex justify-center">
-                    <v-img src="@/assets/images/dummy/speaker.png" :max-width="height-300"></v-img>
-                </div>
-            </v-col>
-        </v-row>
-        <v-divider></v-divider>
-    </v-container>
-    <!-- Page 2 -->
-    <v-container class="blue--text my-16">
-        <v-row>
-            <v-col cols="6">
-                <h1 class="font-weight-bold display-4 mb-10">Apa itu OEM dan ODM</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, asperiores quaerat veritatis deserunt aperiam earum nostrum voluptas, placeat neque et facere illum illo accusantium animi? Odit deleniti quia provident modi.</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, asperiores quaerat veritatis deserunt aperiam earum nostrum voluptas, placeat neque et facere illum illo accusantium animi? Odit deleniti quia provident modi.</p>
-            </v-col>
-            <v-col cols="6">
-                <v-card elevation="10" rounded="xl" class="blue--text">
-                    <v-container class="pa-10">
-                        <p class="font-weight-medium text-capitalize headline">
-                            pengertian perusahaan OEM <br>
-                            <span class="font-italic">(original equipment manufacturer)</span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus optio necessitatibus ipsam reprehenderit eaque nostrum ipsa rem, reiciendis corrupti cupiditate fugit repellendus itaque unde corporis totam eos! Nostrum, animi expedita!</p>
-                    </v-container>
-                </v-card>
-            </v-col>
-        </v-row>
-        <v-row class="my-16">
-            <v-col cols="6">
-                <h1 class="font-weight-medium  display-1 mb-10">Perbedaan OEM dan ODM</h1>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, asperiores quaerat veritatis deserunt aperiam earum nostrum voluptas, placeat neque et facere illum illo accusantium animi? Odit deleniti quia provident modi.</p>
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nisi, asperiores quaerat veritatis deserunt aperiam earum nostrum voluptas, placeat neque et facere illum illo accusantium animi? Odit deleniti quia provident modi.</p>
-            </v-col>
-            <v-col cols="6">
-                <v-card elevation="10" rounded="xl" class="blue--text">
-                    <v-container class="pa-10">
-                        <p class="font-weight-medium text-capitalize headline">
-                            pengertian perusahaan OEM <br>
-                            <span class="font-italic">(original design manufacturer)</span>
-                        </p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus optio necessitatibus ipsam reprehenderit eaque nostrum ipsa rem, reiciendis corrupti cupiditate fugit repellendus itaque unde corporis totam eos! Nostrum, animi expedita!</p>
-                    </v-container>
-                </v-card>
-            </v-col>
-        </v-row>
-    </v-container>
-    <!-- Page 3 -->
-    <v-container class="my-16">
-          <v-card flat>
-            <v-list two-line>
-              <v-list-item>
-                <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
-                <v-list-item-content>
-                  <v-card flat class="pa-16" color="blue" dark :height="height">
-                    <p class="display-1 font-weight-bold">Riset dan Pengembangan</p>
-                    <p class="subtitle mt-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum laborum, in ad
-                      minus odit distinctio eligendi doloribus tempora, sed eum quas obcaecati animi saepe error itaque
-                      maxime enim. Exercitationem, commodi? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure modi odit ipsa est aliquam dolore dolorum, quidem omnis, totam odio sapiente nostrum sequi incidunt nulla. Impedit molestias maxime sed.</p>
-                      <v-btn color="white" large rounded class="blue--text mt-10">Baca Lebih Lanjut</v-btn>
-                  </v-card>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-card>
-    </v-container>
-    <!-- Page 4 -->
-    <v-container class="mb-16 blue--text">
-        <v-row>
-            <v-col cols="6">
-                <h1 class="display-1 font-weight-bold mb-16">Manufakturing</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos dignissimos sit, voluptas quia quasi voluptatibus, nobis vitae accusantium harum doloremque rerum ad fugiat debitis, ex deserunt. Atque voluptates itaque doloremque?</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos dignissimos sit, voluptas quia quasi voluptatibus, nobis vitae accusantium harum doloremque rerum ad fugiat debitis, ex deserunt. Atque voluptates itaque doloremque?</p>
-                <v-btn color="blue" large rounded class="white--text mt-10">Baca Lebih Lanjut</v-btn>
-            </v-col>
-            <v-col cols="6">
-                <v-card elevation="10" rounded="xl">
-                    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/dummy/board.jpg" :height="height - 100"></v-img>
-                </v-card>
-            </v-col>
-        </v-row>
-    </v-container>
-    <FooterGuest />
+        <NavigationGuest />
+        <!-- Page 1 -->
+        <v-container class="blue--text">
+            <v-row class="my-16">
+                <v-col cols="6">
+                    <h1 class="font-weight-bold display-2">Smart Speaker - SMAI-88</h1>
+                    <div class="mt-10">
+                        <span>Qualcom QCS400 - ARM Cortex-A53 Quad Core</span><br>
+                        <span>RAM : 4GB LPDDR2</span><br>
+                        <span>Flash : 4GB NAND</span><br>
+                        <span>2x Digital Mics</span><br>
+                        <span>Google Voice Assistant and Alexa ready</span><br>
+                        <span>Customizable for specific customer NLP</span>
+                    </div>
+                </v-col>
+                <v-col cols="6">
+                    <div class="d-flex justify-center">
+                        <v-img src="@/assets/images/dummy/speaker.png" :max-width="height-300"></v-img>
+                    </div>
+                </v-col>
+            </v-row>
+            <v-divider></v-divider>
+        </v-container>
+        <!-- Page 2 -->
+        <v-container class="blue--text my-16">
+            <v-row>
+                <v-col cols="6">
+                    <h1 class="font-weight-bold display-4 mb-10">Apa itu OEM dan ODM</h1>
+                    <p>Pada perusahaan teknologi elektronika dan sekaligus memilki kapasitas manufakturing, kita
+                        sering mendengar adanya istilah perusahaan OEM dan perusahaan ODM. ODM adalah
+                        singkatan dari Original Design Manufacturer sedangkan OEM adalah singkatan dari Original
+                        Equipment Manufacturer. Kedua-duanya berkaitan dalam hal manufakturing. Manufakturing
+                        adalah kumpulan aktifitas dalam sebuah rantai nilai industri yang mengolah bahan baku
+                        menjadi barang jadi yang dapat dijual dan bermanfaat bagi penggunaannya.</p>
+                    <p>Kumpulan aktifitas-aktifitas pada OEM atau ODM tersebut dimulai dari aktifitas merancang
+                        (design), merencanakan (planning), mengembangkan (development), dokumentasi
+                        (documentation), pemilihan dan pembelian bahan baku/bahan pembantu (purchasing),
+                        produksi (production), pengendalian kualitas (Quality Control) dan penjaminan kualitas
+                        produk (Quality Assurance) dalam proses pabrikasi (manufacturing).</p>
+                </v-col>
+                <v-col cols="6">
+                    <v-card elevation="10" rounded="xl" class="blue--text">
+                        <v-container class="pa-10">
+                            <p class="font-weight-medium text-capitalize headline">
+                                pengertian perusahaan OEM <br>
+                                <span class="font-italic">(original equipment manufacturer)</span>
+                            </p>
+                            <p>Yang dimaksud dengan perusahaan OEM (Original Equipment Manufacturer) adalah suatu
+                                perusahaan atau organisasi yang merancang dan memproduksi produk (komponen/part
+                                ataupun barang jadi) sesuai dengan spesifikasi yang ditentukannya dan dijual ke
+                                perusahaan pembeli. Perusahaan pembeli tersebut kemudian melakukan pendistribusian
+                                atas produk atau komponen tersebut. Spesifikasi yang dimaksud disini (OEM) adalah
+                                spesifikasi produk yang ditentukan oleh perusahaan OEM. Dengan kata lain, perusahaan
+                                OEM melakukan produksi produk atas nama perusahaan lain, setelah itu perusahaan
+                                pembeli memasarkan produk tersebut dibawah merek mereka sendiri atau umum disebut
+                                sebagai Brand Owner.</p>
+                        </v-container>
+                    </v-card>
+                </v-col>
+            </v-row>
+            <v-row class="my-16">
+                <v-col cols="6">
+                    <h1 class="font-weight-medium  display-1 mb-10">Perbedaan OEM dan ODM</h1>
+                    <p>Satu hal penting yang membedakan perusahaan OEM dan ODM adalah spesifikasi produk di mana
+                        perusahaan OEM merancang dan memproduksi produk berdasarkan spesifikasi dari mereka sendiri
+                        sedangkan perusahaan ODM merancang dan memproduksi produk berdasarkan spesifikasi yang
+                        ditentukan perusahaan klien atau Brand Owner.</p>
+                    <p>Satu hal penting yang membedakan perusahaan OEM dan ODM adalah spesifikasi produk di mana
+                        perusahaan OEM merancang dan memproduksi produk berdasarkan spesifikasi dari mereka sendiri
+                        sedangkan perusahaan ODM merancang dan memproduksi produk berdasarkan spesifikasi yang
+                        ditentukan perusahaan klien atau Brand Owner.</p>
+                </v-col>
+                <v-col cols="6">
+                    <v-card elevation="10" rounded="xl" class="blue--text">
+                        <v-container class="pa-10">
+                            <p class="font-weight-medium text-capitalize headline">
+                                pengertian perusahaan ODM <br>
+                                <span class="font-italic">(Original Design Manufacturer)</span>
+                            </p>
+                            <p>Yang dimaksud dengan perusahaan ODM (Original Design Manufacturer) adalah suatu
+                                perusahaan atau organisasi yang merancang dan memproduksi produksi (komponen/part
+                                ataupun barang jadi) sesuai dengan spesifikasi &amp; fitur yang ditentukan oleh
+                                perusahaan
+                                pembeli/klien. Produk yang diproduksinya tersebut kemudian diproduksi dan dijual ke
+                                perusahaan pembeli. Perusahaan pembeli tersebut memasarkan produk tersebut dibawah
+                                merek mereka sendiri. Umumnya perusahaan pembeli luaran ODM tersebut lazim disebut
+                                dengan Brand Owner.</p>
+                            <p>Contoh perusahaan ODM terbesar di dunia adalah Quanta, Pegatron dan Compal, yaitu
+                                perusahaan multinasional asal Taiwan yang memproduksi produk-produk Laptop, PC dan
+                                server.</p>
+                        </v-container>
+                    </v-card>
+                </v-col>
+            </v-row>
+        </v-container>
+        <!-- Page 3 -->
+        <v-container class="my-16">
+            <v-card flat>
+                <v-list two-line>
+                    <v-list-item>
+                        <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
+                        <v-list-item-content>
+                            <v-card flat class="pa-16" color="blue" dark :height="height">
+                                <p class="display-1 font-weight-bold">Riset dan Pengembangan</p>
+                                <p class="subtitle mt-10">Riset dan pengembangan atau dikenal sebagai Research and
+                                    Development, disingkat R&amp;D, yaitu
+                                    lembaga atau entitas perusahaan yang melakukan penelitian. Tujuan penelitian dan
+                                    pengembangan
+                                    tidak hanya merumuskan teori, tetapi juga evaluasi teori serta konsep dan bertujuan
+                                    dalam
+                                    merumuskan sejarah. Pada penelitian pengembangan lebih banyak digunakan dan dipakai
+                                    untuk
+                                    sektor pendidikan dan juga industri. Pada entitas industri, penelitian dilakukan
+                                    oleh tim pemasaran,
+                                    tim produk dan tim operasional. Masing0masing punya tujuan tersendiri.</p>
+                                <p class="subtitle mt-10">Pengembangan adalah aktifitas yang lebih berorientasi produk
+                                    dand pasar. Diawali dengan riset,
+                                    pengembangan sudah lebih tervalidasi untuk kelayakan bisnis dan produk.</p>
+                                <v-btn color="white" large rounded class="blue--text mt-10">Baca Lebih Lanjut</v-btn>
+                            </v-card>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list>
+            </v-card>
+        </v-container>
+        <!-- Page 4 -->
+        <v-container class="mb-16 blue--text">
+            <v-row>
+                <v-col cols="6">
+                    <h1 class="display-1 font-weight-bold mb-16">Pabrikasi</h1>
+                    <p>Perangkat elektronik merupakan produk yang sudah umum ditemui di tengah masyarakat, penting
+                        untuk mengetahui cara pembuatannya. Proses pabrikasi elektronik melibatkan banyak langkah,
+                        mulai dari merancang perangkat hingga merakitnya dan mengirimkannya ke konsumen.</p>
+                    <p>Input daripada proses pabrikasi produk elektronik adalah desain produk dan proses perakitan.
+                        Langkah selanjtnya adalah mencari komponen dari pihak suplier dari industri manufaktur
+                        komponen. Komponen tersebut kemudian dikirim ke pabrik perakitan. Bersamaan dengan itu pula
+                        pabrikan menerima part atau bagian lain seperti enclosure atau casing yang diproduksi dari
+                        industri
+                        terkait pencetakan enclosure. Bagian atau part yang sangat penting pada produk elektronika
+                        adalah
+                        Printed Circuit Board (PCB). Pabrikan juga menerima pasokan PCB dari pabrik yang khusus hanya
+                        memproduksi PCB. Proses utama dari pabrikasi produk elektronik adalah perakitan (assembly)
+                        komponen pada PCB, atau biasa disebut PCBA (PCB Assemblied). Proses berikutnya merupakan
+                        proses akhir yang disebut proses Perakitan Akhir (Final Assembly).</p>
+                    <p>Brand Owner atau klien dengan skema OEM atau ODM aktifitas terintegrasi di dalamnya adalah
+                        termasuk aktifitas dan proses pabrikasi.</p>
+                    <v-btn color="blue" large rounded class="white--text mt-10">Baca Lebih Lanjut</v-btn>
+                </v-col>
+                <v-col cols="6">
+                    <v-card elevation="10" rounded="xl">
+                        <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
+                            src="@/assets/images/dummy/board.jpg" :height="height - 100"></v-img>
+                    </v-card>
+                </v-col>
+            </v-row>
+        </v-container>
+        <FooterGuest />
     </v-app>
 </template>
 <script>
-      import mix from '@/mixins/mix';
-  import componentsmix from '@/mixins/componentsmix';
-export default {
-    mixins: [mix, componentsmix],
-    
-}
+    import mix from '@/mixins/mix';
+    import componentsmix from '@/mixins/componentsmix';
+    export default {
+        mixins: [mix, componentsmix],
+
+    }
 </script>
