@@ -77,7 +77,18 @@
             },
             async login() {
                 try {
-                    await axios.post('https://prasimax.com/company-be/auth/login', {}, this.formlogin).then((
+                    await axios.post('https://prasimax.com/company-be/auth/login', {
+                        withCredentials: true,
+                        headers:{
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                        }
+                    }, {
+                        auth:{
+                            username: this.formlogin.username,
+                            password: this.formlogin.password
+                        }
+                    }).then((
                         response) => {
                             console.log(response.data);
                             localStorage.setItem('token', response.data.token);
