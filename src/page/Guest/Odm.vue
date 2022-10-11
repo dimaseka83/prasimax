@@ -118,7 +118,6 @@
                                 <p class="subtitle mt-10">Pengembangan adalah aktifitas yang lebih berorientasi produk
                                     dand pasar. Diawali dengan riset,
                                     pengembangan sudah lebih tervalidasi untuk kelayakan bisnis dan produk.</p>
-                                <v-btn color="white" large rounded class="blue--text mt-10">Baca Lebih Lanjut</v-btn>
                             </v-card>
                         </v-list-item-content>
                     </v-list-item>
@@ -146,7 +145,6 @@
                         proses akhir yang disebut proses Perakitan Akhir (Final Assembly).</p>
                     <p>Brand Owner atau klien dengan skema OEM atau ODM aktifitas terintegrasi di dalamnya adalah
                         termasuk aktifitas dan proses pabrikasi.</p>
-                    <v-btn color="blue" large rounded class="white--text mt-10">Baca Lebih Lanjut</v-btn>
                 </v-col>
                 <v-col cols="6">
                     <v-card elevation="10" rounded="xl">

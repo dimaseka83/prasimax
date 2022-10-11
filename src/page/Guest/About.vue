@@ -92,23 +92,14 @@
                 </v-col>
                 <v-col cols="7">
                     <h2 class="display-1 font-weight-bold text-uppercase mb-5">Sejak Tahun 2010 Hingga Kini</h2>
-                    <p>Bersama 5 pendiri, pada hari Jumat tanggal 12 Maret 2010, PT. Prasimax Inovasi Teknologi
-                        (PRASIMAX) sebagai entitas bisnis dengan orientasi profit berdiri secara resmi di Kota Depok.
-                        Dengan berbekal pengalaman sebelumnya sebagai penyedia kursus elektronika di Depok, PRASIMAX
-                        memulai merancang bisnis dengan orientasi pasar dan profit di sektor teknologi informasi
-                        khsusunya
-                        kompetensi pengembangan elektronika digital.</p>
+                    <p>Bersama 5 pendiri, pada hari Jumat tanggal 12 Maret 2010, PT. Prasimax Inovasi Teknologi (PRASIMAX) sebagai entitas bisnis dengan orientasi profit berdiri secara resmi di Kota Depok. Dengan berbekal pengalaman sebelumnya sebagai penyedia kursus elektronika di Kota Depok, PRASIMAX memulai merancang model bisnis baru di sektor teknologi informasi dengan kompetensi khusus dalam pengembangan produk elektronika digital.</p>
                     <h2 class="display-1 font-weight-bold text-capitalize my-5">fase berdiri :</h2>
                     <p>Selama Tahun 2010 kami memformulasikan rencana bisnis, portfolio produk dan jasa yang akan
                         diimplementasikan pada paruh kedua 2010. Value jam di internal perusahaan dilakukan sehingga
                         berproses menghasilkan Visi perusahaan 1 dekade ke depan, setting misi dan definisi nilai inti
                         perusahaan.</p>
                     <h2 class="display-1 font-weight-bold text-capitalize mt-5">fase pertumbuhan :</h2>
-                    <p>Pada periode 2012 hingga 2017 merupakan fase pertumbuhan PRASIMAX. Produk dan solusi
-                        bertambah. Bahkan kami mendapat tantangan yang sangat sulit dihadapi, mulai dari plagiarisme
-                        paten kami oleh LG Korea dan beberapa perusahaan lokal yang menerapkan sistem monitoring pajak
-                        daerah secara elektronik. Namun PRASIMAX tidak hanya bergantung pada satu solusi, di fase
-                        pertumbuhan ini kami lahirkan juga beberapa solusi dan produk di bidang atau sektor:</p>
+                    <p>Pada periode 2012 hingga 2017 merupakan fase pertumbuhan PRASIMAXm karena pada periode ini Produk dan Solusi bertambah. Kami juga mendapat tantangan yang sangat sulit dihadapi, mulai dari plagiarisme paten oleh perusahaan teknologi dari Korea dan beberapa perusahaan lokal yang menjiplak invensi teknologi kami yakni sistem monitoring pajak daerah secara elektronik. Namun PRASIMAX tidak hanya bergantung pada satu solusi, di fase pertumbuhan ini kami lahirkan juga beberapa solusi dan produk pada sektor teknologi lainnya.</p>
                     <div class="mt-5 white--text">
                         <p class="title">Nilai inti perusahaan yang kami anut adalah:</p>
                         <ul class="subtitle-1">
@@ -128,10 +119,6 @@
             <v-row class="mt-n16">
                 <v-col cols="6" class="mt-n16">
                     <h2 class="display-1 font-weight-bold text-capitalize mt-n16 mb-5">fase transformasi :</h2>
-                    <p>Selama Tahun 2010 kami memformulasikan rencana bisnis, portfolio produk dan jasa yang akan
-                        diimplementasikan pada paruh kedua 2010. Value jam di internal perusahaan dilakukan sehingga
-                        berproses menghasilkan Visi perusahaan 1 dekade ke depan, setting misi dan definisi nilai inti
-                        perusahaan.</p>
                     <p>Proyek pertama yang didapatkan oleh PRASIMAX adalah implementasi sistem monitoring pajak
                         daerah secara elektronik di Pemprov DKI Jakarta sekitar triwulan kedua di tahun 2011. Bersamaan
                         dengan proyek tersebut kami mendaftarkan solusi yang kami invensikan sebagai Paten pertama
@@ -142,7 +129,7 @@
                 </v-col>
                 <v-col cols="6" class="my-n16">
                     <h2 class="display-1 font-weight-bold text-capitalize mt-n16 mb-5">Fase Perubahan:</h2>
-                    <p>Fase perubahan ini dimulai sejak akhir 2017. Ditandai mulainya kami menjalin dengan beberapa prinsipal teknologi dengan target peralihan teknologi. Adapun perubahan arah yang kami lakukan adalah perubahan model bisnis dan peran dalam ekosistem dan rantai nilai industri. PRASIMAX pada fase ini meredefinisi dari perusahaan berbasis Riset dan Pengembangan menjadi perusahaan yang fokus pada pengembangan produk dan solus berorientasi pasar. Dimulai dengan perjanjian lisensi dari Qualcomm, Perjanjian lisensi dengan Apple untuk asesoris made for iPhone, made for iPad & made for iPod, Perjanjian kerja sama dengan NXP, ST Micro, Xilinx, Texas Instruments dan juga dengan beberapa distributor komponen dan material, merubah budaya, nilai dan arah perusahaan. Sehingga kami dapat memberikan layanan dan produk kepada klien kami. </p>
+                    <p>Fase perubahan ini dimulai sejak akhir 2017. Ditandai mulainya kami menjalin kerjasama dengan beberapa prinsipal teknologi dengan target peralihan teknologi. Adapun perubahan arah yang kami lakukan adalah perubahan model bisnis dan peran dalam ekosistem dan rantai nilai industri. PRASIMAX pada fase ini meredefinisi dari perusahaan berbasis Riset dan Pengembangan menjadi perusahaan yang fokus pada pengembangan produk dan solus berorientasi pasar. Dimulai dengan perjanjian lisensi dari Qualcomm, Perjanjian lisensi dengan Apple untuk asesoris made for iPhone, made for iPad & made for iPod, Perjanjian kerja sama dengan NXP, ST Micro, Xilinx, Texas Instruments dan juga dengan beberapa distributor komponen dan material, merubah budaya, nilai dan arah perusahaan. Sehingga kami dapat memberikan layanan dan produk kepada klien kami. </p>
                     <div class="mt-5 white--text">
                         <p class="title">Nilai inti perusahaan yang kami anut adalah:</p>
                         <ul class="subtitle-1">
