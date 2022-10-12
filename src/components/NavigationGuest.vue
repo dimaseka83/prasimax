@@ -25,7 +25,7 @@
                                 <span class="headline">Login Prasimax</span>
                             </v-card-title>
                             <v-card-text>
-                                <v-text-field label="Username" prepend-icon="mdi-email" v-model="formlogin.username">
+                                <v-text-field label="Username / Email" prepend-icon="mdi-email" v-model="formlogin.username">
                                 </v-text-field>
                                 <v-text-field label="Password" type="password" prepend-icon="mdi-lock"
                                     v-model="formlogin.password"></v-text-field>
@@ -58,9 +58,16 @@
                                 </v-text-field>
                                 <v-text-field 
                                 label="Username" 
-                                prepend-icon="mdi-email" 
+                                prepend-icon="mdi-account-edit"
                                 v-model="formregister.username"
                                 :rules="formvalidation.username"
+                                >
+                                </v-text-field>
+                                <v-text-field 
+                                label="Email" 
+                                prepend-icon="mdi-email"
+                                v-model="formregister.email"
+                                :rules="formvalidation.email"
                                 >
                                 </v-text-field>
                                 <v-text-field 
@@ -161,6 +168,7 @@
                     email: [
                         v => !!v || 'Email tidak boleh kosong',
                         v => /.+@.+\..+/.test(v) || 'Email harus valid',
+                        v => /^([\w-.]+@(?!gmail\.com)(?!yahoo\.com)(?!yahoo\.co.id)(?!hotmail\.com)(?!mail\.ru)(?!yandex\.ru)(?!yandesk\.com)(?!mail\.com)(?!rocketmail\.com)([\w-]+.)+[\w-]{2,4})?$/.test(v) || 'Email harus menggunakan email perusahaan',
                     ],
                     password: [
                         v => !!v || 'Password tidak boleh kosong',
@@ -204,15 +212,25 @@
                             'Content-Type': 'application/json',
                         }
                     }, {
-                        auth:{
-                            username: this.formlogin.username,
-                            password: this.formlogin.password
-                        }
+                        auth: this.formlogin
                     }).then((
                         response) => {
                             console.log(response.data);
                             localStorage.setItem('token', response.data.token);
-                            alert('Login Berhasil');
+                            this.$swal({
+                                title: 'Berhasil',
+                                text: 'Anda berhasil login',
+                                icon: 'success',
+                                timer: 2000,
+                                timerProgressBar: true,
+                                showConfirmButton: false,
+                            }).then(() => {
+                                this.dialog = false;
+                                this.formlogin = {
+                                    username: '',
+                                    password: '',
+                                }
+                            });
                         });
                 } catch (error) {
                     console.log(error);
@@ -222,27 +240,37 @@
             async register(){
                 if (this.$refs.formregister.validate()){
                     try {
-                        await axios.post('https://prasimax.com/company-be/api/user/signup', {
-                        withCredentials: true,
-                        headers:{
-                            'Accept': 'application/json',
-                            'Content-Type': 'application/json',
-                        }
-                    }, {
-                        fullname: this.formregister.fullname,
-                        username: this.formregister.username,
-                        email: this.formregister.email,
-                        password: this.formregister.password,
-                        password_confirmation: this.formregister.password_confirmation,
-                        phoneNumber: this.formregister.phoneNumber,
-                        alamat: this.formregister.alamat,
-                        perusahaan: this.formregister.perusahaan,
-                        profesi: this.formregister.profesi,
-                        isSubscribe: this.formregister.isSubscribe,
-                    }).then((
+                        await axios.post('https://prasimax.com/company-be/api/user/signup', this.formregister).then((
                         response) => {
                             console.log(response.data);
-                            alert('Register Berhasil');
+                            if(response.data.message == 'Ok'){
+                                this.$swal({
+                                title: 'Berhasil',
+                                text: 'Pendaftaran Berhasil',
+                                icon: 'success',
+                                confirmButtonText: 'OK'
+                            });
+                            }else{
+                                this.$swal({
+                                title: 'Gagal',
+                                text: `${response.data.message}`,
+                                icon: 'error',
+                                confirmButtonText: 'OK'
+                            });
+                            }
+                            this.dialogregister = false;
+                            this.formregister = {
+                                fullname: '',
+                                username: '',
+                                email: '',
+                                password: '',
+                                password_confirmation: '',
+                                phoneNumber: '',
+                                alamat: '',
+                                perusahaan: '',
+                                profesi: '',
+                                isSubscribe: false,
+                            }
                         });
                     } catch (error) {
                         console.log(error);
