@@ -238,19 +238,7 @@
                     }).then((
                         response) => {
                             console.log(response.data);
-                            if(response.data.token == undefined){
-                                this.$swal({
-                                    title: 'Gagal',
-                                    text: 'Username atau Password salah',
-                                    icon: 'error',
-                                    confirmButtonText: 'OK'
-                                })
-                                this.dialoglogin = false;
-                                this.formlogin = {
-                                    username: '',
-                                    password: '',
-                                }
-                            }else if(!response.data.user.isActive){
+                            if(response.data.error != undefined){
                                 this.$swal({
                                     title: 'Gagal',
                                     text: 'Akun anda belum aktif, silahkan cek email anda untuk aktivasi',
@@ -262,8 +250,19 @@
                                     username: '',
                                     password: '',
                                 }
-                            }
-                            else{
+                            }else if(response.data.token == undefined){
+                                this.$swal({
+                                    title: 'Gagal',
+                                    text: 'Username atau Password salah',
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                })
+                                this.dialoglogin = false;
+                                this.formlogin = {
+                                    username: '',
+                                    password: '',
+                                }
+                            }else{
                             this.$store.commit('setToken', response.data.token);
                             this.$store.commit('setUser', response.data.user);
                             this.$swal({
