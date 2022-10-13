@@ -12,8 +12,8 @@
                         prepend-inner-icon="mdi-magnify">
                     </v-text-field>
                 </v-card>
-                <v-card flat class="pa-2">
-                    <v-dialog v-model="dialog" width="500">
+                <v-card flat class="pa-2"  v-if="!$store.state.isLogged">
+                    <v-dialog v-model="dialoglogin" width="500">
                         <template v-slot:activator="{ on }">
                             <v-btn color="primary" class="rounded-xl" v-on="on">
                                 <v-icon left>mdi-import</v-icon>
@@ -25,14 +25,16 @@
                                 <span class="headline">Login Prasimax</span>
                             </v-card-title>
                             <v-card-text>
-                                <v-text-field label="Username / Email" prepend-icon="mdi-email" v-model="formlogin.username">
+                                <v-form ref="formlogin" v-model="formvalidationlogin.valid" lazy-validation>
+                                <v-text-field label="Username / Email" prepend-icon="mdi-email" v-model="formlogin.username" :rules="formvalidationlogin.username">
                                 </v-text-field>
                                 <v-text-field label="Password" type="password" prepend-icon="mdi-lock"
-                                    v-model="formlogin.password"></v-text-field>
+                                    v-model="formlogin.password" :rules="formvalidationlogin.password"></v-text-field>
+                                </v-form>
                             </v-card-text>
                             <v-card-actions>
                                 <v-spacer></v-spacer>
-                                <v-btn color="primary" text @click="dialog = false">Batal</v-btn>
+                                <v-btn color="primary" text @click="dialoglogin = false">Batal</v-btn>
                                 <v-btn color="primary" text @click="login">Masuk</v-btn>
                             </v-card-actions>
                         </v-card>
@@ -49,7 +51,7 @@
                                 <span class="headline">Register User Prasimax</span>
                             </v-card-title>
                             <v-form ref="formregister" v-model="formvalidation.valid" lazy-validation>
-                                                            <v-card-text>
+                            <v-card-text>
                                 <v-text-field 
                                 label="Nama Lengkap" 
                                 prepend-icon="mdi-account" 
@@ -121,6 +123,16 @@
                         </v-card>
                     </v-dialog>
                 </v-card>
+                <v-card v-else flat class="pa-2">
+                    <v-btn color="primary" class="rounded-xl">
+                                <v-icon left>mdi-account</v-icon>
+                                {{ $store.state.user.fullname }}
+                    </v-btn>
+                    <v-btn color="white" class="ml-2 rounded-xl blue--text"  @click="logout">
+                                <v-icon left>mdi-logout</v-icon>
+                                Logout
+                    </v-btn>
+                </v-card>
             </v-card>
         </v-container>
         <v-app-bar dense flat dark src="@/assets/images/dummy/rectangle.svg">
@@ -156,6 +168,15 @@
                     perusahaan: '',
                     profesi: '',
                     isSubscribe: false,
+                },
+                formvalidationlogin: {
+                    valid: false,
+                    username: [
+                        v => !!v || 'Username atau Email tidak boleh kosong',
+                    ],
+                    password: [
+                        v => !!v || 'Password tidak boleh kosong',
+                    ],
                 },
                 formvalidation: {
                     valid: false,
@@ -193,8 +214,8 @@
                         v => !!v || 'Profesi tidak boleh kosong',
                     ],
                 },
-                dialog: false,
                 dialogregister: false,
+                dialoglogin: false,
             }
         },
         methods: {
@@ -204,7 +225,8 @@
                 }
             },
             async login() {
-                try {
+                if(this.$refs.formlogin.validate()){
+                    try {
                     await axios.post('https://prasimax.com/company-be/auth/login', {
                         withCredentials: true,
                         headers:{
@@ -216,7 +238,34 @@
                     }).then((
                         response) => {
                             console.log(response.data);
-                            localStorage.setItem('token', response.data.token);
+                            if(response.data.token == undefined){
+                                this.$swal({
+                                    title: 'Gagal',
+                                    text: 'Username atau Password salah',
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                })
+                                this.dialoglogin = false;
+                                this.formlogin = {
+                                    username: '',
+                                    password: '',
+                                }
+                            }else if(!response.data.user.isActive){
+                                this.$swal({
+                                    title: 'Gagal',
+                                    text: 'Akun anda belum aktif, silahkan cek email anda untuk aktivasi',
+                                    icon: 'error',
+                                    confirmButtonText: 'OK'
+                                })
+                                this.dialoglogin = false;
+                                this.formlogin = {
+                                    username: '',
+                                    password: '',
+                                }
+                            }
+                            else{
+                            this.$store.commit('setToken', response.data.token);
+                            this.$store.commit('setUser', response.data.user);
                             this.$swal({
                                 title: 'Berhasil',
                                 text: 'Anda berhasil login',
@@ -225,17 +274,19 @@
                                 timerProgressBar: true,
                                 showConfirmButton: false,
                             }).then(() => {
-                                this.dialog = false;
+                                this.dialoglogin = false;
                                 this.formlogin = {
                                     username: '',
                                     password: '',
                                 }
                             });
+                            }
                         });
                 } catch (error) {
                     console.log(error);
                 }
-                this.dialog = false;
+                this.dialoglogin = false;
+                }
             },
             async register(){
                 if (this.$refs.formregister.validate()){
@@ -276,6 +327,19 @@
                         console.log(error);
                     }
                 }
+            },
+            logout(){
+                this.$store.commit('logout');
+                this.$swal({
+                    title: 'Berhasil',
+                    text: 'Anda berhasil logout',
+                    icon: 'success',
+                    timer: 2000,
+                    timerProgressBar: true,
+                    showConfirmButton: false,
+                }).then(() => {
+                    this.$router.push('/');
+                });
             }
         },
     };

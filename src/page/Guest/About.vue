@@ -149,10 +149,11 @@
             <h2 class="display-1 font-weight-bold text-capitalize my-5">Dokumen Kelengkapan Perusahaan</h2>
             <p>Bagi pihak-pihak yang berinteraksi bisnis, proyek dan administrasi, dapat mendownload beberapa
                 dokumen di bawah ini dengan syarat registrasi dan login terlebih dahulu.</p>
-            <div class="d-flex justify-space-between">
+            <div class="d-flex justify-space-between" v-if="$store.state.isLogged">
                 <div class="pa-2 font-weight-bold text-decoration-underline title"
                     v-for="(document, idx) in documents" :key="idx">{{ document.name }} </div>
             </div>
+            <p v-else class="title">Silahkan Login atau Register dahulu jika ingin mengunduh dokumen perusahaan</p>
             <v-divider class="mt-10"></v-divider>
         </v-container>
         <v-container class="my-16 blue--text">
@@ -288,19 +289,19 @@
                 ],
                 documents: [{
                         name: "Panduan Merek PRASIMAX",
-                        url: "https://www.google.com"
+                        loc: "@/assets/documents/brand.pdf"
                     },
                     {
                         name: "File citra merek PRASIMAX",
-                        url: "https://www.google.com"
+                        loc: "@/assets/documents/logo.jpg"
                     },
                     {
                         name: "Nomor Pokok Wajib Pajak",
-                        url: "https://www.google.com"
+                        url: "@/assets/documents/npwp.pdf"
                     },
                     {
                         name: "Nomor Induk Berusaha (OSS)",
-                        url: "https://www.google.com"
+                        url: "@/assets/documents/nib.pdf"
                     },
                 ]
             };
