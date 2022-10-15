@@ -58,7 +58,8 @@ export default {
           icon: 'mdi-linkedin',
         }
       ],
-
+      apiauth: 'https://prasimax.com/company-be/auth/',
+      apibe: 'https://prasimax.com/company-be/api/',
     };
   },
   methods: {

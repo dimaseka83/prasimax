@@ -7,6 +7,7 @@ import Odm from './page/Guest/Odm.vue';
 import Produk from './page/Guest/Produk.vue';
 import Jasa from './page/Guest/Jasa.vue';
 import Contact from './page/Guest/Contact.vue';
+import ResetPassword from './page/Guest/ResetPassword.vue';
 
 
 const routes = [
@@ -44,6 +45,11 @@ const routes = [
     path: '/contact',
     component: Contact,
     name: 'ContactGuest'
+  },
+  {
+    path: '/changePassword/:token',
+    component: ResetPassword,
+    name: 'ResetPassword',
   }
 ];
 
