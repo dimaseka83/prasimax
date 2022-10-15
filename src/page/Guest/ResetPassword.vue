@@ -4,17 +4,24 @@
         <v-container fill-height fluid>
             <v-row align="center" justify="center">
                 <v-col cols="12">
-                    <v-form class="ma-16">
-                        <v-text-field v-model="password" label="Password" outlined dense
+                    <v-form class="ma-16" ref="resetPassword">
+                        <v-text-field v-model="formvalidationpassword.password" label="Password" outlined dense
+                            :rules="rulespassword.password"
                             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                             :type="showPassword ? 'text' : 'password'" @click:append="showPassword = !showPassword">
                         </v-text-field>
-                        <v-text-field v-model="password" label="Confirm Password" outlined dense
+                        <v-text-field v-model="formvalidationpassword.password_confirmation" label="Confirm Password" outlined dense
+                            :rules="rulespassword.password_confirmation"
                             :append-icon="showPasswordConfirmation ? 'mdi-eye' : 'mdi-eye-off'"
                             :type="showPasswordConfirmation ? 'text' : 'password'"
                             @click:append="showPasswordConfirmation = !showPasswordConfirmation"></v-text-field>
                         <div class="d-flex justify-end">
-                            <v-btn color="primary" @click="resetPassword">Reset Password</v-btn>
+                            <v-progress-circular
+                                indeterminate
+                                color="primary"
+                                v-if="loading"
+                                ></v-progress-circular>
+                            <v-btn color="primary" @click="resetPassword" v-else>Reset Password</v-btn>
                         </div>
                     </v-form>
                 </v-col>
@@ -25,6 +32,7 @@
 </template>
 <script>
     import mix from '@/mixins/mix';
+    import axios from 'axios';
     import componentsmix from '@/mixins/componentsmix';
     export default {
         mixins: [mix, componentsmix],
@@ -46,16 +54,34 @@
                         v => (v && v.length >= 8) || 'Min 8 characters',
                     ],
                 },
+                loading: false,
             }
         },
         methods: {
             async resetPassword() {
-                try {
-                    await axios.post(`${this.apibe}user/forgot`).then((response) => {
-                        this.$router.push({ name: 'HomeGuest' });
-                    });
-                } catch (error) {
-                    console.log(error);
+                if(this.$refs.resetPassword.validate()){
+                    this.loading = true;
+                    try {
+                        let data = {
+                            token: this.$route.params.token,
+                            password: this.formvalidationpassword.password,
+                        }
+                        await axios.post(`${this.apibe}user/reset-password`, data).then((response) => {
+                            this.$swal({
+                                title: 'Sukses',
+                                text: 'Password berhasil diubah',
+                                icon: 'success',
+                                timer: 2000,
+                                showConfirmButton: false,
+                            });
+                            setTimeout(() => {
+                                this.$router.push({ name: 'HomeGuest' });
+                            }, 500);
+                        });
+                    } catch (error) {
+                        console.log(error);
+                    }
+                    this.loading = false;
                 }
             },
         },

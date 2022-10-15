@@ -47,7 +47,7 @@ const routes = [
     name: 'ContactGuest'
   },
   {
-    path: '/changePassword/:token',
+    path: '/resetPassword/:token',
     component: ResetPassword,
     name: 'ResetPassword',
   }
