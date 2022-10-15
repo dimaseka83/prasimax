@@ -53,6 +53,7 @@
                     password_confirmation: [
                         v => !!v || 'Password Confirmation is required',
                         v => (v && v.length >= 8) || 'Min 8 characters',
+                        v => v === this.formvalidationpassword.password || 'Konfirmasi Password tidak sama dengan Password',
                     ],
                 },
                 loading: false,
