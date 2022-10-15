@@ -4,7 +4,7 @@
         <v-container fill-height fluid>
             <v-row align="center" justify="center">
                 <v-col cols="12">
-                    <v-form class="ma-16" ref="resetPassword">
+                    <v-form class="ma-16" ref="resetPassword" v-model="rulespassword.valid" lazy-validation>
                         <v-text-field v-model="formvalidationpassword.password" label="Password" outlined dense
                             :rules="rulespassword.password"
                             :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
@@ -45,6 +45,7 @@
                 showPassword: false,
                 showPasswordConfirmation: false,
                 rulespassword: {
+                    valid: false,
                     password: [
                         v => !!v || 'Password is required',
                         v => (v && v.length >= 8) || 'Min 8 characters',

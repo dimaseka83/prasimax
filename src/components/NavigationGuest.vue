@@ -120,6 +120,41 @@
                                 </v-card-text>
                             </v-form>
                             <v-card-actions>
+                                <v-dialog v-model="dialogresendemail" width="500">
+                                    <template v-slot:activator="{ on }">
+                                        <v-btn color="primary" text v-on="on">
+                                            <v-icon left>mdi-email-check</v-icon>
+                                            Kirim Ulang Email
+                                        </v-btn>
+                                    </template>
+                                    <v-card>
+                                        <v-progress-linear indeterminate color="blue" :active="loadingresendemail">
+                                        </v-progress-linear>
+                                        <v-card-title>
+                                            <span class="headline">Kirim Ulang Email</span>
+                                        </v-card-title>
+                                        <v-card-text>
+                                            <v-form ref="formresendemail"
+                                                v-model="formvalidationresendemail.valid" lazy-validation>
+                                                <v-text-field label="Email" prepend-icon="mdi-email"
+                                                    v-model="formresendemail.email"
+                                                    :rules="formvalidationresendemail.email">
+                                                </v-text-field>
+                                            </v-form>
+                                        </v-card-text>
+                                        <v-card-actions>
+                                            <v-spacer></v-spacer>
+                                            <v-btn color="primary" text @click="dialogresendemail = false">
+                                                <v-icon left>mdi-close</v-icon>
+                                                Batal
+                                            </v-btn>
+                                            <v-btn color="primary" text @click="resendemail">
+                                                <v-icon left>mdi-send</v-icon>
+                                                Kirim
+                                            </v-btn>
+                                        </v-card-actions>
+                                    </v-card>
+                                </v-dialog>
                                 <v-spacer></v-spacer>
                                 <v-btn color="primary" text @click="dialogregister = false">Batal</v-btn>
                                 <v-btn color="primary" text @click="register">Daftar</v-btn>
@@ -162,6 +197,9 @@
                     password: '',
                 },
                 formchangepassword: {
+                    email: '',
+                },
+                formresendemail: {
                     email: '',
                 },
                 formregister: {
@@ -234,12 +272,24 @@
                         .test(v) || 'Email harus menggunakan email perusahaan',
                     ],
                 },
+                formvalidationresendemail: {
+                    valid: false,
+                    email: [
+                        v => !!v || 'Email tidak boleh kosong',
+                        v => /.+@.+\..+/.test(v) || 'Email harus valid',
+                        v =>
+                        /^([\w-.]+@(?!gmail\.com)(?!yahoo\.com)(?!yahoo\.co.id)(?!hotmail\.com)(?!mail\.ru)(?!yandex\.ru)(?!yandesk\.com)(?!mail\.com)(?!rocketmail\.com)([\w-]+.)+[\w-]{2,4})?$/
+                        .test(v) || 'Email harus menggunakan email perusahaan',
+                    ],
+                },
                 dialogregister: false,
+                dialogresendemail: false,
                 dialoglogin: false,
                 dialogchangepassword: false,
                 loadinglogin: false,
                 loadingregister: false,
                 loadingchangepassword: false,
+                loadingresendemail: false,
             }
         },
         methods: {
@@ -396,6 +446,40 @@
                         console.log(error);
                     }
                     this.loadingregister = false;
+                }
+            },
+            async resendemail(){
+                if(this.$refs.formresendemail.validate()){
+                    try {
+                        this.loadingresendemail = true;
+                        await axios.post(`${this.apibe}user/resend-email/${this.formresendemail.email}`).then(
+                            (response) => {
+                                if(response.data.message != 'Email tidak valid'){
+                                    this.$swal({
+                                        title: 'Berhasil',
+                                        text: 'Silahkan cek email anda untuk aktivasi ulang',
+                                        icon: 'success',
+                                        confirmButtonText: 'OK'
+                                    });
+                                }else{
+                                    this.$swal({
+                                        title: 'Gagal',
+                                        text: `${response.data.message}`,
+                                        icon: 'error',
+                                        confirmButtonText: 'OK'
+                                    });
+                                }
+                                this.dialogresendemail = false;
+                                this.loadingresendemail = false;
+                                this.dialogregister = false;
+                                this.formresendemail = {
+                                    email: '',
+                                }
+                            }
+                        );
+                    } catch (error) {
+                        console.log(error);
+                    }
                 }
             },
             logout() {
