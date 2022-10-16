@@ -9,6 +9,9 @@ import Jasa from './page/Guest/Jasa.vue';
 import Contact from './page/Guest/Contact.vue';
 import ResetPassword from './page/Guest/ResetPassword.vue';
 
+// Admin
+import HomeAdmin from './page/Admin/Home.vue';
+
 
 const routes = [
   {
@@ -50,6 +53,13 @@ const routes = [
     path: '/resetPassword/:token',
     component: ResetPassword,
     name: 'ResetPassword',
+  },
+
+  // Admin
+  {
+    path: '/admin',
+    component: HomeAdmin,
+    name: 'HomeAdmin',
   }
 ];
 
