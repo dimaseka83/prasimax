@@ -53,7 +53,7 @@ export default {
             formcarousel: {
                 title: '',
                 subtitle: '',
-                image: ''
+                image: [],
             }
         }
     },
@@ -73,16 +73,16 @@ export default {
         },
         async savecarousel(){
             try{
-                await axios.post(`${this.apibe}carousel`,{
-                    withCredentials: true,
+                await axios.post(`${this.apibe}carousel`, this.formcarousel, {
                     headers: {
-                        'Content-Type': 'multipart/form-data',
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${this.$store.state.token}`
+                        Authorization: `Bearer ${this.$store.state.token}`
                     },
-            },this.formcarousel)
+            })
                     .then(res => {
-                        console.log(res)
+                        if(res.status == 200){
+                            this.dialogcarousel = false
+                            this.getCarousel()
+                        }
                     })
             } catch (error) {
                 console.log(error)

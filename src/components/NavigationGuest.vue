@@ -340,20 +340,29 @@
                             } else {
                                 this.$store.commit('setToken', response.data.token);
                                 this.$store.commit('setUser', response.data.user);
-                                this.$swal({
-                                    title: 'Berhasil',
-                                    text: 'Anda berhasil login',
-                                    icon: 'success',
-                                    timer: 2000,
-                                    timerProgressBar: true,
-                                    showConfirmButton: false,
-                                }).then(() => {
-                                    this.dialoglogin = false;
-                                    this.formlogin = {
-                                        username: '',
-                                        password: '',
-                                    }
-                                });
+                                switch (response.data.role) {
+                                    case "admin":
+                                        this.$router.push({
+                                            name: 'HomeAdmin'
+                                        });                                        
+                                        break;
+                                    default:
+                                        this.$swal({
+                                            title: 'Berhasil',
+                                            text: 'Anda berhasil login',
+                                            icon: 'success',
+                                            timer: 2000,
+                                            timerProgressBar: true,
+                                            showConfirmButton: false,
+                                        }).then(() => {
+                                            this.dialoglogin = false;
+                                            this.formlogin = {
+                                                username: '',
+                                                password: '',
+                                            }
+                                        });
+                                        break;
+                                }
                             }
                         });
                     } catch (error) {

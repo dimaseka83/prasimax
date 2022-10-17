@@ -151,7 +151,7 @@
                 dokumen di bawah ini dengan syarat registrasi dan login terlebih dahulu.</p>
             <div class="d-flex justify-space-between" v-if="$store.state.isLogged">
                 <div class="pa-2 font-weight-bold text-decoration-underline title"
-                    v-for="(document, idx) in documents" :key="idx"><a :href="document.loc" download>{{ document.name }}</a></div>
+                    v-for="(document, idx) in documents" :key="idx"><a @click="download(document.doc)">{{ document.name }}</a></div>
             </div>
             <p v-else class="title">Silahkan Login atau Register dahulu jika ingin mengunduh dokumen perusahaan</p>
             <v-divider class="mt-10"></v-divider>
@@ -310,5 +310,10 @@
         components: {
             FooterGuest
         },
+        methods: {
+            download(url){
+                new Blob([url], {type: 'application/pdf'});
+            }
+        }
     }
 </script>
