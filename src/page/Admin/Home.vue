@@ -108,8 +108,14 @@
             async savecarousel() {
                 try {
                     if(this.formcarousel.id != undefined){
-                        await axios.put(`${this.apibe}carousel/${this.formcarousel.id}`, this.formcarousel)
+                        await axios.put(`${this.apibe}carousel/${this.formcarousel.id}`, this.formcarousel, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data',
+                                Authorization: `Bearer ${this.$store.state.token}`
+                            },
+                        })
                         .then(res => {
+                            console.log(res)
                             this.dialogcarousel = false
                             this.getCarousel()
                         })
@@ -141,6 +147,21 @@
                 this.formcarousel = this.carousel[index];
                 this.dialogcarousel = true
             },
+            async deletecarousel(index){
+                try {
+                    await axios.delete(`${this.apibe}carousel/${this.carousel[index].id}`, {
+                            headers: {
+                                'Content-Type': 'multipart/form-data',
+                                Authorization: `Bearer ${this.$store.state.token}`
+                            },
+                        })
+                    .then(res => {
+                        this.getCarousel()
+                    })
+                } catch (error) {
+                    console.log(error)
+                }
+            }
         },
     }
 </script>

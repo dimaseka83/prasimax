@@ -100,7 +100,7 @@
             <v-card flat>
                 <v-list two-line>
                     <v-list-item>
-                        <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
+                        <v-img src="@/assets/images/static/rndodm.svg" max-width="600" :height="height"></v-img>
                         <v-list-item-content>
                             <v-card flat class="pa-16" color="blue" dark :height="height">
                                 <p class="display-1 font-weight-bold">Riset dan Pengembangan</p>
@@ -114,7 +114,7 @@
                                     untuk
                                     sektor pendidikan dan juga industri. Pada entitas industri, penelitian dilakukan
                                     oleh tim pemasaran,
-                                    tim produk dan tim operasional. Masing0masing punya tujuan tersendiri.</p>
+                                    tim produk dan tim operasional. Masing-masing punya tujuan tersendiri.</p>
                                 <p class="subtitle mt-10">Pengembangan adalah aktifitas yang lebih berorientasi produk
                                     dand pasar. Diawali dengan riset,
                                     pengembangan sudah lebih tervalidasi untuk kelayakan bisnis dan produk.</p>
@@ -149,7 +149,7 @@
                 <v-col cols="6">
                     <v-card elevation="10" rounded="xl">
                         <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
-                            src="@/assets/images/dummy/board.jpg" :height="height - 100"></v-img>
+                            src="@/assets/images/static/pabrikasiodm.svg" :height="height - 100"></v-img>
                     </v-card>
                 </v-col>
             </v-row>

@@ -35,7 +35,7 @@
                             </p>
                         </v-col>
                         <v-col cols="4">
-                            <v-img src="@/assets/images/dummy/carousel.svg"></v-img>
+                            <v-img src="@/assets/images/static/informasiperusahaanaboutus.png"></v-img>
                         </v-col>
                     </v-row>
                     <p class="headline mt-5 font-weight-bold text-capitalize ">Visi, Misi dan Nilai Perusahaan</p>
@@ -85,9 +85,9 @@
         <v-container class="my-16 blue--text">
             <v-row>
                 <v-col cols="5">
-                    <v-card elevation="10" rounded="xl">
-                        <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
-                            src="@/assets/images/dummy/board.jpg" :height="height"></v-img>
+                    <v-card elevation="10" rounded="xl" :max-height="height-50">
+                        <v-img  gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
+                        src="@/assets/images/static/sejakaboutus.svg" :height="height"></v-img>
                     </v-card>
                 </v-col>
                 <v-col cols="7">

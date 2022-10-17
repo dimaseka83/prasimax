@@ -4,16 +4,17 @@
     <!-- Page 1 -->
     <v-carousel cycle :height="height" hide-delimiter-background show-arrows-on-hover>
       <v-carousel-item v-for="(slide, i) in slides" :key="i + 'slide'">
-        <v-img gradient="to bottom right, rgba(0, 102, 204, 1), rgba(0, 204, 255, 1)" :height="height">
+        <!-- <v-img gradient="to bottom right, rgba(0, 102, 204, 1), rgba(0, 204, 255, 1)" :height="height"> -->
+        <v-img :src="`${assets}${slide.image}`">
           <v-container>
             <v-row class="fill-height mt-10 white--text">
               <v-col>
                 <h1 class="text-h2 font-weight-bold">{{slide.title}}</h1>
-                <p class="title mt-10">{{slide.text}}</p>
+                <p class="title mt-10">{{slide.subtitle}}</p>
                 <v-btn color="#42A5F5" dark rounded>Baca Lebih Lanjut</v-btn>
               </v-col>
               <v-col>
-                <v-img src="@/assets/images/dummy/carousel.svg"></v-img>
+                <!-- <v-img :src="`${assets}${image}`"></v-img> -->
               </v-col>
             </v-row>
           </v-container>
@@ -27,7 +28,7 @@
           <v-card color="blue" elevation="10" rounded="xl" dark>
             <v-container class="pa-16">
               <div class="d-flex">
-                <p class="display-3 font-weight-bold text-uppercase">odm</p>
+                <p class="display-2 font-weight-bold text-uppercase">dari ide sampai produk</p>
               </div>
               <h2 class="display-1 font-weight-bold my-5">Desain, Pengembangan & Manufacturing</h2>
               <p class="subtitle">Lingkup bisnis kami adalah membantu Anda dalam menterjemahkan dan mentransformasi ide Anda menjadi sebuah desain produk elektronik untuk solusi tertentu yang diinginkan. Tidak sampai pada desain, kami dapat melanjutkan proses pengembangan hingga manufakturing produk.</p>
@@ -36,7 +37,7 @@
           </v-card>
         </v-col>
         <v-col>
-          <v-img class="mx-5" src="@/assets/images/dummy/carousel.svg"></v-img>
+          <v-img class="mx-5" src="@/assets/images/static/idesampaiproduk.png"></v-img>
         </v-col>
       </v-row>
     </v-container>
@@ -45,7 +46,7 @@
           <v-card flat>
             <v-list two-line>
               <v-list-item>
-                <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
+                <v-img src="@/assets/images/static/produkhome.svg" max-width="600" :height="height"></v-img>
                 <v-list-item-content>
                   <v-card flat color="blue" dark :height="height">
                   <v-container class="pa-16">
@@ -105,7 +106,7 @@
       </v-carousel>
     </v-container>
     <!-- Page 6 -->
-    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/dummy/board.jpg"
+    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/mengenaikamihome.svg"
       class="my-16" :height="height">
       <v-container class="pa-16 white--text mt-16">
         <v-row>
@@ -140,33 +141,30 @@
   </v-app>
 </template>
 <script>
+  import axios from 'axios'
   import mix from '@/mixins/mix';
   import componentsmix from '@/mixins/componentsmix';
   export default {
     mixins: [mix, componentsmix],
     data() {
         return {
-            slides: [{
-              title : 'Internet of Things',
-              text : 'Di era Industri 4.0, peran manusia sudah tergantikan oleh perangkat dan periferal elektronik yang saling terinterkoneksi satu sama lain melalui platform dan cloud. Apakah perangkat tersebut merupakan sensor, probing maupun aktuator, transmitter atau sejenisnya.',
-              image : 'carousel.svg'
-            },
-            {
-              title: 'Electric Vehicle',
-              text: 'Seriring perkembangan dan transformasi digital yang membawa perubahan perilaku manusia yang ingin mencapai tingkat kehidupan yang lebih baik dan bersih dari kotoran emisi karbon, EV (electrical vehicle) menjadi jawaban. Namun ekosistem EV adalah luas. Mulai dari batere dan BMS nya, mesin listrik sebagai powertrain, instrumen elektronik dan mekatronik dan keterlibatan IoT pun menjadi bagian atau part yang membentuk Smart EV.',
-              image: 'carousel.svg'
-            },
-            {
-              title: 'Mobile Device Solution',
-              text: 'Perkembangan teknologi komunikasi dan informasi yang sangat pesat dalam 2 dekade terakhir sudah melahirkan teknologi Long Term Evolution generasi ke 5 atau LTE 5G. Sungguhpun 4G LTE masih belum terlalu luas digunakan oleh masyarakat. Perkembangan tersebut ditunjang dengan pertumbuhan populasi produk perangkat komunikasi seperti Smartphone, IoT module, Smart Module berbasis 4G LTE, NB-IoT, LoRa dan WiFi versi 6, yang mampu mentransportasi volume data dengan pita yang lebih lebar. Kami sudah memiliki pengalaman sebagai penyedia solusi device solution berbasis 4G LTE, WiFi, ZigBee dan LoRa.',
-              image: 'carousel.svg'
-            },
-            {
-              title: 'Kecerdasan Artifisial (Artificial Intelligence)',
-              text: 'Teknologi kecerdasan artifisial telah memberikan banyak solusi dan inovasi yang berbasis metode neural network dan machine leraning. Pengalaman kami dalam teknologi kecerdasan artifisial ini masih fokus pada solusi computer vision dan pengenalan suara cerdas.',
-              image: 'carousel.svg'
-            }],
+            slides: [],
         };
+    },
+    created(){
+      this.getCarousel();
+    },
+    methods: {
+            async getCarousel() {
+                try {
+                    await axios.get(`${this.apibe}carousel`)
+                        .then(res => {
+                            this.slides = res.data
+                        })
+                } catch (error) {
+                    console.log(error)
+                }
+            },
     },
 };
 </script>

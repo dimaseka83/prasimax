@@ -2,7 +2,7 @@
     <v-app>
     <NavigationGuest />
         <!-- Page 1 -->
-        <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/dummy/board.jpg" :height="height">
+        <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/jasalanding.svg" :height="height">
         <v-container class="white--text">
             <v-row class="fill-height mt-16 text-center">
                 <v-col>
