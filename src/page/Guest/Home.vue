@@ -46,7 +46,8 @@
           <v-card flat>
             <v-list two-line>
               <v-list-item>
-                <v-img src="@/assets/images/static/produkhome.svg" max-width="600" :height="height"></v-img>
+                <v-img 
+                 src="@/assets/images/static/produkhome.svg" max-width="600" :height="height"></v-img>
                 <v-list-item-content>
                   <v-card flat color="blue" dark :height="height">
                   <v-container class="pa-16">

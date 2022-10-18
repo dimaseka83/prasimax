@@ -100,7 +100,8 @@
             <v-card flat>
                 <v-list two-line>
                     <v-list-item>
-                        <v-img src="@/assets/images/static/rndodm.svg" max-width="600" :height="height"></v-img>
+                        <v-img gradient="to top right, rgba(0, 126, 209, 1), rgba(255, 255, 255, 0)"
+                         src="@/assets/images/static/rndodm.svg" max-width="600" :height="height"></v-img>
                         <v-list-item-content>
                             <v-card flat class="pa-16" color="blue" dark :height="height">
                                 <p class="display-1 font-weight-bold">Riset dan Pengembangan</p>
