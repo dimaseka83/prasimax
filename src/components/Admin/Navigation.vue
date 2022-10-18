@@ -44,6 +44,16 @@ export default {
                     title: 'Products',
                     icon: 'mdi-package-variant',
                     href: '/admin/products'
+                },
+                {
+                    title: 'Technical',
+                    icon: 'mdi-engine',
+                    href: '/admin/technical'
+                },
+                {
+                    title: 'Service',
+                    icon: 'mdi-engine',
+                    href: '/admin/service'
                 }
             ]
         }

@@ -23,22 +23,23 @@
                 </template>
                 <template v-slot:top>
                     <v-toolbar>
-                        <v-toolbar-title>About Title</v-toolbar-title>
+                        <v-toolbar-title>Products Title</v-toolbar-title>
                         <v-spacer></v-spacer>
                         <v-dialog v-model="dialogproductstitle" max-width="500">
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn color="primary" class="mb-2" v-bind="attrs" v-on="on">Tambah</v-btn>
                             </template>
                             <v-card>
-                                <v-card-title>Buat / Edit About Title</v-card-title>
+                                <v-card-title>Buat / Edit Products Title</v-card-title>
                                 <v-card-text>
                                     <v-text-field label="Title" v-model="formproductstitle.judul"></v-text-field>
-                                    <v-text-field label="Description" v-model="formproductstitle.subtitle"></v-text-field>
+                                    <v-text-field label="Description" v-model="formproductstitle.subtitle">
+                                    </v-text-field>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
                                     <v-btn color="blue" text @click="dialogproductstitle = false">Cancel</v-btn>
-                                    <v-btn color="blue" text @click="saveabouttitle">Save</v-btn>
+                                    <v-btn color="blue" text @click="saveproductstitle">Save</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
@@ -48,11 +49,11 @@
         </v-card>
 
         <v-card class="my-16">
-            <v-data-table :headers="headerabout" :items="about">
+            <v-data-table :headers="headerproducts" :items="products">
                 <template v-slot:item.action="data">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
-                            <v-btn icon v-on="on" @click="editabout(data.index)">
+                            <v-btn icon v-on="on" @click="editproducts(data.index)">
                                 <v-icon>mdi-pencil</v-icon>
                             </v-btn>
                         </template>
@@ -60,7 +61,7 @@
                     </v-tooltip>
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
-                            <v-btn icon v-on="on" @click="deleteabout(data.index)">
+                            <v-btn icon v-on="on" @click="deleteproducts(data.index)">
                                 <v-icon>mdi-delete</v-icon>
                             </v-btn>
                         </template>
@@ -69,17 +70,17 @@
                 </template>
                 <template v-slot:top>
                     <v-toolbar>
-                        <v-toolbar-title>About Title</v-toolbar-title>
+                        <v-toolbar-title>Products</v-toolbar-title>
                         <v-spacer></v-spacer>
-                        <v-dialog v-model="dialogabout" max-width="500">
+                        <v-dialog v-model="dialogproducts" max-width="500">
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn color="primary" class="mb-2" v-bind="attrs" v-on="on">Tambah</v-btn>
                             </template>
                             <v-card>
                                 <v-card-title>Buat / Edit About</v-card-title>
                                 <v-card-text>
-                                    <v-text-field label="Title" v-model="formabout.title"></v-text-field>
-                                    <v-text-field label="Description" v-model="formabout.subtitle"></v-text-field>
+                                    <v-text-field label="Title" v-model="formproducts.title"></v-text-field>
+                                    <v-text-field label="Description" v-model="formproducts.subtitle"></v-text-field>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
@@ -122,14 +123,14 @@
                     },
                 ],
                 formproductstitle: {
-                    title: '',
+                    judul: '',
                     subtitle: ''
                 },
-                
+
                 // API About
-                dialogabout: false,
-                about: [],
-                headerabout: [{
+                dialogproducts: false,
+                products: [],
+                headerproducts: [{
                         text: 'Title',
                         value: 'title'
                     },
@@ -142,7 +143,7 @@
                         value: 'action'
                     },
                 ],
-                formabout: {
+                formproducts: {
                     title: '',
                     subtitle: ''
                 }
@@ -150,36 +151,37 @@
         },
         created() {
             this.getproductstitle();
-            this.getabout();
+            this.getproducts();
         },
         methods: {
-                // API About Title
-            
+            // API About Title
+
             async getproductstitle() {
                 await axios.get(`${this.apibe}productsTitle`)
                     .then(res => {
-                        this.abouttitle = res.data
+                        this.productstitle = res.data
                     })
             },
             async editproductstitle(index) {
                 this.dialogproductstitle = true
-                this.formproductstitle = this.abouttitle[index]
+                this.formproductstitle = this.productstitle[index]
             },
             async deleteproductstitle(index) {
-                await axios.delete(`${this.apibe}productsTitle/${this.abouttitle[index].id}`)
+                await axios.delete(`${this.apibe}productsTitle/${this.productstitle[index].id}`)
                     .then(res => {
-                        this.abouttitle();
+                        this.getproductstitle();
                     })
             },
-            async saveabouttitle() {
+            async saveproductstitle() {
                 try {
                     if (this.formproductstitle.id != undefined) {
-                        await axios.put(`${this.apibe}productsTitle/${this.formproductstitle.id}`, this.formproductstitle, {
-                                headers: {
-                                    'Content-Type': 'multipart/form-data',
-                                    Authorization: `Bearer ${this.$store.state.token}`
-                                },
-                            })
+                        await axios.put(`${this.apibe}productsTitle/${this.formproductstitle.id}`, this
+                                .formproductstitle, {
+                                    headers: {
+                                        'Content-Type': 'multipart/form-data',
+                                        Authorization: `Bearer ${this.$store.state.token}`
+                                    },
+                                })
                             .then(res => {
                                 this.getproductstitle();
                                 this.dialogproductstitle = false
@@ -196,57 +198,65 @@
                                 this.dialogproductstitle = false
                             })
                     }
+                    this.formproductstitle = {
+                        judul: '',
+                        subtitle: ''
+                    }
                 } catch (error) {
                     console.log(error)
                 }
             },
 
             // API About
-            async getabout() {
-                await axios.get(`${this.apibe}about`)
+            async getproducts() {
+                await axios.get(`${this.apibe}product`)
                     .then(res => {
-                        this.about = res.data
+                        this.products = res.data
                     })
             },
-            async editabout(index) {
-                this.dialogabout = true
-                this.formabout = this.about[index]
+            async editproducts(index) {
+                this.dialogproducts = true
+                this.formproducts = this.products[index]
             },
-            async deleteabout(index) {
-                await axios.delete(`${this.apibe}about/${this.about[index].id}`, {
+            async deleteproducts(index) {
+                await axios.delete(`${this.apibe}product/${this.products[index].id}`, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             Authorization: `Bearer ${this.$store.state.token}`
                         },
                     })
                     .then(res => {
-                        this.getabout();
+                        this.getproducts();
                     })
             },
             async saveabout() {
                 try {
-                    if (this.formabout.id != undefined) {
-                        await axios.put(`${this.apibe}about/${this.formabout.id}`, this.formabout, {
+                    if (this.formproducts.id != undefined) {
+                        await axios.put(`${this.apibe}product/${this.formproducts.id}`, this.formproducts, {
                                 headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
                                 },
                             })
                             .then(res => {
-                                this.getabout();
-                                this.dialogabout = false
+                                this.getproducts();
+                                this.dialogproducts = false
                             })
                     } else {
-                        await axios.post(`${this.apibe}titleAbout`, this.formabout, {
+                        await axios.post(`${this.apibe}product`, this.formproducts, {
                                 headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
                                 },
                             })
                             .then(res => {
-                                this.getabout();
-                                this.dialogabout = false
+                                this.getproducts();
+                                this.dialogproducts = false
                             })
+                    }
+                    this.formproducts = {
+                        title: '',
+                        subtitle: ''
                     }
                 } catch (error) {
                     console.log(error)

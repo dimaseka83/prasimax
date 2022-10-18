@@ -120,13 +120,13 @@
                             if (res.status == 200) {
                                 this.dialoginformationtitle = false
                                 this.getInformationTitle()
-                                this.forminformationtitle = {
-                                    judul: '',
-                                    subtitle: '',
-                                }
                             }
                         })
                     }
+                                                    this.forminformationtitle = {
+                                    judul: '',
+                                    subtitle: '',
+                                }
                 } catch (error) {
                     console.log(error)
                 }

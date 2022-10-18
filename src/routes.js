@@ -14,6 +14,8 @@ import HomeAdmin from './page/Admin/Home.vue';
 import AboutAdmin from './page/Admin/About.vue';
 import InformationTitleAdmin from './page/Admin/Information.vue';
 import ProductsAdmin from './page/Admin/Products.vue';
+import TechnicalAdmin from './page/Admin/Technical.vue';
+import ServiceAdmin from './page/Admin/Service.vue';
 
 
 const routes = [
@@ -78,6 +80,16 @@ const routes = [
     path: '/admin/products',
     component: ProductsAdmin,
     name: 'ProductsAdmin'
+  },
+  {
+    path: '/admin/technical',
+    component: TechnicalAdmin,
+    name: 'TechnicalAdmin'
+  },
+  {
+    path: '/admin/service',
+    component: ServiceAdmin,
+    name: 'ServiceAdmin'
   }
 ];
 

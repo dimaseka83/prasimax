@@ -2,14 +2,14 @@
     <v-app>
         <navigation-admin />
         <v-card class="my-16">
-            <v-data-table :headers="headercarousel" :items="carousel">
-                <template v-slot:item.image="data">
+            <v-data-table :headers="headertechnical" :items="technical">
+                <!-- <template v-slot:item.image="data">
                     <v-img :src="`${assets}${data.item.image}`" width="100"></v-img>
-                </template>
+                </template> -->
                 <template v-slot:item.action="data">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
-                            <v-btn icon v-on="on" @click="editcarousel(data.index)">
+                            <v-btn icon v-on="on" @click="editTechnical(data.index)">
                                 <v-icon>mdi-pencil</v-icon>
                             </v-btn>
                         </template>
@@ -17,7 +17,7 @@
                     </v-tooltip>
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
-                            <v-btn icon v-on="on" @click="deletecarousel(data.index)">
+                            <v-btn icon v-on="on" @click="deleteTechnical(data.index)">
                                 <v-icon>mdi-delete</v-icon>
                             </v-btn>
                         </template>
@@ -26,25 +26,26 @@
                 </template>
                 <template v-slot:top>
                     <v-toolbar>
-                        <v-toolbar-title>Carousel <span class="subtitle-2 text-disabled">(Gambar harus svg)</span>
+                        <v-toolbar-title>Technical 
+                            <!-- <span class="subtitle-2 text-disabled">(Gambar harus svg)</span> -->
                         </v-toolbar-title>
                         <v-spacer></v-spacer>
-                        <v-dialog v-model="dialogcarousel" max-width="500">
+                        <v-dialog v-model="dialogtechnical" max-width="500">
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn color="primary" class="mb-2" v-bind="attrs" v-on="on">Tambah</v-btn>
                             </template>
                             <v-card>
-                                <v-card-title>Buat Carousel Baru</v-card-title>
+                                <v-card-title>Buat Technical Baru</v-card-title>
                                 <v-card-text>
-                                    <v-text-field label="Title" v-model="formcarousel.title"></v-text-field>
-                                    <v-text-field label="Description" v-model="formcarousel.subtitle"></v-text-field>
-                                    <v-file-input accept="image/*" v-model="formcarousel.image" label="Image">
-                                    </v-file-input>
+                                    <v-text-field label="Title" v-model="formtechnical.title"></v-text-field>
+                                    <v-text-field label="Description" v-model="formtechnical.subtitle"></v-text-field>
+                                    <!-- <v-file-input accept="image/*" v-model="formtechnical.image" label="Image"> -->
+                                    <!-- </v-file-input> -->
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
-                                    <v-btn color="blue" text @click="dialogcarousel = false">Cancel</v-btn>
-                                    <v-btn color="blue" text @click="savecarousel">Save</v-btn>
+                                    <v-btn color="blue" text @click="dialogtechnical = false">Cancel</v-btn>
+                                    <v-btn color="blue" text @click="saveTechnical">Save</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
@@ -55,19 +56,19 @@
     </v-app>
 </template>
 <script>
-    import mix from '@/mixins/mix'
-    import NavigationAdmin from '@/components/Admin/Navigation.vue'
-    import axios from 'axios'
-    export default {
+import mix from '@/mixins/mix'
+import NavigationAdmin from '@/components/Admin/Navigation.vue'
+import axios from 'axios'
+export default {
         mixins: [mix],
         components: {
             NavigationAdmin
         },
         data() {
             return {
-                dialogcarousel: false,
-                carousel: [],
-                headercarousel: [{
+                dialogtechnical: false,
+                technical: [],
+                headertechnical: [{
                         text: 'Title',
                         value: 'title'
                     },
@@ -75,16 +76,16 @@
                         text: 'Subtitle',
                         value: 'subtitle'
                     },
-                    {
-                        text: 'Image',
-                        value: 'image'
-                    },
+                    // {
+                    //     text: 'Image',
+                    //     value: 'image'
+                    // },
                     {
                         text: 'Action',
                         value: 'action'
                     },
                 ],
-                formcarousel: {
+                formtechnical: {
                     title: '',
                     subtitle: '',
                     image: [],
@@ -92,76 +93,72 @@
             }
         },
         created() {
-            this.getCarousel()
+            this.getTechnical()
         },
         methods: {
-            async getCarousel() {
+            async getTechnical() {
                 try {
-                    await axios.get(`${this.apibe}carousel`)
+                    await axios.get(`${this.apibe}technical`)
                         .then(res => {
-                            this.carousel = res.data
+                            this.technical = res.data
                         })
                 } catch (error) {
                     console.log(error)
                 }
             },
-            async savecarousel() {
+            async saveTechnical(){
                 try {
-                    if(this.formcarousel.id != undefined){
-                        await axios.put(`${this.apibe}carousel/${this.formcarousel.id}`, this.formcarousel, {
+                    if(this.formtechnical.id != undefined){
+                        await axios.put(`${this.apibe}technical/${this.formtechnical.id}`, this.formtechnical, {
                             headers: {
                                 'Content-Type': 'multipart/form-data',
                                 Authorization: `Bearer ${this.$store.state.token}`
                             },
                         })
                         .then(res => {
-                            console.log(res)
-                            this.dialogcarousel = false
-                            this.getCarousel()
+                            this.getTechnical()
+                            this.dialogtechnical = false
                         })
                     }else{
-                        await axios.post(`${this.apibe}carousel`, this.formcarousel, {
+                        await axios.post(`${this.apibe}technical`, this.formtechnical, {
                             headers: {
                                 'Content-Type': 'multipart/form-data',
                                 Authorization: `Bearer ${this.$store.state.token}`
                             },
                         })
                         .then(res => {
-                            if (res.status == 200) {
-                                this.dialogcarousel = false
-                                this.getCarousel()
-                            }
+                            this.getTechnical()
+                            this.dialogtechnical = false
                         })
                     }
-                                                    this.formcarousel = {
-                                    title: '',
-                                    subtitle: '',
-                                    image: [],
-                                }
+                    this.formtechnical = {
+                        title: '',
+                        subtitle: '',
+                        image: [],
+                    }
                 } catch (error) {
                     console.log(error)
                 }
             },
-            async editcarousel(index) {
-                this.formcarousel = null
-                this.formcarousel = this.carousel[index];
-                this.dialogcarousel = true
+            editTechnical(item){
+                this.formtechnical = this.technical[item];
+                this.dialogtechnical = true
             },
-            async deletecarousel(index){
+            async deleteTechnical(item){
                 try {
-                    await axios.delete(`${this.apibe}carousel/${this.carousel[index].id}`, {
-                            headers: {
-                                'Content-Type': 'multipart/form-data',
-                                Authorization: `Bearer ${this.$store.state.token}`
-                            },
-                        })
+                    await axios.delete(`${this.apibe}technical/${this.technical[item].id}`, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            Authorization: `Bearer ${this.$store.state.token}`
+                        },
+                    })
                     .then(res => {
-                        this.getCarousel()
+                        this.getTechnical()
                     })
                 } catch (error) {
                     console.log(error)
                 }
             }
         },
-    }
+}
 </script>

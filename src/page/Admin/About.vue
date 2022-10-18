@@ -168,7 +168,7 @@
             async deleteabouttitle(index) {
                 await axios.delete(`${this.apibe}titleAbout/${this.abouttitle[index].id}`)
                     .then(res => {
-                        this.abouttitle();
+                        this.getabouttitle();
                     })
             },
             async saveabouttitle() {
@@ -196,6 +196,10 @@
                                 this.dialogabouttitle = false
                             })
                     }
+                                                    this.formabout = {
+                                    title: '',
+                                    subtitle: ''
+                                }
                 } catch (error) {
                     console.log(error)
                 }
@@ -237,7 +241,7 @@
                                 this.dialogabout = false
                             })
                     } else {
-                        await axios.post(`${this.apibe}titleAbout`, this.formabout, {
+                        await axios.post(`${this.apibe}about`, this.formabout, {
                                 headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
@@ -248,6 +252,10 @@
                                 this.dialogabout = false
                             })
                     }
+                                                    this.formabout = {
+                                    title: '',
+                                    subtitle: ''
+                                }
                 } catch (error) {
                     console.log(error)
                 }
