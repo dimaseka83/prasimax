@@ -11,6 +11,9 @@ import ResetPassword from './page/Guest/ResetPassword.vue';
 
 // Admin
 import HomeAdmin from './page/Admin/Home.vue';
+import AboutAdmin from './page/Admin/About.vue';
+import InformationTitleAdmin from './page/Admin/Information.vue';
+import ProductsAdmin from './page/Admin/Products.vue';
 
 
 const routes = [
@@ -60,6 +63,21 @@ const routes = [
     path: '/admin',
     component: HomeAdmin,
     name: 'HomeAdmin',
+  },
+  {
+    path: '/admin/about',
+    component: AboutAdmin,
+    name: 'AboutAdmin'
+  },
+  {
+    path: '/admin/information',
+    component: InformationTitleAdmin,
+    name: 'InformationTitle'
+  },
+  {
+    path: '/admin/products',
+    component: ProductsAdmin,
+    name: 'ProductsAdmin'
   }
 ];
 

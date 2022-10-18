@@ -30,6 +30,21 @@ export default {
                     icon: 'mdi-home',
                     href: '/admin'
                 },
+                {
+                    title: 'About',
+                    icon: 'mdi-account',
+                    href: '/admin/about'
+                },
+                {
+                    title: 'Information',
+                    icon: 'mdi-information',
+                    href: '/admin/information'
+                },
+                {
+                    title: 'Products',
+                    icon: 'mdi-package-variant',
+                    href: '/admin/products'
+                }
             ]
         }
     },
