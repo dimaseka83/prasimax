@@ -70,7 +70,19 @@ export default {
     changeLocale () {
       console.log(this.$vuetify.lang.current = 'hu');
     },
-
+    logout() {
+      this.$store.commit('logout');
+      this.$swal({
+          title: 'Berhasil',
+          text: 'Anda berhasil logout',
+          icon: 'success',
+          timer: 2000,
+          timerProgressBar: true,
+          showConfirmButton: false,
+      }).then(() => {
+          this.$router.push('/');
+      });
+  }
   },
   computed: {
     height() {

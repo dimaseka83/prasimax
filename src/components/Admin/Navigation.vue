@@ -3,12 +3,12 @@
         <v-app-bar absolute color="blue" elevate-on-scroll scroll-target="#scroll-techniques-7">
             <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
             <v-spacer></v-spacer>
-            <!-- <v-btn icon @click="logout">
+            <v-btn icon @click="logout">
                 <v-icon>mdi-logout</v-icon>
-            </v-btn> -->
+            </v-btn>
         </v-app-bar>
         <v-navigation-drawer v-model="drawer" absolute temporary>
-            <v-list nav dense v-for="(men, i) in menu" :key="'menu' + i">
+            <v-list nav dense v-for="(men, i) in menus" :key="'menu' + i">
                 <v-list-item active-class="blue--text text--accent-4" @click="menuklik(men.href)">
                     <v-list-item-icon>
                         <v-icon>{{ men.icon }}</v-icon>
@@ -20,11 +20,13 @@
     </div>
 </template>
 <script>
+import mixin from '@/mixins/mix';
 export default {
+    mixins: [mixin],
     data() {
         return {
             drawer: false,
-            menu: [
+            menus: [
                 {
                     title: 'Home',
                     icon: 'mdi-home',
