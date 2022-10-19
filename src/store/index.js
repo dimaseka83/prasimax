@@ -16,6 +16,8 @@ export default {
             state.token = null;
             state.user = [];
             state.isLogged = false;
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
         },
     },
 }

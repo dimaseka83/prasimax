@@ -338,6 +338,8 @@
                                     password: '',
                                 }
                             } else {
+                                localStorage.setItem('token', response.data.token);
+                                localStorage.setItem('user', JSON.stringify(response.data.user));
                                 this.$store.commit('setToken', response.data.token);
                                 this.$store.commit('setUser', response.data.user);
                                 switch (response.data.role) {

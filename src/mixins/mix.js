@@ -63,6 +63,9 @@ export default {
       assets: 'https://prasimax.com/company-be',
     };
   },
+  mounted() {
+    this.checktoken();
+  },
   methods: {
     route(link){
       this.$router.push(link);
@@ -82,6 +85,12 @@ export default {
       }).then(() => {
           this.$router.push('/');
       });
+  },
+  checktoken() {
+    if(localStorage.getItem('token') != undefined){
+      this.$store.commit('setToken', localStorage.getItem('token'));
+      this.$store.commit('setUser', JSON.parse(localStorage.getItem('user')));
+    }
   }
   },
   computed: {
