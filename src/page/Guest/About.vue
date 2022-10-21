@@ -145,7 +145,7 @@
                 dokumen di bawah ini dengan syarat registrasi dan login terlebih dahulu.</p>
             <div class="d-flex justify-space-between" v-if="$store.state.isLogged">
                 <div class="pa-2 font-weight-bold text-decoration-underline title"
-                    v-for="(document, idx) in documents" :key="idx"><a @click="download(document.doc)">{{ document.name }}</a></div>
+                    v-for="(document, idx) in documents" :key="idx"><a :href="`${assets}${document.loc}`" rel="noopener noreferrer" download>{{ document.name }}</a></div>
             </div>
             <p v-else class="title">Silahkan Login atau Register dahulu jika ingin mengunduh dokumen perusahaan</p>
             <v-divider class="mt-10"></v-divider>
@@ -284,19 +284,19 @@
                 documents: [
                     {
                         name: "Panduan Merek PRASIMAX",
-                        loc: "@/assets/documents/brand.pdf"
+                        loc: "/brand.pdf"
                     },
                     {
                         name: "File citra merek PRASIMAX",
-                        loc: "@/assets/documents/logo.jpg"
+                        loc: "/800px-Prasimax_Logo.png"
                     },
                     {
                         name: "Nomor Pokok Wajib Pajak",
-                        loc: "@/assets/documents/npwp.pdf"
+                        loc: "/npwp.pdf"
                     },
                     {
                         name: "Nomor Induk Berusaha (OSS)",
-                        loc: "@/assets/documents/nib.pdf"
+                        loc: "/nib.pdf"
                     },
                 ]
             };
