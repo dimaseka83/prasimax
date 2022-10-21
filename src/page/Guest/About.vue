@@ -2,24 +2,18 @@
     <v-app>
         <NavigationGuest />
         <!-- Page 1 -->
-        <v-carousel cycle :height="height" hide-delimiter-background show-arrows-on-hover>
-            <v-carousel-item v-for="(slide, i) in slides" :key="i + 'slide'">
-                <v-img gradient="to bottom right, rgba(0, 102, 204, 1), rgba(0, 204, 255, 1)" :height="height">
-                    <v-container>
-                        <v-row class="fill-height mt-10 white--text">
-                            <v-col>
-                                <h1 class="text-h2 font-weight-bold">{{slide.title}}</h1>
-                                <p class="title mt-10">{{slide.text}}</p>
-                                <v-btn color="#42A5F5" dark rounded>Baca Lebih Lanjut</v-btn>
-                            </v-col>
-                            <v-col>
-                                <v-img src="@/assets/images/dummy/carousel.svg"></v-img>
-                            </v-col>
-                        </v-row>
-                    </v-container>
-                </v-img>
-            </v-carousel-item>
-        </v-carousel>
+        <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/tentangkamiheader.svg" :height="height">
+        <v-container class="white--text">
+            <v-row class="fill-height mt-16">
+                <v-col cols="8">
+                    <h1 class="display-4 text-uppercase font-weight-bold">hubungi kami</h1>
+                <p class="title mt-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis similique
+                  beatae dicta, consectetur assumenda doloremque fugiat in! Veritatis ipsa ab odio ratione aliquid ipsam
+                  natus. Ea debitis reiciendis eligendi tempore.</p>
+                </v-col>
+            </v-row>
+        </v-container>
+    </v-img>
         <!-- Page 2 -->
         <v-container>
             <v-card color="light-blue lighten-1" elevation="10" class="my-16 pa-10" rounded="xl">

@@ -11,7 +11,6 @@
               <v-col>
                 <h1 class="text-h2 font-weight-bold">{{slide.title}}</h1>
                 <p class="title mt-10">{{slide.subtitle}}</p>
-                <v-btn color="#42A5F5" dark rounded>Baca Lebih Lanjut</v-btn>
               </v-col>
               <v-col>
                 <!-- <v-img :src="`${assets}${image}`"></v-img> -->
@@ -149,23 +148,45 @@
     mixins: [mix, componentsmix],
     data() {
         return {
-            slides: [],
+            // slides: [],
+            slides: [
+              {
+                title: 'Internet of Things',
+                subtitle: 'Di era Industri 4.0, peran manusia sudah tergantikan oleh perangkat dan periferal elektronik yang saling terinterkoneksi satu sama lain melalui platform dan cloud. Apakah perangkat tersebut merupakan sensor, probing maupun aktuator, transmitter atau sejenisnya.',
+                image: "/upload/carousel/image-1666013005591slide1.svg"
+              },
+              {
+                title: 'Electric Vehicle',
+                subtitle: 'Seriring perkembangan dan transformasi digital yang membawa perubahan perilaku manusia yang ingin mencapai tingkat kehidupan yang lebih baik dan bersih dari kotoran emisi karbon, EV (electrical vehicle) menjadi jawaban. Namun ekosistem EV adalah luas. Mulai dari batere dan BMS nya, mesin listrik sebagai powertrain, instrumen elektronik dan mekatronik dan keterlibatan IoT pun menjadi bagian atau part yang membentuk Smart EV.',
+                image: "/upload/carousel/image-1666013086839slide2.svg"
+              },
+              {
+                title: 'Mobile Device Solution',
+                subtitle: 'Perkembangan teknologi komunikasi dan informasi yang sangat pesat dalam 2 dekade terakhir sudah melahirkan teknologi Long Term Evolution generasi ke 5 atau LTE 5G. Sungguhpun 4G LTE masih belum terlalu luas digunakan oleh masyarakat. Perkembangan tersebut ditunjang dengan pertumbuhan populasi produk perangkat komunikasi seperti Smartphone, IoT module, Smart Module berbasis 4G LTE, NB-IoT, LoRa dan WiFi versi 6, yang mampu mentransportasi volume data dengan pita yang lebih lebar. Kami sudah memiliki pengalaman sebagai penyedia solusi device solution berbasis 4G LTE, WiFi, ZigBee dan LoRa.',
+                image: "/upload/carousel/image-1666013159317slide3.svg"
+              },
+              {
+                title: 'Kecerdasan Artifisial (Artificial Intelligence)',
+                subtitle: 'Teknologi kecerdasan artifisial telah memberikan banyak solusi dan inovasi yang berbasis metode neural network dan machine learning. Pengalaman kami dalam teknologi kecerdasan artifisial ini masih fokus pada solusi computer vision dan pengenalan suara cerdas.',
+                image: "/upload/carousel/image-1666013306474slide4.svg"
+              }
+            ]
         };
     },
     created(){
-      this.getCarousel();
+      // this.getCarousel();
     },
     methods: {
-            async getCarousel() {
-                try {
-                    await axios.get(`${this.apibe}carousel`)
-                        .then(res => {
-                            this.slides = res.data
-                        })
-                } catch (error) {
-                    console.log(error)
-                }
-            },
+            // async getCarousel() {
+            //     try {
+            //         await axios.get(`${this.apibe}carousel`)
+            //             .then(res => {
+            //                 this.slides = res.data
+            //             })
+            //     } catch (error) {
+            //         console.log(error)
+            //     }
+            // },
     },
 };
 </script>
