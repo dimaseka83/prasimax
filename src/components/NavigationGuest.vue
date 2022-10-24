@@ -345,8 +345,9 @@
                                 switch (response.data.role) {
                                     case "admin":
                                         this.$router.push({
-                                            name: 'HomeAdmin'
-                                        });                                        
+                                            name: 'HomeAdmin',
+                                        });                  
+                                        localStorage.setItem('role', 'admin');
                                         break;
                                     default:
                                         this.$swal({

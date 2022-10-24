@@ -17,7 +17,8 @@ import ProductsAdmin from './page/Admin/Products.vue';
 import TechnicalAdmin from './page/Admin/Technical.vue';
 import ServiceAdmin from './page/Admin/Service.vue';
 
-
+// Middleware
+import auth from './middleware/auth';
 const routes = [
   {
     path: '/',
@@ -65,37 +66,86 @@ const routes = [
     path: '/admin',
     component: HomeAdmin,
     name: 'HomeAdmin',
+    meta: {
+      middleware: auth,
+    }
   },
   {
     path: '/admin/about',
     component: AboutAdmin,
-    name: 'AboutAdmin'
+    name: 'AboutAdmin',
+    meta: {
+      middleware: auth,
+    }
   },
   {
     path: '/admin/information',
     component: InformationTitleAdmin,
-    name: 'InformationTitle'
+    name: 'InformationTitle',
+    meta: {
+      middleware: auth,
+    }
   },
   {
     path: '/admin/products',
     component: ProductsAdmin,
-    name: 'ProductsAdmin'
+    name: 'ProductsAdmin',
+    meta: {
+      middleware: auth,
+    }
   },
   {
     path: '/admin/technical',
     component: TechnicalAdmin,
-    name: 'TechnicalAdmin'
+    name: 'TechnicalAdmin',
+    meta: {
+      middleware: auth,
+    }
   },
   {
     path: '/admin/service',
     component: ServiceAdmin,
-    name: 'ServiceAdmin'
+    name: 'ServiceAdmin',
+    meta: {
+      middleware: auth,
+    }
   }
 ];
 
 const router = new VueRouter({
   routes,
   mode: 'hash',
+});
+
+function nextFactory(context, middleware, index) {
+  const subsequentMiddleware = middleware[index];
+  // If no subsequent middleware exists,
+  // the default next() callback is returned.
+  if (!subsequentMiddleware) return context.next;
+  return (...parameters) => {
+    // Otherwise, call the subsequent middleware with a new
+    // next() callback.
+    context.next(...parameters);
+    const nextMiddleware = nextFactory(context, middleware, index + 1);
+    subsequentMiddleware({...context, next: nextMiddleware});
+  };
+}
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.middleware) {
+    const middleware = Array.isArray(to.meta.middleware)
+      ? to.meta.middleware
+      : [to.meta.middleware];
+    const context = {
+      from,
+      next,
+      router,
+      to,
+    };
+    const nextMiddleware = nextFactory(context, middleware, 1);
+    return middleware[0]({...context, next: nextMiddleware});
+  }
+  return next();
 });
 
 export default router;

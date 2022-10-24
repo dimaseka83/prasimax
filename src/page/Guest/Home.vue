@@ -52,7 +52,7 @@
                   <v-container class="pa-16">
                     <p class="display-3 font-weight-bold my-5">Produk</p>
                     <p class="subtitle-2">Kami menyediakan pilihan kepada Anda dengan skema produksi ODM (Original Design Manufacturing), OEM (Original Equipment Manufacturing) ataupun Contract Manufacturing agar ide produk Anda dapat dikembangkan dan diproduksi oleh kami.</p>
-                      <v-btn color="white" large rounded class="blue--text mt-10">Baca Lebih Lanjut</v-btn>
+                      <v-btn color="white" large rounded class="blue--text mt-10" to="/product">Baca Lebih Lanjut</v-btn>
                   </v-container>
                   </v-card>
                 </v-list-item-content>

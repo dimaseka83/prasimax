@@ -18,6 +18,7 @@ export default {
             state.isLogged = false;
             localStorage.removeItem('token');
             localStorage.removeItem('user');
+            localStorage.removeItem('role');
         },
     },
 }

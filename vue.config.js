@@ -26,4 +26,9 @@ module.exports = {
       chunks: ['chunk-vendors', 'chunk-common', 'index'],
     },
   },
+  configureWebpack: {
+    output: {
+      filename: '[name].[hash].bundle.js',
+    }
+  },
 }
