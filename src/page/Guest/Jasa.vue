@@ -1,60 +1,83 @@
 <template>
-    <v-app>
+  <v-app>
     <NavigationGuest />
-        <!-- Page 1 -->
-        <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/jasalanding.svg" :height="height">
-        <v-container class="white--text">
-            <v-row class="fill-height mt-16 text-center">
-                <v-col>
-                    <h1 class="display-4 text-capitalize font-weight-bold">jasa</h1>
-                <p class="title mt-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis similique
-                  beatae dicta, consectetur assumenda doloremque fugiat in! Veritatis ipsa ab odio ratione aliquid ipsam
-                  natus. Ea debitis reiciendis eligendi tempore.</p>
-                </v-col>
-            </v-row>
-        </v-container>
+    <!-- Page 1 -->
+    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
+      src="@/assets/images/static/jasalanding.svg" :height="height">
+      <v-container class="white--text">
+        <v-row class="fill-height mt-16 text-center">
+          <v-col>
+            <h1 class="display-4 text-capitalize font-weight-bold">jasa</h1>
+            <p class="title mt-10">Sebagai perusahaan dengan DNA teknologi digital, selain portofolio produk,
+              kami juga menyediakan jasa atau services untuk mengakomodasi permintaan
+              pelanggan atau klien kami. Jasa yang kami sediakan mencakup jasa konsultasi,
+              jasa desain Desain Industri, Desain Mekanikal, Desain Skematik, Desain PCB
+              dan Pengembangan Software.</p>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-img>
     <!-- Page 2 -->
-    <v-container class="my-16 blue--text">
-        <v-row>
-            <v-col cols="6">
-                <h1 class="display-1 font-weight-bold mb-16 text-uppercase">desain dan pengembangan perangkat elektronik</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos dignissimos sit, voluptas quia quasi voluptatibus, nobis vitae accusantium harum doloremque rerum ad fugiat debitis, ex deserunt. Atque voluptates itaque doloremque?</p>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos dignissimos sit, voluptas quia quasi voluptatibus, nobis vitae accusantium harum doloremque rerum ad fugiat debitis, ex deserunt. Atque voluptates itaque doloremque?</p>
-            </v-col>
-            <v-col cols="6">
-                <v-card elevation="10" rounded="xl">
-                    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/dummy/board.jpg" :height="height - 100"></v-img>
-                </v-card>
-            </v-col>
-        </v-row>
+    <div v-for="(row, idx) in rows" :key="idx">
+    <v-container class="my-16 blue--text" v-if="idx % 2 === 0">
+      <v-row>
+        <v-col cols="6">
+          <h1 class="display-1 font-weight-bold mb-16 text-uppercase">{{ row.title }}</h1>
+          <p>{{row.text}}</p>
+        </v-col>
+        <v-col cols="6">
+          <v-card elevation="10" rounded="xl">
+            <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
+              src="@/assets/images/dummy/board.jpg" :height="height - 100"></v-img>
+          </v-card>
+        </v-col>
+      </v-row>
     </v-container>
     <!-- Page 3 -->
-    <v-container class="my-16">
-          <v-card flat>
-            <v-list two-line>
-              <v-list-item>
-                <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
-                <v-list-item-content>
-                  <v-card flat class="pa-16" color="blue" dark :height="height">
-                    <p class="display-1 font-weight-bold">Desain dan Pengembangan Software</p>
-                    <p class="subtitle mt-10">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Illum laborum, in ad
-                      minus odit distinctio eligendi doloribus tempora, sed eum quas obcaecati animi saepe error itaque
-                      maxime enim. Exercitationem, commodi? Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus, iure modi odit ipsa est aliquam dolore dolorum, quidem omnis, totam odio sapiente nostrum sequi incidunt nulla. Impedit molestias maxime sed.</p>
-                  </v-card>
-                </v-list-item-content>
-              </v-list-item>
-            </v-list>
-          </v-card>
+    <v-container class="my-16" v-if="idx % 2 === 1">
+      <v-card flat>
+        <v-list two-line>
+          <v-list-item>
+            <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
+            <v-list-item-content>
+              <v-card flat class="pa-16" color="blue" dark :height="height">
+                <p class="display-1 font-weight-bold">{{ row.title }}</p>
+                <p class="subtitle mt-10">{{ row.text }}</p>
+              </v-card>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-card>
     </v-container>
+    </div>
     <FooterGuest />
-    </v-app>
+  </v-app>
 </template>
 <script>
-import mix from '@/mixins/mix';
-import componentsmix from '@/mixins/componentsmix';
-export default {
+  import mix from '@/mixins/mix';
+  import componentsmix from '@/mixins/componentsmix';
+  export default {
     mixins: [mix, componentsmix],
-    
-}
+    data() {
+      return {
+        rows: [{
+            title: 'Konsultasi Sistem Integrasi Produk &amp; Pelatihan Teknologi Sistem Embedded, IoT dan AI',
+            text: 'Jasa konsultasi merupakan kekuatan portofolio jasa kami yang terkuat. Pengalaman kami sudah membuktikan bahwa kami pernah mendeliver proyek-proyek jasa konsultasi dan pelatihan untuk vertikal teknologi Sistem Embedded, Internet of Things, Kecerdasan Artifisial dan Kendaraan Listrik.'
+          },
+          {
+            title: 'Desain Industri dan Desain Mekanikal',
+            text: 'Dalam pengembangan produk baru, lingkup jasa desain industri dan desain mekanikal memegang peranan penting.Konsumen pasti akan memberikan kesan pengalaman melalui tampilan eksterior sebuah produk.Desain industri dan desain mekanikal sengaja kami bedakan karena pendekatan dan kompetensi keduanya kontras berbeda.Namun PRASIMAX menerima permintaan desain industri dan desain mekanikal.'
+          },
+          {
+            title: 'Desain Skematik dan Desain PCB',
+            text: 'Inti dari produk teknologi digital adalah sistem elektronik yang meng-enable kemampuan sebuah produk, berupa board elektronik yang disebut PCB. Kami menerima permintaan jasa desain skematik dan jasa desain PCB atau keduanya. Selain itu PRASIMAX juga menyediakan desain contoh atau Reference Design sebuah sistem embedded, Internet of Things atau Kecerdasan Artifisial.'
+          },
+          {
+            title: 'Desain Perangkat Lunak',
+            text: 'Nyawa daripada sebuah produk elektronik digital adalah software yang meng-enable fungsi-fungsi operasional daripada board elektronik atau PCB. PRASIMAX dengan pengalaman di bidang Bare programming, RTOS dan LInux menyediakan jasa programming perangkat lunak sistem embedded.'
+          }
+        ],
+      };
+    },
+  }
 </script>
