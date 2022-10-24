@@ -344,9 +344,6 @@
                                 this.$store.commit('setUser', response.data.user);
                                 switch (response.data.role) {
                                     case "admin":
-                                        this.$router.push({
-                                            name: 'HomeAdmin',
-                                        });                  
                                         localStorage.setItem('role', 'admin');
                                         break;
                                     default:
@@ -366,6 +363,9 @@
                                         });
                                         break;
                                 }
+                                this.$router.push({
+                                    name: 'HomeAdmin',
+                                }); 
                             }
                         });
                     } catch (error) {
