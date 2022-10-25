@@ -22,7 +22,7 @@
     <v-container class="my-16 blue--text" v-if="idx % 2 === 0">
       <v-row>
         <v-col cols="6">
-          <h1 class="display-1 font-weight-bold mb-16 text-uppercase">{{ row.title }}</h1>
+          <h1 class="display-1 font-weight-bold mb-16 text-uppercase" v-html="row.title"></h1>
           <p>{{row.text}}</p>
         </v-col>
         <v-col cols="6">
@@ -41,7 +41,7 @@
             <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
             <v-list-item-content>
               <v-card flat class="pa-16" color="blue" dark :height="height">
-                <p class="display-1 font-weight-bold">{{ row.title }}</p>
+                <p class="display-1 font-weight-bold" v-html="row.title"></p>
                 <p class="subtitle mt-10">{{ row.text }}</p>
               </v-card>
             </v-list-item-content>
