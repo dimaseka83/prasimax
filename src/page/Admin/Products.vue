@@ -32,9 +32,11 @@
                             <v-card>
                                 <v-card-title>Buat / Edit Products Title</v-card-title>
                                 <v-card-text>
-                                    <v-text-field label="Title" v-model="formproductstitle.judul"></v-text-field>
-                                    <v-text-field label="Description" v-model="formproductstitle.subtitle">
+                                    <v-text-field label="Nama Produk" v-model="formproductstitle.name"></v-text-field>
+                                    <v-text-field label="Kategori" v-model="formproductstitle.subtitle">
                                     </v-text-field>
+                                    <v-file-input accept="image/*" v-model="formproductstitle.image" label="Image">
+                                    </v-file-input>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
@@ -50,6 +52,9 @@
 
         <v-card class="my-16">
             <v-data-table :headers="headerproducts" :items="products">
+                <template v-slot:item.image="data">
+                    <v-img :src="`${assets}${data.item.image}`" width="100"></v-img>
+                </template>
                 <template v-slot:item.action="data">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
@@ -79,13 +84,17 @@
                             <v-card>
                                 <v-card-title>Buat / Edit About</v-card-title>
                                 <v-card-text>
-                                    <v-text-field label="Title" v-model="formproducts.title"></v-text-field>
-                                    <v-text-field label="Description" v-model="formproducts.subtitle"></v-text-field>
+                                    <v-text-field label="Nama" v-model="formproducts.name"></v-text-field>
+                                    <v-text-field label="Kategori" v-model="formproducts.category"></v-text-field>
+                                    <v-select label="Status" v-model="formproducts.status" :items="itemspilihan"></v-select>
+                                    <v-text-field label="Keterangan" v-model="formproducts.keterangan"></v-text-field>
+                                    <v-file-input accept="image/*" v-model="formproducts.image" label="Image">
+                                    </v-file-input>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
-                                    <v-btn color="blue" text @click="dialogabout = false">Cancel</v-btn>
-                                    <v-btn color="blue" text @click="saveabout">Save</v-btn>
+                                    <v-btn color="blue" text @click="dialogproducts = false">Cancel</v-btn>
+                                    <v-btn color="blue" text @click="saveproducts">Save</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
@@ -131,12 +140,28 @@
                 dialogproducts: false,
                 products: [],
                 headerproducts: [{
-                        text: 'Title',
-                        value: 'title'
+                        text: 'Image',
+                        value: 'image'
                     },
                     {
-                        text: 'Subtitle',
-                        value: 'subtitle'
+                        text: 'Nama',
+                        value: 'name'
+                    },
+                    {
+                        text: 'Nama',
+                        value: 'name'
+                    },
+                    {
+                        text: 'Kategori',
+                        value: 'category'
+                    },
+                    {
+                        text: 'Status',
+                        value: 'status'
+                    },
+                    {
+                        text: 'Keterangan',
+                        value: 'keterangan'
                     },
                     {
                         text: 'Action',
@@ -144,9 +169,13 @@
                     },
                 ],
                 formproducts: {
-                    title: '',
-                    subtitle: ''
-                }
+                    name: '',
+                    category: '',
+                    status: '',
+                    keterangan: '',
+                    image: [],
+                },
+                itemspilihan: ['Vanced', 'Buyed'],
             }
         },
         created() {
@@ -229,7 +258,7 @@
                         this.getproducts();
                     })
             },
-            async saveabout() {
+            async saveproducts() {
                 try {
                     if (this.formproducts.id != undefined) {
                         await axios.put(`${this.apibe}product/${this.formproducts.id}`, this.formproducts, {
@@ -255,8 +284,11 @@
                             })
                     }
                     this.formproducts = {
-                        title: '',
-                        subtitle: ''
+                        name: '',
+                        category: '',
+                        status: '',
+                        keterangan: '',
+                        image: [],
                     }
                 } catch (error) {
                     console.log(error)

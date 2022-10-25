@@ -6,7 +6,7 @@
         <v-container class="white--text">
             <v-row class="fill-height mt-16">
                 <v-col cols="8">
-                    <h1 class="display-4 text-uppercase font-weight-bold">tentang kami</h1>
+                    <h1 class="display-4 text-uppercase font-weight-bold">tentang prasimax</h1>
                 <p class="title mt-10">Desain, Pengembangan, Pabrikasi adalah lingkup kerja perusahaan kami. Kompetensi desain kami termasuk desain Industrial Design, Mechanical Design dan Desain PCB. Kompetensi Pengembangan kami mencakup pengembangan firmware, software dan uji validasi (validation test). Sedangkan kompetensi Pabrikasi atau manufaktur kami mencakup pabrikasi PCB, PCB Assembly (soldering PCB dengan mesin otomasi) dan Perakitan produk akhir. Pengalaman kami sudah melebihi satu dekade sejak 2010.</p>
                 </v-col>
             </v-row>

@@ -8,7 +8,11 @@
             </v-row>
             <v-row>
                 <v-col>
-                    <p class="subtitle">Kami memberikan solusi, layanan dan produksi bagi Anda yang ingin melengkapi portofolio Anda atau kebutuhan Anda. Bidang teknologi yang kami kuasai adalah embedded system, IoT, Kecerdasan Artifisial, Kendaraan Listrik dan Teknologi Nirkabel lainnya. Kapasitas dan kapabilitas kami didukung oleh penyedia dan prinsipal teknologi global yang sudah sangat dikenal reputasinya.</p>
+                    <p class="subtitle">Kami memberikan solusi, layanan dan produksi bagi Anda yang ingin melengkapi
+                        portofolio Anda atau kebutuhan Anda. Bidang teknologi yang kami kuasai adalah embedded system,
+                        IoT, Kecerdasan Artifisial, Kendaraan Listrik dan Teknologi Nirkabel lainnya. Kapasitas dan
+                        kapabilitas kami didukung oleh penyedia dan prinsipal teknologi global yang sudah sangat dikenal
+                        reputasinya.</p>
                     <p class="display-1 font-weight-bold text-uppercase">alamat</p>
                     <div>
                         <span>Perkantoran Taman Melati Margonda</span><br />
@@ -22,11 +26,13 @@
                     <p class="display-1 font-weight-bold text-capitalize">hubungi kami</p>
                     <p>
                         <span>Technical Support: </span><br />
-                        <a @click="mailto('contact@prasimax.com','Technical%20Support')" style="color:white">contact@prasimax.com</a><br />
+                        <a @click="mailto('contact@prasimax.com','Technical%20Support')"
+                            style="color:white">contact@prasimax.com</a><br />
                     </p>
                     <p>
                         <span>Penjualan dan Kerja Sama Bisnis: </span><br />
-                        <a @click="mailto('sales@prasimax.com','Penjualan%20dan%20Kerja%20Sama%20Bisnis')" style="color:white">sales@prasimax.com</a><br />
+                        <a @click="mailto('sales@prasimax.com','Penjualan%20dan%20Kerja%20Sama%20Bisnis')"
+                            style="color:white">sales@prasimax.com</a><br />
                     </p>
                     <v-row class="mt-16">
                         <v-col md="4" v-for="(social, i) in socials" :key="i + 'social2'">
@@ -50,45 +56,104 @@
                         Dapatkan informasi dan berita terbaru dari perusahaan kami. seperti berita, makalah, dan
                         lain-lain.
                     </p>
-                    <v-text-field dense rounded outlined dark class="rounded-xl" label="alamat email"></v-text-field>
-                    <v-btn class="rounded-xl primary px-16">Langganan</v-btn>
-                    <v-checkbox dark label="Menerima syarat dan ketentuan kebijakan privasi">
+                    <v-form ref="formsubscribe" v-model="formvalidation.valid">
+                        <v-text-field v-model="mailSubs" :rules="formvalidation.email" dense rounded outlined dark
+                            class="rounded-xl" label="alamat email"></v-text-field>
+                        <v-btn @click="isSubscribe" class="rounded-xl primary px-16">Langganan</v-btn>
+                    <v-checkbox v-model="checked" :rules="formvalidation.checked" dark label="Menerima syarat dan ketentuan kebijakan privasi">
                     </v-checkbox>
+                    </v-form>
                 </v-col>
             </v-row>
         </v-container>
         <v-app-bar dense flat dark src="@/assets/images/dummy/rectangle.svg">
             <div class="d-flex">
-                <span class="mr-auto">&copy; PT Prasimax Inovasi Teknologi, 2010 - {{ getYears }}, Hak Cipta dilindungi undang - undang</span>
+                <span class="mr-auto">&copy; PT Prasimax Inovasi Teknologi, 2010 - {{ getYears }}, Hak Cipta dilindungi
+                    undang - undang</span>
             </div>
         </v-app-bar>
     </div>
 </template>
 <script>
-  import mix from '@/mixins/mix';
-export default {
-    mixins: [mix],
-    computed: {
-        getYears(){
-            return new Date().getFullYear();
-        }
-    },
-    methods: {
-        mailto(email,subject){
-            window.location.href = `mailto:${email}?Subject=${subject}`;
-        }
-    },
-}
+    import mix from '@/mixins/mix';
+    import axios from 'axios';
+    export default {
+        mixins: [mix],
+        data() {
+            return {
+                checked: false,
+                mailSubs: '',
+                formvalidation: {
+                    valid: false,
+                    email: [
+                        v => !!v || 'Email tidak boleh kosong',
+                        v => /.+@.+\..+/.test(v) || 'Email harus valid',
+                        v =>
+                        /^([\w-.]+@(?!gmail\.com)(?!yahoo\.com)(?!yahoo\.co.id)(?!hotmail\.com)(?!mail\.ru)(?!yandex\.ru)(?!yandesk\.com)(?!mail\.com)(?!rocketmail\.com)([\w-]+.)+[\w-]{2,4})?$/
+                        .test(v) || 'Email harus menggunakan email perusahaan',
+                    ],
+                    checked: [v => !!v || 'Anda harus menyetujui syarat dan ketentuan'],
+                },
+            }
+        },
+        computed: {
+            getYears() {
+                return new Date().getFullYear();
+            }
+        },
+        methods: {
+            mailto(email, subject) {
+                window.location.href = `mailto:${email}?Subject=${subject}`;
+            },
+            async isSubscribe() {
+                if (this.$refs.formsubscribe.validate()) {
+                    switch (this.checked) {
+                        case true:
+                            try {
+                                await axios.post(`${this.apibe}user/signup?subscribe=${this.mailSubs}`).then(
+                                res => {
+                                    if (res.error != undefined) {
+                                        this.$swal({
+                                            icon: 'error',
+                                            title: 'Oops...',
+                                            text: res.error,
+                                        })
+                                    } else {
+                                        this.$swal({
+                                            icon: 'success',
+                                            title: 'Berhasil',
+                                            text: res.message,
+                                        })
+                                    }
+                                })
+                            } catch (error) {
+                                console.log(error);
+                            }
+                            break;
+
+                        default:
+                            this.$swal({
+                                icon: 'error',
+                                title: 'Oops...',
+                                text: 'Anda belum menyetujui syarat dan ketentuan kebijakan privasi',
+                            })
+                            break;
+                    }
+                }
+            }
+        },
+    }
 </script>
 <style scoped>
-.background-footer{
-    background-color: #2196F3;
-}
+    .background-footer {
+        background-color: #2196F3;
+    }
 
-.background-footer-bottom{
-    background-color: #64B5F6;
-}
-a:hover{
-    text-decoration: underline;
-}
+    .background-footer-bottom {
+        background-color: #64B5F6;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
 </style>
