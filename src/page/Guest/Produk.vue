@@ -35,7 +35,7 @@
             <v-col cols="4" v-for="(product, idx) in productsFilter" :key="idx">
                 <v-hover v-slot="{hover}">
                 <v-card rounded="xl" elevation="12">
-                    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" :src="`${assets}${product.image}`" :height="height-300">
+                    <v-img :src="`${assets}${product.image}`" :height="height-300">
                         <v-expand-transition>
                             <div v-if="hover" class="d-flex flex-column justify-center align-center" style="height: 100%">
                                 <!-- Vanced -->
