@@ -61,7 +61,7 @@
     data() {
       return {
         rows: [{
-            title: 'Konsultasi Sistem Integrasi Produk &amp; Pelatihan Teknologi Sistem Embedded, IoT dan AI',
+            title: 'Konsultasi, Sistem Integrasi Produk &amp; Pelatihan Teknologi Sistem Embedded, IoT dan AI',
             text: 'Jasa konsultasi merupakan kekuatan portofolio jasa kami yang terkuat. Pengalaman kami sudah membuktikan bahwa kami pernah mendeliver proyek-proyek jasa konsultasi dan pelatihan untuk vertikal teknologi Sistem Embedded, Internet of Things, Kecerdasan Artifisial dan Kendaraan Listrik.'
           },
           {
