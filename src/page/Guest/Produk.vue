@@ -32,14 +32,14 @@
     </v-container>
     <v-container class="my-16">
         <v-row>
-            <v-col cols="4" v-for="(product, idx) in productsFilter" :key="idx">
+            <v-col cols="4" v-for="(product, idx) in productsFilter" :key="idx" class="d-flex align-stretch">
                 <v-hover v-slot="{hover}">
                 <v-card rounded="xl" elevation="12">
                     <v-img :src="`${assets}${product.image}`" :height="height-300">
                         <v-expand-transition>
                             <div v-if="hover" class="d-flex flex-column justify-center align-center" style="height: 100%">
                                 <!-- Vanced -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="58.023" height="49.558" viewBox="0 0 58.023 49.558" v-if="product.status == 'Vanced'">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="58.023" height="49.558" viewBox="0 0 58.023 49.558" v-if="product.status == 'Vacant'">
                                     <path id="Path_335" data-name="Path 335" d="M53.041,14.331l-1.764,30a6.349,6.349,0,0,1-6.34,5.976H14.587a6.349,6.349,0,0,1-6.34-5.976l-1.764-30m16.93,11.64,6.349,6.349m0,0,6.349,6.349M29.762,32.32l6.349-6.349M29.762,32.32l-6.349,6.349M5.424,14.331H54.1a3.176,3.176,0,0,0,3.174-3.174V6.924A3.176,3.176,0,0,0,54.1,3.75H5.424A3.176,3.176,0,0,0,2.25,6.924v4.233A3.176,3.176,0,0,0,5.424,14.331Z" transform="translate(-0.75 -2.25)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
                                 </svg>
                                 <!-- Buyed -->

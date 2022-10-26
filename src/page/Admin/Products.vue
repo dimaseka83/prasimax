@@ -88,7 +88,8 @@
                                 <v-card-title>Buat / Edit About</v-card-title>
                                 <v-card-text>
                                     <v-text-field label="Nama" v-model="formproducts.name"></v-text-field>
-                                    <v-text-field label="Kategori" v-model="formproducts.category"></v-text-field>
+                                    <v-select label="Kategori" v-model="formproducts.category" :items="kategoripilihan">
+                                    </v-select>
                                     <v-select label="Status" v-model="formproducts.status" :items="itemspilihan">
                                     </v-select>
                                     <v-tiptap v-model="formproducts.keterangan" label="keterangan"
@@ -153,10 +154,6 @@
                         value: 'name'
                     },
                     {
-                        text: 'Nama',
-                        value: 'name'
-                    },
-                    {
                         text: 'Kategori',
                         value: 'category'
                     },
@@ -180,7 +177,8 @@
                     keterangan: '',
                     image: [],
                 },
-                itemspilihan: ['Vanced', 'Buyed'],
+                itemspilihan: ['Vacant', 'Acquired'],
+                kategoripilihan: ['Kecerdasan Artifisial', 'IoT', 'Laptop', 'Development Kit', 'Kendaraan Listrik', 'Perangkat lainnya']
             }
         },
         created() {
