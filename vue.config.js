@@ -31,4 +31,5 @@ module.exports = {
       filename: '[name].[hash].bundle.js',
     }
   },
+  transpileDependencies: ["vuetify", "@peepi/vuetify-tiptap"],
 }

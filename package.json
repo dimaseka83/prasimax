@@ -10,6 +10,7 @@
     "copy": "/bin/cp -R dist/* /home/u1602224/public_html/home"
   },
   "dependencies": {
+    "@peepi/vuetify-tiptap": "^1.2.3",
     "axios": "^1.1.2",
     "compression": "^1.7.4",
     "core-js": "^3.8.3",

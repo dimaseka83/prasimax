@@ -52,6 +52,9 @@
 
         <v-card class="my-16">
             <v-data-table :headers="headerproducts" :items="products">
+                <template v-slot:item.keterangan="data">
+                    <span v-html="data.item.keterangan"></span>
+                </template>
                 <template v-slot:item.image="data">
                     <v-img :src="`${assets}${data.item.image}`" width="100"></v-img>
                 </template>
@@ -86,8 +89,10 @@
                                 <v-card-text>
                                     <v-text-field label="Nama" v-model="formproducts.name"></v-text-field>
                                     <v-text-field label="Kategori" v-model="formproducts.category"></v-text-field>
-                                    <v-select label="Status" v-model="formproducts.status" :items="itemspilihan"></v-select>
-                                    <v-text-field label="Keterangan" v-model="formproducts.keterangan"></v-text-field>
+                                    <v-select label="Status" v-model="formproducts.status" :items="itemspilihan">
+                                    </v-select>
+                                    <v-tiptap v-model="formproducts.keterangan" label="keterangan"
+                                        :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']"></v-tiptap>
                                     <v-file-input accept="image/*" v-model="formproducts.image" label="Image">
                                     </v-file-input>
                                 </v-card-text>

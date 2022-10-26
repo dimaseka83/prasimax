@@ -7,11 +7,13 @@ import vuetify from './plugins/vuetify';
 import VueSweetalert2 from 'vue-sweetalert2';
 import Vuex from 'vuex';
 import Store from './store/index';
+import VTipTap from '@peepi/vuetify-tiptap';
 
 Vue.config.productionTip = false;
 Vue.use(VueRouter);
 Vue.use(VueSweetalert2);
 Vue.use(Vuex);
+Vue.use(VTipTap);
 import 'sweetalert2/dist/sweetalert2.min.css';
 
 const store = new Vuex.Store(Store);
