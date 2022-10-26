@@ -81,7 +81,7 @@ export default {
     data() {
         return {
             page: 1,
-            category_select: '',
+            category_select: 'All',
             products: [],
         }
     },
@@ -106,8 +106,13 @@ export default {
     },
     computed: {
         categories() {
-            let unique = [...new Set(this.products.map(item => item.category))];
-            return unique;
+            let categories = ['All'];
+            this.products.forEach(product => {
+                if (!categories.includes(product.category)) {
+                    categories.push(product.category);
+                }
+            });
+            return categories;
         },
         lengthpage() {
             if(this.products.length > 0) {
@@ -115,7 +120,7 @@ export default {
             }
         },
         productsFilter(){
-            if(this.category_select == '') {
+            if(this.category_select == 'All') {
                 return this.products;
             } else {
                 return this.products.filter(product => product.category == this.category_select);
