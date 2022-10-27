@@ -7,9 +7,7 @@
             <v-row class="fill-height mt-16">
                 <v-col cols="8">
                     <h1 class="display-4 text-uppercase font-weight-bold">produk kami</h1>
-                <p class="title mt-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis similique
-                  beatae dicta, consectetur assumenda doloremque fugiat in! Veritatis ipsa ab odio ratione aliquid ipsam
-                  natus. Ea debitis reiciendis eligendi tempore.</p>
+                <p class="title mt-10" v-html="headerproduk"></p>
                 </v-col>
             </v-row>
         </v-container>
@@ -76,9 +74,9 @@
     </v-app>
 </template>
 <script>
-      import mix from '@/mixins/mix';
-  import componentsmix from '@/mixins/componentsmix';
-  import axios from 'axios';
+import mix from '@/mixins/mix';
+import componentsmix from '@/mixins/componentsmix';
+import axios from 'axios';
 export default {
     mixins: [mix, componentsmix],
     data() {
@@ -86,6 +84,7 @@ export default {
             page: 1,
             category_select: 'All',
             products: [],
+            headerproduk: 'Kami menyediakan etalase berbagai variasi produk kami kepada OEM atau Brand Owner dengan persyaratan <i>Minimum of Quantity</i>, Perjanjian peralihan Kekayaan Intelektual dan syarat dan ketentuan komersial. Pesanan dapat dilakukan langsung pada PRODUK yang dipilih dengan meng-klik tombol <b>"Ambil"</b>. Produk yang dipilih dan sudah diambil oleh OEM akan kami rubah status dari <b>Vacant</b> menjadi <b>Terakuisisi</b>',
         }
     },
     created() {
@@ -126,10 +125,21 @@ export default {
             }
         },
         productsFilter(){
-            if(this.category_select == 'All') {
+            if(this.category_select == 'All' && this.$route.params.search == undefined) {
                 return this.products;
             } else {
-                return this.products.filter(product => product.category == this.category_select);
+                if(this.category_select != 'All'){
+                    return this.products.filter(product => product.category == this.category_select);
+                }
+                if(this.$route.params.search != undefined){
+                    return this.products.filter(product => product.name.toLowerCase().includes(this.$route.params.search.toLowerCase()));
+                }
+                if(this.category_select != 'All' && this.$route.params.search != undefined){
+                    return this.products.filter(product => product.category == this.category_select && product.name.toLowerCase().includes(this.$route.params.search.toLowerCase()));
+                }
+                if(this.category_select == 'All' && this.$route.params.search == undefined){
+                    return this.products;
+                }
             }
         }
     }

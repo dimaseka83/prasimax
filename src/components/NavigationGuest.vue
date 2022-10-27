@@ -8,7 +8,8 @@
                     </a>
                 </v-card>
                 <v-card flat class="pa-2">
-                    <v-text-field dense rounded outlined class="rounded-xl" label="Masukkan kata yang dicari"
+                    <v-text-field v-model="searchproduct" @keyup.enter="searchProduct"
+                    dense rounded outlined class="rounded-xl" label="Masukkan kata yang dicari"
                         prepend-inner-icon="mdi-magnify">
                     </v-text-field>
                 </v-card>
@@ -192,6 +193,7 @@
         mixins: [mixin],
         data() {
             return {
+                searchproduct: '',
                 formlogin: {
                     username: '',
                     password: '',
@@ -493,6 +495,14 @@
                         console.log(error);
                     }
                 }
+            },
+            searchProduct(){
+                this.$router.push({
+                    name: 'ProdukGuest',
+                    params: {
+                        search: this.searchproduct
+                    }
+                });
             },
         },
     };
