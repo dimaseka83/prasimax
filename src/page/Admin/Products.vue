@@ -92,6 +92,8 @@
                                     </v-select>
                                     <v-select label="Status" v-model="formproducts.status" :items="itemspilihan">
                                     </v-select>
+                                    <v-select label="Odm" v-model="formproducts.isOdm" :items="odmPilihan">
+                                    </v-select>
                                     <v-tiptap v-model="formproducts.keterangan" label="keterangan"
                                         :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']"></v-tiptap>
                                     <v-file-input accept="image/*" v-model="formproducts.image" label="Image">
@@ -175,10 +177,12 @@
                     category: '',
                     status: '',
                     keterangan: '',
+                    isOdm: null,
                     image: [],
                 },
                 itemspilihan: ['Vacant', 'Acquired'],
-                kategoripilihan: ['Kecerdasan Artifisial', 'IoT', 'Laptop', 'Development Kit', 'Kendaraan Listrik', 'Perangkat lainnya']
+                kategoripilihan: ['Kecerdasan Artifisial', 'IoT', 'Laptop', 'Development Kit', 'Kendaraan Listrik', 'Perangkat lainnya'],
+                odmPilihan: [true, false],
             }
         },
         created() {
@@ -264,6 +268,11 @@
             async saveproducts() {
                 try {
                     if (this.formproducts.id != undefined) {
+                        let product = this.products.filter((item) => item.id == this.formproducts.id)
+                        console.log(product[0].image)
+                        if(product[0].image == this.formproducts.image){
+                            this.formproducts.image = `/${this.assets}${this.formproducts.image}`
+                        }
                         await axios.put(`${this.apibe}product/${this.formproducts.id}`, this.formproducts, {
                                 headers: {
                                     'Content-Type': 'multipart/form-data',
@@ -291,6 +300,7 @@
                         category: '',
                         status: '',
                         keterangan: '',
+                        isOdm: null,
                         image: [],
                     }
                 } catch (error) {
