@@ -112,17 +112,18 @@
                             try {
                                 await axios.post(`${this.apibe}user/signup?subscribe=${this.mailSubs}`).then(
                                 res => {
-                                    if (res.error != undefined) {
+                                    console.log(res);
+                                    if (res.data.error != undefined) {
                                         this.$swal({
                                             icon: 'error',
                                             title: 'Oops...',
-                                            text: res.error,
+                                            text: res.data.message,
                                         })
                                     } else {
                                         this.$swal({
                                             icon: 'success',
                                             title: 'Berhasil',
-                                            text: res.message,
+                                            text: 'Anda berhasil berlangganan',
                                         })
                                     }
                                 })

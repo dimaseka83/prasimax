@@ -58,6 +58,9 @@
                             </v-col>
                         </v-row>
                     </v-container>
+                    <v-card-actions>
+                        <v-btn class="blue--text" outlined rounded elevation="0" block @click="sendemail(product.name)">Ambil</v-btn>
+                    </v-card-actions>
                 </v-card>
             </v-hover>
             </v-col>
@@ -103,6 +106,9 @@ export default {
                     this.products = res.data
             })
         },
+        async sendemail(nama){
+            window.location.href = `mailto:produk@prasimax.com?Subject=Request for Quotation ${nama}`;
+        }
     },
     computed: {
         categories() {
