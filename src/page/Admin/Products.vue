@@ -268,11 +268,6 @@
             async saveproducts() {
                 try {
                     if (this.formproducts.id != undefined) {
-                        let product = this.products.filter((item) => item.id == this.formproducts.id)
-                        console.log(product[0].image)
-                        if(product[0].image == this.formproducts.image){
-                            this.formproducts.image = `/${this.assets}${this.formproducts.image}`
-                        }
                         await axios.put(`${this.apibe}product/${this.formproducts.id}`, this.formproducts, {
                                 headers: {
                                     'Content-Type': 'multipart/form-data',
