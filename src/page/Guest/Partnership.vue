@@ -6,7 +6,7 @@
         <v-row>
             <v-col cols="6">
                 <h1 class="display-1 font-weight-bold mb-16 text-uppercase">Kerja Sama</h1>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eos dignissimos sit, voluptas quia quasi voluptatibus, nobis vitae accusantium harum doloremque rerum ad fugiat debitis, ex deserunt. Atque voluptates itaque doloremque?</p>
+                <p>Sebagai bagan dari ekosistem industri multi vertikal, PRASIMAX juga melakukan kerja sama dengan berbagai pihak. Mulai dari kerja sama riset, pengembangan, peningkatan kemampuan dan keterampilan SDM, produksi dan lain sebagainya.</p>
             </v-col>
             <v-col cols="6">
                 <v-card elevation="10" rounded="xl">

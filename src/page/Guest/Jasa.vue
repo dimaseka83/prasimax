@@ -7,7 +7,7 @@
       <v-container class="white--text">
         <v-row class="fill-height mt-16 text-center">
           <v-col>
-            <h1 class="display-4 text-capitalize font-weight-bold">jasa</h1>
+            <h1 class="display-4 text-uppercasse font-weight-bold">jasa</h1>
             <p class="title mt-10">Sebagai perusahaan dengan DNA teknologi digital, selain portofolio produk,
               kami juga menyediakan jasa atau services untuk mengakomodasi permintaan
               pelanggan atau klien kami. Jasa yang kami sediakan mencakup jasa konsultasi,

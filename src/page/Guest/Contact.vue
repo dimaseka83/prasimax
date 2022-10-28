@@ -7,9 +7,7 @@
             <v-row class="fill-height mt-16">
                 <v-col cols="8">
                     <h1 class="display-4 text-uppercase font-weight-bold">hubungi kami</h1>
-                <p class="title mt-10">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis similique
-                  beatae dicta, consectetur assumenda doloremque fugiat in! Veritatis ipsa ab odio ratione aliquid ipsam
-                  natus. Ea debitis reiciendis eligendi tempore.</p>
+                <p class="title mt-10">Segala kebutuhan Anda, dipersilakan menghubungi kami, muali dari konsultasi, pengembangan produk, pabrikasi atau manufakturing dan pelatihan, kami siap membantu Anda.</p>
                 </v-col>
             </v-row>
         </v-container>
