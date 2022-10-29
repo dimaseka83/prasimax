@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-container>
+        <v-container v-show="nosm">
             <v-card flat class="d-flex">
                 <v-card flat class="mr-auto pa-2">
                     <a href="/">
@@ -24,7 +24,11 @@
                         <v-card>
                             <v-progress-linear indeterminate color="blue" :active="loadinglogin"></v-progress-linear>
                             <v-card-title>
-                                <span class="headline">Login Prasimax</span>
+                                <span :class="nosm ? 'headline' : 'body-1'">Login Prasimax</span>
+                                <v-spacer></v-spacer>
+                                <v-btn icon @click="dialoglogin = false">
+                                    <v-icon>mdi-close</v-icon>
+                                </v-btn>
                             </v-card-title>
                             <v-card-text>
                                 <v-form ref="formlogin" v-model="formvalidationlogin.valid" lazy-validation>
@@ -39,7 +43,11 @@
                             <v-card-actions>
                                 <v-dialog v-model="dialogchangepassword" width="500">
                                     <template v-slot:activator="{ on }">
-                                        <v-btn color="primary" text v-on="on">
+                                        <v-btn color="primary" text v-on="on" v-if="nosm">
+                                            <v-icon left>mdi-lock-reset</v-icon>
+                                            Lupa Password
+                                        </v-btn>
+                                        <v-btn color="primary" text v-on="on" v-else x-small>
                                             <v-icon left>mdi-lock-reset</v-icon>
                                             Lupa Password
                                         </v-btn>
@@ -48,7 +56,7 @@
                                         <v-progress-linear indeterminate color="blue" :active="loadingchangepassword">
                                         </v-progress-linear>
                                         <v-card-title>
-                                            <span class="headline">Lupa Password</span>
+                                            <span :class="nosm ? 'headline' : 'body-1'">Lupa Password</span>
                                         </v-card-title>
                                         <v-card-text>
                                             <v-form ref="formchangepassword"
@@ -73,8 +81,9 @@
                                     </v-card>
                                 </v-dialog>
                                 <v-spacer></v-spacer>
-                                <v-btn color="primary" text @click="dialoglogin = false">Batal</v-btn>
-                                <v-btn color="primary" text @click="login">Masuk</v-btn>
+                                <v-btn color="primary" text @click="dialoglogin = false" v-show="nosm">Batal</v-btn>
+                                <v-btn color="primary" text @click="login" v-if="nosm">Masuk</v-btn>
+                                <v-btn color="primary" text @click="login" x-small v-else>Masuk</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -88,7 +97,11 @@
                         <v-card>
                             <v-progress-linear indeterminate color="blue" :active="loadingregister"></v-progress-linear>
                             <v-card-title>
-                                <span class="headline">Register User Prasimax</span>
+                                <span :class="nosm ? 'headline' : 'body-1'">Register User Prasimax</span>
+                                <v-spacer></v-spacer>
+                                <v-btn icon @click="dialogregister = false">
+                                    <v-icon>mdi-close</v-icon>
+                                </v-btn>
                             </v-card-title>
                             <v-form ref="formregister" v-model="formvalidation.valid" lazy-validation>
                                 <v-card-text>
@@ -123,7 +136,11 @@
                             <v-card-actions>
                                 <v-dialog v-model="dialogresendemail" width="500">
                                     <template v-slot:activator="{ on }">
-                                        <v-btn color="primary" text v-on="on">
+                                        <v-btn color="primary" text v-on="on" v-if="nosm">
+                                            <v-icon left>mdi-email-check</v-icon>
+                                            Kirim Ulang Email
+                                        </v-btn>
+                                        <v-btn color="primary" text v-on="on" v-else x-small>
                                             <v-icon left>mdi-email-check</v-icon>
                                             Kirim Ulang Email
                                         </v-btn>
@@ -157,8 +174,9 @@
                                     </v-card>
                                 </v-dialog>
                                 <v-spacer></v-spacer>
-                                <v-btn color="primary" text @click="dialogregister = false">Batal</v-btn>
-                                <v-btn color="primary" text @click="register">Daftar</v-btn>
+                                <v-btn color="primary" text @click="dialogregister = false" v-show="nosm">Batal</v-btn>
+                                <v-btn color="primary" text @click="register" v-if="nosm">Daftar</v-btn>
+                                <v-btn color="primary" text @click="register" v-else x-small>Daftar</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-dialog>
@@ -175,7 +193,7 @@
                 </v-card>
             </v-card>
         </v-container>
-        <v-app-bar dense flat dark src="@/assets/images/dummy/rectangle.svg">
+        <v-app-bar dense flat dark src="@/assets/images/dummy/rectangle.svg" v-show="nosm">
             <div v-for="(nav, idx) in menu" :key="idx + 'nav'">
                 <v-hover v-slot="{hover}">
                     <v-btn text v-if="nav.submenu == undefined" :style="{'background-color': hover ? '#03A9F4' : ''}"
@@ -183,6 +201,70 @@
                 </v-hover>
             </div>
         </v-app-bar>
+        <v-app-bar v-show="sm">
+            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <v-toolbar-title>
+                <v-img src="@/assets/images/logo.png" max-width="100"></v-img>
+            </v-toolbar-title>
+            <v-spacer></v-spacer>
+            <v-btn icon @click="dialogsearch = true">
+                <v-icon>mdi-magnify</v-icon>
+            </v-btn>
+            <v-btn icon @click="draweruser = !draweruser">
+                <v-icon>mdi-account</v-icon>
+            </v-btn>
+        </v-app-bar>
+        <v-navigation-drawer v-model="drawer" app>
+            <v-list dense>
+                <v-list-item-group>
+                    <v-list-item v-for="(nav, idx) in menu" :key="idx + 'nav'">
+                        <v-list-item-content>
+                            <v-list-item-title v-if="nav.submenu == undefined" @click="route(nav.link)">
+                                {{ nav.name }}
+                            </v-list-item-title>
+                            <v-list-item-group v-else>
+                                <v-list-item v-for="(subnav, idx) in nav.submenu" :key="idx + 'subnav'">
+                                    <v-list-item-content>
+                                        <v-list-item-title @click="route(subnav.link)">
+                                            {{ subnav.name }}
+                                        </v-list-item-title>
+                                    </v-list-item-content>
+                                </v-list-item>
+                            </v-list-item-group>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
+        </v-navigation-drawer>
+        <v-navigation-drawer v-model="draweruser" app right>
+            <v-list dense>
+                <v-list-item-group v-if="!$store.state.isLogged">
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title @click="dialoglogin = true">
+                                Login
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title @click="dialogregister = true">
+                                Register
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
+                <v-list-item-group v-else>
+                    <v-list-item >
+                        <v-list-item-content>
+                            <v-list-item-title @click="dialogprofile = true">
+                                {{ $store.state.user.fullname }}
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
+        </v-navigation-drawer>
     </div>
 </template>
 <script>
@@ -193,6 +275,8 @@
         mixins: [mixin],
         data() {
             return {
+                drawer: false,
+                draweruser: false,
                 searchproduct: '',
                 formlogin: {
                     username: '',
