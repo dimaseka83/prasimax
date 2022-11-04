@@ -207,9 +207,6 @@
                 <v-img src="@/assets/images/logo.png" max-width="100"></v-img>
             </v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn icon @click="dialogsearch = true">
-                <v-icon>mdi-magnify</v-icon>
-            </v-btn>
             <v-btn icon @click="draweruser = !draweruser">
                 <v-icon>mdi-account</v-icon>
             </v-btn>
@@ -238,6 +235,13 @@
         </v-navigation-drawer>
         <v-navigation-drawer v-model="draweruser" app right>
             <v-list dense>
+                <v-list-item-group>
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-text-field v-model="searchproduct" @keyup.enter="searchProduct" outlined placeholder="Cari Produk"></v-text-field>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
                 <v-list-item-group v-if="!$store.state.isLogged">
                     <v-list-item>
                         <v-list-item-content>
@@ -262,6 +266,13 @@
                             </v-list-item-title>
                         </v-list-item-content>
                     </v-list-item>
+                    <v-list-item>
+                        <v-list-item-content>
+                            <v-list-item-title @click="logout">
+                                Logout
+                            </v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
                 </v-list-item-group>
             </v-list>
         </v-navigation-drawer>
@@ -277,6 +288,7 @@
             return {
                 drawer: false,
                 draweruser: false,
+                drawersearch: false,
                 searchproduct: '',
                 formlogin: {
                     username: '',

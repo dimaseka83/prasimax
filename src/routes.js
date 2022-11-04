@@ -16,6 +16,8 @@ import InformationTitleAdmin from './page/Admin/Information.vue';
 import ProductsAdmin from './page/Admin/Products.vue';
 import TechnicalAdmin from './page/Admin/Technical.vue';
 import ServiceAdmin from './page/Admin/Service.vue';
+import PartnersAdmin from './page/Admin/Partnership.vue';
+import ContactsAdmin from './page/Admin/Contact.vue';
 
 // Middleware
 import auth from './middleware/auth';
@@ -106,6 +108,22 @@ const routes = [
     path: '/admin/service',
     component: ServiceAdmin,
     name: 'ServiceAdmin',
+    meta: {
+      middleware: auth,
+    }
+  },
+  {
+    path: '/admin/partnership',
+    component: PartnersAdmin,
+    name: 'PartnersAdmin',
+    meta: {
+      middleware: auth,
+    }
+  },
+  {
+    path: '/admin/contact',
+    component: ContactsAdmin,
+    name: 'ContactsAdmin',
     meta: {
       middleware: auth,
     }

@@ -4,16 +4,12 @@
     <!-- Page 1 -->
     <v-carousel cycle :height="height" hide-delimiter-background show-arrows-on-hover>
       <v-carousel-item v-for="(slide, i) in slides" :key="i + 'slide'">
-        <!-- <v-img gradient="to bottom right, rgba(0, 102, 204, 1), rgba(0, 204, 255, 1)" :height="height"> -->
         <v-img :src="`${assets}${slide.image}`">
           <v-container>
-            <v-row class="fill-height mt-10 white--text">
+            <v-row class="fill-height white--text" :class="nosm ? 'mt-10' : ''">
               <v-col>
-                <h1 class="text-h2 font-weight-bold">{{slide.title}}</h1>
-                <p class="title mt-10">{{slide.subtitle}}</p>
-              </v-col>
-              <v-col>
-                <!-- <v-img :src="`${assets}${image}`"></v-img> -->
+                <h1 class="font-weight-bold" :class="nosm ? 'text-h2' : 'text-h5'">{{slide.title}}</h1>
+                <p :class="nosm ? 'title mt-10' : 'body-2'">{{slide.subtitle}}</p>
               </v-col>
             </v-row>
           </v-container>
@@ -25,11 +21,11 @@
       <v-row>
         <v-col>
           <v-card color="blue" elevation="10" rounded="xl" dark>
-            <v-container class="pa-16">
+            <v-container :class="nosm ? 'pa-16' : 'pa-8'">
               <div class="d-flex">
-                <p class="display-2 font-weight-bold text-uppercase">dari ide sampai produk</p>
+                <p class="font-weight-bold text-uppercase" :class="nosm ? 'display-2' : 'display-1'">dari ide sampai produk</p>
               </div>
-              <h2 class="display-1 font-weight-bold my-5">Desain, Pengembangan & Manufacturing</h2>
+              <h2 class=" font-weight-bold my-5" :class="nosm ? 'display-1' : 'text-h5'">Desain, Pengembangan & Manufacturing</h2>
               <p class="subtitle">Lingkup bisnis kami adalah membantu Anda dalam menterjemahkan dan mentransformasi ide Anda menjadi sebuah desain produk elektronik untuk solusi tertentu yang diinginkan. Tidak sampai pada desain, kami dapat melanjutkan proses pengembangan hingga manufakturing produk.</p>
               <v-btn color="white" class="blue--text mt-16" rounded to="/odm">Baca Lebih Lanjut</v-btn>
             </v-container>

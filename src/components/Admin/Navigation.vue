@@ -56,6 +56,16 @@ export default {
                     title: 'Service',
                     icon: 'mdi-engine',
                     href: '/admin/service'
+                },
+                {
+                    title: 'Partnership',
+                    icon: 'mdi-engine',
+                    href: '/admin/partnership'
+                },
+                {
+                    title: 'Contact',
+                    icon: 'mdi-engine',
+                    href: '/admin/contact'
                 }
             ]
         }
