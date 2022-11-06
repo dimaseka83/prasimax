@@ -182,7 +182,13 @@
                     </v-dialog>
                 </v-card>
                 <v-card v-else flat class="pa-2">
-                    <v-btn color="primary" class="rounded-xl">
+                    <v-btn color="primary" class="rounded-xl"
+                    @click="route('/admin')"
+                     v-show="buttonAdmin">
+                        <v-icon left>mdi-account-cog</v-icon>
+                        Admin
+                    </v-btn>
+                    <v-btn color="primary" class="ml-2 rounded-xl">
                         <v-icon left>mdi-account</v-icon>
                         {{ $store.state.user.fullname }}
                     </v-btn>
@@ -603,6 +609,11 @@
                 });
             },
         },
+        computed: {
+            buttonAdmin(){
+                return localStorage.getItem('role') == 'admin' ? true : false;
+            }
+        }
     };
 </script>
 <style scoped>
