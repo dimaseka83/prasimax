@@ -3,12 +3,12 @@
     <NavigationGuest />
     <!-- Page 1 -->
     <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
-      src="@/assets/images/static/jasalanding.svg" :height="height">
+      src="@/assets/images/static/jasalanding.svg" :height="nosm ? height : height+200">
       <v-container class="white--text">
-        <v-row class="fill-height mt-16 text-center">
+        <v-row class="fill-height" :class="nosm ? 'mt-16' : 'mt-2'">
           <v-col>
-            <h1 class="display-4 text-uppercase font-weight-bold">jasa</h1>
-            <p class="title mt-10">Sebagai perusahaan dengan DNA teknologi digital, selain portofolio produk,
+            <h1 class="text-uppercase font-weight-bold" :class="nosm ? 'display-4' : 'text-h4'">jasa</h1>
+            <p :class="nosm ? 'mt-10 title' : 'mt-5'">Sebagai perusahaan dengan DNA teknologi digital, selain portofolio produk,
               kami juga menyediakan jasa atau services untuk mengakomodasi permintaan
               pelanggan atau klien kami. Jasa yang kami sediakan mencakup jasa konsultasi,
               jasa desain Desain Industri, Desain Mekanikal, Desain Skematik, Desain PCB
@@ -21,11 +21,11 @@
     <div v-for="(row, idx) in rows" :key="idx">
     <v-container class="my-16 blue--text" v-if="idx % 2 === 0">
       <v-row>
-        <v-col cols="6">
+        <v-col :cols="nosm ? '6' : '12'">
           <h1 class="display-1 font-weight-bold mb-16 text-uppercase" v-html="row.title"></h1>
           <p>{{row.text}}</p>
         </v-col>
-        <v-col cols="6">
+        <v-col :cols="nosm ? '6' : '12'">
           <v-card elevation="10" rounded="xl">
             <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
               src="@/assets/images/dummy/board.jpg" :height="height - 100"></v-img>
@@ -34,13 +34,13 @@
       </v-row>
     </v-container>
     <!-- Page 3 -->
-    <v-container class="my-16" v-if="idx % 2 === 1">
+    <v-container :class="nosm ? 'my-16' : 'my-8'" v-if="idx % 2 === 1">
       <v-card flat>
         <v-list two-line>
           <v-list-item>
-            <v-img src="@/assets/images/dummy/board.jpg" max-width="600" :height="height"></v-img>
+            <v-img src="@/assets/images/dummy/board.jpg" max-width="600" v-show="nosm" :height="height"></v-img>
             <v-list-item-content>
-              <v-card flat class="pa-16" color="blue" dark :height="height">
+              <v-card flat :class="nosm ? 'pa-16': 'pa-8'" color="blue" dark :height="nosm ? height : height+400">
                 <p class="display-1 font-weight-bold" v-html="row.title"></p>
                 <p class="subtitle mt-10">{{ row.text }}</p>
               </v-card>

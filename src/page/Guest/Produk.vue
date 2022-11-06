@@ -2,20 +2,20 @@
     <v-app>
     <NavigationGuest />
     <!-- Page 1 -->
-    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/produklanding.svg" :height="height">
+    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/produklanding.svg" :height="nosm ? height : height+200">
         <v-container class="white--text">
-            <v-row class="fill-height mt-16">
-                <v-col cols="8">
-                    <h1 class="display-4 text-uppercase font-weight-bold">produk kami</h1>
-                <p class="title mt-10" v-html="headerproduk"></p>
+            <v-row class="fill-height" :class="nosm ? 'mt-16' : 'mt-2'">
+                <v-col :cols="nosm ? '8' : '12'">
+                    <h1 class=" text-uppercase font-weight-bold" :class="nosm ? 'display-4' : 'text-h4'">produk kami</h1>
+                <p :class="nosm ? 'mt-10 title' : 'mt-5'" v-html="headerproduk"></p>
                 </v-col>
             </v-row>
         </v-container>
     </v-img>
     <!-- Page 2 -->
-    <v-container class="my-16">
+    <v-container :class="nosm ? 'my-16' : 'my-8'">
         <v-row>
-            <v-col cols="4" v-for="(category, idx) in categories" :key="idx">
+            <v-col :cols="nosm ? '4' : '12'" v-for="(category, idx) in categories" :key="idx">
                 <v-hover v-slot="{hover}">
                     <v-btn 
                     :style="{'background-color': hover ? '#03A9F4' : '#FFFFFF', 'color': disableButton(category) ? '#FFFFFF' : '#000000'}"
@@ -28,9 +28,9 @@
             </v-col>
         </v-row>
     </v-container>
-    <v-container class="my-16">
+    <v-container :class="nosm ? 'my-16' : 'my-8'">
         <v-row>
-            <v-col cols="4" v-for="(product, idx) in productsFilter" :key="idx" class="d-flex align-stretch">
+            <v-col :cols="nosm ? '4' : '12'" v-for="(product, idx) in productsFilter" :key="idx" class="d-flex align-stretch">
                 <v-hover v-slot="{hover}">
                 <v-card rounded="xl" elevation="12">
                     <v-img :src="`${assets}${product.image}`" :height="height-300">
@@ -82,7 +82,7 @@ export default {
     data() {
         return {
             page: 1,
-            category_select: 'All',
+            category_select: '',
             products: [],
             headerproduk: 'Kami menyediakan etalase berbagai variasi produk kami kepada OEM atau Brand Owner dengan persyaratan <i>Minimum of Quantity</i>, Perjanjian peralihan Kekayaan Intelektual dan syarat dan ketentuan komersial. Pesanan dapat dilakukan langsung pada PRODUK yang dipilih dengan meng-klik tombol <b>"Ambil"</b>. Produk yang dipilih dan sudah diambil oleh OEM akan kami rubah status dari <b>Vacant</b> menjadi <b>Terakuisisi</b>',
         }
@@ -93,6 +93,7 @@ export default {
     methods: {
         selectCategory(id) {
             this.category_select = id;
+            console.log(this.category_select == 'All' && this.$route.params.search != undefined);
         },
         disableButton(category) {
             if (category == this.category_select) {
@@ -120,25 +121,24 @@ export default {
             return categories;
         },
         lengthpage() {
-            if(this.products.length > 0) {
-                return Math.ceil(this.products.length / 6);
+            if(this.productsFilter.length > 0) {
+                return Math.ceil(this.productsFilter.length / 6);
             }
         },
         productsFilter(){
-            if(this.category_select == 'All' && this.$route.params.search == undefined) {
+            if(this.$route.params.search == undefined) {
                 return this.products;
             } else {
-                if(this.category_select != 'All'){
-                    return this.products.filter(product => product.category == this.category_select);
-                }
-                if(this.$route.params.search != undefined){
-                    return this.products.filter(product => product.name.toLowerCase().includes(this.$route.params.search.toLowerCase()));
-                }
                 if(this.category_select != 'All' && this.$route.params.search != undefined){
-                    return this.products.filter(product => product.category == this.category_select && product.name.toLowerCase().includes(this.$route.params.search.toLowerCase()));
-                }
-                if(this.category_select == 'All' && this.$route.params.search == undefined){
+                    return this.products.filter(product => product.category == this.category_select);
+                }else if(this.category_select == 'All' && this.$route.params.search != undefined){
                     return this.products;
+                }else if(this.category_select == 'All' && this.$route.params.search == undefined){
+                    return this.products;
+                }else if(this.category_select != 'All'){
+                    return this.products.filter(product => product.category == this.category_select);
+                }else if(this.$route.params.search != undefined){
+                    return this.products.filter(product => product.name.toLowerCase().includes(this.$route.params.search.toLowerCase()));
                 }
             }
         }

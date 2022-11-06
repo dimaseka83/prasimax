@@ -147,6 +147,7 @@
                 // API About
                 dialogproducts: false,
                 products: [],
+                isOldData: [],
                 headerproducts: [{
                         text: 'Image',
                         value: 'image'
@@ -188,6 +189,11 @@
         created() {
             this.getproductstitle();
             this.getproducts();
+        },
+        updated(){
+            if(localStorage.getItem('products') != null){
+                    this.isOldData = JSON.parse(localStorage.getItem('products'))
+            }
         },
         methods: {
             // API About Title
@@ -248,6 +254,7 @@
                 await axios.get(`${this.apibe}product`)
                     .then(res => {
                         this.products = res.data
+                        localStorage.setItem('products', JSON.stringify(this.products))
                     })
             },
             async editproducts(index) {
@@ -266,7 +273,10 @@
                     })
             },
             async saveproducts() {
-                try {
+                if(this.isOldData.find(x => x.isOdm == true) != undefined){
+                    alert('Hanya boleh ada 1 produk ODM')
+                }else{
+                                    try {
                     if (this.formproducts.id != undefined) {
                         await axios.put(`${this.apibe}product/${this.formproducts.id}`, this.formproducts, {
                                 headers: {
@@ -300,6 +310,7 @@
                     }
                 } catch (error) {
                     console.log(error)
+                }
                 }
             }
         },

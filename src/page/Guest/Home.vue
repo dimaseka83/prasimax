@@ -41,12 +41,12 @@
           <v-card flat>
             <v-list two-line>
               <v-list-item>
-                <v-img 
+                <v-img v-show="nosm"
                  src="@/assets/images/static/produkhome.svg" max-width="600" :height="height"></v-img>
                 <v-list-item-content>
-                  <v-card flat color="blue" dark :height="height">
-                  <v-container class="pa-16">
-                    <p class="display-3 font-weight-bold my-5">Produk</p>
+                  <v-card flat color="blue" dark :height="nosm ? height : height+200">
+                  <v-container :class="nosm ? 'pa-16' : 'pa-5'">
+                    <p class="font-weight-bold my-5" :class="nosm ? 'display-3' : 'text-h4'">Produk</p>
                     <p class="subtitle-2">Kami menyediakan pilihan kepada Anda dengan skema produksi ODM (Original Design Manufacturing), OEM (Original Equipment Manufacturing) ataupun Contract Manufacturing agar ide produk Anda dapat dikembangkan dan diproduksi oleh kami.</p>
                       <v-btn color="white" large rounded class="blue--text mt-10" to="/product">Baca Lebih Lanjut</v-btn>
                   </v-container>
@@ -60,7 +60,7 @@
     <v-container class="my-16">
       <v-row align="center">
         <v-divider></v-divider>
-        <p class="display-3 text-uppercase blue--text font-weight-bold">informasi</p>
+        <p class="text-uppercase blue--text font-weight-bold" :class="nosm ? 'display-3' : 'text-h4'">informasi</p>
         <v-divider></v-divider>
       </v-row>
 
@@ -86,28 +86,40 @@
     <!-- Page 5 -->
     <v-container class="my-16">
       <v-row align="center">
-        <p class="display-3 text-capitalize blue--text font-weight-bold">pelanggan kami</p>
+        <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3' : 'text-h4'">pelanggan kami</p>
         <v-divider></v-divider>
       </v-row>
-      <v-carousel cycle :height="height" hide-delimiter-background delimiter-icon="mdi-minus" show-arrows-on-hover>
-        <v-carousel-item v-for="i in 2" :key="i + 'slide'" class="pa-5">
-          <v-row>
-            <v-col md="3" v-for="test in 8" :key="test">
-              <v-card elevation="" rounded="xl" class="pa-12">
-                <v-img src="@/assets/images/dummy/kominfo.png"></v-img>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-carousel-item>
-      </v-carousel>
+<v-slide-group
+      v-model="model"
+      class="pa-4"
+      active-class="success"
+      show-arrows
+    >
+      <v-slide-item
+        v-for="mtr in mitra"
+        :key="mtr.id"
+        v-slot="{ toggle }"
+      >
+        <v-card
+          class="ma-4"
+          height="200"
+          width="300"
+          @click="toggle"
+          :href="`https://${mtr.link}`"
+          target="_blank"
+        >
+          <v-img :src="`${assets}${mtr.image}`" height="200" ></v-img>
+        </v-card>
+      </v-slide-item>
+    </v-slide-group>
     </v-container>
     <!-- Page 6 -->
     <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/mengenaikamihome.svg"
-      class="my-16" :height="height">
-      <v-container class="pa-16 white--text mt-16">
+      class="my-16" :height="nosm ? height : height+250">
+      <v-container class="white--text" :class="nosm ? 'pa-16 mt-16 ' : ''">
         <v-row>
           <v-col md="6">
-            <h1 class="display-3 font-weight-bold text-uppercase">mengenai kami</h1>
+            <h1 class="font-weight-bold text-uppercase" :class="nosm ? 'display-3': 'text-h4'">mengenai kami</h1>
             <p class="title text-capitalize mt-10">perusahaan bidang teknologi</p>
             <p class="subtitle">Kami telah merintis bisnis di bidang desain, pengembangan hingga manufakturing di Indonesia sejak 2011. Model bisnis OEM, ODM, Design House dan Manufakturing untuk produk inovasi teknologi Anda menjadi lingkup bisnis kami. Sedangkan lingkup teknologi yang kami kuasai adalah IoT, Kecerdasan Artifisial, Embedded System, Nirkabel dan Kendaraan Listrik.</p>
             <v-btn class="blue--text" color="white" rounded dark to="/about">Baca Lebih Lanjut</v-btn>
@@ -118,13 +130,14 @@
     <!-- Page 7 -->
     <v-container class="my-16">
       <v-row align="center">
-        <p class="display-3 text-capitalize blue--text font-weight-bold">mitra teknologi</p>
+        <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">mitra teknologi</p>
         <v-divider></v-divider>
       </v-row>
-      <v-carousel cycle :height="height" hide-delimiter-background delimiter-icon="mdi-minus" show-arrows-on-hover>
+
+          <v-carousel cycle :height="height" hide-delimiter-background delimiter-icon="mdi-minus" show-arrows-on-hover>
         <v-carousel-item v-for="i in 2" :key="i + 'slide'" class="pa-5">
           <v-row>
-            <v-col md="3" v-for="test in 8" :key="test">
+            <v-col md="3" xl="12" v-for="test in 8" :key="test">
               <v-card elevation="" rounded="xl" class="pa-12">
                 <v-img src="@/assets/images/dummy/kominfo.png"></v-img>
               </v-card>
@@ -137,14 +150,15 @@
   </v-app>
 </template>
 <script>
-  import axios from 'axios'
   import mix from '@/mixins/mix';
   import componentsmix from '@/mixins/componentsmix';
+  import axios from 'axios';
   export default {
     mixins: [mix, componentsmix],
     data() {
         return {
             // slides: [],
+            model: null,
             slides: [
               {
                 title: 'Internet of Things',
@@ -166,23 +180,23 @@
                 subtitle: 'Teknologi kecerdasan artifisial telah memberikan banyak solusi dan inovasi yang berbasis metode neural network dan machine learning. Pengalaman kami dalam teknologi kecerdasan artifisial ini masih fokus pada solusi computer vision dan pengenalan suara cerdas.',
                 image: "/upload/carousel/image-1666013306474slide4.svg"
               }
-            ]
+            ],
+            mitra: [],
         };
     },
     created(){
-      // this.getCarousel();
+      this.getMitra();
     },
     methods: {
-            // async getCarousel() {
-            //     try {
-            //         await axios.get(`${this.apibe}carousel`)
-            //             .then(res => {
-            //                 this.slides = res.data
-            //             })
-            //     } catch (error) {
-            //         console.log(error)
-            //     }
-            // },
+      async getMitra(){
+        try {
+          await axios.get(`${this.apibe}mitra`).then(res => {
+                    this.mitra = res.data
+                })
+        } catch (error) {
+          console.log(error);
+        }
+      },
     },
 };
 </script>

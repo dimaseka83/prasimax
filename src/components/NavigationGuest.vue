@@ -8,7 +8,7 @@
                     </a>
                 </v-card>
                 <v-card flat class="pa-2">
-                    <v-text-field v-model="searchproduct" @keyup.enter="searchProduct"
+                    <v-text-field v-model="$store.state.search" @keyup.enter="searchProduct"
                     dense rounded outlined class="rounded-xl" label="Masukkan kata yang dicari"
                         prepend-inner-icon="mdi-magnify">
                     </v-text-field>
@@ -208,6 +208,9 @@
             </v-toolbar-title>
             <v-spacer></v-spacer>
             <v-btn icon @click="draweruser = !draweruser">
+                <v-icon>mdi-magnify</v-icon>
+            </v-btn>
+            <v-btn icon @click="draweruser = !draweruser">
                 <v-icon>mdi-account</v-icon>
             </v-btn>
         </v-app-bar>
@@ -238,7 +241,7 @@
                 <v-list-item-group>
                     <v-list-item>
                         <v-list-item-content>
-                            <v-text-field v-model="searchproduct" @keyup.enter="searchProduct" outlined placeholder="Cari Produk"></v-text-field>
+                            <v-text-field v-model="$store.state.search" @keyup.enter="searchProduct" outlined placeholder="Cari Produk"></v-text-field>
                         </v-list-item-content>
                     </v-list-item>
                 </v-list-item-group>
@@ -289,7 +292,6 @@
                 drawer: false,
                 draweruser: false,
                 drawersearch: false,
-                searchproduct: '',
                 formlogin: {
                     username: '',
                     password: '',
@@ -596,7 +598,7 @@
                 this.$router.push({
                     name: 'ProdukGuest',
                     params: {
-                        search: this.searchproduct
+                        search: this.$store.state.search
                     }
                 });
             },

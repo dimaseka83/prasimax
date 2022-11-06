@@ -3,21 +3,16 @@
         <NavigationGuest />
         <!-- Page 1 -->
         <v-container class="blue--text">
-            <v-row class="my-16">
-                <v-col cols="6">
-                    <h1 class="font-weight-bold display-2">Smart Speaker - SMAI-88</h1>
+            <v-row class="my-16" v-for="odm in isOdm" :key="odm.id">
+                <v-col :cols="nosm ? '6' : '12'">
+                    <h1 class="font-weight-bold display-2">{{ odm.name }}</h1>
                     <div class="mt-10">
-                        <span>Qualcom QCS400 - ARM Cortex-A53 Quad Core</span><br>
-                        <span>RAM : 4GB LPDDR2</span><br>
-                        <span>Flash : 4GB NAND</span><br>
-                        <span>2x Digital Mics</span><br>
-                        <span>Google Voice Assistant and Alexa ready</span><br>
-                        <span>Customizable for specific customer NLP</span>
+                        <span v-html="odm.keterangan"></span>
                     </div>
                 </v-col>
-                <v-col cols="6">
+                <v-col :cols="nosm ? '6' : '12'">
                     <div class="d-flex justify-center">
-                        <v-img src="@/assets/images/dummy/speaker.png" :max-width="height-300"></v-img>
+                        <v-img :src="`${assets}${odm.image}`" :max-width="height-300"></v-img>
                     </div>
                 </v-col>
             </v-row>
@@ -26,8 +21,8 @@
         <!-- Page 2 -->
         <v-container class="blue--text my-16">
             <v-row>
-                <v-col cols="6">
-                    <h1 class="font-weight-bold display-4 mb-10">Apa itu OEM dan ODM</h1>
+                <v-col :cols="nosm ? '6' : '12'">
+                    <h1 class="font-weight-bold mb-10" :class="nosm ? 'display-4' : 'text-h4'">Apa itu OEM dan ODM</h1>
                     <p>Pada perusahaan teknologi elektronika dan sekaligus memilki kapasitas manufakturing, kita
                         sering mendengar adanya istilah perusahaan OEM dan perusahaan ODM. ODM adalah
                         singkatan dari Original Design Manufacturer sedangkan OEM adalah singkatan dari Original
@@ -40,7 +35,7 @@
                         produksi (production), pengendalian kualitas (Quality Control) dan penjaminan kualitas
                         produk (Quality Assurance) dalam proses pabrikasi (manufacturing).</p>
                 </v-col>
-                <v-col cols="6">
+                <v-col :cols="nosm ? '6' : '12'">
                     <v-card elevation="10" rounded="xl" class="blue--text">
                         <v-container class="pa-10">
                             <p class="font-weight-medium text-capitalize headline">
@@ -61,7 +56,7 @@
                 </v-col>
             </v-row>
             <v-row class="my-16">
-                <v-col cols="6">
+                <v-col :cols="nosm ? '6' : '12'">
                     <h1 class="font-weight-medium  display-1 mb-10">Perbedaan OEM dan ODM</h1>
                     <p>Satu hal penting yang membedakan perusahaan OEM dan ODM adalah spesifikasi produk di mana
                         perusahaan OEM merancang dan memproduksi produk berdasarkan spesifikasi dari mereka sendiri
@@ -72,7 +67,7 @@
                         sedangkan perusahaan ODM merancang dan memproduksi produk berdasarkan spesifikasi yang
                         ditentukan perusahaan klien atau Brand Owner.</p>
                 </v-col>
-                <v-col cols="6">
+                <v-col :cols="nosm ? '6' : '12'">
                     <v-card elevation="10" rounded="xl" class="blue--text">
                         <v-container class="pa-10">
                             <p class="font-weight-medium text-capitalize headline">
@@ -100,11 +95,11 @@
             <v-card flat>
                 <v-list two-line>
                     <v-list-item>
-                        <v-img gradient="to top right, rgba(0, 126, 209, 1), rgba(255, 255, 255, 0)"
+                        <v-img gradient="to top right, rgba(0, 126, 209, 1), rgba(255, 255, 255, 0)" v-if="nosm"
                          src="@/assets/images/static/rndodm.svg" max-width="600" :height="height"></v-img>
                         <v-list-item-content>
-                            <v-card flat class="pa-16" color="blue" dark :height="height">
-                                <p class="display-1 font-weight-bold">Riset dan Pengembangan</p>
+                            <v-card flat :class="nosm ? 'pa-16' : 'pa-5'" color="blue" dark :height="nosm ? height : height+500">
+                                <p class="font-weight-bold" :class="nosm ? 'display-1' : 'text-h5'">Riset dan Pengembangan</p>
                                 <p class="subtitle mt-10">Riset dan pengembangan atau dikenal sebagai Research and
                                     Development, disingkat R&amp;D, yaitu
                                     lembaga atau entitas perusahaan yang melakukan penelitian. Tujuan penelitian dan
@@ -128,7 +123,7 @@
         <!-- Page 4 -->
         <v-container class="mb-16 blue--text">
             <v-row>
-                <v-col cols="6">
+                <v-col :cols="nosm ? '6' : '12'">
                     <h1 class="display-1 font-weight-bold mb-16">Pabrikasi</h1>
                     <p>Perangkat elektronik merupakan produk yang sudah umum ditemui di tengah masyarakat, penting
                         untuk mengetahui cara pembuatannya. Proses pabrikasi elektronik melibatkan banyak langkah,
@@ -147,7 +142,7 @@
                     <p>Brand Owner atau klien dengan skema OEM atau ODM aktifitas terintegrasi di dalamnya adalah
                         termasuk aktifitas dan proses pabrikasi.</p>
                 </v-col>
-                <v-col cols="6">
+                <v-col :cols="nosm ? '6' : '12'">
                     <v-card elevation="10" rounded="xl">
                         <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
                             src="@/assets/images/static/pabrikasiodm.svg" :height="height - 100"></v-img>
@@ -161,8 +156,32 @@
 <script>
     import mix from '@/mixins/mix';
     import componentsmix from '@/mixins/componentsmix';
+    import axios from 'axios';
     export default {
         mixins: [mix, componentsmix],
-
+        data() {
+            return {
+                products: []
+            }
+        },
+        created() {
+            this.getproducts();
+        },
+        methods: {
+            async getproducts() {
+                await axios.get(`${this.apibe}product`)
+                    .then(res => {
+                        this.products = res.data
+                    })
+            },
+        },
+        computed: {
+            isOdm() {
+                if(this.products.length > 0) {
+                    return this.products.filter(product => product.isOdm === true)
+                }
+                return []
+            }
+        }
     }
 </script>

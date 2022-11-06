@@ -8,6 +8,7 @@ import Produk from './page/Guest/Produk.vue';
 import Jasa from './page/Guest/Jasa.vue';
 import Contact from './page/Guest/Contact.vue';
 import ResetPassword from './page/Guest/ResetPassword.vue';
+import Activate from './page/Guest/Activate.vue';
 
 // Admin
 import HomeAdmin from './page/Admin/Home.vue';
@@ -61,6 +62,11 @@ const routes = [
     path: '/resetPassword/:token',
     component: ResetPassword,
     name: 'ResetPassword',
+  },
+  {
+    path: '/user/activate/:token',
+    component: Activate,
+    name: 'Activate',
   },
 
   // Admin
