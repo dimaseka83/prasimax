@@ -56,15 +56,16 @@
             </v-data-table>
         </v-card>
 
-        <v-card class="my-16">
-            <v-data-table :headers="headersmitra" :items="mitra">
+
+                <v-card class="my-16">
+            <v-data-table :headers="headersmitratech" :items="mitratech">
                 <template v-slot:item.image="data">
                     <v-img :src="`${assets}${data.item.image}`" width="100"></v-img>
                 </template>
                 <template v-slot:item.action="data">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
-                            <v-btn icon v-on="on" @click="editmitra(data.index)">
+                            <v-btn icon v-on="on" @click="editmitratech(data.index)">
                                 <v-icon>mdi-pencil</v-icon>
                             </v-btn>
                         </template>
@@ -72,7 +73,7 @@
                     </v-tooltip>
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
-                            <v-btn icon v-on="on" @click="deletemitra(data.index)">
+                            <v-btn icon v-on="on" @click="deletemitratech(data.index)">
                                 <v-icon>mdi-delete</v-icon>
                             </v-btn>
                         </template>
@@ -81,22 +82,22 @@
                 </template>
                 <template v-slot:top>
                     <v-toolbar>
-                        <v-toolbar-title>Mitra</v-toolbar-title>
+                        <v-toolbar-title>Mitra Teknologi</v-toolbar-title>
                         <v-spacer></v-spacer>
-                        <v-dialog v-model="dialogmitra" max-width="500">
+                        <v-dialog v-model="dialogmitratech" max-width="500">
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn color="primary" class="mb-2" v-bind="attrs" v-on="on">Tambah</v-btn>
                             </template>
                             <v-card>
                                 <v-card-title>Buat / Edit Partnership</v-card-title>
                                 <v-card-text>
-                                    <v-text-field label="Link" v-model="formmitra.link"></v-text-field>
-                                    <v-file-input accept="image/*" v-model="formmitra.image" label="Image">
+                                    <v-text-field label="Link" v-model="formmitratech.link"></v-text-field>
+                                    <v-file-input accept="image/*" v-model="formmitratech.image" label="Image">
                                     </v-file-input>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
-                                    <v-btn color="blue" text @click="dialogmitra = false">Cancel</v-btn>
+                                    <v-btn color="blue" text @click="dialogmitratech = false">Cancel</v-btn>
                                     <v-btn color="blue" text @click="savemitra">Save</v-btn>
                                 </v-card-actions>
                             </v-card>
@@ -144,13 +145,15 @@
                     image: ''
                 },
 
-                mitra: [],
-                formmitra: {
+                
+
+                                mitratech: [],
+                formmitratech: {
                     link: '',
                     image: ''
                 },
-                dialogmitra: false,
-                headersmitra: [{
+                dialogmitratech: false,
+                headersmitratech: [{
                         text: 'Link',
                         value: 'link'
                     },
@@ -174,8 +177,8 @@
                     this.partners = res.data
                 })
 
-                await axios.get(`${this.apibe}mitra`).then(res => {
-                    this.mitra = res.data
+                await axios.get(`${this.apibe}mitra-teknologi`).then(res => {
+                    this.mitratech = res.data
                 })
             },
             editpartnership(index) {
@@ -228,48 +231,48 @@
                 }
             },
 
-            editmitra(index) {
-                this.formmitra = this.mitra[index]
-                this.dialogmitra = true
+             editmitratech(index) {
+                this.formmitratech = this.mitratech[index]
+                this.dialogmitratech = true
             },
 
-            deletemitra(index) {
-                axios.delete(`${this.apibe}mitra/${this.mitra[index].id}`, {
+            deletemitratech(index) {
+                axios.delete(`${this.apibe}mitra-teknologi/${this.mitratech[index].id}`, {
                     headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
                                 },
                 }).then(res => {
                     this.init()
-                    this.dialogmitra = false
+                    this.dialogmitratech = false
                 })
             },
 
             async savemitra(){
-                if(this.formmitra.id){
+                if(this.formmitratech.id){
                     try {
-                        await axios.put(`${this.apibe}mitra/${this.formmitra.id}`, this.formmitra, {
+                        await axios.put(`${this.apibe}mitra-teknologi/${this.formmitratech.id}`, this.formmitra, {
                         headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
                                 },
                     }).then(res => {
                         this.init()
-                        this.dialogmitra = false
+                        this.dialogmitratech = false
                     })
                     } catch (error) {
                         console.log(error)
                     }
                 }else{
                     try {
-                        await axios.post(`${this.apibe}mitra`, this.formmitra, {
+                        await axios.post(`${this.apibe}mitra-teknologi`, this.formmitratech, {
                         headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
                                 },
                     }).then(res => {
                         this.init()
-                        this.dialogmitra = false
+                        this.dialogmitratech = false
                     })
                     } catch (error) {
                         console.log(error)

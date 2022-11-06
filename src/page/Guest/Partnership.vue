@@ -39,17 +39,29 @@
         <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">mitra teknologi</p>
         <v-divider></v-divider>
       </v-row>
-      <v-carousel cycle :height="height" hide-delimiter-background delimiter-icon="mdi-minus" show-arrows-on-hover>
-        <v-carousel-item v-for="i in 2" :key="i + 'slide'" class="pa-5">
-          <v-row>
-            <v-col md="3" v-for="test in 8" :key="test">
-              <v-card elevation="" rounded="xl" class="pa-12">
-                <v-img src="@/assets/images/dummy/kominfo.png"></v-img>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-carousel-item>
-      </v-carousel>
+<v-slide-group
+      v-model="model"
+      class="pa-4"
+      active-class="success"
+      show-arrows
+    >
+      <v-slide-item
+        v-for="mtr in mitratech"
+        :key="mtr.id"
+        v-slot="{ toggle }"
+      >
+        <v-card
+          class="ma-4"
+          height="200"
+          width="300"
+          @click="toggle"
+          :href="`https://${mtr.link}`"
+          target="_blank"
+        >
+          <v-img :src="`${assets}${mtr.image}`" height="200" ></v-img>
+        </v-card>
+      </v-slide-item>
+    </v-slide-group>
     </v-container>
     <!-- Page 4 -->
     <v-container class="mb-16">
@@ -68,6 +80,7 @@ export default {
     data() {
       return {
         partners: [],
+        mitratech: [],
       }
     },
     created() {
@@ -78,6 +91,10 @@ export default {
                   await axios.get(`${this.apibe}kerjasama`).then(res => {
                     this.partners = res.data
                 })
+
+                await axios.get(`${this.apibe}mitra-teknologi`).then(res => {
+                    this.mitratech = res.data
+            })
         }
     },
 }
