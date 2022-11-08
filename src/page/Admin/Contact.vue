@@ -2,7 +2,7 @@
     <v-app>
         <navigation-admin />
                 <v-card class="my-16">
-            <v-data-table :headers="headerspartnership" :items="partners">
+            <v-data-table :headers="headerssalesdepartment" :items="salesdepartment">
                 <template v-slot:item.content="data">
                     <span v-html="data.item.content"></span>
                 </template>
@@ -12,7 +12,7 @@
                 <template v-slot:item.action="data">
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
-                            <v-btn icon v-on="on" @click="editpartnership(data.index)">
+                            <v-btn icon v-on="on" @click="editsales(data.index)">
                                 <v-icon>mdi-pencil</v-icon>
                             </v-btn>
                         </template>
@@ -20,7 +20,7 @@
                     </v-tooltip>
                     <v-tooltip bottom>
                         <template v-slot:activator="{ on }">
-                            <v-btn icon v-on="on" @click="deletepartnership(data.index)">
+                            <v-btn icon v-on="on" @click="deletesales(data.index)">
                                 <v-icon>mdi-delete</v-icon>
                             </v-btn>
                         </template>
@@ -29,25 +29,25 @@
                 </template>
                 <template v-slot:top>
                     <v-toolbar>
-                        <v-toolbar-title>Partnership</v-toolbar-title>
+                        <v-toolbar-title>Sales Departments</v-toolbar-title>
                         <v-spacer></v-spacer>
-                        <v-dialog v-model="dialogpartnership" max-width="500">
+                        <v-dialog v-model="dialogsales" max-width="500">
                             <template v-slot:activator="{ on, attrs }">
                                 <v-btn color="primary" class="mb-2" v-bind="attrs" v-on="on">Tambah</v-btn>
                             </template>
                             <v-card>
-                                <v-card-title>Buat / Edit Partnership</v-card-title>
+                                <v-card-title>Buat / Edit Sales Departments</v-card-title>
                                 <v-card-text>
-                                    <v-text-field label="Nama" v-model="formpartnership.title"></v-text-field>
-                                    <v-tiptap v-model="formpartnership.content" label="keterangan"
+                                    <v-text-field label="Nama" v-model="formsales.name"></v-text-field>
+                                    <v-tiptap v-model="formsales.detail" label="Detail"
                                         :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']"></v-tiptap>
-                                    <v-file-input accept="image/*" v-model="formpartnership.image" label="Image">
+                                    <v-file-input accept="image/*" v-model="formsales.image" label="Image">
                                     </v-file-input>
                                 </v-card-text>
                                 <v-card-actions>
                                     <v-spacer></v-spacer>
-                                    <v-btn color="blue" text @click="dialogpartnership = false">Cancel</v-btn>
-                                    <v-btn color="blue" text @click="savepartnerts">Save</v-btn>
+                                    <v-btn color="blue" text @click="dialogsales = false">Cancel</v-btn>
+                                    <v-btn color="blue" text @click="savesales">Save</v-btn>
                                 </v-card-actions>
                             </v-card>
                         </v-dialog>
@@ -69,7 +69,70 @@ export default {
         },
         data() {
             return {
-                
+                dialogsales: false,
+                salesdepartment: [],
+                headerssalesdepartment: [
+                    { text: 'Nama', value: 'name' },
+                    { text: 'Detail', value: 'detail' },
+                    { text: 'Image', value: 'image' },
+                    { text: 'Action', value: 'action' },
+                ],
+                formsales: {
+                    name: '',
+                    detail: '',
+                    image: '',
+                },
+            }
+        },
+        created() {
+            this.getSales()
+        },
+        methods: {
+            async getSales() {
+                await axios.get(`${this.apibe}salesdepartment`)
+                    .then(res => {
+                        this.salesdepartment = res.data
+                    })
+            },
+            editsales(index) {
+                this.dialogsales = true
+                this.formsales = this.salesdepartment[index]
+            },
+            deletesales(index) {
+                axios.delete(`${this.apibe}salesdepartment/${this.salesdepartment[index].id}`, {
+                    headers: {
+                            'Content-Type': 'multipart/form-data',
+                            Authorization: `Bearer ${this.$store.state.token}`
+                        }
+                })
+                    .then(res => {
+                        this.getSales()
+                    })
+            },
+            savesales() {
+                if (this.formsales.id) {
+                    axios.put(`${this.apibe}salesdepartment/${this.formsales.id}`, this.formsales, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            Authorization: `Bearer ${this.$store.state.token}`
+                        }
+                    })
+                        .then(res => {
+                            this.getSales()
+                            this.dialogsales = false
+                        })
+                } else {
+                    axios.post(`${this.apibe}salesdepartment`, this.formsales, {
+                        headers: {
+                            'Content-Type': 'multipart/form-data',
+                            Authorization: `Bearer ${this.$store.state.token}`
+                        }
+                    })
+                        .then(res => {
+                            this.getSales()
+                            this.dialogsales = false
+                        })
+                }
             }
         },
 }

@@ -2,20 +2,20 @@
     <v-app>
     <NavigationGuest />
     <!-- Page 1 -->
-    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/produklanding.svg" :height="height">
+    <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/produklanding.svg" :height="nosm ? height : height+200">
         <v-container class="white--text">
-            <v-row class="fill-height mt-16">
-                <v-col cols="8">
-                    <h1 class="display-4 text-uppercase font-weight-bold">produk kami</h1>
-                <p class="title mt-10" v-html="headerproduk"></p>
+            <v-row class="fill-height" :class="nosm ? 'mt-16' : 'mt-2'">
+                <v-col :cols="nosm ? '8' : '12'">
+                    <h1 class=" text-uppercase font-weight-bold" :class="nosm ? 'display-4' : 'text-h4'">produk kami</h1>
+                <p :class="nosm ? 'mt-10 title' : 'mt-5'" v-html="headerproduk"></p>
                 </v-col>
             </v-row>
         </v-container>
     </v-img>
     <!-- Page 2 -->
-    <v-container class="my-16">
+    <v-container :class="nosm ? 'my-16' : 'my-8'">
         <v-row>
-            <v-col cols="4" v-for="(category, idx) in categories" :key="idx">
+            <v-col :cols="nosm ? '4' : '12'" v-for="(category, idx) in categories" :key="idx">
                 <v-hover v-slot="{hover}">
                     <v-btn 
                     :style="{'background-color': hover ? '#03A9F4' : '#FFFFFF', 'color': disableButton(category) ? '#FFFFFF' : '#000000'}"
@@ -28,23 +28,23 @@
             </v-col>
         </v-row>
     </v-container>
-    <v-container class="my-16">
+    <v-container :class="nosm ? 'my-16' : 'my-8'">
         <v-row>
-            <v-col cols="4" v-for="(product, idx) in productsFilter" :key="idx" class="d-flex align-stretch">
+            <v-col :cols="nosm ? '4' : '12'" v-for="(product, idx) in productsFilter" :key="idx" class="d-flex align-stretch">
                 <v-hover v-slot="{hover}">
                 <v-card rounded="xl" elevation="12">
                     <v-img :src="`${assets}${product.image}`" :height="height-300">
                         <v-expand-transition>
                             <div v-if="hover" class="d-flex flex-column justify-center align-center" style="height: 100%">
                                 <!-- Vanced -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="58.023" height="49.558" viewBox="0 0 58.023 49.558" v-if="product.status == 'Vacant'">
-                                    <path id="Path_335" data-name="Path 335" d="M53.041,14.331l-1.764,30a6.349,6.349,0,0,1-6.34,5.976H14.587a6.349,6.349,0,0,1-6.34-5.976l-1.764-30m16.93,11.64,6.349,6.349m0,0,6.349,6.349M29.762,32.32l6.349-6.349M29.762,32.32l-6.349,6.349M5.424,14.331H54.1a3.176,3.176,0,0,0,3.174-3.174V6.924A3.176,3.176,0,0,0,54.1,3.75H5.424A3.176,3.176,0,0,0,2.25,6.924v4.233A3.176,3.176,0,0,0,5.424,14.331Z" transform="translate(-0.75 -2.25)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="92.685" height="78.888" viewBox="0 0 92.685 78.888" v-if="product.status == 'Terakuisisi'">
+  <path id="Path_335" data-name="Path 335" d="M85.036,21,82.162,69.9a10.348,10.348,0,0,1-10.335,9.741H22.358A10.348,10.348,0,0,1,12.023,69.9L9.149,21m27.6,18.972L47.093,50.317m0,0L57.441,60.666M47.093,50.317,57.441,39.969M47.093,50.317,36.744,60.666M7.424,21H86.761a5.176,5.176,0,0,0,5.174-5.174v-6.9A5.176,5.176,0,0,0,86.761,3.75H7.424A5.176,5.176,0,0,0,2.25,8.924v6.9A5.176,5.176,0,0,0,7.424,21Z" transform="translate(-0.75 -2.25)" fill="none" stroke="#19b0f6" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+</svg>
                                 <!-- Buyed -->
-                                <svg xmlns="http://www.w3.org/2000/svg" width="58.719" height="54.72" viewBox="0 0 58.719 54.72" v-else>
-                                    <path id="Path_329" data-name="Path 329" d="M2.25,3H6.232A3.235,3.235,0,0,1,9.356,5.4l1.1,4.129m6.879,25.8a8.62,8.62,0,0,0-8.62,8.62H53.97m-36.635-8.62H49.568a171.2,171.2,0,0,0,8.4-20.51A172.727,172.727,0,0,0,10.456,9.528m6.879,25.8-6.879-25.8m2.569,43.036A2.155,2.155,0,1,1,10.87,50.41,2.155,2.155,0,0,1,13.025,52.565Zm36.635,0A2.155,2.155,0,1,1,47.5,50.41,2.155,2.155,0,0,1,49.66,52.565Z" transform="translate(-0.75 -1.5)" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
-                                </svg>
-                                <p class="font-weight-light white--text display-2">{{ product.status }}</p>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="87.385" height="81.328" viewBox="0 0 87.385 81.328" v-else>
+  <path id="Path_329" data-name="Path 329" d="M2.25,3H8.281a4.9,4.9,0,0,1,4.73,3.634l1.667,6.253M25.1,51.955A13.055,13.055,0,0,0,12.041,65.009H80.578M25.1,51.955H73.911A259.282,259.282,0,0,0,86.635,20.894a261.589,261.589,0,0,0-71.957-8.007M25.1,51.955,14.678,12.887m3.89,65.177A3.264,3.264,0,1,1,15.3,74.8,3.264,3.264,0,0,1,18.568,78.064Zm55.482,0A3.264,3.264,0,1,1,70.787,74.8,3.264,3.264,0,0,1,74.05,78.064Z" transform="translate(-0.75 -1.5)" fill="none" stroke="#2196f3" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"/>
+</svg>
+                                <p class="font-weight-light blue--text display-2">{{ product.status }}</p>
                             </div>
                         </v-expand-transition>
                     </v-img>
@@ -82,7 +82,7 @@ export default {
     data() {
         return {
             page: 1,
-            category_select: 'All',
+            category_select: '',
             products: [],
             headerproduk: 'Kami menyediakan etalase berbagai variasi produk kami kepada OEM atau Brand Owner dengan persyaratan <i>Minimum of Quantity</i>, Perjanjian peralihan Kekayaan Intelektual dan syarat dan ketentuan komersial. Pesanan dapat dilakukan langsung pada PRODUK yang dipilih dengan meng-klik tombol <b>"Ambil"</b>. Produk yang dipilih dan sudah diambil oleh OEM akan kami rubah status dari <b>Vacant</b> menjadi <b>Terakuisisi</b>',
         }
@@ -93,6 +93,7 @@ export default {
     methods: {
         selectCategory(id) {
             this.category_select = id;
+            console.log(this.category_select == 'All' && this.$route.params.search != undefined);
         },
         disableButton(category) {
             if (category == this.category_select) {
@@ -120,25 +121,24 @@ export default {
             return categories;
         },
         lengthpage() {
-            if(this.products.length > 0) {
-                return Math.ceil(this.products.length / 6);
+            if(this.productsFilter.length > 0) {
+                return Math.ceil(this.productsFilter.length / 6);
             }
         },
         productsFilter(){
-            if(this.category_select == 'All' && this.$route.params.search == undefined) {
+            if(this.$route.params.search == undefined) {
                 return this.products;
             } else {
-                if(this.category_select != 'All'){
-                    return this.products.filter(product => product.category == this.category_select);
-                }
-                if(this.$route.params.search != undefined){
-                    return this.products.filter(product => product.name.toLowerCase().includes(this.$route.params.search.toLowerCase()));
-                }
                 if(this.category_select != 'All' && this.$route.params.search != undefined){
-                    return this.products.filter(product => product.category == this.category_select && product.name.toLowerCase().includes(this.$route.params.search.toLowerCase()));
-                }
-                if(this.category_select == 'All' && this.$route.params.search == undefined){
+                    return this.products.filter(product => product.category == this.category_select);
+                }else if(this.category_select == 'All' && this.$route.params.search != undefined){
                     return this.products;
+                }else if(this.category_select == 'All' && this.$route.params.search == undefined){
+                    return this.products;
+                }else if(this.category_select != 'All'){
+                    return this.products.filter(product => product.category == this.category_select);
+                }else if(this.$route.params.search != undefined){
+                    return this.products.filter(product => product.name.toLowerCase().includes(this.$route.params.search.toLowerCase()));
                 }
             }
         }

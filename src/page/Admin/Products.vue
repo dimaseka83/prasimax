@@ -180,7 +180,7 @@
                     isOdm: null,
                     image: [],
                 },
-                itemspilihan: ['Vacant', 'Acquired'],
+                itemspilihan: ['Terakuisisi', 'Acquired'],
                 kategoripilihan: ['Kecerdasan Artifisial', 'IoT', 'Laptop', 'Development Kit', 'Kendaraan Listrik', 'Perangkat lainnya'],
                 odmPilihan: [true, false],
             }
@@ -266,7 +266,7 @@
                     })
             },
             async saveproducts() {
-                try {
+               try {
                     if (this.formproducts.id != undefined) {
                         await axios.put(`${this.apibe}product/${this.formproducts.id}`, this.formproducts, {
                                 headers: {

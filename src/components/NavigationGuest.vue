@@ -8,7 +8,7 @@
                     </a>
                 </v-card>
                 <v-card flat class="pa-2">
-                    <v-text-field v-model="searchproduct" @keyup.enter="searchProduct"
+                    <v-text-field v-model="$store.state.search" @keyup.enter="searchProduct"
                     dense rounded outlined class="rounded-xl" label="Masukkan kata yang dicari"
                         prepend-inner-icon="mdi-magnify">
                     </v-text-field>
@@ -182,7 +182,13 @@
                     </v-dialog>
                 </v-card>
                 <v-card v-else flat class="pa-2">
-                    <v-btn color="primary" class="rounded-xl">
+                    <v-btn color="primary" class="rounded-xl"
+                    @click="route('/admin')"
+                     v-show="buttonAdmin">
+                        <v-icon left>mdi-account-cog</v-icon>
+                        Admin
+                    </v-btn>
+                    <v-btn color="primary" class="ml-2 rounded-xl">
                         <v-icon left>mdi-account</v-icon>
                         {{ $store.state.user.fullname }}
                     </v-btn>
@@ -207,6 +213,9 @@
                 <v-img src="@/assets/images/logo.png" max-width="100"></v-img>
             </v-toolbar-title>
             <v-spacer></v-spacer>
+            <v-btn icon @click="draweruser = !draweruser">
+                <v-icon>mdi-magnify</v-icon>
+            </v-btn>
             <v-btn icon @click="draweruser = !draweruser">
                 <v-icon>mdi-account</v-icon>
             </v-btn>
@@ -238,7 +247,7 @@
                 <v-list-item-group>
                     <v-list-item>
                         <v-list-item-content>
-                            <v-text-field v-model="searchproduct" @keyup.enter="searchProduct" outlined placeholder="Cari Produk"></v-text-field>
+                            <v-text-field v-model="$store.state.search" @keyup.enter="searchProduct" outlined placeholder="Cari Produk"></v-text-field>
                         </v-list-item-content>
                     </v-list-item>
                 </v-list-item-group>
@@ -289,7 +298,6 @@
                 drawer: false,
                 draweruser: false,
                 drawersearch: false,
-                searchproduct: '',
                 formlogin: {
                     username: '',
                     password: '',
@@ -596,11 +604,16 @@
                 this.$router.push({
                     name: 'ProdukGuest',
                     params: {
-                        search: this.searchproduct
+                        search: this.$store.state.search
                     }
                 });
             },
         },
+        computed: {
+            buttonAdmin(){
+                return localStorage.getItem('role') == 'admin' ? true : false;
+            }
+        }
     };
 </script>
 <style scoped>

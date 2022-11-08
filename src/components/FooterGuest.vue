@@ -66,7 +66,7 @@
                 </v-col>
             </v-row>
         </v-container>
-        <v-app-bar dense flat dark src="@/assets/images/dummy/rectangle.svg">
+        <v-app-bar dense flat dark src="@/assets/images/dummy/rectangle.svg" :height="nosm ? '' : height - 100">
             <div class="d-flex">
                 <span class="mr-auto">&copy; PT Prasimax Inovasi Teknologi, 2010 - {{ getYears }}, Hak Cipta dilindungi
                     undang - undang</span>
