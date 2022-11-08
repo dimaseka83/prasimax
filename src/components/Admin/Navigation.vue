@@ -66,6 +66,11 @@ export default {
                     title: 'Contact',
                     icon: 'mdi-engine',
                     href: '/admin/contact'
+                },
+                {
+                    title: 'Jasa',
+                    icon: 'mdi-engine',
+                    href: '/admin/jasa'
                 }
             ]
         }

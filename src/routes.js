@@ -19,6 +19,7 @@ import TechnicalAdmin from './page/Admin/Technical.vue';
 import ServiceAdmin from './page/Admin/Service.vue';
 import PartnersAdmin from './page/Admin/Partnership.vue';
 import ContactsAdmin from './page/Admin/Contact.vue';
+import JasaAdmin from './page/Admin/Jasa.vue';
 
 // Middleware
 import auth from './middleware/auth';
@@ -130,6 +131,14 @@ const routes = [
     path: '/admin/contact',
     component: ContactsAdmin,
     name: 'ContactsAdmin',
+    meta: {
+      middleware: auth,
+    }
+  },
+  {
+    path: '/admin/jasa',
+    component: JasaAdmin,
+    name: 'JasaAdmin',
     meta: {
       middleware: auth,
     }

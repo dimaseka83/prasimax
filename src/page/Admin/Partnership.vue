@@ -229,6 +229,12 @@
                         console.log(error)
                     }
                 }
+
+                                        this.formpartnership = {
+                            title: '',
+                            content: '',
+                            image: ''
+                        }
             },
 
              editmitratech(index) {
@@ -277,6 +283,10 @@
                     } catch (error) {
                         console.log(error)
                     }
+                                            this.formmitratech = {
+                            link: '',
+                            image: ''
+                        }
                 }
             }
         },
