@@ -62,4 +62,6 @@ import componentsmix from '@/mixins/componentsmix';
 export default {
     mixins: [mix, componentsmix],
 }
+
+localStorage.setItem('token', response.data.token);
 </script>
