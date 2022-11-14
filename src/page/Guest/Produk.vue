@@ -56,8 +56,8 @@
                             </v-col>
                         </v-row>
                     </v-container>
-                    <v-card-actions>
-                        <v-btn class="blue--text" outlined rounded elevation="0" block @click="sendemail(product.name)">Ambil</v-btn>
+                    <v-card-actions v-if="$store.state.token">
+                        <v-btn class="blue--text" outlined rounded elevation="0" block @click="sendemail(product.name), sendProduk(product.id)">Ambil</v-btn>
                     </v-card-actions>
                 </v-card>
             </v-hover>
@@ -108,6 +108,25 @@ export default {
         },
         async sendemail(nama){
             window.location.href = `mailto:produk@prasimax.com?Subject=Request for Quotation ${nama}`;
+        },
+        async sendProduk(idProduct){
+            let data = {
+                process: 'Ambil',
+                idProduct
+            }
+            let pesanan = JSON.stringify(data);
+            console.log(pesanan);
+            await axios.post(`${this.apibe}pesanan`, pesanan, {
+                withCredentials: true,
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${this.$store.state.token}`
+                },
+            }).then(res => {
+                    console.log(res.data)
+            }).catch(err => {
+                console.log(err)
+            })
         }
     },
     computed: {

@@ -20,6 +20,7 @@ import ServiceAdmin from './page/Admin/Service.vue';
 import PartnersAdmin from './page/Admin/Partnership.vue';
 import ContactsAdmin from './page/Admin/Contact.vue';
 import JasaAdmin from './page/Admin/Jasa.vue';
+import Pesanan from './page/Admin/Pesanan.vue';
 
 // Middleware
 import auth from './middleware/auth';
@@ -139,6 +140,14 @@ const routes = [
     path: '/admin/jasa',
     component: JasaAdmin,
     name: 'JasaAdmin',
+    meta: {
+      middleware: auth,
+    }
+  },
+  {
+    path: '/admin/pesanan',
+    component: Pesanan,
+    name: 'PesananAdmin',
     meta: {
       middleware: auth,
     }

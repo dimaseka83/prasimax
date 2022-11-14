@@ -71,6 +71,11 @@ export default {
                     title: 'Jasa',
                     icon: 'mdi-engine',
                     href: '/admin/jasa'
+                },
+                {
+                    title: 'Pesanan',
+                    icon: 'mdi-engine',
+                    href: '/admin/pesanan'
                 }
             ]
         }
