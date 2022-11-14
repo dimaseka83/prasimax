@@ -116,16 +116,16 @@ export default {
             }
             let pesanan = JSON.stringify(data);
             console.log(pesanan);
-            await axios.post(`${this.apibe}pesanan`, pesanan, {
-                withCredentials: true,
+            await axios({
+                method: 'post',
+                url: `${this.apibe}pesanan`,
+                data: pesanan,
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${this.$store.state.token}`
-                },
+                }
             }).then(res => {
-                    console.log(res.data)
-            }).catch(err => {
-                console.log(err)
+                console.log(res);
             })
         }
     },
