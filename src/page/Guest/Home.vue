@@ -7,7 +7,7 @@
         <v-img :src="`${assets}${slide.image}`">
           <v-container>
             <v-row class="fill-height white--text" :class="nosm ? 'mt-10' : ''">
-              <v-col>
+              <v-col :cols="nosm ? '6' : '12'">
                 <h1 class="font-weight-bold" :class="nosm ? 'text-h2' : 'text-h5'">{{slide.title}}</h1>
                 <p :class="nosm ? 'title mt-10' : 'body-2'">{{slide.subtitle}}</p>
               </v-col>
@@ -150,7 +150,7 @@
           height="200"
           width="300"
           @click="toggle"
-          :href="`https://${mtr.link}`"
+          :href="`${mtr.link}`"
           target="_blank"
         >
           <v-img :src="`${assets}${mtr.image}`" height="200" ></v-img>
