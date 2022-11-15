@@ -1,7 +1,7 @@
 <template>
     <div>
         <v-container v-show="nosm">
-            <v-card flat class="d-flex">
+            <v-card flat class="d-flex">    
                 <v-card flat class="mr-auto pa-2">
                     <a href="/">
                         <v-img src="@/assets/images/logo.png" max-width="300"></v-img>
