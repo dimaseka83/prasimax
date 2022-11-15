@@ -30,7 +30,7 @@
     </v-container>
     <v-container :class="nosm ? 'my-16' : 'my-8'">
         <v-row>
-            <v-col :cols="nosm ? '4' : '12'" v-for="(product, idx) in productsFilter" :key="idx" class="d-flex align-stretch">
+            <v-col :cols="nosm ? '4' : '12'" v-for="(product, idx) in productsMerge" :key="idx" class="d-flex align-stretch">
                 <v-hover v-slot="{hover}">
                 <v-card rounded="xl" elevation="12">
                     <v-img :src="`${assets}${product.image}`" :height="height-300">
@@ -57,7 +57,9 @@
                         </v-row>
                     </v-container>
                     <v-card-actions v-if="$store.state.token">
-                        <v-btn class="blue--text" outlined rounded elevation="0" block @click="sendemail(product.name), sendProduk(product.id)">Ambil</v-btn>
+                        <v-btn class="blue--text" outlined rounded elevation="0" :disabled="product.pesanan != 'Vacant'" block @click="sendemail(product.name), sendProduk(product.id)">
+                            {{ product.pesanan == 'Vacant' ? 'Ambil' : product.pesanan }}
+                        </v-btn>
                     </v-card-actions>
                 </v-card>
             </v-hover>
@@ -84,6 +86,7 @@ export default {
             page: 1,
             category_select: '',
             products: [],
+            pesanan: [],
             headerproduk: 'Kami menyediakan etalase berbagai variasi produk kami kepada OEM atau Brand Owner dengan persyaratan <i>Minimum of Quantity</i>, Perjanjian peralihan Kekayaan Intelektual dan syarat dan ketentuan komersial. Pesanan dapat dilakukan langsung pada PRODUK yang dipilih dengan meng-klik tombol <b>"Ambil"</b>. Produk yang dipilih dan sudah diambil oleh OEM akan kami rubah status dari <b>Vacant</b> menjadi <b>Terakuisisi</b>',
         }
     },
@@ -104,6 +107,15 @@ export default {
             await axios.get(`${this.apibe}product`)
                 .then(res => {
                     this.products = res.data
+            })
+
+            await axios.get(`${this.apibe}pesanan`, {
+                headers: {
+                    Authorization: `Bearer ${this.$store.state.token}`
+                }
+            })
+                .then(res => {
+                    this.pesanan = res.data
             })
         },
         async sendemail(nama){
@@ -160,6 +172,19 @@ export default {
                     return this.products.filter(product => product.name.toLowerCase().includes(this.$route.params.search.toLowerCase()));
                 }
             }
+        },
+        productsMerge(){
+            let products = [];
+            this.productsFilter.forEach(product => {
+                let pesanan = this.pesanan.filter(pesanan => pesanan.idProduct == product.id);
+                if(pesanan.length > 0){
+                    product.pesanan = pesanan[0].process;
+                }else{
+                    product.pesanan = 'Vacant';
+                }
+                products.push(product);
+            });
+            return products;
         }
     }
 }
