@@ -1,5 +1,14 @@
 <template>
-    <v-app>
+    <v-app v-if="loading">
+        <v-content>
+            <v-container fluid fill-height>
+                <v-layout align-center justify-center>
+                    <v-progress-circular indeterminate color="primary"></v-progress-circular>
+                </v-layout>
+            </v-container>
+        </v-content>
+    </v-app>
+    <v-app v-else>
     <NavigationGuest />
     <!-- Page 1 -->
     <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/produklanding.svg" :height="nosm ? height : height+200">
@@ -83,6 +92,7 @@ export default {
     mixins: [mix, componentsmix],
     data() {
         return {
+            loading: false,
             page: 1,
             category_select: '',
             products: [],
@@ -122,12 +132,14 @@ export default {
             window.location.href = `mailto:produk@prasimax.com?Subject=Request for Quotation ${nama}`;
         },
         async sendProduk(idProduct){
-            let data = {
+            try {
+                let data = {
                 process: 'Ambil',
                 idProduct
             }
             let pesanan = JSON.stringify(data);
             console.log(pesanan);
+            this.loading = true;
             await axios({
                 method: 'post',
                 url: `${this.apibe}pesanan`,
@@ -138,7 +150,14 @@ export default {
                 }
             }).then(res => {
                 console.log(res);
+                this.$swal('Berhasil', 'Produk berhasil diambil', 'success');
+                this.getproducts();
+                this.loading = false;
             })
+            } catch (error) {
+                console.log(error);
+                this.$swal('Gagal', 'Produk gagal diambil', 'error');
+            }
         }
     },
     computed: {
