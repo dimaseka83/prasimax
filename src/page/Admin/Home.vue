@@ -251,7 +251,7 @@
                                     Authorization: `Bearer ${this.$store.state.token}`
                                 },
                 }).then(res => {
-                    this.init()
+                    this.getCarousel()
                     this.dialogmitra = false
                 })
             },
@@ -265,7 +265,7 @@
                                     Authorization: `Bearer ${this.$store.state.token}`
                                 },
                     }).then(res => {
-                        this.init()
+                        this.getCarousel()
                         this.dialogmitra = false
                     })
                     } catch (error) {
@@ -279,7 +279,7 @@
                                     Authorization: `Bearer ${this.$store.state.token}`
                                 },
                     }).then(res => {
-                        this.init()
+                        this.getCarousel()
                         this.dialogmitra = false
                     })
                     } catch (error) {

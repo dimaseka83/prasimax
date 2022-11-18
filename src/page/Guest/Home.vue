@@ -101,14 +101,15 @@
         v-slot="{ toggle }"
       >
         <v-card
+          flat
           class="ma-4"
           height="200"
           width="300"
           @click="toggle"
-          :href="`https://${mtr.link}`"
+          :href="`${mtr.link}`"
           target="_blank"
         >
-          <v-img :src="`${assets}${mtr.image}`" height="200" ></v-img>
+          <v-img :src="`${assets}${mtr.image}`" width="100" ></v-img>
         </v-card>
       </v-slide-item>
     </v-slide-group>
@@ -146,6 +147,7 @@
         v-slot="{ toggle }"
       >
         <v-card
+          flat
           class="ma-4"
           height="200"
           width="300"
@@ -153,7 +155,7 @@
           :href="`${mtr.link}`"
           target="_blank"
         >
-          <v-img :src="`${assets}${mtr.image}`" height="200" ></v-img>
+          <v-img :src="`${assets}${mtr.image}`" width="100" ></v-img>
         </v-card>
       </v-slide-item>
     </v-slide-group>
