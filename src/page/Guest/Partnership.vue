@@ -66,7 +66,7 @@
     <!-- Page 4 -->
     <v-container class="mb-16">
         <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">bergabung menjadi mitra</p>
-        <v-btn color="blue" large rounded class="white--text mt-10">Hubungi Kami</v-btn>
+        <v-btn color="blue" large rounded class="white--text mt-10" @click="route('/contact')">Hubungi Kami</v-btn>
     </v-container>
     <FooterGuest />
     </v-app>

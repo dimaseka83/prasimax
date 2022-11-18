@@ -116,7 +116,6 @@
     import mix from '@/mixins/mix'
     import NavigationAdmin from '@/components/Admin/Navigation.vue'
     import axios from 'axios'
-import { swal } from 'vue/types/umd'
     export default {
         mixins: [mix],
         components: {
