@@ -118,6 +118,7 @@ export default {
                         .then(res => {
                             this.getTechnical()
                             this.dialogtechnical = false
+                            this.$swal('Success', 'Technical berhasil diubah', 'success')
                         })
                     }else{
                         await axios.post(`${this.apibe}technical`, this.formtechnical, {
@@ -129,6 +130,7 @@ export default {
                         .then(res => {
                             this.getTechnical()
                             this.dialogtechnical = false
+                            this.$swal('Success', 'Technical berhasil dibuat', 'success')
                         })
                     }
                     this.formtechnical = {
@@ -138,6 +140,7 @@ export default {
                     }
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Technical gagal dibuat', 'error')
                 }
             },
             editTechnical(item){
@@ -154,9 +157,11 @@ export default {
                     })
                     .then(res => {
                         this.getTechnical()
+                        this.$swal('Success', 'Technical berhasil dihapus', 'success')
                     })
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Technical gagal dihapus', 'error')
                 }
             }
         },

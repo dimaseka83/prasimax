@@ -91,7 +91,10 @@ export default {
         this.$store.commit('setToken', localStorage.getItem('token'));
         this.$store.commit('setUser', JSON.parse(localStorage.getItem('user')));
       }
-    }
+    },
+    mailto(email, subject) {
+      window.location.href = `mailto:${email}?Subject=${subject}`;
+  },
     },
     computed: {
       height() {

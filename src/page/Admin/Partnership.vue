@@ -194,9 +194,11 @@
                                 },
                 }).then(res => {
                     this.init()
+                    this.$swal('Success', 'Berhasil menghapus data', 'success')
                 })
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Gagal menghapus data', 'error')
                 }
             },
             async savepartnerts(){
@@ -210,9 +212,11 @@
                     }).then(res => {
                         this.init()
                         this.dialogpartnership = false
+                        this.$swal('Success', 'Berhasil mengubah data', 'success')
                     })
                     } catch (error) {
                         console.log(error)
+                        this.$swal('Error', 'Gagal mengubah data', 'error')
                     }
                 }else{
                     try {
@@ -224,9 +228,11 @@
                     }).then(res => {
                         this.init()
                         this.dialogpartnership = false
+                        this.$swal('Success', 'Berhasil menambah data', 'success')
                     })
                     } catch (error) {
                         console.log(error)
+                        this.$swal('Error', 'Gagal menambah data', 'error')
                     }
                 }
 
@@ -242,8 +248,9 @@
                 this.dialogmitratech = true
             },
 
-            deletemitratech(index) {
-                axios.delete(`${this.apibe}mitra-teknologi/${this.mitratech[index].id}`, {
+            async deletemitratech(index) {
+                try {
+                    await axios.delete(`${this.apibe}mitra-teknologi/${this.mitratech[index].id}`, {
                     headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
@@ -251,7 +258,12 @@
                 }).then(res => {
                     this.init()
                     this.dialogmitratech = false
+                    this.$swal('Success', 'Berhasil menghapus data', 'success')
                 })
+                } catch (error) {
+                  console.log(error)
+                    this.$swal('Error', 'Gagal menghapus data', 'error')  
+                }
             },
 
             async savemitra(){
@@ -264,10 +276,13 @@
                                 },
                     }).then(res => {
                         this.init()
+                        this.$swal('Success', 'Berhasil mengubah data', 'success')
                         this.dialogmitratech = false
                     })
                     } catch (error) {
                         console.log(error)
+                        this.$swal('Error', 'Gagal menambah data', 'error')
+
                     }
                 }else{
                     try {
@@ -278,10 +293,12 @@
                                 },
                     }).then(res => {
                         this.init()
+                        this.$swal('Success', 'Berhasil menambah data', 'success')
                         this.dialogmitratech = false
                     })
                     } catch (error) {
                         console.log(error)
+                        this.$swal('Error', 'Gagal menambah data', 'error')
                     }
                                             this.formmitratech = {
                             link: '',

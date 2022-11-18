@@ -116,6 +116,7 @@
     import mix from '@/mixins/mix'
     import NavigationAdmin from '@/components/Admin/Navigation.vue'
     import axios from 'axios'
+import { swal } from 'vue/types/umd'
     export default {
         mixins: [mix],
         components: {
@@ -203,10 +204,15 @@
                 this.formproductstitle = this.productstitle[index]
             },
             async deleteproductstitle(index) {
-                await axios.delete(`${this.apibe}productsTitle/${this.productstitle[index].id}`)
+                try {
+                    await axios.delete(`${this.apibe}productsTitle/${this.productstitle[index].id}`)
                     .then(res => {
                         this.getproductstitle();
                     })
+                } catch (error) {
+                    console.log(error)
+                    this.$swal('Error', 'Gagal menghapus data', 'error')
+                }
             },
             async saveproductstitle() {
                 try {
@@ -221,6 +227,7 @@
                             .then(res => {
                                 this.getproductstitle();
                                 this.dialogproductstitle = false
+                                this.$swal('Berhasil', 'Data berhasil diubah', 'success')
                             })
                     } else {
                         await axios.post(`${this.apibe}productsTitle`, this.formproductstitle, {
@@ -232,6 +239,7 @@
                             .then(res => {
                                 this.getproductstitle();
                                 this.dialogproductstitle = false
+                                this.$swal('Success', 'Data Berhasil Ditambahkan', 'success')
                             })
                     }
                     this.formproductstitle = {
@@ -240,6 +248,7 @@
                     }
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Terjadi Kesalahan', 'error')
                 }
             },
 
@@ -255,7 +264,8 @@
                 this.formproducts = this.products[index]
             },
             async deleteproducts(index) {
-                await axios.delete(`${this.apibe}product/${this.products[index].id}`, {
+                try {
+                    await axios.delete(`${this.apibe}product/${this.products[index].id}`, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             Authorization: `Bearer ${this.$store.state.token}`
@@ -263,7 +273,12 @@
                     })
                     .then(res => {
                         this.getproducts();
+                        this.$swal('Success', 'Data Berhasil Dihapus', 'success')
                     })
+                } catch (error) {
+                    console.log(error)
+                    this.$swal('Error', 'Data Gagal Dihapus', 'error')
+                }
             },
             async saveproducts() {
                try {
@@ -277,6 +292,7 @@
                             .then(res => {
                                 this.getproducts();
                                 this.dialogproducts = false
+                                this.$swal('Success', 'Data Berhasil Diubah', 'success')
                             })
                     } else {
                         await axios.post(`${this.apibe}product`, this.formproducts, {
@@ -288,6 +304,7 @@
                             .then(res => {
                                 this.getproducts();
                                 this.dialogproducts = false
+                                this.$swal('Success', 'Data Berhasil Ditambah', 'success')
                             })
                     }
                     this.formproducts = {
@@ -300,6 +317,7 @@
                     }
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Gagal Menambahkan Data', 'error')
                 }
             }
         },

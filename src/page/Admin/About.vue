@@ -166,10 +166,15 @@
                 this.formabouttitle = this.abouttitle[index]
             },
             async deleteabouttitle(index) {
-                await axios.delete(`${this.apibe}titleAbout/${this.abouttitle[index].id}`)
+                try {
+                    await axios.delete(`${this.apibe}titleAbout/${this.abouttitle[index].id}`)
                     .then(res => {
                         this.getabouttitle();
                     })
+                } catch (error) {
+                    console.log(error)
+                    this.$swal('Error', 'Gagal menghapus data', 'error')
+                }
             },
             async saveabouttitle() {
                 try {
@@ -202,6 +207,7 @@
                                 }
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Gagal menyimpan data', 'error')
                 }
             },
 
@@ -217,7 +223,8 @@
                 this.formabout = this.about[index]
             },
             async deleteabout(index) {
-                await axios.delete(`${this.apibe}about/${this.about[index].id}`, {
+                try {
+                                    await axios.delete(`${this.apibe}about/${this.about[index].id}`, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             Authorization: `Bearer ${this.$store.state.token}`
@@ -226,6 +233,10 @@
                     .then(res => {
                         this.getabout();
                     })
+                } catch (error) {
+                    console.log(error)
+                    this.$swal('Error', 'Gagal menghapus data', 'error')
+                }
             },
             async saveabout() {
                 try {
@@ -258,6 +269,7 @@
                                 }
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Gagal menyimpan data', 'error')
                 }
             }
         },

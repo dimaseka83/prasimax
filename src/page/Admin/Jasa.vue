@@ -58,9 +58,11 @@ export default {
                                 },
                 }).then(res => {
                     this.init()
+                    this.$swal('Success', 'Data berhasil dihapus', 'success')
                 })
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Data gagal dihapus', 'error')
                 }
             },
             async savepartnerts(){
@@ -74,9 +76,11 @@ export default {
                     }).then(res => {
                         this.init()
                         this.dialogpartnership = false
+                        this.$swal('Success', 'Data berhasil diubah', 'success')
                     })
                     } catch (error) {
                         console.log(error)
+                        this.$swal('Error', 'Data gagal diubah', 'error')
                     }
                 }else{
                     try {
@@ -88,9 +92,11 @@ export default {
                     }).then(res => {
                         this.init()
                         this.dialogpartnership = false
+                        this.$swal('Success', 'Data berhasil ditambah', 'success')
                     })
                     } catch (error) {
                         console.log(error)
+                        this.$swal('Error', 'Data gagal ditambah', 'error')
                     }
                 }
 

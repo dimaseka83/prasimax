@@ -193,6 +193,7 @@
                         .then(res => {
                             console.log(res)
                             this.dialogcarousel = false
+                            this.$swal('Success', 'Data berhasil diubah', 'success')
                             this.getCarousel()
                         })
                     }else{
@@ -205,6 +206,7 @@
                         .then(res => {
                             if (res.status == 200) {
                                 this.dialogcarousel = false
+                                this.$swal('Success', 'Berhasil Menambahkan Carousel', 'success');
                                 this.getCarousel()
                             }
                         })
@@ -216,6 +218,7 @@
                                 }
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Gagal Menambahkan Carousel', 'error');
                 }
             },
             async editcarousel(index) {
@@ -232,10 +235,12 @@
                             },
                         })
                     .then(res => {
-                        this.getCarousel()
+                        this.getCarousel();
+                        this.$swal('Success', 'Berhasil Menghapus Carousel', 'success');
                     })
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Gagal Menghapus Carousel', 'error');
                 }
             },
 
@@ -245,15 +250,21 @@
             },
 
             deletemitra(index) {
-                axios.delete(`${this.apibe}mitra/${this.mitra[index].id}`, {
+                try {
+                                    axios.delete(`${this.apibe}mitra/${this.mitra[index].id}`, {
                     headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
                                 },
                 }).then(res => {
                     this.getCarousel()
+                    this.$swal('Success', 'Berhasil Menghapus Mitra', 'success');
                     this.dialogmitra = false
                 })
+                } catch (error) {
+                    console.log(error)
+                    this.$swal('Error', 'Gagal Menghapus Mitra', 'error');
+                }
             },
 
             async savemitra(){
@@ -266,6 +277,7 @@
                                 },
                     }).then(res => {
                         this.getCarousel()
+                        this.$swal('Success', 'Berhasil Mengubah Mitra', 'success');
                         this.dialogmitra = false
                     })
                     } catch (error) {
@@ -280,10 +292,12 @@
                                 },
                     }).then(res => {
                         this.getCarousel()
+                        this.$swal('Success', 'Berhasil Menambah Mitra', 'success');
                         this.dialogmitra = false
                     })
                     } catch (error) {
                         console.log(error)
+                        this.$swal('Error', 'Gagal Menambah Mitra', 'error');
                     }
                 }
             }

@@ -102,9 +102,6 @@
             }
         },
         methods: {
-            mailto(email, subject) {
-                window.location.href = `mailto:${email}?Subject=${subject}`;
-            },
             async isSubscribe() {
                 if (this.$refs.formsubscribe.validate()) {
                     switch (this.checked) {

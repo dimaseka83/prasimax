@@ -89,17 +89,22 @@ export default {
         },
         methods: {
             async getSales() {
-                await axios.get(`${this.apibe}salesdepartment`)
+                try {
+                                    await axios.get(`${this.apibe}salesdepartment`)
                     .then(res => {
                         this.salesdepartment = res.data
                     })
+                } catch (error) {
+                    console.log(error)
+                }
             },
             editsales(index) {
                 this.dialogsales = true
                 this.formsales = this.salesdepartment[index]
             },
-            deletesales(index) {
-                axios.delete(`${this.apibe}salesdepartment/${this.salesdepartment[index].id}`, {
+            async deletesales(index) {
+                try {
+                    await axios.delete(`${this.apibe}salesdepartment/${this.salesdepartment[index].id}`, {
                     headers: {
                             'Content-Type': 'multipart/form-data',
                             Authorization: `Bearer ${this.$store.state.token}`
@@ -107,11 +112,17 @@ export default {
                 })
                     .then(res => {
                         this.getSales()
+                        this.$swal('Success', 'Data berhasil dihapus', 'success')
                     })
+                } catch (error) {
+                    console.log(error)
+                    this.$swal('Error', 'Data gagal dihapus', 'error')
+                }
             },
-            savesales() {
-                if (this.formsales.id) {
-                    axios.put(`${this.apibe}salesdepartment/${this.formsales.id}`, this.formsales, {
+            async savesales() {
+                try {
+                    if (this.formsales.id) {
+                    await axios.put(`${this.apibe}salesdepartment/${this.formsales.id}`, this.formsales, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             Authorization: `Bearer ${this.$store.state.token}`
@@ -120,9 +131,10 @@ export default {
                         .then(res => {
                             this.getSales()
                             this.dialogsales = false
+                            this.$swal('Success', 'Data berhasil diubah', 'success')
                         })
                 } else {
-                    axios.post(`${this.apibe}salesdepartment`, this.formsales, {
+                    await axios.post(`${this.apibe}salesdepartment`, this.formsales, {
                         headers: {
                             'Content-Type': 'multipart/form-data',
                             Authorization: `Bearer ${this.$store.state.token}`
@@ -131,7 +143,12 @@ export default {
                         .then(res => {
                             this.getSales()
                             this.dialogsales = false
+                            this.$swal('Success', 'Data berhasil ditambahkan', 'success')
                         })
+                }
+                } catch (error) {
+                    console.log(error)
+                    this.$swal('Error', 'Data gagal disimpan', 'error')
                 }
             }
         },

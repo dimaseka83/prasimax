@@ -58,7 +58,8 @@ export default {
             this.dialog = true
         },
         async save(){
-            let id = this.pesanan.id
+            try {
+                let id = this.pesanan.id
             let data = {
                 process: this.pesanan.process,
             }
@@ -74,8 +75,13 @@ export default {
             }).then(res => {
                 console.log(res);
                 this.getPesananAdmin()
+                this.$swal('Berhasil', 'Data berhasil diubah', 'success')
                 this.dialog = false
             })
+            } catch (error) {
+              console.log(error)
+              this.$swal('Gagal', 'Data gagal diubah', 'error')  
+            }
         }
     },
 }

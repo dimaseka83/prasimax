@@ -108,6 +108,7 @@
                             console.log(res)
                             this.dialoginformationtitle = false
                             this.getInformationTitle()
+                            this.$swal('Success', 'Information Title Berhasil Diubah', 'success')
                         })
                     }else{
                         await axios.post(`${this.apibe}informationTitle`, this.forminformationtitle, {
@@ -120,6 +121,7 @@
                             if (res.status == 200) {
                                 this.dialoginformationtitle = false
                                 this.getInformationTitle()
+                                this.$swal('Success', 'Information Title Berhasil Ditambahkan', 'success')
                             }
                         })
                     }
@@ -129,6 +131,7 @@
                                 }
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Terjadi Kesalahan', 'error')
                 }
             },
             async editInformationTitle(index) {
@@ -145,9 +148,11 @@
                         })
                     .then(res => {
                         this.getInformationTitle()
+                        this.$swal('Success', 'Information Title Berhasil Dihapus', 'success')
                     })
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Terjadi Kesalahan', 'error')
                 }
             }
         },

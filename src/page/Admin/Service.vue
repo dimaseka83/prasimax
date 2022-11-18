@@ -113,6 +113,7 @@ export default {
                             .then(res => {
                                 this.getServiceInovate()
                                 this.dialogServiceInovate = false
+                                this.$swal('Success', 'Data Berhasil Diubah', 'success')
 
                             })
                     }else{
@@ -125,11 +126,13 @@ export default {
                             .then(res => {
                                 this.getServiceInovate()
                                 this.dialogServiceInovate = false
+                                this.$swal('Success', 'Data Berhasil Ditambahkan', 'success')
                             })
                     }
                                     
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Something Wrong', 'error')
                 }
                                                 this.formserviceInovate = {
                                     title: '',
@@ -153,6 +156,8 @@ export default {
                         })
                 } catch (error) {
                     console.log(error)
+                    this.$swal('Error', 'Something Wrong', 'error')
+                    
                 }
             },
         },
