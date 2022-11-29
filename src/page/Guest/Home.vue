@@ -109,7 +109,7 @@
           :href="`${mtr.link}`"
           target="_blank"
         >
-          <v-img :src="`${assets}${mtr.image}`" width="100" ></v-img>
+          <v-img :src="`${assets}${mtr.image}`" :width="nosm ? '300' : '100'" ></v-img>
         </v-card>
       </v-slide-item>
     </v-slide-group>

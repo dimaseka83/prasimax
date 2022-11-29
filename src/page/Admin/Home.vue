@@ -278,7 +278,11 @@
                     }).then(res => {
                         this.getCarousel()
                         this.$swal('Success', 'Berhasil Mengubah Mitra', 'success');
-                        this.dialogmitra = false
+                        this.dialogmitra = false,
+                                        this.formmitra = {
+                    link: '',
+                    image: ''
+                }
                     })
                     } catch (error) {
                         console.log(error)
@@ -293,7 +297,11 @@
                     }).then(res => {
                         this.getCarousel()
                         this.$swal('Success', 'Berhasil Menambah Mitra', 'success');
-                        this.dialogmitra = false
+                        this.dialogmitra = false,
+                                                this.formmitra = {
+                    link: '',
+                    image: ''
+                }
                     })
                     } catch (error) {
                         console.log(error)

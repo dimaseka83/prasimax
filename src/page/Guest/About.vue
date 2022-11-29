@@ -138,7 +138,8 @@
                     </div>
                 </v-col>
             </v-row>
-            <h2 class="display-1 font-weight-bold text-capitalize my-5">Dokumen Kelengkapan Perusahaan</h2>
+            <div :style="{ 'margin-top': nosm ? '-300px' : '-500px' }">
+            <h2 class="display-1 font-weight-bold text-capitalize" :class="nosm ? 'mt-n16' : 'my-5'" >Dokumen Kelengkapan Perusahaan</h2>
             <p>Bagi pihak-pihak yang berinteraksi bisnis, proyek dan administrasi, dapat mendownload beberapa
                 dokumen di bawah ini dengan syarat registrasi dan login terlebih dahulu.</p>
             <div class="d-flex justify-space-between" v-if="$store.state.isLogged">
@@ -147,8 +148,9 @@
             </div>
             <p v-else class="title">Silahkan Login atau Register dahulu jika ingin mengunduh dokumen perusahaan</p>
             <v-divider class="mt-10"></v-divider>
+            </div>
         </v-container>
-        <v-container class="my-16 blue--text">
+        <v-container class="mb-16 blue--text">
             <v-row align="center">
                 <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">Kami Mencari Talenta </p>
                 <v-divider></v-divider>
