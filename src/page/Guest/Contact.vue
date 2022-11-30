@@ -3,7 +3,7 @@
         <NavigationGuest /> 
         <!-- Page 1 -->
         <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
-            src="@/assets/images/static/hubungilanding.svg" :height="nosm ? height : height+300">
+            src="@/assets/images/static/hubungilanding.svg" class="mb-16" :height="nosm ? height : height+300">
             <v-container class="white--text">
                 <v-row class="fill-height" :class="nosm ? 'mt-16': 'mt-5'">
                     <v-col :cols="nosm ? '8' : '12'">
@@ -16,7 +16,7 @@
             </v-container>
         </v-img>
         <!-- Page 2 -->
-        <v-container class="my-16 blue--text" v-for="(name, group) in groupingSalesDepartment" :key="group">
+        <v-container class="my-2 blue--text" v-for="(name, group) in groupingSalesDepartment" :key="group">
             <h1 class="display-2 font-weight-bold text-capitalize">{{ group }}</h1>
             <v-row class="my-10">
                 <v-col :cols="nosm ? '4' : '12'" v-for="sales in name" :key="sales.id">
