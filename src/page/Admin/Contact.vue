@@ -2,7 +2,7 @@
     <v-app>
         <navigation-admin />
                 <v-card class="my-16">
-            <v-data-table :headers="headerssalesdepartment" :items="salesdepartment">
+            <v-data-table :headers="headerssalesdepartment" :items="salesdepartment" :loading="loading">
                 <template v-slot:item.content="data">
                     <span v-html="data.item.content"></span>
                 </template>
@@ -39,6 +39,7 @@
                                 <v-card-title>Buat / Edit Sales Departments</v-card-title>
                                 <v-card-text>
                                     <v-text-field label="Nama" v-model="formsales.name"></v-text-field>
+                                    <v-select v-model="formsales.kelompok" :items="department" label="Departement"></v-select>
                                     <v-tiptap v-model="formsales.detail" label="Detail"
                                         :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']"></v-tiptap>
                                     <v-file-input accept="image/*" v-model="formsales.image" label="Image">
@@ -69,10 +70,12 @@ export default {
         },
         data() {
             return {
+                loading: false,
                 dialogsales: false,
                 salesdepartment: [],
                 headerssalesdepartment: [
                     { text: 'Nama', value: 'name' },
+                    { text: 'Departement', value: 'kelompok' },
                     { text: 'Detail', value: 'detail' },
                     { text: 'Image', value: 'image' },
                     { text: 'Action', value: 'action' },
@@ -81,7 +84,14 @@ export default {
                     name: '',
                     detail: '',
                     image: '',
+                    kelompok : ''
                 },
+                department: [
+                    'Bagian Penjualan',
+                    'Dukungan Teknis',
+                    'Keuangan',
+                    'Pembelian'
+                ]
             }
         },
         created() {
@@ -89,13 +99,16 @@ export default {
         },
         methods: {
             async getSales() {
+                this.loading = true
                 try {
                                     await axios.get(`${this.apibe}salesdepartment`)
                     .then(res => {
                         this.salesdepartment = res.data
+                        this.loading = false
                     })
                 } catch (error) {
                     console.log(error)
+                    this.loading = false
                 }
             },
             editsales(index) {
