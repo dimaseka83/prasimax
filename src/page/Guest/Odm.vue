@@ -7,7 +7,7 @@
                 <v-col :cols="nosm ? '6' : '12'">
                     <h1 class="font-weight-bold display-2">{{ odm.name }}</h1>
                     <div class="mt-10">
-                        <span v-html="odm.keterangan"></span>
+                        <span v-html="limitText(odm.keterangan, 100)"></span>
                     </div>
                 </v-col>
                 <v-col :cols="nosm ? '6' : '12'">
@@ -174,6 +174,9 @@
                         this.products = res.data
                     })
             },
+            limitText(text, limit) {
+                return text.substring(0, limit) + '...'
+            }
         },
         computed: {
             isOdm() {

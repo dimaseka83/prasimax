@@ -1,6 +1,6 @@
 <template>
     <v-app>
-        <NavigationGuest />
+        <NavigationGuest ref="navigation"/>
         <!-- Page 1 -->
         <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/tentangkamiheader.svg" :height="nosm ? height : height+350">
         <v-container class="white--text">
@@ -142,11 +142,10 @@
             <h2 class="display-1 font-weight-bold text-capitalize" :class="nosm ? 'mt-n16' : 'my-5'" >Dokumen Kelengkapan Perusahaan</h2>
             <p>Bagi pihak-pihak yang berinteraksi bisnis, proyek dan administrasi, dapat mendownload beberapa
                 dokumen di bawah ini dengan syarat registrasi dan login terlebih dahulu.</p>
-            <div class="d-flex justify-space-between" v-if="$store.state.isLogged">
+            <div class="d-flex justify-space-between">
                 <div class="pa-2 font-weight-bold text-decoration-underline title"
-                    v-for="(document, idx) in documents" :key="idx"><a :href="`${assets}${document.loc}`" rel="noopener noreferrer" download>{{ document.name }}</a></div>
+                    v-for="(document, idx) in documents" :key="idx"><a @click="downloadDokumen(document.loc)" rel="noopener noreferrer" download>{{ document.name }}</a></div>
             </div>
-            <p v-else class="title">Silahkan Login atau Register dahulu jika ingin mengunduh dokumen perusahaan</p>
             <v-divider class="mt-10"></v-divider>
             </div>
         </v-container>
@@ -305,8 +304,24 @@
             FooterGuest
         },
         methods: {
-            download(url){
-                new Blob([url], {type: 'application/pdf'});
+            downloadDokumen(url){
+                if(this.$store.state.isLogged){
+                    window.open(`${this.assets}${url}`, '_blank');
+                }else{
+                    this.$swal({
+                        title: 'Anda belum login',
+                        text: 'Silahkan login terlebih dahulu',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonText: 'Login',
+                        cancelButtonText: 'Batal',
+                        reverseButtons: true
+                    }).then((result) => {
+                        if (result.value) {
+                            this.$refs.navigation.dialoglogin = true;
+                        }
+                    })
+                }
             }
         }
     }
