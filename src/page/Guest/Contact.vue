@@ -16,10 +16,10 @@
             </v-container>
         </v-img>
         <!-- Page 2 -->
-        <v-container class="my-16 blue--text">
-            <h1 class="display-2 font-weight-bold text-capitalize">sales department</h1>
+        <v-container class="my-16 blue--text" v-for="(name, group) in groupingSalesDepartment" :key="group">
+            <h1 class="display-2 font-weight-bold text-capitalize">{{ group }}</h1>
             <v-row class="my-10">
-                <v-col :cols="nosm ? '4' : '12'" v-for="sales in salesdepartment" :key="sales.id">
+                <v-col :cols="nosm ? '4' : '12'" v-for="sales in name" :key="sales.id">
                     <v-card rounded="xl" elevation="12">
                         <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
                             :src="`${assets}${sales.image}`" :height="height-300">
@@ -86,5 +86,14 @@
                     })
             }
         },
+        computed: {
+            groupingSalesDepartment(){
+                const group = this.salesdepartment.reduce((r, a) => {
+                    r[a.kelompok] = [...r[a.kelompok] || [], a];
+                    return r;
+                }, {});
+                return group;
+            }
+        }
     }
 </script>

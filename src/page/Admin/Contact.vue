@@ -3,8 +3,8 @@
         <navigation-admin />
                 <v-card class="my-16">
             <v-data-table :headers="headerssalesdepartment" :items="salesdepartment" :loading="loading">
-                <template v-slot:item.content="data">
-                    <span v-html="data.item.content"></span>
+                <template v-slot:item.detail="data">
+                    <span v-html="data.item.detail"></span>
                 </template>
                 <template v-slot:item.image="data">
                     <v-img :src="`${assets}${data.item.image}`" width="100"></v-img>
@@ -162,6 +162,12 @@ export default {
                 } catch (error) {
                     console.log(error)
                     this.$swal('Error', 'Data gagal disimpan', 'error')
+                }
+                this.formsales = {
+                    name: '',
+                    detail: '',
+                    image: '',
+                    kelompok : ''
                 }
             }
         },
