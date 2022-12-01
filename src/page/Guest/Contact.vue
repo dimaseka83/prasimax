@@ -92,7 +92,12 @@
                     r[a.kelompok] = [...r[a.kelompok] || [], a];
                     return r;
                 }, {});
-                return group;
+                const Abjad = Object.keys(group).sort();
+                const result = {};
+                Abjad.forEach((key) => {
+                    result[key] = group[key];
+                });
+                return result;
             }
         }
     }
