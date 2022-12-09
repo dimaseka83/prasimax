@@ -118,7 +118,8 @@ export default {
         inputBeritaUtamaMustOne() {
             return this.$store.state.berita.filter(
                 item => item.category === 'Berita Utama').length === 1 && 
-                this.form.category === 'Berita Utama'
+                this.form.category === 'Berita Utama' &&
+                this.formsTitle === 'Tambah Berita'
                 ? true : false
         }
     }
