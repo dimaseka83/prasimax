@@ -65,19 +65,17 @@
       </v-row>
 
       <v-row>
-        <v-col md="6" v-for="test in 4" :key="test">
+        <v-col md="6" v-for="berita in getFourBerita" :key="berita.id">
           <v-row>
             <v-col md="6">
               <v-card class="border-card">
-                <v-img src="@/assets/images/dummy/board.jpg"></v-img>
+                <v-img :src="`${assets}${berita.image}`"></v-img>
               </v-card>
             </v-col>
             <v-col md="6">
-              <h1 class="display-1 text-capitalize font-weight-bold">Laman berita</h1>
-              <p class="subtitle blue--text mt-10">Lorem ipsum dolor sit amet consectetur adipisicing elit. Possimus
-                quidem iste consequuntur amet fuga doloremque vel magnam praesentium ab necessitatibus illum, magni hic.
-                Ut eos dicta aliquam, neque officiis blanditiis.</p>
-              <v-btn color="white" class="blue--text mt-10 " outlined rounded>Baca Lebih Lanjut</v-btn>
+              <h1 class="display-1 text-capitalize font-weight-bold">{{ berita.title }}</h1>
+              <span class="subtitle blue--text mt-10" v-html="limitText(berita.content, 100)"></span>
+              <v-btn color="white" class="blue--text mt-10 " outlined rounded :to="`/news/${berita.id}`">Baca Lebih Lanjut</v-btn>
             </v-col>
           </v-row>
         </v-col>
@@ -205,6 +203,10 @@
     methods: {
       async getMitra(){
         try {
+          if(this.$store.state.berita.length == 0){
+            this.$store.dispatch('getBerita');
+          }
+
           await axios.get(`${this.apibe}mitra`).then(res => {
                     this.mitra = res.data
                 })
@@ -217,6 +219,11 @@
         }
       },
     },
+    computed: {
+      getFourBerita(){
+        return this.$store.state.berita.slice(0, 4);
+      }
+    }
 };
 </script>
 <style scoped>

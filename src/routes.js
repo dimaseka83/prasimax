@@ -9,6 +9,8 @@ import Jasa from './page/Guest/Jasa.vue';
 import Contact from './page/Guest/Contact.vue';
 import ResetPassword from './page/Guest/ResetPassword.vue';
 import Activate from './page/Guest/Activate.vue';
+import Berita from './page/Guest/berita';
+import DetailBerita from './page/Guest/berita/_id.vue';
 
 // Admin
 import HomeAdmin from './page/Admin/Home.vue';
@@ -21,6 +23,7 @@ import PartnersAdmin from './page/Admin/Partnership.vue';
 import ContactsAdmin from './page/Admin/Contact.vue';
 import JasaAdmin from './page/Admin/Jasa.vue';
 import Pesanan from './page/Admin/Pesanan.vue';
+import BeritaAdmin from './page/Admin/Berita.vue';
 
 // Middleware
 import auth from './middleware/auth';
@@ -69,6 +72,16 @@ const routes = [
     path: '/user/activate/:token',
     component: Activate,
     name: 'Activate',
+  },
+  {
+    path: '/news',
+    component: Berita,
+    name: 'Berita',
+  },
+  {
+    path: '/news/:id',
+    component: DetailBerita,
+    name: 'DetailBerita',
   },
 
   // Admin
@@ -148,6 +161,14 @@ const routes = [
     path: '/admin/pesanan',
     component: Pesanan,
     name: 'PesananAdmin',
+    meta: {
+      middleware: auth,
+    }
+  },
+  {
+    path: '/admin/berita',
+    component: BeritaAdmin,
+    name: 'BeritaAdmin',
     meta: {
       middleware: auth,
     }

@@ -62,6 +62,7 @@
                             <v-col cols="12">
                                 <h3 class="text-uppercase font-weight-bold mb-5">{{ product.name }}</h3>
                                 <span v-html="product.keterangan"></span>
+                                <p><span class="font-weight-bold">Status:</span> {{ product.status }}</p>
                             </v-col>
                         </v-row>
                     </v-container>

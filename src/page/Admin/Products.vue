@@ -53,10 +53,10 @@
         <v-card class="my-16">
             <v-data-table :headers="headerproducts" :items="products">
                 <template v-slot:item.keterangan="data">
-                    <span v-html="data.item.keterangan"></span>
+                    <span v-html="limitText(data.item.keterangan, 50)"></span>
                 </template>
-                <template v-slot:item.image="data">
-                    <v-img :src="`${assets}${data.item.image}`" width="100"></v-img>
+                <template v-slot:item.image="{item}">
+                    <v-img :src="`${assets}${item.image}`" width="100"></v-img>
                 </template>
                 <template v-slot:item.action="data">
                     <v-tooltip bottom>

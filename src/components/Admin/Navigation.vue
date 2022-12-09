@@ -76,6 +76,11 @@ export default {
                     title: 'Pesanan',
                     icon: 'mdi-engine',
                     href: '/admin/pesanan'
+                },
+                {
+                    title: 'Berita',
+                    icon: 'mdi-engine',
+                    href: '/admin/berita'
                 }
             ]
         }

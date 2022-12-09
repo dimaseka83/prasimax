@@ -174,9 +174,6 @@
                         this.products = res.data
                     })
             },
-            limitText(text, limit) {
-                return text.substring(0, limit) + '...'
-            }
         },
         computed: {
             isOdm() {

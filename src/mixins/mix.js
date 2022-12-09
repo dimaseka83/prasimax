@@ -30,6 +30,10 @@ export default {
             name: 'Hubungi Kami',
             link: '/contact',
           },
+          {
+            name: 'Berita',
+            link: '/news',
+          }
         ],
         socials: [
           {
@@ -95,6 +99,9 @@ export default {
     mailto(email, subject) {
       window.location.href = `mailto:${email}?Subject=${subject}`;
   },
+  limitText(text, limit) {
+    return text.substring(0, limit) + '...'
+}
     },
     computed: {
       height() {
