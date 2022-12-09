@@ -47,7 +47,7 @@ export default {
         />
         </v-content>
         <v-container class="blue--text my-16">
-            <h1 class="display-1 font-weight-bold">
+            <h1 class="display-1 font-weight-bold black--text">
                 {{ title }}
             </h1>
             <p class="text--disabled mt-10">
