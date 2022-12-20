@@ -138,7 +138,7 @@
                     </div>
                 </v-col>
             </v-row>
-            <div :style="{ 'margin-top': nosm ? '-300px' : '-500px' }">
+            <div :style="{ 'margin-top': nosm ? '-300px' : '-500px' }" id="dokumen">
             <h2 class="display-1 font-weight-bold text-capitalize" :class="nosm ? 'mt-n16' : 'my-5'" >Dokumen Kelengkapan Perusahaan</h2>
             <p>Bagi pihak-pihak yang berinteraksi bisnis, proyek dan administrasi, dapat mendownload beberapa
                 dokumen di bawah ini dengan syarat registrasi dan login terlebih dahulu.</p>

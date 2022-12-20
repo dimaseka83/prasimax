@@ -45,9 +45,9 @@
                 <v-col>
                     <p class="display-1 font-weight-bold text-capitalize">link penting</p>
                     <p>
-                        <span>Bantuan</span><br />
-                        <span>Pusat Dokumen</span><br />
-                        <span>Event dan Kegiatan</span><br />
+                        <a @click="navDokumen" style="color:white">Bantuan</a><br />
+                        <a @click="navDokumen" style="color:white">Pusat Dokumen</a><br />
+                        <a @click="navDokumen" style="color:white">Event dan Kegiatan</a><br />
                     </p>
                 </v-col>
                 <v-col>
@@ -104,6 +104,9 @@
             }
         },
         methods: {
+            navDokumen(){
+                this.$router.push('/about#dokumen');
+            },
             async isSubscribe() {
                 if (this.$refs.formsubscribe.validate()) {
                     switch (this.checked) {
