@@ -26,7 +26,7 @@
                 </template>
                 <template v-slot:top>
                     <v-toolbar>
-                        <v-toolbar-title>Technical 
+                        <v-toolbar-title>Technical
                             <!-- <span class="subtitle-2 text-disabled">(Gambar harus svg)</span> -->
                         </v-toolbar-title>
                         <v-spacer></v-spacer>
@@ -56,10 +56,10 @@
     </v-app>
 </template>
 <script>
-import mix from '@/mixins/mix'
-import NavigationAdmin from '@/components/Admin/Navigation.vue'
-import axios from 'axios'
-export default {
+    import mix from '@/mixins/mix'
+    import NavigationAdmin from '@/components/Admin/Navigation.vue'
+    import axios from 'axios'
+    export default {
         mixins: [mix],
         components: {
             NavigationAdmin
@@ -106,32 +106,32 @@ export default {
                     console.log(error)
                 }
             },
-            async saveTechnical(){
+            async saveTechnical() {
                 try {
-                    if(this.formtechnical.id != undefined){
+                    if (this.formtechnical.id != undefined) {
                         await axios.put(`${this.apibe}technical/${this.formtechnical.id}`, this.formtechnical, {
-                            headers: {
-                                'Content-Type': 'multipart/form-data',
-                                Authorization: `Bearer ${this.$store.state.token}`
-                            },
-                        })
-                        .then(res => {
-                            this.getTechnical()
-                            this.dialogtechnical = false
-                            this.$swal('Success', 'Technical berhasil diubah', 'success')
-                        })
-                    }else{
+                                headers: {
+                                    'Content-Type': 'multipart/form-data',
+                                    Authorization: `Bearer ${this.$store.state.token}`
+                                },
+                            })
+                            .then(res => {
+                                this.getTechnical()
+                                this.dialogtechnical = false
+                                this.$swal('Success', 'Technical berhasil diubah', 'success')
+                            })
+                    } else {
                         await axios.post(`${this.apibe}technical`, this.formtechnical, {
-                            headers: {
-                                'Content-Type': 'multipart/form-data',
-                                Authorization: `Bearer ${this.$store.state.token}`
-                            },
-                        })
-                        .then(res => {
-                            this.getTechnical()
-                            this.dialogtechnical = false
-                            this.$swal('Success', 'Technical berhasil dibuat', 'success')
-                        })
+                                headers: {
+                                    'Content-Type': 'multipart/form-data',
+                                    Authorization: `Bearer ${this.$store.state.token}`
+                                },
+                            })
+                            .then(res => {
+                                this.getTechnical()
+                                this.dialogtechnical = false
+                                this.$swal('Success', 'Technical berhasil dibuat', 'success')
+                            })
                     }
                     this.formtechnical = {
                         title: '',
@@ -143,27 +143,27 @@ export default {
                     this.$swal('Error', 'Technical gagal dibuat', 'error')
                 }
             },
-            editTechnical(item){
+            editTechnical(item) {
                 this.formtechnical = this.technical[item];
                 this.dialogtechnical = true
             },
-            async deleteTechnical(item){
+            async deleteTechnical(item) {
                 try {
                     await axios.delete(`${this.apibe}technical/${this.technical[item].id}`, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                            Authorization: `Bearer ${this.$store.state.token}`
-                        },
-                    })
-                    .then(res => {
-                        this.getTechnical()
-                        this.$swal('Success', 'Technical berhasil dihapus', 'success')
-                    })
+                            headers: {
+                                'Content-Type': 'multipart/form-data',
+                                Authorization: `Bearer ${this.$store.state.token}`
+                            },
+                        })
+                        .then(res => {
+                            this.getTechnical()
+                            this.$swal('Success', 'Technical berhasil dihapus', 'success')
+                        })
                 } catch (error) {
                     console.log(error)
                     this.$swal('Error', 'Technical gagal dihapus', 'error')
                 }
             }
         },
-}
+    }
 </script>

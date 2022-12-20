@@ -3,23 +3,29 @@
         <NavigationGuest />
         <!-- Page 1 -->
         <v-container class="blue--text">
-            <v-row class="my-16" v-for="odm in isOdm" :key="odm.id">
-                <v-col :cols="nosm ? '6' : '12'">
+            <v-row class="mt-16" v-for="odm in isOdm" :key="odm.id">
+                <v-col :cols="nosm ? '6' : '12'" class="text-center">
                     <h1 class="font-weight-bold display-2">{{ odm.name }}</h1>
                     <div class="mt-10">
                         <span v-html="limitText(odm.keterangan, 100)"></span>
                     </div>
                 </v-col>
                 <v-col :cols="nosm ? '6' : '12'">
-                    <div class="d-flex justify-center">
-                        <v-img :src="`${assets}${odm.image}`" :max-width="height-300"></v-img>
+                    <div class="d-flex justify-left">
+                        <v-img :src="`${assets}${odm.image}`" :max-width="height-300">
+                            <template v-slot:placeholder>
+                                <v-row align="center" justify="center" class="fill-height ma-0">
+                                    <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
+                                </v-row>
+                            </template>
+                        </v-img>
                     </div>
                 </v-col>
             </v-row>
             <v-divider></v-divider>
         </v-container>
         <!-- Page 2 -->
-        <v-container class="blue--text my-16">
+        <v-container class="blue--text mt-16">
             <v-row>
                 <v-col :cols="nosm ? '6' : '12'">
                     <h1 class="font-weight-bold mb-10" :class="nosm ? 'display-4' : 'text-h4'">Apa itu OEM dan ODM</h1>
@@ -55,7 +61,7 @@
                     </v-card>
                 </v-col>
             </v-row>
-            <v-row class="my-16">
+            <v-row class="mt-16">
                 <v-col :cols="nosm ? '6' : '12'">
                     <h1 class="font-weight-medium  display-1 mb-10">Perbedaan OEM dan ODM</h1>
                     <p>Satu hal penting yang membedakan perusahaan OEM dan ODM adalah spesifikasi produk di mana
@@ -96,10 +102,18 @@
                 <v-list two-line>
                     <v-list-item>
                         <v-img gradient="to top right, rgba(0, 126, 209, 1), rgba(255, 255, 255, 0)" v-if="nosm"
-                         src="@/assets/images/static/rndodm.svg" max-width="600" :height="height"></v-img>
+                            src="@/assets/images/static/rndodm.svg" max-width="600" :height="height">
+                                                        <template v-slot:placeholder>
+                                <v-row align="center" justify="center" class="fill-height ma-0">
+                                    <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
+                                </v-row>
+                            </template>
+                            </v-img>
                         <v-list-item-content>
-                            <v-card flat :class="nosm ? 'pa-16' : 'pa-5'" color="blue" dark :height="nosm ? height : height+500">
-                                <p class="font-weight-bold" :class="nosm ? 'display-1' : 'text-h5'">Riset dan Pengembangan</p>
+                            <v-card flat :class="nosm ? 'pa-16' : 'pa-5'" color="blue" dark
+                                :height="nosm ? height : height+500">
+                                <p class="font-weight-bold" :class="nosm ? 'display-1' : 'text-h5'">Riset dan
+                                    Pengembangan</p>
                                 <p class="subtitle mt-10">Riset dan pengembangan atau dikenal sebagai Research and
                                     Development, disingkat R&amp;D, yaitu
                                     lembaga atau entitas perusahaan yang melakukan penelitian. Tujuan penelitian dan
@@ -145,7 +159,13 @@
                 <v-col :cols="nosm ? '6' : '12'">
                     <v-card elevation="10" rounded="xl">
                         <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
-                            src="@/assets/images/static/pabrikasiodm.svg" :height="height - 100"></v-img>
+                            src="@/assets/images/static/pabrikasiodm.svg" :height="height - 100">
+                                                        <template v-slot:placeholder>
+                                <v-row align="center" justify="center" class="fill-height ma-0">
+                                    <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
+                                </v-row>
+                            </template>
+                            </v-img>
                     </v-card>
                 </v-col>
             </v-row>
@@ -177,7 +197,7 @@
         },
         computed: {
             isOdm() {
-                if(this.products.length > 0) {
+                if (this.products.length > 0) {
                     return this.products.filter(product => product.isOdm === true)
                 }
                 return []

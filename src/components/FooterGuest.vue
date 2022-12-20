@@ -59,7 +59,9 @@
                     <v-form ref="formsubscribe" v-model="formvalidation.valid">
                         <v-text-field v-model="mailSubs" :rules="formvalidation.email" dense rounded outlined dark
                             class="rounded-xl" label="alamat email"></v-text-field>
-                        <v-btn @click="isSubscribe" class="rounded-xl primary px-16">Langganan</v-btn>
+                        <v-btn @click="isSubscribe"
+                        :disabled="!formvalidation.valid"
+                        class="rounded-xl primary px-16">Langganan</v-btn>
                     <v-checkbox v-model="checked" :rules="formvalidation.checked" dark label="Menerima syarat dan ketentuan kebijakan privasi">
                     </v-checkbox>
                     </v-form>
@@ -153,5 +155,9 @@
 
     a:hover {
         text-decoration: underline;
+    }
+
+    button.v-btn[disabled] {
+        color: white !important;
     }
 </style>

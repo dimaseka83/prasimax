@@ -14,7 +14,7 @@
     </v-img>
         <!-- Page 2 -->
         <v-container>
-            <v-card color="light-blue lighten-1" elevation="10" rounded="xl" :class="nosm ? 'my-16 pa-10': 'my-16 pa-5'">
+            <v-card color="light-blue lighten-1" elevation="10" rounded="xl" :class="nosm ? 'mt-16 pa-10': 'mt-16 pa-5'">
                 <v-container class="white--text">
                     <v-row class="fill-height mt-10">
                         <v-col :cols="nosm ? '8' : '12'">
@@ -79,7 +79,7 @@
                 <v-col :cols="nosm ? '5' : '12'">
                     <v-card elevation="10" rounded="xl" :max-height="height-50">
                         <v-img  gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
-                        src="@/assets/images/static/sejakaboutus.svg" :height="height"></v-img>
+                        src="@/assets/images/static/sejakaboutus.svg" :height="nosm ? height-300 : height"></v-img>
                     </v-card>
                 </v-col>
                 <v-col :cols="nosm ? '7' : '12'">

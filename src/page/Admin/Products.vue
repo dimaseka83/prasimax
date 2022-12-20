@@ -180,7 +180,7 @@
                     isOdm: null,
                     image: [],
                 },
-                itemspilihan: ['Terakuisisi', 'Acquired'],
+                itemspilihan: ['Terakuisisi', 'Tersedia'],
                 kategoripilihan: ['Kecerdasan Artifisial', 'IoT', 'Laptop', 'Development Kit', 'Kendaraan Listrik', 'Perangkat lainnya'],
                 odmPilihan: [true, false],
             }

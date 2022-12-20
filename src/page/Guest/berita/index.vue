@@ -50,12 +50,15 @@
         <navigation-guest />
         <!-- Page 1 -->
         <v-container class="my-16" v-for="(beritaUtama, key) in getBeritaUtama" :key="key">
-            <v-card flat
-            :to="`/news/${beritaUtama.id}`"
-            >
+            <v-card flat :to="`/news/${beritaUtama.id}`">
                 <v-list two-line>
                     <v-list-item>
                         <v-img v-show="nosm" :src="`${assets}${beritaUtama.image}`" max-width="600" :height="height">
+                            <template v-slot:placeholder>
+                                <v-row align="center" justify="center" class="fill-height ma-0">
+                                    <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
+                                </v-row>
+                            </template>
                         </v-img>
                         <v-list-item-content>
                             <v-card flat color="blue" dark :height="nosm ? height : height+200">
@@ -76,16 +79,20 @@
                 <p class="text-capitalize font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">{{ category }}</p>
                 <v-divider></v-divider>
             </v-row>
-            <v-slide-group v-model="model" class="pa-4" active-class="success" show-arrows>
+            <v-slide-group v-model="model" class="pa-4"  show-arrows>
                 <v-slide-item v-for="item in berita" :key="item.id" v-slot="{ toggle }">
                     <v-hover v-slot="{hover}">
-                        <v-card flat class="ma-4" rounded="xl" 
-                        :elevation="hover ? 12 : 2"
-                        :to="`/news/${item.id}`"
-                        >
-                        <v-img :src="`${assets}${item.image}`" :height="height-300" />
-                        <v-card-title class="display-1 blue--text font-weight-bold ma-5">{{ item.title }}</v-card-title>
-                    </v-card>
+                        <v-card flat class="ma-4" rounded="xl" :elevation="hover ? 12 : 2" :to="`/news/${item.id}`">
+                            <v-img :src="`${assets}${item.image}`" :height="height-300">
+                                <template v-slot:placeholder>
+                                    <v-row align="center" justify="center" class="fill-height ma-0">
+                                        <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
+                                    </v-row>
+                                </template>
+                            </v-img>
+                            <v-card-title class="display-1 blue--text font-weight-bold ma-5">{{ item.title }}
+                            </v-card-title>
+                        </v-card>
                     </v-hover>
                 </v-slide-item>
             </v-slide-group>

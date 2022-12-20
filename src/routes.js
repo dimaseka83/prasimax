@@ -178,6 +178,13 @@ const routes = [
 const router = new VueRouter({
   routes,
   mode: 'hash',
+  scrollBehavior(to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition;
+    } else {
+      return { x: 0, y: 0 };
+    }
+  },
 });
 
 function nextFactory(context, middleware, index) {
