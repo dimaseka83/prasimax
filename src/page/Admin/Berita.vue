@@ -41,7 +41,6 @@ export default {
             formsTitle: 'Tambah Berita',
             toolbar: ['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p'],
             category: [
-                'Berita Utama',
                 'Berita Terpopuler',
                 'Berita Lainnya'
             ],
