@@ -3,7 +3,7 @@
     <NavigationGuest />
     <!-- Page 1 -->
     <div v-for="(partner, idx) in partners" :key="idx">
-      <v-container class="my-16 blue--text" v-if="idx % 2 === 0">
+      <v-container class="mt-16 blue--text" v-if="idx % 2 === 0">
         <v-row>
           <v-col :cols="nosm ? '6' : '12'">
             <h1 class="display-1 font-weight-bold mb-16 text-uppercase">{{ partner.title }}</h1>
@@ -24,7 +24,7 @@
         </v-row>
       </v-container>
       <!-- Page 2 -->
-      <v-container class="my-16" v-else>
+      <v-container class="mt-16" v-else>
         <v-card flat>
           <v-list two-line>
             <v-list-item>
@@ -47,7 +47,7 @@
       </v-container>
     </div>
     <!-- Page 3 -->
-    <v-container class="my-16">
+    <v-container class="mt-16">
       <v-row align="center">
         <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">mitra teknologi
         </p>

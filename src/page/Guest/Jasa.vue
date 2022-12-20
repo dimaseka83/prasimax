@@ -48,7 +48,7 @@
     </v-img>
     <!-- Page 2 -->
     <div v-for="(row, idx) in rows" :key="idx">
-      <v-container class="my-16 blue--text" v-if="idx % 2 === 0">
+      <v-container class="mt-16 blue--text" v-if="idx % 2 === 0">
         <v-row>
           <v-col :cols="nosm ? '6' : '12'">
             <h1 class="display-1 font-weight-bold mb-16 text-uppercase" v-html="row.title"></h1>
@@ -68,7 +68,7 @@
         </v-row>
       </v-container>
       <!-- Page 3 -->
-      <v-container :class="nosm ? 'my-16' : 'my-8'" v-if="idx % 2 === 1">
+      <v-container :class="nosm ? 'mt-16' : 'my-8'" v-if="idx % 2 === 1">
         <v-card flat>
           <v-list two-line>
             <v-list-item>

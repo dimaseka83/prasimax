@@ -36,7 +36,7 @@
                 </v-col>
             </v-row>
         </v-container>
-        <v-container :class="nosm ? 'my-16' : 'my-8'">
+        <v-container :class="nosm ? 'mb-16' : 'mb-8'">
             <v-row>
                 <v-col :cols="nosm ? '4' : '12'" v-for="(product, idx) in showProductsWithPage" :key="idx"
                     class="d-flex align-stretch">
