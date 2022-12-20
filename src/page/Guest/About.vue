@@ -310,7 +310,7 @@
                 }else{
                     this.$swal({
                         title: 'Anda belum login',
-                        text: 'Silahkan login terlebih dahulu',
+                        text: 'Silahkan login terlebih dahulu menggunakan akun perusahaan atau institusi Anda',
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonText: 'Login',

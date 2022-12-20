@@ -92,7 +92,7 @@
                         v => /.+@.+\..+/.test(v) || 'Email harus valid',
                         v =>
                         /^([\w-.]+@(?!gmail\.com)(?!yahoo\.com)(?!yahoo\.co.id)(?!hotmail\.com)(?!mail\.ru)(?!yandex\.ru)(?!yandesk\.com)(?!mail\.com)(?!rocketmail\.com)([\w-]+.)+[\w-]{2,4})?$/
-                        .test(v) || 'Email harus menggunakan email perusahaan',
+                        .test(v) || 'Email harus menggunakan email perusahaan atau institusi',
                     ],
                     checked: [v => !!v || 'Anda harus menyetujui syarat dan ketentuan'],
                 },
