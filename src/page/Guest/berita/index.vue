@@ -52,7 +52,7 @@
     <v-app>
         <navigation-guest />
         <!-- Page 1 -->
-        <v-container class="my-16" v-if="products.length">
+        <v-container class="mt-16" v-if="products.length">
             <v-card flat v-for="(product, key) in products" :key="key">
                 <v-list two-line>
                     <v-list-item>

@@ -85,6 +85,7 @@
         data() {
             return {
                 salesdepartment: [],
+                departement: [],
             }
         },
         created() {
@@ -96,20 +97,44 @@
                     .then(res => {
                         this.salesdepartment = res.data
                     })
+                const {
+                    data
+                } = await axios.get(`${this.apibe}department`)
+                this.departement = data.sort((a, b) => a.urutan - b.urutan)
             }
         },
         computed: {
             groupingSalesDepartment() {
-                const group = this.salesdepartment.reduce((r, a) => {
-                    r[a.kelompok] = [...r[a.kelompok] || [], a];
-                    return r;
-                }, {});
-                const Abjad = Object.keys(group).sort();
-                const result = {};
-                Abjad.forEach((key) => {
-                    result[key] = group[key];
-                });
-                return result;
+                const salesByDepartment = {};
+
+                for (const sale of this.salesdepartment) {
+                    const department = this.departement.find(d => d.nama === sale.kelompok);
+                    if (department) {
+                        if (!salesByDepartment[department.nama]) {
+                            salesByDepartment[department.nama] = [];
+                        }
+                        salesByDepartment[department.nama].push(sale);
+                    }
+                }
+
+                const sortedSalesByDepartment = {};
+
+                Object.keys(salesByDepartment)
+                    .sort((a, b) => {
+                        const departmentA = this.departement.find(d => d.nama === a);
+                        const departmentB = this.departement.find(d => d.nama === b);
+                        if (departmentA.urutan !== departmentB.urutan) {
+                            return departmentA.urutan - departmentB.urutan;
+                        } else {
+                            return a.localeCompare(b);
+                        }
+                    })
+                    .forEach(key => {
+                        if (salesByDepartment[key].length > 0) {
+                            sortedSalesByDepartment[key] = salesByDepartment[key];
+                        }
+                    });
+                return sortedSalesByDepartment
             }
         }
     }
