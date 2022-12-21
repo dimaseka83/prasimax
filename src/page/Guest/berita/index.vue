@@ -34,14 +34,14 @@
         },
         computed: {
             getByCategory() {
-                const berita = {}
-                this.category.forEach(category => {
-                    berita[category] = this.$store.state.berita.filter(berita => berita.category === category)
-                })
-                const Abjad = Object.keys(berita).sort().reverse()
+                const group = this.$store.state.berita.reduce((r, a) => {
+                    r[a.category] = [...r[a.category] || [], a];
+                    return r;
+                }, {});
+                const Abjad = Object.keys(group).sort().reverse()
                 const Berita = {}
                 Abjad.forEach(abjad => {
-                    Berita[abjad] = berita[abjad]
+                    Berita[abjad] = group[abjad]
                 })
                 return Berita
             },
