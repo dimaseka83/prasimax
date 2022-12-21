@@ -14,7 +14,7 @@
             return {
                 category: [
                     'Berita Terpopuler',
-                    'Berita Lainnya'
+                    'Berita'
                 ],
                 model: null,
                 products: []
@@ -44,7 +44,7 @@
                     Berita[abjad] = berita[abjad]
                 })
                 return Berita
-            }
+            },
         }
     }
 </script>
@@ -52,7 +52,7 @@
     <v-app>
         <navigation-guest />
         <!-- Page 1 -->
-        <v-container class="my-16" >
+        <v-container class="my-16" v-if="products.length">
             <v-card flat v-for="(product, key) in products" :key="key">
                 <v-list two-line>
                     <v-list-item>
@@ -77,7 +77,7 @@
             </v-card>
         </v-container>
         <!-- Page 2 -->
-        <v-container class="blue--text" v-for="(berita, category) in getByCategory" :key="category" :class="category.at(-1) ? 'mt-16' : 'mt-16'">
+        <v-container class="blue--text" v-for="(berita, category) in getByCategory" :key="category" :class="category.at(-1) ? 'my-8' : 'mt-16'">
             <v-row align="center">
                 <p class="text-capitalize font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">{{ category }}</p>
                 <v-divider></v-divider>

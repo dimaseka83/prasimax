@@ -21,7 +21,8 @@ export default {
             form : {
                 title: '',
                 content: '',
-                image: null
+                image: null,
+                category: '',
             },
             rules: {
                 title: [
@@ -32,7 +33,7 @@ export default {
                 ],
                 category: [
                     v => !!v || 'Kategori harus diisi',
-                    v => !this.inputBeritaUtamaMustOne || 'Berita utama hanya boleh 1'
+                    v => !this.inputBeritaUtamaMustOne || 'Berita Terpopuler hanya boleh 3'
                 ],
                 image: [
                     v => !!v || 'Gambar harus diisi',
@@ -42,7 +43,7 @@ export default {
             toolbar: ['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p'],
             category: [
                 'Berita Terpopuler',
-                'Berita Lainnya'
+                'Berita'
             ],
             header: {
                 'Content-Type': 'multipart/form-data',
@@ -116,9 +117,8 @@ export default {
     computed: {
         inputBeritaUtamaMustOne() {
             return this.$store.state.berita.filter(
-                item => item.category === 'Berita Utama').length === 1 && 
-                this.form.category === 'Berita Utama' &&
-                this.formsTitle === 'Tambah Berita'
+                item => item.category === 'Berita Terpopuler').length === 4 && 
+                this.form.category === 'Berita Terpopuler'
                 ? true : false
         }
     }

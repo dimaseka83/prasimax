@@ -52,6 +52,9 @@
 
         <v-card class="my-16">
             <v-data-table :headers="headerproducts" :items="products">
+                <template v-slot:item.deskripsi="data">
+                    <span v-html="limitText(data.item.deskripsi, 50)"></span>
+                </template>
                 <template v-slot:item.keterangan="data">
                     <span v-html="limitText(data.item.keterangan, 50)"></span>
                 </template>
@@ -94,7 +97,7 @@
                                     </v-select>
                                     <v-select label="Odm" v-model="formproducts.isOdm" :items="odmPilihan">
                                     </v-select>
-                                    <v-select label="Odm" v-model="formproducts.isBerita" :items="odmPilihan">
+                                    <v-select label="Berita" v-model="formproducts.isBerita" :items="odmPilihan">
                                     </v-select>
                                     <v-tiptap v-model="formproducts.keterangan" label="keterangan"
                                         :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']"></v-tiptap>
