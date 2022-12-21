@@ -94,7 +94,11 @@
                                     </v-select>
                                     <v-select label="Odm" v-model="formproducts.isOdm" :items="odmPilihan">
                                     </v-select>
+                                    <v-select label="Odm" v-model="formproducts.isBerita" :items="odmPilihan">
+                                    </v-select>
                                     <v-tiptap v-model="formproducts.keterangan" label="keterangan"
+                                        :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']"></v-tiptap>
+                                    <v-tiptap v-model="formproducts.deskripsi" label="Deskripsi"
                                         :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']"></v-tiptap>
                                     <v-file-input accept="image/*" v-model="formproducts.image" label="Image">
                                     </v-file-input>
@@ -167,6 +171,10 @@
                         text: 'Keterangan',
                         value: 'keterangan'
                     },
+                                        {
+                        text: 'Deskripsi',
+                        value: 'deskripsi'
+                    },
                     {
                         text: 'Action',
                         value: 'action'
@@ -177,7 +185,9 @@
                     category: '',
                     status: '',
                     keterangan: '',
+                    deskripsi: '',
                     isOdm: null,
+                    isBerita: null,
                     image: [],
                 },
                 itemspilihan: ['Terakuisisi', 'Tersedia'],

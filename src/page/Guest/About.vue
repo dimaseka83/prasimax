@@ -74,12 +74,19 @@
             </v-card>
         </v-container>
         <!-- Page 3 -->
-        <v-container class="my-16 blue--text">
+        <v-container class="mt-16 blue--text">
             <v-row>
                 <v-col :cols="nosm ? '5' : '12'">
                     <v-card elevation="10" rounded="xl" :max-height="height-50">
                         <v-img  gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
-                        src="@/assets/images/static/sejakaboutus.svg" :height="nosm ? height-300 : height"></v-img>
+                        src="@/assets/images/static/sejakaboutus.svg" :height="heightImage">
+                                          <template v-slot:placeholder>
+                    <v-row align="center" justify="center" class="fill-height ma-0">
+                      <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
+                    </v-row>
+                  </template>
+
+                        </v-img>
                     </v-card>
                 </v-col>
                 <v-col :cols="nosm ? '7' : '12'">
@@ -108,7 +115,7 @@
                     </div>
                 </v-col>
             </v-row>
-            <v-row class="mt-n16">
+            <v-row :style="{ 'margin-top': nosm ? '-150px' : '-500px' }">
                 <v-col class="mt-n16" :cols="nosm ? '6' : '12'">
                     <h2 class="font-weight-bold text-capitalize mt-n16 mb-5" :class="nosm ? 'display-1': 'text-h5'">fase transformasi :</h2>
                     <p>Proyek pertama yang didapatkan oleh PRASIMAX adalah implementasi sistem monitoring pajak
@@ -138,7 +145,7 @@
                     </div>
                 </v-col>
             </v-row>
-            <div :style="{ 'margin-top': nosm ? '-300px' : '-500px' }" id="dokumen">
+            <div :style="{ 'margin-top': nosm ? '-300px' : '-600px' }" id="dokumen">
             <h2 class="display-1 font-weight-bold text-capitalize" :class="nosm ? 'mt-n16' : 'my-5'" >Dokumen Kelengkapan Perusahaan</h2>
             <p>Bagi pihak-pihak yang berinteraksi bisnis, proyek dan administrasi, dapat mendownload beberapa
                 dokumen di bawah ini dengan syarat registrasi dan login terlebih dahulu.</p>
@@ -149,7 +156,7 @@
             <v-divider class="mt-10"></v-divider>
             </div>
         </v-container>
-        <v-container class="mb-16 blue--text">
+        <v-container class="mt-8 blue--text">
             <v-row align="center">
                 <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">Kami Mencari Talenta </p>
                 <v-divider></v-divider>
@@ -213,7 +220,7 @@
                 </v-col>
             </v-row>
         </v-container>
-        <v-container class="my-16 blue--text">
+        <v-container class="mb-16 blue--text">
             <h2 class="display-1 font-weight-bold text-capitalize mb-5">pedoman perilaku :</h2>
             <p>Dalam menjaga keberlangsungan perusahaan, PRASIMAX sadar untuk menjaga nilai integritas di
                 setiap sendi aktifitas bisnis. Kami sangat menjaga hubungan kerja dan bisnis yang baik dengan klien
@@ -321,6 +328,24 @@
                             this.$refs.navigation.dialoglogin = true;
                         }
                     })
+                }
+            }
+        },
+        computed: {
+            heightImage() {
+                switch (this.$vuetify.breakpoint.name) {
+                    case 'xs':
+                        return 200;
+                    case 'sm':
+                        return 300;
+                    case 'md':
+                        return 400;
+                    case 'lg':
+                        return 550;
+                    case 'xl':
+                        return 450;
+                    default:
+                        return 400;
                 }
             }
         }

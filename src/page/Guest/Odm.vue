@@ -3,11 +3,11 @@
         <NavigationGuest />
         <!-- Page 1 -->
         <v-container class="blue--text">
-            <v-row class="mt-16" v-for="odm in isOdm" :key="odm.id">
+            <v-row class="mt-16" v-for="odm in products" :key="odm.id">
                 <v-col :cols="nosm ? '6' : '12'" class="text-center">
                     <h1 class="font-weight-bold display-2">{{ odm.name }}</h1>
                     <div class="mt-10">
-                        <span v-html="limitText(odm.keterangan, 100)"></span>
+                        <span v-html="odm.deskripsi"></span>
                     </div>
                 </v-col>
                 <v-col :cols="nosm ? '6' : '12'">
@@ -189,19 +189,11 @@
         },
         methods: {
             async getproducts() {
-                await axios.get(`${this.apibe}product`)
-                    .then(res => {
-                        this.products = res.data
-                    })
+                const { data } = await axios.get(`${this.apibe}product`);
+                data.filter(product => product.isOdm === true).forEach(product => {
+                    this.products.push(product)
+                })
             },
         },
-        computed: {
-            isOdm() {
-                if (this.products.length > 0) {
-                    return this.products.filter(product => product.isOdm === true)
-                }
-                return []
-            }
-        }
     }
 </script>

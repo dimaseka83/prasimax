@@ -3,6 +3,7 @@
     import componentsmix from '@/mixins/componentsmix'
     import FooterGuest from '@/components/FooterGuest.vue'
     import NavigationGuest from '@/components/NavigationGuest.vue'
+    import axios from 'axios'
     export default {
         components: {
             FooterGuest,
@@ -16,20 +17,22 @@
                     'Berita Lainnya'
                 ],
                 model: null,
+                products: []
             }
         },
         created() {
             this.getBerita()
         },
         methods: {
-            getBerita() {
+            async getBerita() {
                 this.$store.dispatch('getBerita')
-            }
+                const { data } = await axios.get(`${this.apibe}product`);
+                data.filter(product => product.isBerita === true).forEach(product => {
+                    this.products.push(product)
+                })
+            },
         },
         computed: {
-            getBeritaUtama() {
-                return this.$store.state.berita.filter(berita => berita.category === 'Berita Utama')
-            },
             getByCategory() {
                 const berita = {}
                 this.category.forEach(category => {
@@ -49,11 +52,11 @@
     <v-app>
         <navigation-guest />
         <!-- Page 1 -->
-        <v-container class="my-16" v-for="(beritaUtama, key) in getBeritaUtama" :key="key">
-            <v-card flat :to="`/news/${beritaUtama.id}`">
+        <v-container class="my-16" >
+            <v-card flat v-for="(product, key) in products" :key="key">
                 <v-list two-line>
                     <v-list-item>
-                        <v-img v-show="nosm" :src="`${assets}${beritaUtama.image}`" max-width="600" :height="height">
+                        <v-img v-show="nosm" :src="`${assets}${product.image}`" max-width="600" :height="height">
                             <template v-slot:placeholder>
                                 <v-row align="center" justify="center" class="fill-height ma-0">
                                     <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
@@ -64,8 +67,8 @@
                             <v-card flat color="blue" dark :height="nosm ? height : height+200">
                                 <v-container :class="nosm ? 'pa-16' : 'pa-5'">
                                     <p class="font-weight-bold my-5" :class="nosm ? 'display-3' : 'text-h4'">
-                                        {{ beritaUtama.title }}</p>
-                                    <span class="subtitle-2" v-html="beritaUtama.content"></span>
+                                        {{ product.name }}</p>
+                                    <span class="subtitle-2" v-html="product.deskripsi"></span>
                                 </v-container>
                             </v-card>
                         </v-list-item-content>
@@ -74,7 +77,7 @@
             </v-card>
         </v-container>
         <!-- Page 2 -->
-        <v-container class="blue--text" v-for="(berita, category) in getByCategory" :key="category" :class="category.at(-1) ? 'mb-16' : 'mt-16'">
+        <v-container class="blue--text" v-for="(berita, category) in getByCategory" :key="category" :class="category.at(-1) ? 'mt-16' : 'mt-16'">
             <v-row align="center">
                 <p class="text-capitalize font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">{{ category }}</p>
                 <v-divider></v-divider>
