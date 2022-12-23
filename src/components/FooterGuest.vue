@@ -47,7 +47,7 @@
                     <p>
                         <a @click="navDokumen" style="color:white">Bantuan</a><br />
                         <a @click="navDokumen" style="color:white">Pusat Dokumen</a><br />
-                        <a @click="navDokumen" style="color:white">Event dan Kegiatan</a><br />
+                        <a @click="route('/news')" style="color:white">Event dan Kegiatan</a><br />
                     </p>
                 </v-col>
                 <v-col>

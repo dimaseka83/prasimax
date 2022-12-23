@@ -12,7 +12,7 @@
                 </v-col>
                 <v-col :cols="nosm ? '6' : '12'">
                     <div class="d-flex justify-left">
-                        <v-img :src="`${assets}${odm.image}`" :max-width="height-300">
+                        <v-img :src="`${assets}${odm.image}`" :max-width="height-250" class="mt-n8">
                             <template v-slot:placeholder>
                                 <v-row align="center" justify="center" class="fill-height ma-0">
                                     <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
