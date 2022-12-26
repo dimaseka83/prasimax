@@ -194,16 +194,16 @@
                     Mencari Talenta </p>
                 <v-divider></v-divider>
             </v-row>
-            <v-row class="my-10">
+            <v-row class="mb-10">
                 <v-col cols="12">
                     <p>Seiring pertumbuhan bisnis, produk dan jasa, PRASIMAX memerlukan sumber daya manusia yang akan
                         duduk di berbagai posisi. Mulai dari posisi manajerial, professional hingga staf. PRASIMAX saat
                         ini sedang membangun fundamental bisnis dengan kekuatan SDM yang berkualitas, berpekerti budi
                         luhur, loyal dan profesional</p>
+                    <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program Mencari
+                        Talenta</a>
                 </v-col>
                 <v-col cols="12">
-                    <p class="font-italic text-decoration-underline font-weight-medium">Lihat Program Mencari
-                        Talenta</p>
                     <p>Selain mengembangkan tim baik tim proyek dan tim manajemen dan operasional, kami membuka diri
                         kepada mahasiswa tingkat akhir baik S1 maupun Diploma/Politeknik untuk menimba pengalaman
                         industri secara langsung dengan kami, sebagai bentuk tanggung jawab sosial kami mendukung
