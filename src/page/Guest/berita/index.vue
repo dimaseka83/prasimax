@@ -85,7 +85,7 @@
             <v-slide-group v-model="model" class="pa-4"  show-arrows>
                 <v-slide-item v-for="item in berita" :key="item.id" v-slot="{ toggle }">
                     <v-hover v-slot="{hover}">
-                        <v-card flat class="ma-4" rounded="xl" :elevation="hover ? 12 : 2" :to="`/news/${item.id}`">
+                        <v-card flat class="ma-4" rounded="xl" :width="width" :elevation="hover ? 12 : 2" :to="`/news/${item.id}`">
                             <v-img :src="`${assets}${item.image}`" :height="height-300">
                                 <template v-slot:placeholder>
                                     <v-row align="center" justify="center" class="fill-height ma-0">
@@ -93,8 +93,8 @@
                                     </v-row>
                                 </template>
                             </v-img>
-                            <v-card-title class="display-1 blue--text font-weight-bold ma-5">{{ item.title }}
-                            </v-card-title>
+                            <v-card-text class="headline blue--text font-weight-bold">{{ item.title }}
+                            </v-card-text>
                         </v-card>
                     </v-hover>
                 </v-slide-item>

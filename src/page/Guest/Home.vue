@@ -91,7 +91,7 @@
           <v-row>
             <v-col md="6">
               <v-card class="border-card">
-                <v-img :src="`${assets}${berita.image}`">
+                <v-img :src="`${assets}${berita.image}`" height="300">
                   <template v-slot:placeholder>
                     <v-row align="center" justify="center" class="fill-height ma-0">
                       <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
@@ -101,8 +101,8 @@
               </v-card>
             </v-col>
             <v-col md="6">
-              <h1 class="display-1 text-capitalize font-weight-bold">{{ berita.title }}</h1>
-              <span class="subtitle blue--text mt-10" v-html="limitText(berita.content, 100)"></span>
+              <h1 class="headline text-capitalize font-weight-bold text-truncate">{{ berita.title }}</h1>
+              <p class="subtitle blue--text mt-10" v-html="limitText(berita.content, 150)"></p>
               <v-btn color="white" class="blue--text mt-10 " outlined rounded :to="`/news/${berita.id}`">Baca Lebih
                 Lanjut</v-btn>
             </v-col>

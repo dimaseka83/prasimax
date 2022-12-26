@@ -1,24 +1,33 @@
 <template>
     <v-app>
-        <NavigationGuest ref="navigation"/>
+        <NavigationGuest ref="navigation" />
         <!-- Page 1 -->
-        <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" src="@/assets/images/static/tentangkamiheader.svg" :height="nosm ? height : height+350">
-        <v-container class="white--text">
-            <v-row class="fill-height" :class="nosm ? 'mt-16': 'mt-5'">
-                <v-col :cols="nosm ? '8' : '12'">
-                    <h1 class="text-uppercase font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">tentang prasimax</h1>
-                <p :class="nosm ? 'mt-10 title': 'mt-5'">Desain, Pengembangan, Pabrikasi adalah lingkup kerja perusahaan kami. Kompetensi desain kami termasuk desain Industrial Design, Mechanical Design dan Desain PCB. Kompetensi Pengembangan kami mencakup pengembangan firmware, software dan uji validasi (validation test). Sedangkan kompetensi Pabrikasi atau manufaktur kami mencakup pabrikasi PCB, PCB Assembly (soldering PCB dengan mesin otomasi) dan Perakitan produk akhir. Pengalaman kami sudah melebihi satu dekade sejak 2010.</p>
-                </v-col>
-            </v-row>
-        </v-container>
-    </v-img>
+        <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
+            src="@/assets/images/static/tentangkamiheader.svg" :height="nosm ? height : height+350">
+            <v-container class="white--text">
+                <v-row class="fill-height" :class="nosm ? 'mt-16': 'mt-5'">
+                    <v-col :cols="nosm ? '8' : '12'">
+                        <h1 class="text-uppercase font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">tentang
+                            prasimax</h1>
+                        <p :class="nosm ? 'mt-10 title': 'mt-5'">Desain, Pengembangan, Pabrikasi adalah lingkup kerja
+                            perusahaan kami. Kompetensi desain kami termasuk desain Industrial Design, Mechanical Design
+                            dan Desain PCB. Kompetensi Pengembangan kami mencakup pengembangan firmware, software dan
+                            uji validasi (validation test). Sedangkan kompetensi Pabrikasi atau manufaktur kami mencakup
+                            pabrikasi PCB, PCB Assembly (soldering PCB dengan mesin otomasi) dan Perakitan produk akhir.
+                            Pengalaman kami sudah melebihi satu dekade sejak 2010.</p>
+                    </v-col>
+                </v-row>
+            </v-container>
+        </v-img>
         <!-- Page 2 -->
         <v-container>
-            <v-card color="light-blue lighten-1" elevation="10" rounded="xl" :class="nosm ? 'mt-16 pa-10': 'mt-16 pa-5'">
+            <v-card color="light-blue lighten-1" elevation="10" rounded="xl"
+                :class="nosm ? 'mt-16 pa-10': 'mt-16 pa-5'">
                 <v-container class="white--text">
                     <v-row class="fill-height mt-10">
                         <v-col :cols="nosm ? '8' : '12'">
-                            <h1 class="font-weight-bold text-uppercase" :class="nosm ? 'text-h3': 'text-h4'">informasi perusahaan</h1>
+                            <h1 class="font-weight-bold text-uppercase" :class="nosm ? 'text-h3': 'text-h4'">informasi
+                                perusahaan</h1>
                             <p class="headline mt-5 font-weight-bold text-capitalize ">kami memimpin teknologi sistem
                                 embedded</p>
                             <p class="title mt-10">PRASIMAX adalah sebuah entitas bisnis sekaligus lembaga riset dan
@@ -78,27 +87,38 @@
             <v-row>
                 <v-col :cols="nosm ? '5' : '12'">
                     <v-card elevation="10" rounded="xl" :max-height="height-50">
-                        <v-img  gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
-                        src="@/assets/images/static/sejakaboutus.svg" :height="heightImage">
-                                          <template v-slot:placeholder>
-                    <v-row align="center" justify="center" class="fill-height ma-0">
-                      <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
-                    </v-row>
-                  </template>
+                        <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
+                            src="@/assets/images/static/sejakaboutus.svg" :height="heightImage">
+                            <template v-slot:placeholder>
+                                <v-row align="center" justify="center" class="fill-height ma-0">
+                                    <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
+                                </v-row>
+                            </template>
 
                         </v-img>
                     </v-card>
                 </v-col>
                 <v-col :cols="nosm ? '7' : '12'">
-                    <h2 class=" font-weight-bold text-uppercase " :class="nosm ? 'display-1 mb-5': 'text-h4  my-15'">Sejak Tahun 2010 Hingga Kini</h2>
-                    <p>Bersama 5 pendiri, pada hari Jumat tanggal 12 Maret 2010, PT. Prasimax Inovasi Teknologi (PRASIMAX) sebagai entitas bisnis dengan orientasi profit berdiri secara resmi di Kota Depok. Dengan berbekal pengalaman sebelumnya sebagai penyedia kursus elektronika di Kota Depok, PRASIMAX memulai merancang model bisnis baru di sektor teknologi informasi dengan kompetensi khusus dalam pengembangan produk elektronika digital.</p>
+                    <h2 class=" font-weight-bold text-uppercase " :class="nosm ? 'display-1 mb-5': 'text-h4  my-15'">
+                        Sejak Tahun 2010 Hingga Kini</h2>
+                    <p>Bersama 5 pendiri, pada hari Jumat tanggal 12 Maret 2010, PT. Prasimax Inovasi Teknologi
+                        (PRASIMAX) sebagai entitas bisnis dengan orientasi profit berdiri secara resmi di Kota Depok.
+                        Dengan berbekal pengalaman sebelumnya sebagai penyedia kursus elektronika di Kota Depok,
+                        PRASIMAX memulai merancang model bisnis baru di sektor teknologi informasi dengan kompetensi
+                        khusus dalam pengembangan produk elektronika digital.</p>
                     <h2 class="display-1 font-weight-bold text-capitalize my-5">fase berdiri :</h2>
                     <p>Selama Tahun 2010 kami memformulasikan rencana bisnis, portfolio produk dan jasa yang akan
                         diimplementasikan pada paruh kedua 2010. Value jam di internal perusahaan dilakukan sehingga
                         berproses menghasilkan Visi perusahaan 1 dekade ke depan, setting misi dan definisi nilai inti
                         perusahaan.</p>
-                    <h2 class="font-weight-bold text-capitalize" :class="nosm ? 'display-1 mt-5': 'text-h5 mb-2'">fase pertumbuhan :</h2>
-                    <p>Pada periode 2012 hingga 2017 merupakan fase pertumbuhan PRASIMAXm karena pada periode ini Produk dan Solusi bertambah. Kami juga mendapat tantangan yang sangat sulit dihadapi, mulai dari plagiarisme paten oleh perusahaan teknologi dari Korea dan beberapa perusahaan lokal yang menjiplak invensi teknologi kami yakni sistem monitoring pajak daerah secara elektronik. Namun PRASIMAX tidak hanya bergantung pada satu solusi, di fase pertumbuhan ini kami lahirkan juga beberapa solusi dan produk pada sektor teknologi lainnya.</p>
+                    <h2 class="font-weight-bold text-capitalize" :class="nosm ? 'display-1 mt-5': 'text-h5 mb-2'">fase
+                        pertumbuhan :</h2>
+                    <p>Pada periode 2012 hingga 2017 merupakan fase pertumbuhan PRASIMAXm karena pada periode ini Produk
+                        dan Solusi bertambah. Kami juga mendapat tantangan yang sangat sulit dihadapi, mulai dari
+                        plagiarisme paten oleh perusahaan teknologi dari Korea dan beberapa perusahaan lokal yang
+                        menjiplak invensi teknologi kami yakni sistem monitoring pajak daerah secara elektronik. Namun
+                        PRASIMAX tidak hanya bergantung pada satu solusi, di fase pertumbuhan ini kami lahirkan juga
+                        beberapa solusi dan produk pada sektor teknologi lainnya.</p>
                     <div class="mt-5 white--text">
                         <p class="title">Nilai inti perusahaan yang kami anut adalah:</p>
                         <ul class="subtitle-1">
@@ -117,7 +137,8 @@
             </v-row>
             <v-row :style="{ 'margin-top': nosm ? '-150px' : '-500px' }">
                 <v-col class="mt-n16" :cols="nosm ? '6' : '12'">
-                    <h2 class="font-weight-bold text-capitalize mt-n16 mb-5" :class="nosm ? 'display-1': 'text-h5'">fase transformasi :</h2>
+                    <h2 class="font-weight-bold text-capitalize mt-n16 mb-5" :class="nosm ? 'display-1': 'text-h5'">fase
+                        transformasi :</h2>
                     <p>Proyek pertama yang didapatkan oleh PRASIMAX adalah implementasi sistem monitoring pajak
                         daerah secara elektronik di Pemprov DKI Jakarta sekitar triwulan kedua di tahun 2011. Bersamaan
                         dengan proyek tersebut kami mendaftarkan solusi yang kami invensikan sebagai Paten pertama
@@ -127,8 +148,17 @@
                         sebagai impelementasi pengolahan dan manajemen data.</p>
                 </v-col>
                 <v-col :class="nosm ? 'my-n16' : ''" :cols="nosm ? '6' : '12'">
-                    <h2 class="display-1 font-weight-bold text-capitalize mb-5" :class="nosm ? 'display-1 mt-n16': 'text-h5'">Fase Perubahan:</h2>
-                    <p>Fase perubahan ini dimulai sejak akhir 2017. Ditandai mulainya kami menjalin kerjasama dengan beberapa prinsipal teknologi dengan target peralihan teknologi. Adapun perubahan arah yang kami lakukan adalah perubahan model bisnis dan peran dalam ekosistem dan rantai nilai industri. PRASIMAX pada fase ini meredefinisi dari perusahaan berbasis Riset dan Pengembangan menjadi perusahaan yang fokus pada pengembangan produk dan solus berorientasi pasar. Dimulai dengan perjanjian lisensi dari Qualcomm, Perjanjian lisensi dengan Apple untuk asesoris made for iPhone, made for iPad & made for iPod, Perjanjian kerja sama dengan NXP, ST Micro, Xilinx, Texas Instruments dan juga dengan beberapa distributor komponen dan material, merubah budaya, nilai dan arah perusahaan. Sehingga kami dapat memberikan layanan dan produk kepada klien kami. </p>
+                    <h2 class="display-1 font-weight-bold text-capitalize mb-5"
+                        :class="nosm ? 'display-1 mt-n16': 'text-h5'">Fase Perubahan:</h2>
+                    <p>Fase perubahan ini dimulai sejak akhir 2017. Ditandai mulainya kami menjalin kerjasama dengan
+                        beberapa prinsipal teknologi dengan target peralihan teknologi. Adapun perubahan arah yang kami
+                        lakukan adalah perubahan model bisnis dan peran dalam ekosistem dan rantai nilai industri.
+                        PRASIMAX pada fase ini meredefinisi dari perusahaan berbasis Riset dan Pengembangan menjadi
+                        perusahaan yang fokus pada pengembangan produk dan solus berorientasi pasar. Dimulai dengan
+                        perjanjian lisensi dari Qualcomm, Perjanjian lisensi dengan Apple untuk asesoris made for
+                        iPhone, made for iPad & made for iPod, Perjanjian kerja sama dengan NXP, ST Micro, Xilinx, Texas
+                        Instruments dan juga dengan beberapa distributor komponen dan material, merubah budaya, nilai
+                        dan arah perusahaan. Sehingga kami dapat memberikan layanan dan produk kepada klien kami. </p>
                     <div class="mt-5 white--text">
                         <p class="title">Nilai inti perusahaan yang kami anut adalah:</p>
                         <ul class="subtitle-1">
@@ -146,47 +176,51 @@
                 </v-col>
             </v-row>
             <div :style="{ 'margin-top': nosm ? '-300px' : '-600px' }" id="dokumen">
-            <h2 class="display-1 font-weight-bold text-capitalize" :class="nosm ? 'mt-n16' : 'my-5'" >Dokumen Kelengkapan Perusahaan</h2>
-            <p>Bagi pihak-pihak yang berinteraksi bisnis, proyek dan administrasi, dapat mendownload beberapa
-                dokumen di bawah ini dengan syarat registrasi dan login terlebih dahulu.</p>
-            <div class="d-flex justify-space-between">
-                <div class="pa-2 font-weight-bold text-decoration-underline title"
-                    v-for="(document, idx) in documents" :key="idx"><a @click="downloadDokumen(document.loc)" rel="noopener noreferrer" download>{{ document.name }}</a></div>
-            </div>
-            <v-divider class="mt-10"></v-divider>
+                <h2 class="display-1 font-weight-bold text-capitalize" :class="nosm ? 'mt-n16' : 'my-5'">Dokumen
+                    Kelengkapan Perusahaan</h2>
+                <p>Bagi pihak-pihak yang berinteraksi bisnis, proyek dan administrasi, dapat mendownload beberapa
+                    dokumen di bawah ini dengan syarat registrasi dan login terlebih dahulu.</p>
+                <div class="d-flex justify-space-between">
+                    <div class="pa-2 font-weight-bold text-decoration-underline title"
+                        v-for="(document, idx) in documents" :key="idx"><a @click="downloadDokumen(document.loc)"
+                            rel="noopener noreferrer" download>{{ document.name }}</a></div>
+                </div>
+                <v-divider class="mt-10"></v-divider>
             </div>
         </v-container>
         <v-container class="mt-8 blue--text">
             <v-row align="center">
-                <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">Kami Mencari Talenta </p>
+                <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">Kami
+                    Mencari Talenta </p>
                 <v-divider></v-divider>
             </v-row>
             <v-row class="my-10">
                 <v-col cols="12">
-                    <p>Seiring pertumbuhan bisnis, produk dan jasa, PRASIMAX memerlukan sumber daya manusia yang
-                        akan duduk di berbagai posisi. Mulai dari posisi manajerial, profesional hingga staf.</p>
+                    <p>Seiring pertumbuhan bisnis, produk dan jasa, PRASIMAX memerlukan sumber daya manusia yang akan
+                        duduk di berbagai posisi. Mulai dari posisi manajerial, professional hingga staf. PRASIMAX saat
+                        ini sedang membangun fundamental bisnis dengan kekuatan SDM yang berkualitas, berpekerti budi
+                        luhur, loyal dan profesional</p>
                 </v-col>
                 <v-col cols="12">
-                    <p class="font-italic text-decoration-underline font-weight-medium">Lihat Program mencari
-                        talenta</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque
-                        non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque.
-                        Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Provident voluptas molestiae fugit qui aliquam optio quam esse tempore, ab aperiam
-                        possimus odio facilis cum a illo natus adipisci autem fugiat?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque
-                        non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque.
-                        Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Mollitia cum ab consequuntur temporibus voluptates ipsam autem, perspiciatis enim pariatur
-                        quam sunt sequi nemo. Maxime tempora totam obcaecati, provident magnam quae!</p>
+                    <p class="font-italic text-decoration-underline font-weight-medium">Lihat Program Mencari
+                        Talenta</p>
+                    <p>Selain mengembangkan tim baik tim proyek dan tim manajemen dan operasional, kami membuka diri
+                        kepada mahasiswa tingkat akhir baik S1 maupun Diploma/Politeknik untuk menimba pengalaman
+                        industri secara langsung dengan kami, sebagai bentuk tanggung jawab sosial kami mendukung
+                        kemajuan keahlian dan kemampuan mahasiswa calon sarjana dalam persiapan memasuki dunia industri.
+                        Terkait dukungan kami kepada dunia pendidikan tinggi dan pendidikan menengah vokasi maka kami
+                        membuka lowongan kerja magang. Ada pun syarat utama kerja magang di perusahaan kami adalah:
+                        disetujui oleh ketua program studi atau kepala sekolah, bersedia dan berkomitmen bekerja
+                        sedikitnya satu semester atau 4 bulan di perusahaan kami dan juga mengikuti aturan Perusahaan
+                        dan Pakta Integritas Perusahaan.</p>
 
-                    <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program mencari
-                        talenta</a>
+                    <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program Magang</a>
                 </v-col>
             </v-row>
 
             <v-row align="center">
-                <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">magang di perusahaan kami </p>
+                <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">magang di
+                    perusahaan kami </p>
                 <v-divider></v-divider>
             </v-row>
             <v-row>
@@ -197,7 +231,8 @@
                         Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit amet consectetur adipisicing
                         elit. Provident voluptas molestiae fugit qui aliquam optio quam esse tempore, ab aperiam
                         possimus odio facilis cum a illo natus adipisci autem fugiat?</p>
-                    <p>Lorem ipsum dolor sit amet conbau=sectetur adipisicing elit. Veniam, accusamus officia suscipit eaque
+                    <p>Lorem ipsum dolor sit amet conbau=sectetur adipisicing elit. Veniam, accusamus officia suscipit
+                        eaque
                         non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque.
                         Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit, amet consectetur adipisicing
                         elit. Mollitia cum ab consequuntur temporibus voluptates ipsam autem, perspiciatis enim pariatur
@@ -287,8 +322,7 @@
                         image: 'carousel.svg'
                     }
                 ],
-                documents: [
-                    {
+                documents: [{
                         name: "Panduan Merek PRASIMAX",
                         loc: "/brand.pdf"
                     },
@@ -311,10 +345,10 @@
             FooterGuest
         },
         methods: {
-            downloadDokumen(url){
-                if(this.$store.state.isLogged){
+            downloadDokumen(url) {
+                if (this.$store.state.isLogged) {
                     window.open(`${this.assets}${url}`, '_blank');
-                }else{
+                } else {
                     this.$swal({
                         title: 'Anda belum login',
                         text: 'Silahkan login terlebih dahulu menggunakan akun perusahaan atau institusi Anda',

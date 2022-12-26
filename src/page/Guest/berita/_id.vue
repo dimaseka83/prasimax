@@ -61,7 +61,7 @@
                 {{ title }}
             </h1>
             <p class="text--disabled mt-10">
-                {{ moment(date) }}
+                Diupdate pada tanggal : {{ moment(date) }}
             </p>
 
             <div class="my-8" v-html="content"></div>
