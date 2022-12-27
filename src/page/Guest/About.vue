@@ -135,7 +135,7 @@
                     </div>
                 </v-col>
             </v-row>
-            <v-row :style="{ 'margin-top': nosm ? '-150px' : '-500px' }">
+            <v-row :style="{ 'margin-top': nosm ? '-150px' : '-400px' }">
                 <v-col class="mt-n16" :cols="nosm ? '6' : '12'">
                     <h2 class="font-weight-bold text-capitalize mt-n16 mb-5" :class="nosm ? 'display-1': 'text-h5'">fase
                         transformasi :</h2>
@@ -175,12 +175,12 @@
                     </div>
                 </v-col>
             </v-row>
-            <div :style="{ 'margin-top': nosm ? '-300px' : '-600px' }" id="dokumen">
+            <div :style="{ 'margin-top': nosm ? '-300px' : '-500px' }" id="dokumen">
                 <h2 class="display-1 font-weight-bold text-capitalize" :class="nosm ? 'mt-n16' : 'my-5'">Dokumen
                     Kelengkapan Perusahaan</h2>
                 <p>Bagi pihak-pihak yang berinteraksi bisnis, proyek dan administrasi, dapat mendownload beberapa
                     dokumen di bawah ini dengan syarat registrasi dan login terlebih dahulu.</p>
-                <div class="d-flex justify-space-between">
+                <div :class="nosm ? 'd-flex justify-space-between' : ''">
                     <div class="pa-2 font-weight-bold text-decoration-underline title"
                         v-for="(document, idx) in documents" :key="idx"><a @click="downloadDokumen(document.loc)"
                             rel="noopener noreferrer" download>{{ document.name }}</a></div>
@@ -190,8 +190,8 @@
         </v-container>
         <v-container class="mt-8 blue--text">
             <v-row align="center">
-                <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">Kami
-                    Mencari Talenta </p>
+                <h2 class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4 mx-2'">Kami
+                    Mencari Talenta </h2>
                 <v-divider></v-divider>
             </v-row>
             <v-row class="mb-10">
@@ -219,7 +219,7 @@
             </v-row>
 
             <v-row align="center">
-                <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">magang di
+                <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4 mx-2'">magang di
                     perusahaan kami </p>
                 <v-divider></v-divider>
             </v-row>

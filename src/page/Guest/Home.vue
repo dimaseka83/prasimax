@@ -111,7 +111,7 @@
       </v-row>
     </v-container>
     <!-- Page 5 -->
-    <v-container class="mt-8">
+    <v-container class="mt-8" :class="sm ? 'mx-2' : ''">
       <v-row align="center">
         <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3' : 'text-h4'">pelanggan kami
         </p>
@@ -120,7 +120,7 @@
       <v-slide-group v-model="model" class="pa-4"  show-arrows>
         <v-slide-item v-for="mtr in mitra" :key="mtr.id" v-slot="{ toggle }">
           <v-card flat class="mx-8 mt-8" height="200" width="300" @click="toggle" :href="`${mtr.link}`" target="_blank">
-            <v-img :src="`${assets}${mtr.image}`" :width="nosm ? '300' : '100'">
+            <v-img :src="`${assets}${mtr.image}`" :width="nosm ? '300' : '200'" :class="sm ? 'mt-8' : ''">
               <template v-slot:placeholder>
                 <v-row align="center" justify="center" class="fill-height ma-0">
                   <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
@@ -154,7 +154,7 @@
       </v-container>
     </v-img>
     <!-- Page 7 -->
-    <v-container class="my-8">
+    <v-container class="my-8" :class="sm ? 'mx-2' : ''">
       <v-row align="center">
         <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">mitra teknologi
         </p>
@@ -164,7 +164,7 @@
       <v-slide-group v-model="model" class="pa-4"  show-arrows>
         <v-slide-item v-for="mtr in mitratech" :key="mtr.id" v-slot="{ toggle }">
           <v-card flat class="mx-4" height="200" width="300" @click="toggle" :href="`${mtr.link}`" target="_blank">
-            <v-img :src="`${assets}${mtr.image}`" :width="nosm ? '200' : '100'" class="mt-8">
+            <v-img :src="`${assets}${mtr.image}`" :width="nosm ? '300' : '200'" class="mt-10">
               <template v-slot:placeholder>
                 <v-row align="center" justify="center" class="fill-height ma-0">
                   <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>

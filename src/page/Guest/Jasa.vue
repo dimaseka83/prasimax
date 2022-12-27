@@ -57,7 +57,7 @@
           <v-col :cols="nosm ? '6' : '12'">
             <v-card elevation="10" rounded="xl">
               <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)" :src="`${assets}${row.image}`"
-                :height="height - 100">
+                :height="nosm ? height - 100 : height">
                 <template v-slot:placeholder>
                   <v-row align="center" justify="center" class="fill-height ma-0">
                     <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
