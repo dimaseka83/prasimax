@@ -208,13 +208,13 @@
             </v-row>
 
             <v-row align="center">
-                <p class="blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4 mx-2'">Kerja Magang di
-                    Prasimax</p>
+                <h2 class="blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4 mx-2'">Kerja Magang di
+                    Prasimax</h2>
                 <v-divider></v-divider>
             </v-row>
             <v-row>
                 <v-col cols="12">
-                    <h2 class="display-1 font-weight-bold text-capitalize mb-5">benefits</h2>
+                    <h2 class="display-1 font-weight-bold text-capitalize my-2">benefits</h2>
                     <p>Benefit atau manfaat bagi mahasiswa yang melakukan kerja magang di tempat kami adalah</p>
                     <ol class="mb-5">
                         <li>Membuka wawasan baru di bidang pengembangan industri teknologi digital</li>
@@ -230,7 +230,7 @@
 
         </v-container>
         <v-container class="mb-16 blue--text">
-            <h2 class="display-1 font-weight-bold text-capitalize mb-5">pedoman perilaku :</h2>
+            <h2 class="font-weight-bold text-capitalize mb-5" :class="nosm ? 'display-3': 'text-h4'">pedoman perilaku :</h2>
             <p>Dalam menjaga keberlangsungan perusahaan, PRASIMAX sadar untuk menjaga nilai integritas di
                 setiap sendi aktifitas bisnis. Kami sangat menjaga hubungan kerja dan bisnis yang baik dengan klien
                 atau pelanggan dan hubungan kerja dan bisnis dengan vendor, suplier dan mitra. Untuk itu kami
