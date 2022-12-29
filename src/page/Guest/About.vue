@@ -196,15 +196,20 @@
             </v-row>
             <v-row class="mb-10">
                 <v-col cols="12">
-                    <p>Seiring pertumbuhan bisnis, produk dan jasa, PRASIMAX memerlukan sumber daya manusia yang akan duduk di berbagai posisi. Mulai dari posisi manajerial, profesional hingga staf. PRASIMAX saat ini sedang membangun fundamental bisnis dengan kekuatan SDM yang berkualitas, berpekerti budi luhur, loyal dan profesional.</p>
-                    <p>Jika Anda adalah yang kami cari, silakan akses link di bawah ini dan temukan posisi dan job yang menarik bagi Anda dan kirimkan CV dan lamaran Anda sesegera mungkin.</p>
+                    <p>Seiring pertumbuhan bisnis, produk dan jasa, PRASIMAX memerlukan sumber daya manusia yang akan
+                        duduk di berbagai posisi. Mulai dari posisi manajerial, profesional hingga staf. PRASIMAX saat
+                        ini sedang membangun fundamental bisnis dengan kekuatan SDM yang berkualitas, berpekerti budi
+                        luhur, loyal dan profesional.</p>
+                    <p>Jika Anda adalah yang kami cari, silakan akses link di bawah ini dan temukan posisi dan job yang
+                        menarik bagi Anda dan kirimkan CV dan lamaran Anda sesegera mungkin.</p>
                     <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program Mencari
                         Talenta</a>
                 </v-col>
             </v-row>
 
             <v-row align="center">
-                <p class="blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4 mx-2'">Kerja Magang di Prasimax</p>
+                <p class="blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4 mx-2'">Kerja Magang di
+                    Prasimax</p>
                 <v-divider></v-divider>
             </v-row>
             <v-row>
@@ -213,8 +218,11 @@
                     <p>Benefit atau manfaat bagi mahasiswa yang melakukan kerja magang di tempat kami adalah</p>
                     <ol>
                         <li>Membuka wawasan baru di bidang pengembangan industri teknologi digital</li>
-                        <li>Menambah portofolio pengalaman praktek yang dapat digunakan pada saat mahasiswa kelak untuk mendapatkan pekerjaan atau mendirikan perusahaan rintisan kelak setelah lulus dari perguruan tinggi.</li>
-                        <li>Menambah kepercayaan diri menjadi insan yang berjiwa kepimpinan, kewirausahaan dan profesionalisme di bidang rekayasa bidang elektronika dan software.</li>
+                        <li>Menambah portofolio pengalaman praktek yang dapat digunakan pada saat mahasiswa kelak untuk
+                            mendapatkan pekerjaan atau mendirikan perusahaan rintisan kelak setelah lulus dari perguruan
+                            tinggi.</li>
+                        <li>Menambah kepercayaan diri menjadi insan yang berjiwa kepimpinan, kewirausahaan dan
+                            profesionalisme di bidang rekayasa bidang elektronika dan software.</li>
                     </ol>
                 </v-col>
                 <v-col :cols="nosm ? '6' : '12'">
