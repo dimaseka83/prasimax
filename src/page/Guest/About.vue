@@ -213,10 +213,10 @@
                 <v-divider></v-divider>
             </v-row>
             <v-row>
-                <v-col :cols="nosm ? '6' : '12'">
+                <v-col cols="12">
                     <h2 class="display-1 font-weight-bold text-capitalize mb-5">benefits</h2>
                     <p>Benefit atau manfaat bagi mahasiswa yang melakukan kerja magang di tempat kami adalah</p>
-                    <ol>
+                    <ol class="mb-5">
                         <li>Membuka wawasan baru di bidang pengembangan industri teknologi digital</li>
                         <li>Menambah portofolio pengalaman praktek yang dapat digunakan pada saat mahasiswa kelak untuk
                             mendapatkan pekerjaan atau mendirikan perusahaan rintisan kelak setelah lulus dari perguruan
@@ -224,23 +224,10 @@
                         <li>Menambah kepercayaan diri menjadi insan yang berjiwa kepimpinan, kewirausahaan dan
                             profesionalisme di bidang rekayasa bidang elektronika dan software.</li>
                     </ol>
-                </v-col>
-                <v-col :cols="nosm ? '6' : '12'">
-                    <h2 class="display-1 font-weight-bold text-capitalize mb-5">learning & development</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque
-                        non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque.
-                        Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Provident voluptas molestiae fugit qui aliquam optio quam esse tempore, ab aperiam
-                        possimus odio facilis cum a illo natus adipisci autem fugiat?</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque
-                        non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque.
-                        Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Mollitia cum ab consequuntur temporibus voluptates ipsam autem, perspiciatis enim pariatur
-                        quam sunt sequi nemo. Maxime tempora totam obcaecati, provident magnam quae!</p>
-
                     <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program magang</a>
                 </v-col>
             </v-row>
+
         </v-container>
         <v-container class="mb-16 blue--text">
             <h2 class="display-1 font-weight-bold text-capitalize mb-5">pedoman perilaku :</h2>
