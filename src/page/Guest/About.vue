@@ -196,47 +196,26 @@
             </v-row>
             <v-row class="mb-10">
                 <v-col cols="12">
-                    <p>Seiring pertumbuhan bisnis, produk dan jasa, PRASIMAX memerlukan sumber daya manusia yang akan
-                        duduk di berbagai posisi. Mulai dari posisi manajerial, professional hingga staf. PRASIMAX saat
-                        ini sedang membangun fundamental bisnis dengan kekuatan SDM yang berkualitas, berpekerti budi
-                        luhur, loyal dan profesional</p>
+                    <p>Seiring pertumbuhan bisnis, produk dan jasa, PRASIMAX memerlukan sumber daya manusia yang akan duduk di berbagai posisi. Mulai dari posisi manajerial, profesional hingga staf. PRASIMAX saat ini sedang membangun fundamental bisnis dengan kekuatan SDM yang berkualitas, berpekerti budi luhur, loyal dan profesional.</p>
+                    <p>Jika Anda adalah yang kami cari, silakan akses link di bawah ini dan temukan posisi dan job yang menarik bagi Anda dan kirimkan CV dan lamaran Anda sesegera mungkin.</p>
                     <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program Mencari
                         Talenta</a>
-                </v-col>
-                <v-col cols="12">
-                    <p>Selain mengembangkan tim baik tim proyek dan tim manajemen dan operasional, kami membuka diri
-                        kepada mahasiswa tingkat akhir baik S1 maupun Diploma/Politeknik untuk menimba pengalaman
-                        industri secara langsung dengan kami, sebagai bentuk tanggung jawab sosial kami mendukung
-                        kemajuan keahlian dan kemampuan mahasiswa calon sarjana dalam persiapan memasuki dunia industri.
-                        Terkait dukungan kami kepada dunia pendidikan tinggi dan pendidikan menengah vokasi maka kami
-                        membuka lowongan kerja magang. Ada pun syarat utama kerja magang di perusahaan kami adalah:
-                        disetujui oleh ketua program studi atau kepala sekolah, bersedia dan berkomitmen bekerja
-                        sedikitnya satu semester atau 4 bulan di perusahaan kami dan juga mengikuti aturan Perusahaan
-                        dan Pakta Integritas Perusahaan.</p>
-
-                    <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program Magang</a>
                 </v-col>
             </v-row>
 
             <v-row align="center">
-                <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4 mx-2'">magang di
-                    perusahaan kami </p>
+                <p class="blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4 mx-2'">Kerja Magang di Prasimax</p>
                 <v-divider></v-divider>
             </v-row>
             <v-row>
                 <v-col :cols="nosm ? '6' : '12'">
                     <h2 class="display-1 font-weight-bold text-capitalize mb-5">benefits</h2>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, accusamus officia suscipit eaque
-                        non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque.
-                        Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit amet consectetur adipisicing
-                        elit. Provident voluptas molestiae fugit qui aliquam optio quam esse tempore, ab aperiam
-                        possimus odio facilis cum a illo natus adipisci autem fugiat?</p>
-                    <p>Lorem ipsum dolor sit amet conbau=sectetur adipisicing elit. Veniam, accusamus officia suscipit
-                        eaque
-                        non eligendi quis exercitationem omnis, doloribus id delectus vel! Consectetur, quam neque.
-                        Laboriosam suscipit delectus error? Sunt? Lorem ipsum dolor sit, amet consectetur adipisicing
-                        elit. Mollitia cum ab consequuntur temporibus voluptates ipsam autem, perspiciatis enim pariatur
-                        quam sunt sequi nemo. Maxime tempora totam obcaecati, provident magnam quae!</p>
+                    <p>Benefit atau manfaat bagi mahasiswa yang melakukan kerja magang di tempat kami adalah</p>
+                    <ol>
+                        <li>Membuka wawasan baru di bidang pengembangan industri teknologi digital</li>
+                        <li>Menambah portofolio pengalaman praktek yang dapat digunakan pada saat mahasiswa kelak untuk mendapatkan pekerjaan atau mendirikan perusahaan rintisan kelak setelah lulus dari perguruan tinggi.</li>
+                        <li>Menambah kepercayaan diri menjadi insan yang berjiwa kepimpinan, kewirausahaan dan profesionalisme di bidang rekayasa bidang elektronika dan software.</li>
+                    </ol>
                 </v-col>
                 <v-col :cols="nosm ? '6' : '12'">
                     <h2 class="display-1 font-weight-bold text-capitalize mb-5">learning & development</h2>
