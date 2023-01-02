@@ -52,7 +52,7 @@
     <v-app>
         <navigation-guest />
         <!-- Page 1 -->
-        <v-container class="mt-16" v-if="products.length">
+        <v-container class="mt-16 title" v-if="products.length">
             <v-card flat v-for="(product, key) in products" :key="key">
                 <v-list two-line>
                     <v-list-item>
@@ -66,9 +66,9 @@
                         <v-list-item-content>
                             <v-card flat color="blue" dark :height="nosm ? height : height+200">
                                 <v-container :class="nosm ? 'pa-16' : 'pa-5'">
-                                    <p class="font-weight-bold my-5" :class="nosm ? 'display-3' : 'text-h4'">
+                                    <p class="font-weight-bold my-5 text-h3">
                                         {{ product.name }}</p>
-                                    <span class="subtitle-2" v-html="product.deskripsi"></span>
+                                    <span v-html="product.deskripsi"></span>
                                 </v-container>
                             </v-card>
                         </v-list-item-content>
@@ -77,9 +77,9 @@
             </v-card>
         </v-container>
         <!-- Page 2 -->
-        <v-container class="blue--text" v-for="(berita, category) in getByCategory" :key="category" :class="category.at(-1) ? 'my-8' : 'mt-16'">
+        <v-container class="blue--text title" v-for="(berita, category) in getByCategory" :key="category" :class="category.at(-1) ? 'my-8' : 'mt-16'">
             <v-row align="center">
-                <p class="text-capitalize font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">{{ category }}</p>
+                <p class="text-capitalize font-weight-bold text-h3">{{ category }}</p>
                 <v-divider></v-divider>
             </v-row>
             <v-slide-group v-model="model" class="pa-4"  show-arrows>
@@ -93,7 +93,7 @@
                                     </v-row>
                                 </template>
                             </v-img>
-                            <v-card-text class="headline blue--text font-weight-bold">{{ item.title }}
+                            <v-card-text class="text-h4 blue--text font-weight-bold">{{ item.title }}
                             </v-card-text>
                         </v-card>
                     </v-hover>

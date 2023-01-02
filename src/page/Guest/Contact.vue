@@ -12,7 +12,7 @@
             <v-container class="white--text">
                 <v-row class="fill-height" :class="nosm ? 'mt-16': 'mt-5'">
                     <v-col :cols="nosm ? '8' : '12'">
-                        <h1 class="text-uppercase font-weight-bold" :class="nosm ? 'display-4': 'text-h4'">hubungi kami
+                        <h1 class="text-uppercase font-weight-bold text-h3">hubungi kami
                         </h1>
                         <p class="title mt-10">Segala kebutuhan Anda, dipersilakan menghubungi kami, mulai dari
                             konsultasi, pengembangan produk, pabrikasi atau manufakturing dan pelatihan, kami siap
@@ -23,7 +23,7 @@
         </v-img>
         <!-- Page 2 -->
         <v-container class="my-2 blue--text" v-for="(name, group) in groupingSalesDepartment" :key="group">
-            <h1 class="display-2 font-weight-bold text-capitalize">{{ group }}</h1>
+            <h1 class="text-h3 font-weight-bold text-capitalize">{{ group }}</h1>
             <v-row class="my-10">
                 <v-col :cols="nosm ? '4' : '12'" v-for="sales in name" :key="sales.id">
                     <v-card rounded="xl" elevation="12">
@@ -38,7 +38,7 @@
                         <v-container class="pa-10 blue--text">
                             <v-row>
                                 <v-col cols="12">
-                                    <h3 class="text-capitalize headline font-weight-bold mb-5">{{ sales.name }}</h3>
+                                    <h2 class="text-capitalize text-h4 font-weight-bold mb-5">{{ sales.name }}</h2>
                                     <span v-html="sales.detail"></span>
                                 </v-col>
                             </v-row>
@@ -61,9 +61,9 @@
                 <v-col :cols="nosm ? '6' : '12'">
                     <v-card flat class="blue--text" :class="nosm ? 'ma-16 ' : 'ma-4'">
                         <v-container>
-                            <h1 class="font-weight-bold text-capitalize" :class="nosm ? 'display-2  ' : 'text-h4'">
+                            <h1 class="font-weight-bold text-capitalize text-h3">
                                 kunjungi kantor kami</h1>
-                            <p class=" mt-5" :class="nosm ? 'title ' : 'subtitle'">Untuk menjangkau kantor kami, ada
+                            <p class=" mt-5 title">Untuk menjangkau kantor kami, ada
                                 beberapa pilihan moda transportasi
                                 publik. Anda dapat menjangkau dengan Kereta Commuter Line (B) berhenti di Stasiun
                                 Universitas Indonesia. Selain itu Anda dapat menggunakan Taxi Bluebird atau Taxi Online

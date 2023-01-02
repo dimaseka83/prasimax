@@ -56,8 +56,8 @@
                 </template>
             </v-img>
         </v-content>
-        <v-container class="blue--text my-16">
-            <h1 class="display-1 font-weight-bold black--text">
+        <v-container class="blue--text my-16 title">
+            <h1 class="text-h3 font-weight-bold black--text">
                 {{ title }}
             </h1>
             <p class="text--disabled mt-10">

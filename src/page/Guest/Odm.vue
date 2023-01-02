@@ -2,10 +2,10 @@
     <v-app>
         <NavigationGuest />
         <!-- Page 1 -->
-        <v-container class="blue--text">
+        <v-container class="blue--text title">
             <v-row class="mt-16" v-for="odm in products" :key="odm.id">
                 <v-col :cols="nosm ? '6' : '12'" class="text-center">
-                    <h1 class="font-weight-bold display-2">{{ odm.name }}</h1>
+                    <h1 class="font-weight-bold text-h3">{{ odm.name }}</h1>
                     <div class="mt-10">
                         <span v-html="odm.deskripsi"></span>
                     </div>
@@ -25,10 +25,10 @@
             <v-divider></v-divider>
         </v-container>
         <!-- Page 2 -->
-        <v-container class="blue--text mt-16">
+        <v-container class="blue--text mt-16 title">
             <v-row>
                 <v-col :cols="nosm ? '6' : '12'">
-                    <h1 class="font-weight-bold mb-10" :class="nosm ? 'display-4' : 'text-h4'">Apa itu OEM dan ODM</h1>
+                    <h1 class="font-weight-bold mb-10 text-h3">Apa itu OEM dan ODM</h1>
                     <p>Pada perusahaan teknologi elektronika dan sekaligus memilki kapasitas manufakturing, kita
                         sering mendengar adanya istilah perusahaan OEM dan perusahaan ODM. ODM adalah
                         singkatan dari Original Design Manufacturer sedangkan OEM adalah singkatan dari Original
@@ -44,10 +44,10 @@
                 <v-col :cols="nosm ? '6' : '12'">
                     <v-card elevation="10" rounded="xl" class="blue--text">
                         <v-container class="pa-10">
-                            <p class="font-weight-medium text-capitalize headline">
+                            <h2 class="font-weight-bold text-h4 text-capitalize">
                                 pengertian perusahaan OEM <br>
                                 <span class="font-italic">(original equipment manufacturer)</span>
-                            </p>
+                            </h2>
                             <p>Yang dimaksud dengan perusahaan OEM (Original Equipment Manufacturer) adalah suatu
                                 perusahaan atau organisasi yang merancang dan memproduksi produk (komponen/part
                                 ataupun barang jadi) sesuai dengan spesifikasi yang ditentukannya dan dijual ke
@@ -63,7 +63,7 @@
             </v-row>
             <v-row class="mt-16">
                 <v-col :cols="nosm ? '6' : '12'">
-                    <h1 class="font-weight-medium  display-1 mb-10">Perbedaan OEM dan ODM</h1>
+                    <h1 class="font-weight-bold mb-10 text-h3">Perbedaan OEM dan ODM</h1>
                     <p>Satu hal penting yang membedakan perusahaan OEM dan ODM adalah spesifikasi produk di mana
                         perusahaan OEM merancang dan memproduksi produk berdasarkan spesifikasi dari mereka sendiri
                         sedangkan perusahaan ODM merancang dan memproduksi produk berdasarkan spesifikasi yang
@@ -76,7 +76,7 @@
                 <v-col :cols="nosm ? '6' : '12'">
                     <v-card elevation="10" rounded="xl" class="blue--text">
                         <v-container class="pa-10">
-                            <p class="font-weight-medium text-capitalize headline">
+                            <p class="font-weight-bold text-capitalize text-h4">
                                 pengertian perusahaan ODM <br>
                                 <span class="font-italic">(Original Design Manufacturer)</span>
                             </p>
@@ -97,12 +97,12 @@
             </v-row>
         </v-container>
         <!-- Page 3 -->
-        <v-container class="my-16">
+        <v-container class="my-16 title">
             <v-card flat>
                 <v-list two-line>
                     <v-list-item>
                         <v-img gradient="to top right, rgba(0, 126, 209, 1), rgba(255, 255, 255, 0)" v-if="nosm"
-                            src="@/assets/images/static/rndodm.svg" max-width="600" :height="height">
+                            src="@/assets/images/static/rndodm.svg" max-width="600" :height="nosm ? height+200 : height+500">
                                                         <template v-slot:placeholder>
                                 <v-row align="center" justify="center" class="fill-height ma-0">
                                     <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
@@ -111,10 +111,10 @@
                             </v-img>
                         <v-list-item-content>
                             <v-card flat :class="nosm ? 'pa-16' : 'pa-5'" color="blue" dark
-                                :height="nosm ? height : height+500">
-                                <p class="font-weight-bold" :class="nosm ? 'display-1' : 'text-h5'">Riset dan
+                                :height="nosm ? height+200 : height+700">
+                                <p class="font-weight-bold text-h3">Riset dan
                                     Pengembangan</p>
-                                <p class="subtitle mt-10">Riset dan pengembangan atau dikenal sebagai Research and
+                                <p class="mt-10">Riset dan pengembangan atau dikenal sebagai Research and
                                     Development, disingkat R&amp;D, yaitu
                                     lembaga atau entitas perusahaan yang melakukan penelitian. Tujuan penelitian dan
                                     pengembangan
@@ -125,7 +125,7 @@
                                     sektor pendidikan dan juga industri. Pada entitas industri, penelitian dilakukan
                                     oleh tim pemasaran,
                                     tim produk dan tim operasional. Masing-masing punya tujuan tersendiri.</p>
-                                <p class="subtitle mt-10">Pengembangan adalah aktifitas yang lebih berorientasi produk
+                                <p class="mt-10">Pengembangan adalah aktifitas yang lebih berorientasi produk
                                     dand pasar. Diawali dengan riset,
                                     pengembangan sudah lebih tervalidasi untuk kelayakan bisnis dan produk.</p>
                             </v-card>
@@ -135,10 +135,10 @@
             </v-card>
         </v-container>
         <!-- Page 4 -->
-        <v-container class="mb-16 blue--text">
+        <v-container class="mb-16 blue--text title">
             <v-row>
                 <v-col :cols="nosm ? '6' : '12'">
-                    <h1 class="display-1 font-weight-bold mb-16">Pabrikasi</h1>
+                    <h1 class="text-h3 font-weight-bold mb-8">Pabrikasi</h1>
                     <p>Perangkat elektronik merupakan produk yang sudah umum ditemui di tengah masyarakat, penting
                         untuk mengetahui cara pembuatannya. Proses pabrikasi elektronik melibatkan banyak langkah,
                         mulai dari merancang perangkat hingga merakitnya dan mengirimkannya ke konsumen.</p>

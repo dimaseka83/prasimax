@@ -8,13 +8,13 @@
             </v-row>
             <v-row>
                 <v-col>
-                    <p class="subtitle">Kami memberikan solusi, layanan dan produksi bagi Anda yang ingin melengkapi
+                    <p class="title">Kami memberikan solusi, layanan dan produksi bagi Anda yang ingin melengkapi
                         portofolio Anda atau kebutuhan Anda. Bidang teknologi yang kami kuasai adalah embedded system,
                         IoT, Kecerdasan Artifisial, Kendaraan Listrik dan Teknologi Nirkabel lainnya. Kapasitas dan
                         kapabilitas kami didukung oleh penyedia dan prinsipal teknologi global yang sudah sangat dikenal
                         reputasinya.</p>
-                    <p class="display-1 font-weight-bold text-uppercase">alamat</p>
-                    <div>
+                    <h1 class="text-h4 font-weight-bold text-uppercase">alamat</h1>
+                    <div class="title">
                         <span>Perkantoran Taman Melati Margonda</span><br />
                         <span>Jl. Margonda Raya 525A</span><br />
                         <span>Depok 16424</span><br />
@@ -22,8 +22,8 @@
                         <span>Telp: +6221-7888-0672</span><br />
                     </div>
                 </v-col>
-                <v-col>
-                    <p class="display-1 font-weight-bold text-capitalize">hubungi kami</p>
+                <v-col class="title">
+                    <h1 class="text-h4 font-weight-bold text-capitalize">hubungi kami</h1>
                     <p>
                         <span>Technical Support: </span><br />
                         <a @click="mailto('contact@prasimax.com','Technical%20Support')"
@@ -42,16 +42,16 @@
                         </v-col>
                     </v-row>
                 </v-col>
-                <v-col>
-                    <p class="display-1 font-weight-bold text-capitalize">link penting</p>
+                <v-col class="title">
+                    <p class="text-h4 font-weight-bold text-capitalize">link penting</p>
                     <p>
                         <a @click="navDokumen" style="color:white">Bantuan</a><br />
                         <a @click="navDokumen" style="color:white">Pusat Dokumen</a><br />
                         <a @click="route('/news')" style="color:white">Event dan Kegiatan</a><br />
                     </p>
                 </v-col>
-                <v-col>
-                    <p class="display-1 font-weight-bold text-capitalize">langganan berita dan makalah</p>
+                <v-col class="title">
+                    <p class="text-h4 font-weight-bold text-capitalize">langganan berita dan makalah</p>
                     <p>
                         Dapatkan informasi dan berita terbaru dari perusahaan kami. seperti berita, makalah, dan
                         lain-lain.
@@ -70,7 +70,7 @@
         </v-container>
         <v-app-bar dense flat dark src="@/assets/images/dummy/rectangle.svg" :height="nosm ? '' : height - 100">
             <div class="d-flex">
-                <span class="mr-auto">&copy; PT Prasimax Inovasi Teknologi, 2010 - {{ getYears }}, Hak Cipta dilindungi
+                <span class="mr-auto title">&copy; PT Prasimax Inovasi Teknologi, 2010 - {{ getYears }}, Hak Cipta dilindungi
                     undang - undang</span>
             </div>
         </v-app-bar>

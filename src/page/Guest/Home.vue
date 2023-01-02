@@ -13,7 +13,7 @@
           <v-container>
             <v-row class="fill-height white--text" :class="nosm ? 'mt-10' : ''">
               <v-col :cols="nosm ? '6' : '12'">
-                <h1 class="font-weight-bold" :class="nosm ? 'text-h2' : 'text-h5'">{{slide.title}}</h1>
+                <h1 class="font-weight-bold" :class="nosm ? 'text-h3' : 'text-h5'">{{slide.title}}</h1>
                 <p :class="nosm ? 'title mt-10' : 'body-2'">{{slide.subtitle}}</p>
               </v-col>
             </v-row>
@@ -28,12 +28,12 @@
           <v-card color="blue" elevation="10" rounded="xl" dark>
             <v-container :class="nosm ? 'pa-16' : 'pa-8'">
               <div class="d-flex">
-                <p class="font-weight-bold text-uppercase" :class="nosm ? 'display-2' : 'display-1'">dari ide sampai
-                  produk</p>
+                <h1 class="font-weight-bold text-uppercase text-h3">dari ide sampai
+                  produk</h1>
               </div>
-              <h2 class=" font-weight-bold my-5" :class="nosm ? 'display-1' : 'text-h5'">Desain, Pengembangan &
+              <h2 class=" font-weight-bold my-5 text-h4">Desain, Pengembangan &
                 Manufacturing</h2>
-              <p class="subtitle">Lingkup bisnis kami adalah membantu Anda dalam menterjemahkan dan mentransformasi ide
+              <p class="title">Lingkup bisnis kami adalah membantu Anda dalam menterjemahkan dan mentransformasi ide
                 Anda menjadi sebuah desain produk elektronik untuk solusi tertentu yang diinginkan. Tidak sampai pada
                 desain, kami dapat melanjutkan proses pengembangan hingga manufakturing produk.</p>
               <v-btn color="white" class="blue--text mt-16" rounded to="/odm">Baca Lebih Lanjut</v-btn>
@@ -64,10 +64,10 @@
               </template>
             </v-img>
             <v-list-item-content>
-              <v-card flat color="blue" dark :height="nosm ? height : height+200">
+              <v-card flat color="blue" dark :height="nosm ? height : height+400">
                 <v-container :class="nosm ? 'pa-16' : 'pa-5'">
-                  <p class="font-weight-bold my-5" :class="nosm ? 'display-3' : 'text-h4'">Produk</p>
-                  <p class="subtitle-2">Kami menyediakan pilihan kepada Anda dengan skema produksi ODM (Original Design
+                  <h1 class="font-weight-bold my-5 text-h3 text-uppercase">Produk</h1>
+                  <p class="title">Kami menyediakan pilihan kepada Anda dengan skema produksi ODM (Original Design
                     Manufacturing), OEM (Original Equipment Manufacturing) ataupun Contract Manufacturing agar ide
                     produk Anda dapat dikembangkan dan diproduksi oleh kami.</p>
                   <v-btn color="white" large rounded class="blue--text mt-10" to="/product">Baca Lebih Lanjut</v-btn>
@@ -82,7 +82,7 @@
     <v-container class="my-12">
       <v-row align="center">
         <v-divider></v-divider>
-        <p class="text-uppercase blue--text font-weight-bold" :class="nosm ? 'display-3' : 'text-h4'">berita</p>
+        <h1 class="text-uppercase blue--text font-weight-bold text-h3">berita</h1>
         <v-divider></v-divider>
       </v-row>
 
@@ -91,7 +91,7 @@
           <v-row>
             <v-col md="6">
               <v-card class="border-card">
-                <v-img :src="`${assets}${berita.image}`" height="300">
+                <v-img :src="`${assets}${berita.image}`" height="350">
                   <template v-slot:placeholder>
                     <v-row align="center" justify="center" class="fill-height ma-0">
                       <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
@@ -101,8 +101,8 @@
               </v-card>
             </v-col>
             <v-col md="6">
-              <h1 class="headline text-capitalize font-weight-bold text-truncate">{{ berita.title }}</h1>
-              <p class="subtitle blue--text mt-10" v-html="limitText(berita.content, 150)"></p>
+              <h1 class="text-h4 text-capitalize font-weight-bold text-truncate">{{ berita.title }}</h1>
+              <p class="title blue--text mt-10" v-html="limitText(berita.content, 150)"></p>
               <v-btn color="white" class="blue--text mt-10 " outlined rounded :to="`/news/${berita.id}`">Baca Lebih
                 Lanjut</v-btn>
             </v-col>
@@ -111,10 +111,10 @@
       </v-row>
     </v-container>
     <!-- Page 5 -->
-    <v-container class="mt-8" :class="sm ? 'mx-2' : ''">
+    <v-container class="mt-8">
       <v-row align="center">
-        <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3' : 'text-h4'">pelanggan kami
-        </p>
+        <h1 class="text-capitalize blue--text font-weight-bold text-h3">pelanggan kami
+        </h1>
         <v-divider></v-divider>
       </v-row>
       <v-slide-group v-model="model" class="pa-4"  show-arrows>
@@ -133,18 +133,18 @@
     </v-container>
     <!-- Page 6 -->
     <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
-      src="@/assets/images/static/mengenaikamihome.svg" class="mb-16" :height="nosm ? height : height+250">
+      src="@/assets/images/static/prasimax_team.jpg" class="mb-16" :height="nosm ? height : height+450">
       <template v-slot:placeholder>
         <v-row align="center" justify="center" class="fill-height ma-0">
           <v-progress-circular indeterminate color="blue lighten-3"></v-progress-circular>
         </v-row>
       </template>
-      <v-container class="white--text" :class="nosm ? 'pa-16 mt-16 ' : ''">
+      <v-container class="white--text" :class="nosm ? 'pa-16 mt-10 ' : ''">
         <v-row>
           <v-col md="6">
-            <h1 class="font-weight-bold text-uppercase" :class="nosm ? 'display-3': 'text-h4'">mengenai kami</h1>
-            <p class="title text-capitalize mt-10">perusahaan bidang teknologi</p>
-            <p class="subtitle">Kami telah merintis bisnis di bidang desain, pengembangan hingga manufakturing di
+            <h1 class="font-weight-bold text-uppercase text-h3">mengenai kami</h1>
+            <h2 class="text-h4 text-capitalize mt-5">perusahaan bidang teknologi</h2>
+            <p class="title mt-2">Kami telah merintis bisnis di bidang desain, pengembangan hingga manufakturing di
               Indonesia sejak 2011. Model bisnis OEM, ODM, Design House dan Manufakturing untuk produk inovasi teknologi
               Anda menjadi lingkup bisnis kami. Sedangkan lingkup teknologi yang kami kuasai adalah IoT, Kecerdasan
               Artifisial, Embedded System, Nirkabel dan Kendaraan Listrik.</p>
@@ -156,7 +156,7 @@
     <!-- Page 7 -->
     <v-container class="my-8" :class="sm ? 'mx-2' : ''">
       <v-row align="center">
-        <p class="text-capitalize blue--text font-weight-bold" :class="nosm ? 'display-3': 'text-h4'">mitra teknologi
+        <p class="text-capitalize blue--text font-weight-bold text-h3">mitra teknologi
         </p>
         <v-divider></v-divider>
       </v-row>
