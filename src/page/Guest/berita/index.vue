@@ -93,7 +93,7 @@
                                     </v-row>
                                 </template>
                             </v-img>
-                            <v-card-text class="text-h4 blue--text font-weight-bold">{{ item.title }}
+                            <v-card-text class="text-h5 blue--text font-weight-bold">{{ item.title }}
                             </v-card-text>
                         </v-card>
                     </v-hover>
