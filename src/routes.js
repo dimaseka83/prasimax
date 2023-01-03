@@ -11,6 +11,7 @@ import ResetPassword from './page/Guest/ResetPassword.vue';
 import Activate from './page/Guest/Activate.vue';
 import Berita from './page/Guest/berita';
 import DetailBerita from './page/Guest/berita/_id.vue';
+import Lowongan from './page/Guest/Lowongan.vue';
 
 // Admin
 import HomeAdmin from './page/Admin/Home.vue';
@@ -82,6 +83,11 @@ const routes = [
     path: '/news/:id',
     component: DetailBerita,
     name: 'DetailBerita',
+  },
+  {
+    path: '/lowongan',
+    component: Lowongan,
+    name: 'Lowongan',
   },
 
   // Admin
