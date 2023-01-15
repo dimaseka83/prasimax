@@ -221,7 +221,7 @@
         <navigation-guest />
         <!-- Page 1 -->
         <v-img gradient="to top right, rgba(0, 57, 94, 1), rgba(255, 255, 255, 0)"
-            src="@/assets/images/static/tentangkamiheader.svg" :height="nosm ? height : height+500">
+            src="@/assets/images/static/lowongan.jpg" :height="nosm ? height : height+500">
             <v-container class="white--text">
                 <v-row class="fill-height" :class="nosm ? 'mt-16': 'mt-5'">
                     <v-col :cols="nosm ? '8' : '12'">

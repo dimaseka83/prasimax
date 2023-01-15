@@ -206,7 +206,7 @@
                         luhur, loyal dan profesional.</p>
                     <p>Jika Anda adalah yang kami cari, silakan akses link di bawah ini dan temukan posisi dan job yang
                         menarik bagi Anda dan kirimkan CV dan lamaran Anda sesegera mungkin.</p>
-                    <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program Mencari
+                    <a class="font-italic text-decoration-underline font-weight-medium" @click="route('/lowongan')">Lihat Kami Mencari
                         Talenta</a>
                 </v-col>
             </v-row>
@@ -228,7 +228,7 @@
                         <li>Menambah kepercayaan diri menjadi insan yang berjiwa kepimpinan, kewirausahaan dan
                             profesionalisme di bidang rekayasa bidang elektronika dan software.</li>
                     </ol>
-                    <a class="font-italic text-decoration-underline font-weight-medium">Lihat Program magang</a>
+                    <a class="font-italic text-decoration-underline font-weight-medium" @click="route('/lowongan')">Lihat Program magang</a>
                 </v-col>
             </v-row>
 
