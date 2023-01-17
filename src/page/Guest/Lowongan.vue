@@ -4,6 +4,7 @@
     import FooterGuest from '@/components/FooterGuest.vue'
     import NavigationGuest from '@/components/NavigationGuest.vue'
     import UploadFiles from '@/components/upload-file.vue'
+    import axios from 'axios'
     export default {
         components: {
             FooterGuest,
@@ -13,42 +14,9 @@
         mixins: [mix, componentsmix],
         data() {
             return {
-                lowongan_staff: [
-                    {
-                    id: 1,
-                    nama_lowongan: 'Staff Marketing',
-                    kode_lowongan: 'SMK-001',
-                    deskripsi_lowongan: '<p>Deskripsi lowongan</p>',
-                    syarat_umum_lowongan: '<p>Syarat umum lowongan</p>',
-                    syarat_kualifikasi_lowongan: '<p>Syarat kualifikasi lowongan</p>',
-                    },
-                    {
-                    id: 2,
-                    nama_lowongan: 'Staff HRD',
-                    kode_lowongan: 'SMK-002',
-                    deskripsi_lowongan: '<p>Deskripsi lowongan</p>',
-                    syarat_umum_lowongan: '<p>Syarat umum lowongan</p>',
-                    syarat_kualifikasi_lowongan: '<p>Syarat kualifikasi lowongan</p>',
-                    },
-                ],
-                lowongan_magang: [
-                    {
-                    id: 1,
-                    nama_lowongan: 'Magang Marketing',
-                    kode_lowongan: 'SMK-001',
-                    deskripsi_lowongan: '<p>Deskripsi lowongan</p>',
-                    syarat_umum_lowongan: '<p>Syarat umum lowongan</p>',
-                    syarat_kualifikasi_lowongan: '<p>Syarat kualifikasi lowongan</p>',
-                    },
-                    {
-                    id: 2,
-                    nama_lowongan: 'Magang HRD',
-                    kode_lowongan: 'SMK-002',
-                    deskripsi_lowongan: '<p>Deskripsi lowongan</p>',
-                    syarat_umum_lowongan: '<p>Syarat umum lowongan</p>',
-                    syarat_kualifikasi_lowongan: '<p>Syarat kualifikasi lowongan</p>',
-                    }],
-                header_lowongan_staff: [
+                lowongan_staff: [],
+                lowongan_magang: [],
+                headers: [
                     {
                         text: 'Lowongan',
                         value: 'nama_lowongan',
@@ -67,33 +35,7 @@
                     },
                     {
                         text: 'Syarat Kualifikasi',
-                        value: 'syarat_kualifikasi_lowongan',
-                    },
-                    {
-                        text: 'Aksi',
-                        value: 'action',
-                    }
-                ],
-                header_lowongan_magang: [
-                    {
-                        text: 'Lowongan',
-                        value: 'nama_lowongan',
-                    },
-                    {
-                        text: 'Kode Lowongan',
-                        value: 'kode_lowongan',
-                    },
-                    {
-                        text: 'Deskripsi',
-                        value: 'deskripsi_lowongan',
-                    },
-                    {
-                        text: 'Syarat Umum',
-                        value: 'syarat_umum_lowongan',
-                    },
-                    {
-                        text: 'Syarat Kualifikasi',
-                        value: 'syarat_kualifikasi_lowongan',
+                        value: 'syarat_kualifikasi',
                     },
                     {
                         text: 'Aksi',
@@ -114,7 +56,22 @@
                 },
             }
         },
+        created() {
+            this.getLowongan()
+        },
         methods: {
+            async getLowongan(){
+                try {
+                const { data } = await axios.get(`${this.apibe}lowongan_staff`)
+                this.lowongan_staff = data
+
+                await axios.get(`${this.apibe}lowongan_magang`).then(res => {
+                    this.lowongan_magang = res.data
+                })
+                } catch (error) {
+                    console.log(error)
+                }
+            },
             // Staff
             submitStaff(id){
                 this.dialogstaff = true
@@ -244,7 +201,7 @@
             </v-row>
             <v-card class="rounded-xl mt-10">
                 <v-data-table
-                :headers="header_lowongan_staff"
+                :headers="headers"
                 :items="lowongan_staff"
                 class="my-table"
                 >
@@ -259,8 +216,8 @@
                 <template v-slot:item.syarat_umum_lowongan="{ item }">
                     <div v-html="item.syarat_umum_lowongan"></div>
                 </template>
-                <template v-slot:item.syarat_kualifikasi_lowongan="{ item }">
-                    <div v-html="item.syarat_kualifikasi_lowongan"></div>
+                <template v-slot:item.syarat_kualifikasi="{ item }">
+                    <div v-html="item.syarat_kualifikasi"></div>
                 </template>
                 </v-data-table>
             </v-card>
@@ -274,7 +231,7 @@
             </v-row>
                         <v-card class="rounded-xl mt-10">
                 <v-data-table
-                :headers="header_lowongan_magang"
+                :headers="headers"
                 :items="lowongan_magang"
                 class="my-table"
                 >
