@@ -16,6 +16,17 @@
                     <v-list-item-title>{{ men.title }}</v-list-item-title>
                 </v-list-item>
             </v-list>
+            <v-list-group :value="true" prepend-icon="mdi-engine" no-action>
+                <template v-slot:activator>
+                    <v-list-item-title>Lowongan</v-list-item-title>
+                </template>
+                <v-list-item v-for="(low, i) in lowongan" :key="'low' + i" @click="menuklik(low.href)">
+                    <v-list-item-icon>
+                        <v-icon>{{ low.icon }}</v-icon>
+                    </v-list-item-icon>
+                    <v-list-item-title>{{ low.title }}</v-list-item-title>
+                </v-list-item>
+            </v-list-group>
         </v-navigation-drawer>
     </div>
 </template>
@@ -81,8 +92,20 @@ export default {
                     title: 'Berita',
                     icon: 'mdi-engine',
                     href: '/admin/berita'
+                },
+            ],
+            lowongan: [
+                {
+                    title: 'Data Lowongan',
+                    icon: 'mdi-engine',
+                    href: '/admin/lowongan'
+                },
+                {
+                    title: 'Pelamar Lowongan',
+                    icon: 'mdi-engine',
+                    href: '/admin/pelamar'
                 }
-            ]
+            ],
         }
     },
     methods: {

@@ -100,9 +100,9 @@
                                     <v-select label="Berita" v-model="formproducts.isBerita" :items="odmPilihan">
                                     </v-select>
                                     <v-tiptap v-model="formproducts.keterangan" label="keterangan"
-                                        :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']"></v-tiptap>
+                                        :toolbar="toolbar"></v-tiptap>
                                     <v-tiptap v-model="formproducts.deskripsi" label="Deskripsi"
-                                        :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']"></v-tiptap>
+                                        :toolbar="toolbar"></v-tiptap>
                                     <v-file-input accept="image/*" v-model="formproducts.image" label="Image">
                                     </v-file-input>
                                 </v-card-text>

@@ -65,6 +65,7 @@ export default {
         apiauth: 'https://prasimax.com/company-be/auth/',
         apibe: 'https://prasimax.com/company-be/api/',
         assets: 'https://prasimax.com/company-be',
+        toolbar: ['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p'],
       };
     },
     mounted() {

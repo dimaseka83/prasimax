@@ -418,7 +418,6 @@
                             auth: this.formlogin
                         }).then((
                             response) => {
-                            console.log(response.data);
                             if (response.data.error != undefined) {
                                 this.$swal({
                                     title: 'Gagal',

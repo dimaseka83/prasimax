@@ -103,7 +103,7 @@
                                     <v-select v-model="formsales.kelompok" :items="mapDepartment" label="Departement">
                                     </v-select>
                                     <v-tiptap v-model="formsales.detail" label="Detail"
-                                        :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']">
+                                        :toolbar="toolbar">
                                     </v-tiptap>
                                     <v-file-input accept="image/*" v-model="formsales.image" label="Image">
                                     </v-file-input>

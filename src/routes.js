@@ -25,6 +25,8 @@ import ContactsAdmin from './page/Admin/Contact.vue';
 import JasaAdmin from './page/Admin/Jasa.vue';
 import Pesanan from './page/Admin/Pesanan.vue';
 import BeritaAdmin from './page/Admin/Berita.vue';
+import LowonganAdmin from './page/Admin/Lowongan.vue';
+import Pelamar from './page/Admin/Pelamar.vue';
 
 // Middleware
 import auth from './middleware/auth';
@@ -175,6 +177,22 @@ const routes = [
     path: '/admin/berita',
     component: BeritaAdmin,
     name: 'BeritaAdmin',
+    meta: {
+      middleware: auth,
+    }
+  },
+  {
+    path: '/admin/lowongan',
+    component: LowonganAdmin,
+    name: 'LowonganAdmin',
+    meta: {
+      middleware: auth,
+    }
+  },
+  {
+    path: '/admin/pelamar',
+    component: Pelamar,
+    name: 'PelamarAdmin',
     meta: {
       middleware: auth,
     }

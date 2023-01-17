@@ -151,7 +151,7 @@ export default {
                                 <v-card-text>
                                     <v-text-field label="Nama" v-model="formpartnership.title"></v-text-field>
                                     <v-tiptap v-model="formpartnership.content" label="keterangan"
-                                        :toolbar="['bold', 'italic', 'underline','strike', '|', 'bulletList', 'orderedList','h1','h2','h3','p']"></v-tiptap>
+                                        :toolbar="toolbar"></v-tiptap>
                                     <v-file-input accept="image/*" v-model="formpartnership.image" label="Image">
                                     </v-file-input>
                                 </v-card-text>
