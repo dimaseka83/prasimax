@@ -8,19 +8,33 @@
             </v-btn>
         </v-app-bar>
         <v-navigation-drawer v-model="drawer" absolute temporary>
-            <v-list nav dense v-for="(men, i) in menus" :key="'menu' + i">
-                <v-list-item active-class="blue--text text--accent-4" @click="menuklik(men.href)">
+            
+
+            <v-virtual-scroll
+            :items="menus"
+            :item-height="48"
+            height="300"
+            >
+            <template v-slot:default="{item}">
+                <div>
+                    <v-list nav dense>
+                <v-list-item active-class="blue--text text--accent-4" @click="menuklik(item.href)">
                     <v-list-item-icon>
-                        <v-icon>{{ men.icon }}</v-icon>
+                        <v-icon>{{ item.icon }}</v-icon>
                     </v-list-item-icon>
-                    <v-list-item-title>{{ men.title }}</v-list-item-title>
+                    <v-list-item-title>{{ item.title }}</v-list-item-title>
                 </v-list-item>
-            </v-list>
+            </v-list>        
+                </div>
+            </template>
+            </v-virtual-scroll>
+
+
             <v-list-group :value="true" prepend-icon="mdi-engine" no-action>
                 <template v-slot:activator>
                     <v-list-item-title>Lowongan</v-list-item-title>
                 </template>
-                <v-list-item v-for="(low, i) in lowongan" :key="'low' + i" @click="menuklik(low.href)">
+                <v-list-item v-for="(low, index) in lowongan" :key="'low' + index" @click="menuklik(low.href)">
                     <v-list-item-icon>
                         <v-icon>{{ low.icon }}</v-icon>
                     </v-list-item-icon>

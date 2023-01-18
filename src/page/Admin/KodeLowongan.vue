@@ -100,6 +100,13 @@ export default {
             }
         },
         async save() {
+            const checkSameLowongan = (this.tipe_lowongan == 'staff' || this.tipe_lowongan == 'edit_staff') ? this.kodeLowonganStaff : this.kodeLowonganMagang
+            const checkSame = checkSameLowongan.filter(item => item.kode == this.form_lowongan.kode)
+            if (checkSame.length > 0) {
+                this.$swal('Gagal', 'Kode Lowongan sudah ada', 'error')
+                return
+            }
+
             try {
                 switch (this.tipe_lowongan) {
                 case 'staff':

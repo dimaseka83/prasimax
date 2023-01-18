@@ -16,12 +16,19 @@ export default {
                 { text: 'Jumlah Pelamar', value: 'cnt' },
                 { text: 'Actions', value: 'actions'}
             ],
-            headersDetailLowongan: [
+            headersDetailLowonganStaff: [
                 { text: 'No', value: 'no'},
-                
+                { text: 'CV', value: 'cv'},
             ],
 
-            dialog: false,
+            headersDetailLowonganMagang: [
+                { text: 'No', value: 'no'},
+                { text: 'CV', value: 'cv'},
+                { text: 'Transkrip Nilai', value: 'transkip_nilai'}
+            ],
+
+            dialogStaff: false,
+            dialogMagang: false,
             detailLowongan: []
         }
     },
@@ -45,8 +52,9 @@ export default {
 
         async getDetailStaff(kode) {
             try {
-                const { data } = await axios.get(`${this.apibe}lowongan_staff/kode-lowongan/${kode}`)
+                const { data } = await axios.get(`${this.apibe}lowongan_staff/file/${kode}`)
                 this.detailLowongan = data
+                this.dialogStaff = true
             } catch (error) {
                 console.log(error)
             }
@@ -54,11 +62,21 @@ export default {
         
         async getDetailMagang(kode) {
             try {
-                const { data } = await axios.get(`${this.apibe}lowongan_magang/kode-lowongan/${kode}`)
+                const { data } = await axios.get(`${this.apibe}lowongan_magang/file/${kode}`)
                 this.detailLowongan = data
+                this.dialogMagang = true
             } catch (error) {
                 console.log(error)
             }
+        },
+
+        splitNameFile(url){
+            const split = url.split('/')
+            return split[split.length - 1]
+        },
+
+        toFile(file){
+            return this.assets + file
         }
     }
 }
@@ -112,16 +130,41 @@ export default {
             </v-data-table>
         </v-card>
 
-        <v-dialog v-model="dialog" max-width="800">
+        <v-dialog v-model="dialogStaff" max-width="800">
             <v-card>
                 <v-card-title class="headline">Detail Pelamar</v-card-title>
                 <v-card-text>
                     <v-data-table
                     :items="detailLowongan"
-                    :headers="headers"
+                    :headers="headersDetailLowonganStaff"
                     >
-                    <template v-slot:item.cnt="{ item }">
-                        {{ item.cnt }} Pelamar
+                    <template v-slot:item.no="{ item, index }">
+                        {{ index + 1 }}
+                    </template>
+                    <template v-slot:item.cv="{ item }">
+                        <a :href="toFile(item.cv)" target="_blank">{{ splitNameFile(item.cv) }}</a>
+                    </template>
+                    </v-data-table>
+                </v-card-text>
+            </v-card>
+        </v-dialog>
+
+        <v-dialog v-model="dialogMagang" max-width="800">
+            <v-card>
+                <v-card-title class="headline">Detail Pelamar</v-card-title>
+                <v-card-text>
+                    <v-data-table
+                    :items="detailLowongan"
+                    :headers="headersDetailLowonganMagang"
+                    >
+                    <template v-slot:item.no="{ item, index }">
+                        {{ index + 1 }}
+                    </template>
+                    <template v-slot:item.cv="{ item }">
+                        <a :href="toFile(item.cv)" target="_blank">{{ splitNameFile(item.cv) }}</a>
+                    </template>
+                    <template v-slot:item.transkip_nilai="{ item }">
+                        <a :href="toFile(item.transkip_nilai)" target="_blank">{{ splitNameFile(item.transkip_nilai) }}</a>
                     </template>
                     </v-data-table>
                 </v-card-text>

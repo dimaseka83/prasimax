@@ -162,9 +162,13 @@
                 },
                 this.dialogmagang = false
             },
-            kirimMagang(){
+            async kirimMagang(){
                 if(this.formMagang.cv == null || this.formMagang.transkrip_nilai == null){
                     this.$swal('Error', 'CV & Transkrip tidak boleh kosong', 'error')
+                    await axios.post(`${this.apibe}lowongan_magang`, this.formMagang).then(res => {
+                        this.$swal('Success', 'CV & Transkrip berhasil dikirim', 'success')
+                        this.batalMagang()
+                    })
                 }else{
                     this.$swal('Success', 'CV & Transkrip berhasil dikirim', 'success')
                     this.batalMagang()
@@ -246,8 +250,8 @@
                 <template v-slot:item.syarat_umum_lowongan="{ item }">
                     <div v-html="item.syarat_umum_lowongan"></div>
                 </template>
-                <template v-slot:item.syarat_kualifikasi_lowongan="{ item }">
-                    <div v-html="item.syarat_kualifikasi_lowongan"></div>
+                <template v-slot:item.syarat_kualifikasi="{ item }">
+                    <div v-html="item.syarat_kualifikasi"></div>
                 </template>
                 </v-data-table>
             </v-card>
