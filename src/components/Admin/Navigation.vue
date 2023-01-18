@@ -104,6 +104,11 @@ export default {
                     title: 'Pelamar Lowongan',
                     icon: 'mdi-engine',
                     href: '/admin/pelamar'
+                },
+                {
+                    title: 'Kode Lowongan',
+                    icon: 'mdi-engine',
+                    href: '/admin/kodeLowongan'
                 }
             ],
         }
