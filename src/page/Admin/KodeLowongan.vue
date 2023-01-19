@@ -47,11 +47,21 @@ export default {
             this.titleDialog = 'Tambah Kode Staff'
             this.tipe_lowongan = 'staff'
             this.dialog = true
+            this.form_lowongan = {
+                id: '',
+                kode: '',
+                divisi: '',
+            }
         },
         createKodeMagang() {
             this.titleDialog = 'Tambah Kode Magang'
             this.tipe_lowongan = 'magang'
             this.dialog = true
+                        this.form_lowongan = {
+                id: '',
+                kode: '',
+                divisi: '',
+            }
         },
         editKodeStaff(item) {
             this.titleDialog = 'Edit Kode Staff'
@@ -101,13 +111,14 @@ export default {
         },
         async save() {
             const checkSameLowongan = (this.tipe_lowongan == 'staff' || this.tipe_lowongan == 'edit_staff') ? this.kodeLowonganStaff : this.kodeLowonganMagang
-            const checkSame = checkSameLowongan.filter(item => item.kode == this.form_lowongan.kode)
-            if (checkSame.length > 0) {
+            const checkSameKode = checkSameLowongan.filter(item => item.kode == this.form_lowongan.kode)
+            const checkSameDivisi = checkSameLowongan.filter(item => item.divisi == this.form_lowongan.divisi)
+
+            if (checkSameKode.length > 0 && checkSameDivisi.length > 0) {
                 this.$swal('Gagal', 'Kode Lowongan sudah ada', 'error')
                 return
-            }
-
-            try {
+            } 
+                            try {
                 switch (this.tipe_lowongan) {
                 case 'staff':
                     await axios.post(`${this.apibe}lowongan_staff/kode-lowongan`, this.form_lowongan, {
@@ -157,6 +168,8 @@ export default {
             } catch (error) {
                 console.log(error)   
             }
+
+            
         },
     },
 }

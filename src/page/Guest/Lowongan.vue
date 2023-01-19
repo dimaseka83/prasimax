@@ -16,8 +16,7 @@
             return {
                 lowongan_staff: [],
                 lowongan_magang: [],
-                headers: [
-                    {
+                headers: [{
                         text: 'Lowongan',
                         value: 'nama_lowongan',
                     },
@@ -46,11 +45,11 @@
                 dialogmagang: false,
                 titleDialog: 'Lowongan',
                 formStaff: {
-                    id: null,
+                    kode: null,
                     cv: null,
                 },
                 formMagang: {
-                    id: null,
+                    kode: null,
                     cv: null,
                     transkrip_nilai: null,
                 },
@@ -60,119 +59,162 @@
             this.getLowongan()
         },
         methods: {
-            async getLowongan(){
+            async getLowongan() {
                 try {
-                const { data } = await axios.get(`${this.apibe}lowongan_staff`)
-                this.lowongan_staff = data
+                    const {
+                        data
+                    } = await axios.get(`${this.apibe}lowongan_staff`)
+                    this.lowongan_staff = data
 
-                await axios.get(`${this.apibe}lowongan_magang`).then(res => {
-                    this.lowongan_magang = res.data
-                })
+                    await axios.get(`${this.apibe}lowongan_magang`).then(res => {
+                        this.lowongan_magang = res.data
+                    })
                 } catch (error) {
                     console.log(error)
                 }
             },
             // Staff
-            submitStaff(id){
+            submitStaff(kode) {
                 this.dialogstaff = true
-                this.formStaff.id = id
+                this.formStaff.kode = kode
                 this.lowongan_staff.find((item) => {
-                    if(item.id == id){
+                    if (item.kode_lowongan == kode) {
                         this.titleDialog = `Submit CV Lowongan ${item.nama_lowongan}`
                     }
                 })
             },
-            uploadCVStaff(files){
-                if(files[0].type == 'application/pdf'){
-                    this.formStaff.cv = files[0]
-                }else{
+            uploadCVStaff(files) {
+                if (files[0].type !== 'application/pdf') {
                     this.$swal('Error', 'File harus berupa PDF', 'error')
                     setTimeout(() => {
                         this.$refs.uploadCVStaff.Imgs = []
                         this.$refs.uploadCVStaff.files = []
                     }, 100);
+                    return
                 }
-                console.log(files)
+
+                if (files[0].size > 5000000) {
+                    this.$swal('Error', 'File tidak boleh lebih dari 5MB', 'error')
+                    setTimeout(() => {
+                        this.$refs.uploadCVStaff.Imgs = []
+                        this.$refs.uploadCVStaff.files = []
+                    }, 100);
+                    return
+                }
+
+                this.formStaff.cv = files[0]
+
             },
-            batalStaff(){
+            batalStaff() {
                 setTimeout(() => {
                     this.$refs.uploadCVStaff.Imgs = []
                     this.$refs.uploadCVStaff.files = []
                 }, 100);
                 this.formStaff = {
-                    id: null,
-                    cv: null,
-                },
-                this.dialogstaff = false
+                        id: null,
+                        cv: null,
+                    },
+                    this.dialogstaff = false
             },
-            kirimStaff(){
-                if(this.formStaff.cv == null){
+            async kirimStaff() {
+                if (this.formStaff.cv == null) {
                     this.$swal('Error', 'CV tidak boleh kosong', 'error')
-                }else{
+                    return
+                }
+                this.$swal.showLoading()
+                await axios.post(`${this.apibe}lowongan_staff/file`, this.formStaff, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }).then(res => {
                     this.$swal('Success', 'CV berhasil dikirim', 'success')
                     this.batalStaff()
-                }
+                    this.dialogstaff = false
+                })
             },
             // Magang
-            submitMagang(id){
+            submitMagang(kode) {
                 this.dialogmagang = true
-                this.formMagang.id = id
+                this.formMagang.kode = kode
                 this.lowongan_magang.find((item) => {
-                    if(item.id == id){
+                    if (item.kode_lowongan == kode) {
                         this.titleDialog = `Submit CV & Transkrip Magang ${item.nama_lowongan}`
                     }
                 })
             },
-            uploadCVMagang(files){
-                if(files[0].type == 'application/pdf'){
-                    this.formMagang.cv = files[0]
-                }else{
+            uploadCVMagang(files) {
+                if (files[0].type !== 'application/pdf') {
                     this.$swal('Error', 'File harus berupa PDF', 'error')
                     setTimeout(() => {
                         this.$refs.uploadCVMagang.Imgs = []
                         this.$refs.uploadCVMagang.files = []
                     }, 100);
+                    return
                 }
-                console.log(files)
-            },
-            uploadTranskripMagang(files){
-                if(files[0].type == 'application/pdf'){
-                    this.formMagang.transkrip_nilai = files[0]
-                }else{
-                    this.$swal('Error', 'File harus berupa PDF', 'error')
-                    setTimeout(() => {
-                        this.$refs.uploadTranskripMagang.Imgs = []
-                        this.$refs.uploadTranskripMagang.files = []
-                    }, 100);
-                }
-                console.log(files)
-            },
-            batalMagang(){
-                setTimeout(() => {
-                        this.$refs.uploadCVMagang.Imgs = []
-                        this.$refs.uploadCVMagang.files = []
 
+                if (files[0].size > 5000000) {
+                    this.$swal('Error', 'File tidak boleh lebih dari 5MB', 'error')
+                    setTimeout(() => {
+                        this.$refs.uploadCVMagang.Imgs = []
+                        this.$refs.uploadCVMagang.files = []
+                    }, 100);
+                    return
+                }
+
+                this.formMagang.cv = files[0]
+
+            },
+            uploadTranskripMagang(files) {
+                if (files[0].type !== 'application/pdf') {
+                    this.$swal('Error', 'File harus berupa PDF', 'error')
+                    setTimeout(() => {
                         this.$refs.uploadTranskripMagang.Imgs = []
                         this.$refs.uploadTranskripMagang.files = []
+                    }, 100);
+                    return
+                }
+
+                if (files[0].size > 5000000) {
+                    this.$swal('Error', 'File tidak boleh lebih dari 5MB', 'error')
+                    setTimeout(() => {
+                        this.$refs.uploadTranskripMagang.Imgs = []
+                        this.$refs.uploadTranskripMagang.files = []
+                    }, 100);
+                    return
+                }
+
+                this.formMagang.transkrip_nilai = files[0]
+            },
+            batalMagang() {
+                setTimeout(() => {
+                    this.$refs.uploadCVMagang.Imgs = []
+                    this.$refs.uploadCVMagang.files = []
+
+                    this.$refs.uploadTranskripMagang.Imgs = []
+                    this.$refs.uploadTranskripMagang.files = []
                 }, 100);
                 this.formMagang = {
-                    id: null,
-                    cv: null,
-                    transkrip_nilai: null,
-                },
-                this.dialogmagang = false
+                        id: null,
+                        cv: null,
+                        transkrip_nilai: null,
+                    },
+                    this.dialogmagang = false
             },
-            async kirimMagang(){
-                if(this.formMagang.cv == null || this.formMagang.transkrip_nilai == null){
+            async kirimMagang() {
+                if (this.formMagang.cv == null || this.formMagang.transkrip_nilai == null) {
                     this.$swal('Error', 'CV & Transkrip tidak boleh kosong', 'error')
-                    await axios.post(`${this.apibe}lowongan_magang`, this.formMagang).then(res => {
-                        this.$swal('Success', 'CV & Transkrip berhasil dikirim', 'success')
-                        this.batalMagang()
-                    })
-                }else{
+                    return
+                }
+                this.$swal.showLoading()
+                await axios.post(`${this.apibe}lowongan_magang/file`, this.formMagang, {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                }).then(res => {
                     this.$swal('Success', 'CV & Transkrip berhasil dikirim', 'success')
                     this.batalMagang()
-                }
+                    this.dialogmagang = false
+                })
             },
         },
     }
@@ -204,25 +246,21 @@
                 <v-divider></v-divider>
             </v-row>
             <v-card class="rounded-xl mt-10">
-                <v-data-table
-                :headers="headers"
-                :items="lowongan_staff"
-                class="my-table"
-                >
-                <template v-slot:item.action="{ item }">
-                    <v-btn small color="primary" class="rounded-xl" @click="submitStaff(item.id)">
-                        Submit CV
-                    </v-btn>
-                </template>
-                <template v-slot:item.deskripsi_lowongan="{ item }">
-                    <div v-html="item.deskripsi_lowongan"></div>
-                </template>
-                <template v-slot:item.syarat_umum_lowongan="{ item }">
-                    <div v-html="item.syarat_umum_lowongan"></div>
-                </template>
-                <template v-slot:item.syarat_kualifikasi="{ item }">
-                    <div v-html="item.syarat_kualifikasi"></div>
-                </template>
+                <v-data-table :headers="headers" :items="lowongan_staff" class="my-table">
+                    <template v-slot:item.action="{ item }">
+                        <v-btn small color="primary" class="rounded-xl" @click="submitStaff(item.kode_lowongan)">
+                            Submit CV
+                        </v-btn>
+                    </template>
+                    <template v-slot:item.deskripsi_lowongan="{ item }">
+                        <div v-html="item.deskripsi_lowongan"></div>
+                    </template>
+                    <template v-slot:item.syarat_umum_lowongan="{ item }">
+                        <div v-html="item.syarat_umum_lowongan"></div>
+                    </template>
+                    <template v-slot:item.syarat_kualifikasi="{ item }">
+                        <div v-html="item.syarat_kualifikasi"></div>
+                    </template>
                 </v-data-table>
             </v-card>
         </v-container>
@@ -233,34 +271,26 @@
                 </p>
                 <v-divider></v-divider>
             </v-row>
-                        <v-card class="rounded-xl mt-10">
-                <v-data-table
-                :headers="headers"
-                :items="lowongan_magang"
-                class="my-table"
-                >
-                <template v-slot:item.action="{ item }">
-                    <v-btn small color="primary" class="rounded-xl" @click="submitMagang(item.id)">
-                        Submit CV
-                    </v-btn>
-                </template>
-                <template v-slot:item.deskripsi_lowongan="{ item }">
-                    <div v-html="item.deskripsi_lowongan"></div>
-                </template>
-                <template v-slot:item.syarat_umum_lowongan="{ item }">
-                    <div v-html="item.syarat_umum_lowongan"></div>
-                </template>
-                <template v-slot:item.syarat_kualifikasi="{ item }">
-                    <div v-html="item.syarat_kualifikasi"></div>
-                </template>
+            <v-card class="rounded-xl mt-10">
+                <v-data-table :headers="headers" :items="lowongan_magang" class="my-table">
+                    <template v-slot:item.action="{ item }">
+                        <v-btn small color="primary" class="rounded-xl" @click="submitMagang(item.kode_lowongan)">
+                            Submit CV
+                        </v-btn>
+                    </template>
+                    <template v-slot:item.deskripsi_lowongan="{ item }">
+                        <div v-html="item.deskripsi_lowongan"></div>
+                    </template>
+                    <template v-slot:item.syarat_umum_lowongan="{ item }">
+                        <div v-html="item.syarat_umum_lowongan"></div>
+                    </template>
+                    <template v-slot:item.syarat_kualifikasi="{ item }">
+                        <div v-html="item.syarat_kualifikasi"></div>
+                    </template>
                 </v-data-table>
             </v-card>
         </v-container>
-        <v-dialog 
-        v-model="dialogstaff"
-        max-width="800px"
-        persistent
-        >
+        <v-dialog v-model="dialogstaff" max-width="800px" persistent>
             <v-card>
                 <v-card-title class="blue--text font-weight-bold text-h5">{{ titleDialog }}</v-card-title>
                 <v-card-text>
@@ -271,7 +301,7 @@
                                 File CV
                             </p>
                             <p class="red--text">
-                                File harus berupa pdf
+                                File harus berupa pdf dan ukuran maksimal 5MB
                             </p>
                         </div>
                     </v-form>
@@ -284,11 +314,7 @@
             </v-card>
         </v-dialog>
 
-                <v-dialog 
-        v-model="dialogmagang"
-        max-width="800px"
-        persistent
-        >
+        <v-dialog v-model="dialogmagang" max-width="800px" persistent>
             <v-card>
                 <v-card-title class="blue--text font-weight-bold text-h5">{{ titleDialog }}</v-card-title>
                 <v-card-text>
@@ -299,16 +325,17 @@
                                 File CV
                             </p>
                             <p class="red--text">
-                                File harus berupa pdf
+                                File harus berupa pdf dan ukuran maksimal 5MB
                             </p>
                         </div>
-                        <upload-files @changed="uploadTranskripMagang" ref="uploadTranskripMagang" :max="1"></upload-files>
-                                                <div class="d-flex">
+                        <upload-files @changed="uploadTranskripMagang" ref="uploadTranskripMagang" :max="1">
+                        </upload-files>
+                        <div class="d-flex">
                             <p class="mr-auto">
                                 File Transkrip Nilai
                             </p>
                             <p class="red--text">
-                                File harus berupa pdf
+                                File harus berupa pdf dan ukuran maksimal 5MB
                             </p>
                         </div>
                     </v-form>
@@ -324,17 +351,30 @@
     </v-app>
 </template>
 <style lang="scss">
-.my-table table thead th {
-  background-color: #6DCFF6;
-  &:first-child { border-radius: 15px 0 0 0; }
-  &:last-child { border-radius: 0 15px 0 0; }
-}
-.my-table table tbody tr {
-  &:nth-child(odd) { background-color: #F2F2F2; }
-  &:nth-child(even) { background-color: #FFFFFF; }
-}
-.v-data-footer {
-  background-color: #F2F2F2;
-  border-radius: 0 0 15px 15px;
-}
+    .my-table table thead th {
+        background-color: #6DCFF6;
+
+        &:first-child {
+            border-radius: 15px 0 0 0;
+        }
+
+        &:last-child {
+            border-radius: 0 15px 0 0;
+        }
+    }
+
+    .my-table table tbody tr {
+        &:nth-child(odd) {
+            background-color: #F2F2F2;
+        }
+
+        &:nth-child(even) {
+            background-color: #FFFFFF;
+        }
+    }
+
+    .v-data-footer {
+        background-color: #F2F2F2;
+        border-radius: 0 0 15px 15px;
+    }
 </style>
