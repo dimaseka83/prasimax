@@ -54,13 +54,19 @@ export default {
 
                 await axios.get(`${this.apibe}lowongan_staff/kode-lowongan`).then(res => {
                     res.data.map(item => {
-                        this.kode_lowongan_staff.push(`${item.kode}-${item.divisi}`)
+                        this.kode_lowongan_staff.push({
+                            value: `${item.kode}`,
+                            text: `${item.divisi}`
+                        })
                     })
                 })
 
                 await axios.get(`${this.apibe}lowongan_magang/kode-lowongan`).then(res => {
                     res.data.map(item => {
-                        this.kode_lowongan_magang.push(`${item.kode}-${item.divisi}`)
+                        this.kode_lowongan_magang.push({
+                            value: `${item.kode}`,
+                            text: `${item.divisi}`
+                        })
                     })
                 })
             } catch (error) {
@@ -125,11 +131,10 @@ export default {
             this.dialog = true
         },
         mappingSelectedLowongan(data){
-            data.split('-').map((item, index) => {
-                if (index === 0) {
-                    this.form_lowongan.kode_lowongan = item
-                } else {
-                    this.form_lowongan.nama_lowongan = item
+            this.lowongan.map(item => {
+                if(item.value == data){
+                    this.form_lowongan.nama_lowongan = item.text
+                    this.form_lowongan.kode_lowongan = item.value
                 }
             })
         },
@@ -327,7 +332,7 @@ export default {
                 <v-card-text>
                     <v-select 
                     :items="lowongan" 
-                    @change="mappingSelectedLowongan($event)" 
+                    @change="mappingSelectedLowongan($event)"
                     label="Nama Lowongan" 
                     v-model="form_lowongan.select_lowongan"/>
                     <v-tiptap 
