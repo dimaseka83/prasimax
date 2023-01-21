@@ -51,7 +51,7 @@
                 formMagang: {
                     kode: null,
                     cv: null,
-                    transkrip_nilai: null,
+                    transkip_nilai: null,
                 },
             }
         },
@@ -183,7 +183,7 @@
                     return
                 }
 
-                this.formMagang.transkrip_nilai = files[0]
+                this.formMagang.transkip_nilai = files[0]
             },
             batalMagang() {
                 setTimeout(() => {
@@ -196,12 +196,12 @@
                 this.formMagang = {
                         id: null,
                         cv: null,
-                        transkrip_nilai: null,
+                        transkip_nilai: null,
                     },
                     this.dialogmagang = false
             },
             async kirimMagang() {
-                if (this.formMagang.cv == null || this.formMagang.transkrip_nilai == null) {
+                if (this.formMagang.cv == null || this.formMagang.transkip_nilai == null) {
                     this.$swal('Error', 'CV & Transkrip tidak boleh kosong', 'error')
                     return
                 }
