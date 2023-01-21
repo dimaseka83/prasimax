@@ -230,9 +230,9 @@
                     <v-col :cols="nosm ? '8' : '12'">
                         <h1 class="text-capitalize font-weight-bold text-h3">berkembang bersama kami</h1>
                         <p class="title" :class="nosm ? 'mt-10': 'mt-5'">
-                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Provident dolor asperiores odit?
-                            Et cumque ipsa esse earum mollitia, officia pariatur vel, laudantium at eligendi, quos
-                            quasi? Atque quidem animi possimus.
+                            Sebagai entitas bisnis yang selalu bertumbuh dan mengembangkan bisnis dan inovasi baru, kami membuka peluang bagi Anda yang ingin maju dan tumbuh berkembang bersama kami.
+                            Beberapa posisi staf dan engineer kami buka untuk talenta muda dan profesional dari bidang tertentu yang kreatif, inovatif, namun berperilaku positif, menyukai tantangan dan pemikiran baru.
+                            Kami juga ingin berpartisipasi mengikuti program pemerintah, khususnya kementerian pendidikan kebudayaan dan ristek untuk membuka magang bagi para mahasiswa dan lulusan baru perguruan tinggi dengan syarat minimal kontrak magang selama 5 bulan. Silakan ajukan aplikasi magang Anda. Banyak sekali pengetahuan dan pengalaman industri yang dapat Anda peroleh selama mengikuti magang bersama kami.
                         </p>
                     </v-col>
                 </v-row>
