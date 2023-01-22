@@ -128,8 +128,10 @@
                     }
                 }).then(res => {
                     this.$swal('Success', 'CV berhasil dikirim', 'success')
-                    this.batalStaff()
                     this.dialogstaff = false
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 1000);
                 })
             },
             // Magang
@@ -212,8 +214,10 @@
                     }
                 }).then(res => {
                     this.$swal('Success', 'CV & Transkrip berhasil dikirim', 'success')
-                    this.batalMagang()
                     this.dialogmagang = false
+                    setTimeout(() => {
+                        window.location.reload()
+                    }, 1000);
                 })
             },
         },
