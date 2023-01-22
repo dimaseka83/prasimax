@@ -12,8 +12,8 @@ export default {
             pelamarStaff: [],
             pelamarMagang: [],
             headers: [
-                { text: 'Kode Lamaran', value: 'kode_lowongan' },
-                { text: 'Jumlah Pelamar', value: 'cnt' },
+                { text: 'Kode Lamaran', value: 'kode' },
+                { text: 'Jumlah Pelamar', value: 'count' },
                 { text: 'Actions', value: 'actions'}
             ],
             headersDetailLowonganStaff: [
@@ -133,14 +133,14 @@ export default {
             :items="pelamarStaff"
             :headers="headers"
             >
-            <template v-slot:item.cnt="{ item }">
-                {{ item.cnt }} Pelamar
+            <template v-slot:item.count="{ item }">
+                {{ item.count }} Pelamar
             </template>
             <template v-slot:item.actions="{ item }">
                 <v-btn
                 color="primary"
                 class="mr-4"
-                @click="getDetailStaff(item.kode_lowongan)"
+                @click="getDetailStaff(item.kode)"
                 >
                 Detail
                 </v-btn>
@@ -156,14 +156,14 @@ export default {
             :items="pelamarMagang"
             :headers="headers"
             >
-            <template v-slot:item.cnt="{ item }">
-                {{ item.cnt }} Pelamar
+            <template v-slot:item.count="{ item }">
+                {{ item.count }} Pelamar
             </template>
             <template v-slot:item.actions="{ item }">
                 <v-btn
                 color="primary"
                 class="mr-4"
-                @click="getDetailMagang(item.kode_lowongan)"
+                @click="getDetailMagang(item.kode)"
                 >
                 Detail
                 </v-btn>
