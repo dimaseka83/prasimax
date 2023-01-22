@@ -19,12 +19,14 @@ export default {
             headersDetailLowonganStaff: [
                 { text: 'No', value: 'no'},
                 { text: 'CV', value: 'cv'},
+                { text: 'Aksi', value: 'actions'}
             ],
 
             headersDetailLowonganMagang: [
                 { text: 'No', value: 'no'},
                 { text: 'CV', value: 'cv'},
                 { text: 'Transkrip Nilai', value: 'transkip_nilai'},
+                { text: 'Aksi', value: 'actions'}
             ],
 
             dialogStaff: false,
@@ -78,6 +80,45 @@ export default {
         toFile(file){
             return this.assets + file
         },
+
+        async deleteFileStaff(item){
+            const { id_lowongan } = item
+
+            try {
+                await axios.delete(`${this.apibe}lowongan_staff/file/${id_lowongan}`, {
+                    headers: {
+                        Authorization: `Bearer ${this.$store.state.token}`
+                    }
+                }).then(res => {
+                    this.$swal('Berhasil', 'File berhasil dihapus', 'success')
+                    this.getPelamar()
+                    this.dialogStaff = false
+                })
+            } catch (error) {
+                console.log(error)
+                this.$swal('Gagal', 'File gagal dihapus', 'error')
+            }
+        },
+
+        async deleteFileMagang(item){
+            const { id_lowongan } = item
+
+            try {
+                await axios.delete(`${this.apibe}lowongan_magang/file/${id_lowongan}`, {
+                    headers: {
+                        Authorization: `Bearer ${this.$store.state.token}`
+                    }
+                }).then(res => {
+                    this.$swal('Berhasil', 'File berhasil dihapus', 'success')
+                    this.getPelamar()
+                    this.dialogMagang = false
+
+                })
+            } catch (error) {
+                console.log(error)
+                this.$swal('Gagal', 'File gagal dihapus', 'error')
+            }
+        }
     }
 }
 </script>
@@ -144,6 +185,14 @@ export default {
                     <template v-slot:item.cv="{ item }">
                         <a :href="toFile(item.cv)" target="_blank">{{ splitNameFile(item.cv) }}</a>
                     </template>
+                    <template v-slot:item.actions="{ item }">
+                        <v-icon
+                        color="red"
+                        @click="deleteFileStaff(item)"
+                        >
+                        mdi-delete
+                        </v-icon>
+                    </template>
                     </v-data-table>
                 </v-card-text>
             </v-card>
@@ -165,6 +214,14 @@ export default {
                     </template>
                     <template v-slot:item.transkip_nilai="{ item }">
                         <a :href="toFile(item.transkip_nilai)" target="_blank">{{ splitNameFile(item.transkip_nilai) }}</a>
+                    </template>
+                    <template v-slot:item.actions="{ item }">
+                        <v-icon
+                        color="red"
+                        @click="deleteFileMagang(item)"
+                        >
+                        mdi-delete
+                        </v-icon>
                     </template>
                     </v-data-table>
                 </v-card-text>
