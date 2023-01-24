@@ -424,7 +424,10 @@
                                     title: 'Gagal',
                                     text: 'Akun anda belum aktif, silahkan cek email anda untuk aktivasi',
                                     icon: 'error',
-                                    confirmButtonText: 'OK'
+                                    confirmButtonText: 'OK',
+                                    timer: 2000,
+                                    timerProgressBar: true,
+                                    
                                 })
                                 this.dialoglogin = false;
                                 this.formlogin = {
@@ -436,7 +439,9 @@
                                     title: 'Gagal',
                                     text: 'Username atau Password salah',
                                     icon: 'error',
-                                    confirmButtonText: 'OK'
+                                    confirmButtonText: 'OK',
+                                            timer: 2000,
+        timerProgressBar: true,
                                 })
                                 this.dialoglogin = false;
                                 this.formlogin = {
@@ -505,7 +510,9 @@
                                         title: 'Gagal',
                                         text: response.data.message,
                                         icon: 'error',
-                                        confirmButtonText: 'OK'
+                                        confirmButtonText: 'OK',
+                                                timer: 2000,
+        timerProgressBar: true,
                                     })
                                     this.dialogchangepassword = false;
                                     this.dialoglogin = false;
@@ -533,14 +540,18 @@
                                         title: 'Berhasil',
                                         text: 'Pendaftaran Berhasil',
                                         icon: 'success',
-                                        confirmButtonText: 'OK'
+                                        confirmButtonText: 'OK',
+                                                timer: 2000,
+        timerProgressBar: true,
                                     });
                                 } else {
                                     this.$swal({
                                         title: 'Gagal',
                                         text: `${response.data.message}`,
                                         icon: 'error',
-                                        confirmButtonText: 'OK'
+                                        confirmButtonText: 'OK',
+                                                timer: 2000,
+        timerProgressBar: true,
                                     });
                                 }
                                 this.dialogregister = false;
@@ -574,14 +585,18 @@
                                         title: 'Berhasil',
                                         text: 'Silahkan cek email anda untuk aktivasi ulang',
                                         icon: 'success',
-                                        confirmButtonText: 'OK'
+                                        confirmButtonText: 'OK',
+                                                timer: 2000,
+        timerProgressBar: true,
                                     });
                                 }else{
                                     this.$swal({
                                         title: 'Gagal',
                                         text: `${response.data.message}`,
                                         icon: 'error',
-                                        confirmButtonText: 'OK'
+                                        confirmButtonText: 'OK',
+                                                timer: 2000,
+        timerProgressBar: true,
                                     });
                                 }
                                 this.dialogresendemail = false;
