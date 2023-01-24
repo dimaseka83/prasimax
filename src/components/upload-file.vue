@@ -26,7 +26,9 @@ export default {
       let files = Array.from(e.dataTransfer.files)
       if (e && files) {
         files.forEach((file) => {
-          if (file.type.startsWith("image") === false) status = false;
+          if (file.type.endsWith(".pdf")) {
+            status = false;
+          }
         });
         if (status == true) {
           if (
