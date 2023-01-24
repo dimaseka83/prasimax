@@ -31,7 +31,7 @@
                                 </v-btn>
                             </v-card-title>
                             <v-card-text>
-                                <v-form ref="formlogin" v-model="formvalidationlogin.valid" lazy-validation>
+                                <v-form ref="formlogin" v-model="formvalidationlogin.valid" lazy-validation @keyup.native.enter="login">
                                     <v-text-field label="Username / Email" prepend-icon="mdi-email"
                                         v-model="formlogin.username" :rules="formvalidationlogin.username">
                                     </v-text-field>
@@ -59,7 +59,7 @@
                                             <span :class="nosm ? 'headline' : 'body-1'">Lupa Password</span>
                                         </v-card-title>
                                         <v-card-text>
-                                            <v-form ref="formchangepassword"
+                                            <v-form ref="formchangepassword"  @keyup.native.enter="changepassword"
                                                 v-model="formvalidationchangepassword.valid" lazy-validation>
                                                 <v-text-field label="Email" prepend-icon="mdi-email"
                                                     v-model="formchangepassword.email"
@@ -103,7 +103,8 @@
                                     <v-icon>mdi-close</v-icon>
                                 </v-btn>
                             </v-card-title>
-                            <v-form ref="formregister" v-model="formvalidation.valid" lazy-validation>
+                            <v-form ref="formregister"  @keyup.native.enter="register"
+                            v-model="formvalidation.valid" lazy-validation>
                                 <v-card-text>
                                     <v-text-field label="Nama Lengkap" prepend-icon="mdi-account"
                                         v-model="formregister.fullname" :rules="formvalidation.fullname">
@@ -152,7 +153,7 @@
                                             <span class="headline">Kirim Ulang Email</span>
                                         </v-card-title>
                                         <v-card-text>
-                                            <v-form ref="formresendemail"
+                                            <v-form ref="formresendemail"  @keyup.native.enter="resendemail"
                                                 v-model="formvalidationresendemail.valid" lazy-validation>
                                                 <v-text-field label="Email" prepend-icon="mdi-email"
                                                     v-model="formresendemail.email"
