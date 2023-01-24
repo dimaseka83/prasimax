@@ -468,9 +468,6 @@
                                         });
                                         break;
                                 }
-                                this.$router.push({
-                                    name: 'HomeAdmin',
-                                }); 
                             }
                         });
                     } catch (error) {

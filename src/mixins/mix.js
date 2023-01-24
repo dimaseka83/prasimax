@@ -87,9 +87,7 @@ export default {
             timer: 2000,
             timerProgressBar: true,
             showConfirmButton: false,
-        }).then(() => {
-            this.$router.push('/');
-        });
+        })
     },
     checktoken() {
       if(localStorage.getItem('token') != undefined){
