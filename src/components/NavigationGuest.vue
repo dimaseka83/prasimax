@@ -502,7 +502,7 @@
                                 } else {
                                     this.$swal({
                                         title: 'Gagal',
-                                        text: response.message,
+                                        text: response.data.message,
                                         icon: 'error',
                                         confirmButtonText: 'OK'
                                     })
