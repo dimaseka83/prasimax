@@ -474,6 +474,11 @@
                                         });
                                         break;
                                 }
+                                      if (localStorage.getItem('role') == 'admin') {
+                                            this.$router.push({
+                                                name: 'HomeAdmin'
+                                            });
+                                        }
                             }
                         });
                     } catch (error) {

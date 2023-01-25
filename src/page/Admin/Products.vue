@@ -99,10 +99,10 @@
                                     </v-select>
                                     <v-select label="Berita" v-model="formproducts.isBerita" :items="odmPilihan">
                                     </v-select>
-                                    <v-tiptap v-model="formproducts.keterangan" label="keterangan"
-                                        :toolbar="toolbar"></v-tiptap>
-                                    <v-tiptap v-model="formproducts.deskripsi" label="Deskripsi"
-                                        :toolbar="toolbar"></v-tiptap>
+                                    <v-tiptap v-model="formproducts.keterangan" label="keterangan" :toolbar="toolbar">
+                                    </v-tiptap>
+                                    <v-tiptap v-model="formproducts.deskripsi" label="Deskripsi" :toolbar="toolbar">
+                                    </v-tiptap>
                                     <v-file-input accept="image/*" v-model="formproducts.image" label="Image">
                                     </v-file-input>
                                 </v-card-text>
@@ -174,7 +174,7 @@
                         text: 'Keterangan',
                         value: 'keterangan'
                     },
-                                        {
+                    {
                         text: 'Deskripsi',
                         value: 'deskripsi'
                     },
@@ -194,7 +194,9 @@
                     image: [],
                 },
                 itemspilihan: ['Terakuisisi', 'Tersedia'],
-                kategoripilihan: ['Kecerdasan Artifisial', 'IoT', 'Laptop', 'Development Kit', 'Kendaraan Listrik', 'Perangkat lainnya'],
+                kategoripilihan: ['Kecerdasan Artifisial', 'IoT', 'Laptop', 'Development Kit', 'Kendaraan Listrik',
+                    'Perangkat lainnya'
+                ],
                 odmPilihan: [true, false],
             }
         },
@@ -218,9 +220,9 @@
             async deleteproductstitle(index) {
                 try {
                     await axios.delete(`${this.apibe}productsTitle/${this.productstitle[index].id}`)
-                    .then(res => {
-                        this.getproductstitle();
-                    })
+                        .then(res => {
+                            this.getproductstitle();
+                        })
                 } catch (error) {
                     console.log(error)
                     this.$swal('Error', 'Gagal menghapus data', 'error')
@@ -275,25 +277,38 @@
                 this.dialogproducts = true
                 this.formproducts = this.products[index]
             },
-            async deleteproducts(index) {
-                try {
-                    await axios.delete(`${this.apibe}product/${this.products[index].id}`, {
-                        headers: {
-                            'Content-Type': 'multipart/form-data',
-                            Authorization: `Bearer ${this.$store.state.token}`
-                        },
-                    })
-                    .then(res => {
-                        this.getproducts();
-                        this.$swal('Success', 'Data Berhasil Dihapus', 'success')
-                    })
-                } catch (error) {
-                    console.log(error)
-                    this.$swal('Error', 'Data Gagal Dihapus', 'error')
-                }
+            deleteproducts(index) {
+                this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        try {
+                            axios.delete(`${this.apibe}product/${this.products[index].id}`, {
+                                    headers: {
+                                        'Content-Type': 'multipart/form-data',
+                                        Authorization: `Bearer ${this.$store.state.token}`
+                                    },
+                                })
+                                .then(res => {
+                                    this.getproducts();
+                                    this.$swal('Success', 'Data Berhasil Dihapus', 'success')
+                                })
+                        } catch (error) {
+                            console.log(error)
+                            this.$swal('Error', 'Data Gagal Dihapus', 'error')
+                        }
+                    }
+                })
+
             },
             async saveproducts() {
-               try {
+                try {
                     if (this.formproducts.id != undefined) {
                         await axios.put(`${this.apibe}product/${this.formproducts.id}`, this.formproducts, {
                                 headers: {

@@ -77,10 +77,21 @@ export default {
             this.form_lowongan = { id, kode, divisi }
             this.dialog = true
         },
-        async deleteKodeStaff(item) {
+        deleteKodeStaff(item) {
             const { id } = item
+
+            this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
             try {
-                    await axios.delete(`${this.apibe}lowongan_staff/kode-lowongan/${id}`, {
+                    axios.delete(`${this.apibe}lowongan_staff/kode-lowongan/${id}`, {
                     headers: {
                         Authorization: `Bearer ${this.$store.state.token}`
                     }
@@ -92,11 +103,25 @@ export default {
             } catch (error) {
                 console.log(error)
             }
+
+                    }
+                })
         },
-        async deleteKodeMagang(item) {
+        deleteKodeMagang(item) {
             const { id } = item
+
+            this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
             try {
-                    await axios.delete(`${this.apibe}lowongan_magang/kode-lowongan/${id}`, {
+                    axios.delete(`${this.apibe}lowongan_magang/kode-lowongan/${id}`, {
                         headers: {
                         Authorization: `Bearer ${this.$store.state.token}`
                     }
@@ -108,6 +133,8 @@ export default {
             } catch (error) {
                 console.log(error)
             }
+                    }
+                })
         },
         async save() {
             const checkSameLowongan = (this.tipe_lowongan == 'staff' || this.tipe_lowongan == 'edit_staff') ? this.kodeLowonganStaff : this.kodeLowonganMagang

@@ -165,8 +165,17 @@
                 this.dialogabouttitle = true
                 this.formabouttitle = this.abouttitle[index]
             },
-            async deleteabouttitle(index) {
-                try {
+            deleteabouttitle(index) {
+                this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then(async (result) => {
+                    try {
                     await axios.delete(`${this.apibe}titleAbout/${this.abouttitle[index].id}`)
                     .then(res => {
                         this.getabouttitle();
@@ -175,6 +184,7 @@
                     console.log(error)
                     this.$swal('Error', 'Gagal menghapus data', 'error')
                 }
+                })
             },
             async saveabouttitle() {
                 try {

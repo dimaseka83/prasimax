@@ -138,10 +138,20 @@ export default {
                 }
             })
         },
-        async deleteLowonganStaff(item) {
+        deleteLowonganStaff(item) {
+            this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
             const id = item.id
             try {
-                const { data } = await axios.delete(`${this.apibe}lowongan_staff/${id}`, {
+                const { data } = axios.delete(`${this.apibe}lowongan_staff/${id}`, {
                      headers: {
                         Authorization: `Bearer ${this.$store.state.token}`
                     }
@@ -152,11 +162,23 @@ export default {
                 console.log(error)
                 this.$swal('Gagal', 'Lowongan Staff gagal dihapus', 'error')
             }
+                    }
+                })
         },
-        async deleteLowonganMagang(item) {
+        deleteLowonganMagang(item) {
+            this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
             const id = item.id
             try {
-                const { data } = await axios.delete(`${this.apibe}lowongan_magang/${id}`, {
+                const { data } = axios.delete(`${this.apibe}lowongan_magang/${id}`, {
                      headers: {
                         Authorization: `Bearer ${this.$store.state.token}`
                     }
@@ -167,6 +189,8 @@ export default {
                 console.log(error)
                 this.$swal('Gagal', 'Lowongan Magang gagal dihapus', 'error')
             }
+                    }
+                })
         },
         save(){
             const LowonganStaffCreate = async () => {

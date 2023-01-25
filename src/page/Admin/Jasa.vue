@@ -49,9 +49,19 @@ export default {
                 this.formpartnership = this.partners[index]
                 this.dialogpartnership = true
             },
-            async deletepartnership(index) {
+            deletepartnership(index) {
+                this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
                 try {
-                    await axios.delete(`${this.apibe}jasa/${this.partners[index].id}`, {
+                    axios.delete(`${this.apibe}jasa/${this.partners[index].id}`, {
                     headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
@@ -64,6 +74,8 @@ export default {
                     console.log(error)
                     this.$swal('Error', 'Data gagal dihapus', 'error')
                 }
+                    }
+                })
             },
             async savepartnerts(){
                 if(this.formpartnership.id){

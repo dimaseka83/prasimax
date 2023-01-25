@@ -250,7 +250,17 @@
             },
 
             deletemitra(index) {
-                try {
+                this.$swal({
+                                        title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+                        try {
                                     axios.delete(`${this.apibe}mitra/${this.mitra[index].id}`, {
                     headers: {
                                     'Content-Type': 'multipart/form-data',
@@ -265,6 +275,9 @@
                     console.log(error)
                     this.$swal('Error', 'Gagal Menghapus Mitra', 'error');
                 }
+                    }
+                })
+                
             },
 
             async savemitra(){

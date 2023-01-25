@@ -185,9 +185,19 @@
                 this.formpartnership = this.partners[index]
                 this.dialogpartnership = true
             },
-            async deletepartnership(index) {
+             deletepartnership(index) {
+                                this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
                 try {
-                    await axios.delete(`${this.apibe}kerjasama/${this.partners[index].id}`, {
+                    axios.delete(`${this.apibe}kerjasama/${this.partners[index].id}`, {
                     headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
@@ -200,6 +210,8 @@
                     console.log(error)
                     this.$swal('Error', 'Gagal menghapus data', 'error')
                 }
+                    }
+                })
             },
             async savepartnerts(){
                 if(this.formpartnership.id){
@@ -248,9 +260,19 @@
                 this.dialogmitratech = true
             },
 
-            async deletemitratech(index) {
+            deletemitratech(index) {
+                                this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
                 try {
-                    await axios.delete(`${this.apibe}mitra-teknologi/${this.mitratech[index].id}`, {
+                    axios.delete(`${this.apibe}mitra-teknologi/${this.mitratech[index].id}`, {
                     headers: {
                                     'Content-Type': 'multipart/form-data',
                                     Authorization: `Bearer ${this.$store.state.token}`
@@ -264,6 +286,8 @@
                   console.log(error)
                     this.$swal('Error', 'Gagal menghapus data', 'error')  
                 }
+                    }
+                })
             },
 
             async savemitra(){

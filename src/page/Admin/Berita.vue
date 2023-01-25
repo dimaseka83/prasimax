@@ -74,6 +74,17 @@ export default {
             this.formsTitle = 'Edit Berita'
         },
         deleteItem(item) {
+            this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
+
             const { id } = item
             const { data } = axios.delete(`${this.apibe}/berita/${id}`, {
                 headers: {
@@ -82,6 +93,8 @@ export default {
             })
             this.$swal('Berhasil', 'Berita berhasil dihapus', 'success')
             this.initialize()
+                    }
+                })
         },
         save() {
             const saveData = () => {

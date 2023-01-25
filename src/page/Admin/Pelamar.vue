@@ -2,6 +2,7 @@
 import NavigationAdmin from '@/components/Admin/Navigation.vue'
 import mix from '@/mixins/mix'
 import axios from 'axios'
+import moment from 'moment'
 export default {
     mixins: [mix],
     components: {
@@ -19,6 +20,7 @@ export default {
             headersDetailLowonganStaff: [
                 { text: 'No', value: 'no'},
                 { text: 'CV', value: 'cv'},
+                { text: 'Tanggal', value: 'updatedAt'},
                 { text: 'Aksi', value: 'actions'}
             ],
 
@@ -26,6 +28,7 @@ export default {
                 { text: 'No', value: 'no'},
                 { text: 'CV', value: 'cv'},
                 { text: 'Transkrip Nilai', value: 'transkip_nilai'},
+                { text: 'Tanggal', value: 'updatedAt'},
                 { text: 'Aksi', value: 'actions'}
             ],
 
@@ -76,16 +79,30 @@ export default {
             const split = url.split('/')
             return split[split.length - 1]
         },
+        moment(date){
+            const dates = moment(date).lang('id').format('LL')
+            const time = moment(date).lang('id').format('LT')
+            return `${dates} - ${time}`
+        },
 
         toFile(file){
             return this.assets + file
         },
 
-        async deleteFileStaff(item){
+        deleteFileStaff(item){
             const { id_lowongan } = item
-
+this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
             try {
-                await axios.delete(`${this.apibe}lowongan_staff/file/${id_lowongan}`, {
+                axios.delete(`${this.apibe}lowongan_staff/file/${id_lowongan}`, {
                     headers: {
                         Authorization: `Bearer ${this.$store.state.token}`
                     }
@@ -98,13 +115,24 @@ export default {
                 console.log(error)
                 this.$swal('Gagal', 'File gagal dihapus', 'error')
             }
+                    }
+                })
         },
 
-        async deleteFileMagang(item){
+        deleteFileMagang(item){
             const { id_lowongan } = item
-
+this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
             try {
-                await axios.delete(`${this.apibe}lowongan_magang/file/${id_lowongan}`, {
+                axios.delete(`${this.apibe}lowongan_magang/file/${id_lowongan}`, {
                     headers: {
                         Authorization: `Bearer ${this.$store.state.token}`
                     }
@@ -118,6 +146,8 @@ export default {
                 console.log(error)
                 this.$swal('Gagal', 'File gagal dihapus', 'error')
             }
+                    }
+                })
         }
     }
 }
@@ -182,6 +212,9 @@ export default {
                     <template v-slot:item.no="{ item, index }">
                         {{ index + 1 }}
                     </template>
+                    <template v-slot:item.updatedAt="{ item }">
+                        {{ moment(item.updatedAt) }}
+                    </template>
                     <template v-slot:item.cv="{ item }">
                         <a :href="toFile(item.cv)" target="_blank">{{ splitNameFile(item.cv) }}</a>
                     </template>
@@ -208,6 +241,9 @@ export default {
                     >
                     <template v-slot:item.no="{ item, index }">
                         {{ index + 1 }}
+                    </template>
+                    <template v-slot:item.updatedAt="{ item }">
+                        {{ moment(item.updatedAt) }}
                     </template>
                     <template v-slot:item.cv="{ item }">
                         <a :href="toFile(item.cv)" target="_blank">{{ splitNameFile(item.cv) }}</a>

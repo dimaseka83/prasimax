@@ -236,9 +236,19 @@
                     urutan
                 }
             },
-            async deletesales(index) {
+            deletesales(index) {
+                                this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
                 try {
-                    await axios.delete(`${this.apibe}salesdepartment/${this.salesdepartment[index].id}`, {
+                    axios.delete(`${this.apibe}salesdepartment/${this.salesdepartment[index].id}`, {
                             headers: {
                                 'Content-Type': 'multipart/form-data',
                                 Authorization: `Bearer ${this.$store.state.token}`
@@ -252,13 +262,25 @@
                     console.log(error)
                     this.$swal('Error', 'Data gagal dihapus', 'error')
                 }
+                    }
+                })
             },
-            async deletedepartment(index) {
+             deletedepartment(index) {
+                                this.$swal({
+                    title: 'Are you sure to delete this data?',
+                    text: 'You will not be able to recover this data!',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.value) {
                 try {
                     const id = this.department[index].id
                     const {
                         data
-                    } = await axios.delete(`${this.apibe}department/${id}`, {
+                    } = axios.delete(`${this.apibe}department/${id}`, {
                         headers: {
                             Authorization: `Bearer ${this.$store.state.token}`
                         }
@@ -270,6 +292,8 @@
                     console.log(error)
                     this.$swal('Error', 'Data gagal dihapus', 'error')
                 }
+                    }
+                })
             },
             async savesales() {
                 try {

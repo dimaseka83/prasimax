@@ -77,6 +77,9 @@ export default {
       console.log(this.$vuetify.lang.current = 'hu');
     },
     logout() {
+      if (localStorage.getItem('role') == 'admin') {
+        this.$router.push('/');
+      }
       this.$store.commit('logout');
       this.$swal({
         title: 'Berhasil',
