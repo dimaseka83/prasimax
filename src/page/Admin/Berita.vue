@@ -96,6 +96,18 @@ export default {
                     }
                 })
         },
+        broadcast(item){
+            const { id } = item
+            try {
+                const { response } = axios.post(`${this.apibe}berita/broadcast/${id}`, null, {
+                    headers: this.header
+                })
+                this.$swal('Berhasil', 'Berita berhasil di broadcast', 'success')
+            } catch (error) {
+                console.log(error)
+                this.$swal('Gagal', 'Berita gagal di broadcast', 'error')
+            }
+        },
         save() {
             const saveData = () => {
                 const { data } = axios.post(`${this.apibe}/berita`, this.form, {
@@ -166,6 +178,14 @@ export default {
                             </v-btn>
                         </template>
                         <span>Delete</span>
+                    </v-tooltip>
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                            <v-btn icon small v-on="on" @click="broadcast(data.item)">
+                                <v-icon>mdi-bullhorn</v-icon>
+                            </v-btn>
+                        </template>
+                        <span>Broadcast</span>
                     </v-tooltip>
                 </template>
                 <template v-slot:top>
