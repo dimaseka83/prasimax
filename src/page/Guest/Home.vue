@@ -163,7 +163,7 @@
 
       <v-slide-group v-model="model" class="pa-4"  show-arrows>
         <v-slide-item v-for="mtr in mitratech" :key="mtr.id" v-slot="{ toggle }">
-          <v-card flat class="mx-8 center" width="300" @click="toggle" :href="`${mtr.link}`" target="_blank">
+          <v-card flat class="mx-12 center" width="200" @click="toggle" :href="`${mtr.link}`" target="_blank">
             <v-img :src="`${assets}${mtr.image}`" :width="nosm ? '300' : '200'" class="mt-10">
               <template v-slot:placeholder>
                 <v-row align="center" justify="center" class="fill-height ma-0">
