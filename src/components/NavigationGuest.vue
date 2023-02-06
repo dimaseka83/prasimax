@@ -221,7 +221,7 @@
                 <v-icon>mdi-account</v-icon>
             </v-btn>
         </v-app-bar>
-        <v-navigation-drawer v-model="drawer" app>
+        <v-navigation-drawer v-model="drawer" app v-show="sm">
             <v-list dense>
                 <v-list-item-group>
                     <v-list-item v-for="(nav, idx) in menu" :key="idx + 'nav'">
@@ -243,7 +243,7 @@
                 </v-list-item-group>
             </v-list>
         </v-navigation-drawer>
-        <v-navigation-drawer v-model="draweruser" app right>
+        <v-navigation-drawer v-model="draweruser" app right v-show="sm">
             <v-list dense>
                 <v-list-item-group>
                     <v-list-item>
